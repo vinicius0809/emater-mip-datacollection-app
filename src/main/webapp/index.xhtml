@@ -3,10 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">    
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">    
 
     <h:head>
-        <title>Facelet Title</title>
+        <title>GUI Prototype</title>
     </h:head>
     <h:body>
         <b:container>
@@ -15,9 +16,12 @@
                 <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
                 <p><a class="btn btn-primary btn-lg">Learn more</a></p>
             </b:jumbotron>
+            
+            <b:row>
+                <p:calendar id="inline" mode="inline" />
+            </b:row>
+            
         </b:container>
-
-
     </h:body>
 </html>
 
