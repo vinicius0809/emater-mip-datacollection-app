@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
+# Desenvolvimento de Aplicativo para Coleta de Dados da Tecnologia de Manejo Integrado de Pragas da Cultura da Soja
 
-You can use the [editor on GitHub](https://github.com/gabrielcostasilva/emater-mip-datacollection-app/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Problema
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Desde 2016, o Instituto Paranaense de Assistência Técnica e Extensão Rural (EMATER), a Empesa Brasileira de Pesquisa (EMBRAPA) Unidade Soja e produtores rurais de várias regiões do Paraná vêm desenvolvendo o projeto grãos, que   um projeto de Manejo Integrado de Pragas (MIP) na cultura da soja, denominado projeto grãos, que tem por objetivo garantir geração de renda, produção sustentável e alimentos seguros, preservando os recursos naturais e a qualidade produtiva dos solos. Entre as principais estratégias de trabalho estão o monitoramento e manejo integrado de pragas (MIP).
 
-### Markdown
+O MIP consiste na coleta amostral, por meio do uso da metodologia do pano-de-batida, por meio do acompanhamento semanal dos níveis populacionais das principais pragas da soja nas Unidades de Referência (UR). Uma UR corresponde a uma lavoura comercial de soja que é acompanhada pelos técnicos e extensionistas do EMATER durante todo o seu ciclo de produção. O MIP objetiva reduzir o custo no controle de pragas da soja e amenizar os impactos ambientais do processo produtivo. De fato, resultados recentes mostram redução de 45% no número de aplicações de inseticidas e aumento de 74% no tempo médio de aplicação de inseticida na lavoura. Quando comparado com lavouras que não adotaram o MIP, o MIP levou a economia média de 1,3 sacas por hectare [[1]](https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1075681/resultados-do-manejo-integrado-de-pragas-da-soja-na-safra-201617-no-parana).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Contudo, a coleta e análise dos dados são realizadas de forma pouco eficiente. Os técnicos coletam os dados em papel durante inspeções semanais nas URs. Os dados coletados em papel são então tabulados em uma planilha eletrônica. Em seguida, os técnicos enviam as planilhas para os escritórios da EMATER, onde as planilhas são consolidadas e então geradas as análises dos dados. Apenas após o término desse custoso processo é possível ter uma visão consolidada da ocorrência de pragas em uma região. Isso é um problema porque a demora na visualização consolidada dos dados atrasa a tomada de ações emergenciais em casos de epidemia de pragas em uma região. Além disso, esse processo exige muito trabalho manual, uma vez que os dados são primeiro coletados em papel e depois tabulados na planilha eletrônica. Por fim, o técnico não tem fácil acesso aos dados históricos ou regionais que possam auxiliá-lo na tomada de decisão logo após a coleta dos dados.
 
-```markdown
-Syntax highlighted code block
+## Objetivo
+O objetivo geral deste projeto é aumentar a eficiência no processo de coleta e análise de dados da tecnologia de MIP por meio do desenvolvimento de aplicativos integrados em nuvem. 
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/gabrielcostasilva/emater-mip-datacollection-app/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Tecnologias
+Atualmente, as seguintes tecnologias são usadas:
+- _Wildfly-swarm_ para criar um uber-jar;
+- _JSF_ para criar a interface com usuário;
+- _BootsFaces_ e _Primefaces_ para criar componentes gráficos;
