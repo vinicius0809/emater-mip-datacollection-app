@@ -44,14 +44,6 @@
             <artifactId>jsf</artifactId>
         </dependency>
         
-        <!-- Bootsfaces dependency -->        
-        <dependency>
-            <groupId>net.bootsfaces</groupId>
-            <artifactId>bootsfaces</artifactId>
-            <version>1.2.0</version>
-            <scope>compile</scope>
-        </dependency>
-        
         <!-- PrimeFaces dependency --> 
         <dependency>
             <groupId>org.primefaces</groupId>
