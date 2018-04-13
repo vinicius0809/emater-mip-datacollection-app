@@ -15,4 +15,4 @@ O objetivo geral deste projeto é aumentar a eficiência no processo de coleta e
 Atualmente, as seguintes tecnologias são usadas:
 - _Wildfly-swarm_ para criar um uber-jar;
 - _JSF_ para criar a interface com usuário;
-- _BootsFaces_ e _Primefaces_ para criar componentes gráficos;
+- _BootsFaces_ e _Primefaces_ (Web & Mobile) para criar componentes gráficos;
