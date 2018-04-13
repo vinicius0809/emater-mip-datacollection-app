@@ -1,5 +1,6 @@
 package br.edu.utfpr.cp.emater.mipdatacollection.presentation;
 
+import br.edu.utfpr.cp.emater.mipdatacollection.model.Pest;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.inject.Named;

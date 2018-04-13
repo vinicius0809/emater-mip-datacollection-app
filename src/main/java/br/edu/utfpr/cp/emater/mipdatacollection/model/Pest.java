@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mipdatacollection.presentation;
+package br.edu.utfpr.cp.emater.mipdatacollection.model;
 
 import java.util.Objects;
 import javax.inject.Named;
@@ -9,14 +9,16 @@ public class Pest {
     private String commonName;
     private String scientificName;
     private String figureURL;
+    private PestType pestType;
 
     public Pest() {
     }
 
-    public Pest(String commonName, String scientificName, String figureURL) {
+    public Pest(String commonName, String scientificName, String figureURL, PestType pestType) {
         this.commonName = commonName;
         this.scientificName = scientificName;
         this.figureURL = figureURL;
+        this.pestType = pestType;
     }
 
     public String getCommonName() {
@@ -41,6 +43,14 @@ public class Pest {
 
     public void setFigureURL(String figureURL) {
         this.figureURL = figureURL;
+    }
+
+    public PestType getPestType() {
+        return pestType;
+    }
+
+    public void setPestType(PestType pestType) {
+        this.pestType = pestType;
     }
 
     @Override
