@@ -28,6 +28,7 @@ public class PestSampleCollectionBean implements Serializable {
     private Date sampleCollectionDate;
     private List<Crop> cropList;
     private Crop cropSelected;
+    private int sampleValue;
 
     @PostConstruct
     public void initPestList() {
@@ -43,18 +44,33 @@ public class PestSampleCollectionBean implements Serializable {
         ).collect(Collectors.toList());
     }
 
-    public String onSampleCollectionCrop() {
-        
-        return "pm:pestSelectionInternalPage?transition=slide";
-    }
-    
+
     public String onSampleCollectionDate() {
         System.out.println(this.sampleCollectionDate);
 
         return "pm:sampleCollectionCropPage?transition=slide";
     }
 
-    public String selectPest() {
+    public String onSelectCrop() {
+
+        String cropName = FacesContext.getCurrentInstance().
+                getExternalContext().getRequestParameterMap().get("cropName");
+
+        this.cropSelected = this.
+                getCropList().
+                stream().
+                filter(
+                        crop -> crop.getName().equalsIgnoreCase(cropName)).
+                findFirst().
+                orElseThrow(() -> new RuntimeException("Cultivar não encontrada!"));
+
+        System.out.println(this.cropSelected);
+
+        return "pm:pestSelectionInternalPage?transition=slide";
+    }
+
+
+    public String onSelectPest() {
 
         String pestScientificName = FacesContext.getCurrentInstance().
                 getExternalContext().getRequestParameterMap().get("pestScientificName");
@@ -68,34 +84,25 @@ public class PestSampleCollectionBean implements Serializable {
                 findFirst().
                 orElseThrow(() -> new RuntimeException("Peste não encontrada!"));
 
+        System.out.println(this.pestSelected);
+
         return "pm:pestCollectionInternalPage?transition=slide";
     }
-    
-    public String selectCrop() {
 
-        String cropName = FacesContext.getCurrentInstance().
-                getExternalContext().getRequestParameterMap().get("cropName");
-
-        this.cropSelected = this.
-                getCropList().
-                stream().
-                filter(
-                        crop -> crop.getName().equalsIgnoreCase(cropName)).
-                findFirst().
-                orElseThrow(() -> new RuntimeException("Cultivar não encontrada!"));
-
+    public String onSampleCollectionCrop() {
+        
         return "pm:pestSelectionInternalPage?transition=slide";
     }
 
+
     public String save() {
 
-        this.sample.setPest(pestSelected);
-        System.out.println(this.sample);
+        System.out.println(this.sampleValue);
 
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO,
                         "Coleta realizada com sucesso!", "Sucesso"));
-        return "/data-collection";
+        return "/index";
     }
 
     public List<Pest> getPestList() {
@@ -146,6 +153,11 @@ public class PestSampleCollectionBean implements Serializable {
         this.cropSelected = cropSelected;
     }
 
-    
-    
+    public int getSampleValue() {
+        return sampleValue;
+    }
+
+    public void setSampleValue(int sampleValue) {
+        this.sampleValue = sampleValue;
+    }
 }
