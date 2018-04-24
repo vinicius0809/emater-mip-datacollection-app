@@ -5,8 +5,11 @@ import br.edu.utfpr.cp.emater.mipdatacollection.model.Farmer;
 import br.edu.utfpr.cp.emater.mipdatacollection.model.Harvest;
 import br.edu.utfpr.cp.emater.mipdatacollection.model.Pest;
 import br.edu.utfpr.cp.emater.mipdatacollection.model.PestType;
+import br.edu.utfpr.cp.emater.mipdatacollection.model.SampleData;
+import br.edu.utfpr.cp.emater.mipdatacollection.model.SampleInfo;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +19,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import org.primefaces.event.SelectEvent;
+import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.PieChartModel;
 
 @ManagedBean
 @SessionScoped
@@ -44,6 +48,54 @@ public class PestSampleCollectionBean implements Serializable {
         ).collect(Collectors.toList());
     }
 
+    public PieChartModel getChartModel() {
+
+        PieChartModel pieModel1 = new PieChartModel();
+
+        pieModel1.set("Lagarta da Soja", 540);
+        pieModel1.set("Falsa Medideira", 325);
+        pieModel1.set("Lagarta das Vagens", 702);
+
+        pieModel1.setTitle("Resumo das Amostras");
+        pieModel1.setLegendPosition("w");
+        pieModel1.setShowDataLabels(true);
+
+        return pieModel1;
+
+    }
+
+    public String onNothing() {
+        return "/sample-list.xhtml";
+    }
+
+    public List<SampleData> getSampleData() {
+        return Stream.of(
+                new SampleData(
+                        new Pest(
+                                "Lagarta da Soja",
+                                "Anticarsia sp.",
+                                "http://www.cnpso.embrapa.br/helicoverpa/folha_large/_3105441205.jpg",
+                                PestType.GREATER_THAN_15CM),
+                        new SampleInfo(
+                                12,
+                                LocalDate.now(),
+                                "v1",
+                                3),
+                        12.5),
+                new SampleData(
+                        new Pest(
+                                "Falsa Medideira",
+                                "Chrysodeixis ssp.",
+                                "http://www.cnpso.embrapa.br/helicoverpa/folha_large/_9148710221.jpg",
+                                PestType.LESS_THAN_15CM),
+                        new SampleInfo(
+                                6,
+                                LocalDate.now(),
+                                "v5",
+                                6),
+                        2.5)
+        ).collect(Collectors.toList());
+    }
 
     public String onSampleCollectionDate() {
         System.out.println(this.sampleCollectionDate);
@@ -69,7 +121,6 @@ public class PestSampleCollectionBean implements Serializable {
         return "pm:pestSelectionInternalPage?transition=slide";
     }
 
-
     public String onSelectPest() {
 
         String pestScientificName = FacesContext.getCurrentInstance().
@@ -90,10 +141,9 @@ public class PestSampleCollectionBean implements Serializable {
     }
 
     public String onSampleCollectionCrop() {
-        
+
         return "pm:pestSelectionInternalPage?transition=slide";
     }
-
 
     public String save() {
 
@@ -102,7 +152,7 @@ public class PestSampleCollectionBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO,
                         "Coleta realizada com sucesso!", "Sucesso"));
-        return "/index";
+        return "/new-sample";
     }
 
     public List<Pest> getPestList() {

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pm="http://primefaces.org/mobile"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+
+    <h:body>
+
+        <pm:page id="sampleListPage">
+            <pm:header title="Amostras Coletadas" swatch="b"></pm:header>
+            <pm:content>
+                <h:form id="sampleListForm">
+
+                    <p:dataList id="sampleListDataList" value="#{pestSampleCollectionBean.getSampleData()}"
+                                var="sample" pt:data-filter="true">
+
+                        <p:commandLink action="#{pestSampleCollectionBean.onNothing()}">
+
+                            <!--<p:graphicImage value="" />-->
+                            <h2>#{sample.pest.commonName}</h2>                                
+                            <p>#{sample.info.collectionDate}</p>
+                            <p>#{sample.data}</p>
+                        </p:commandLink>
+                    </p:dataList>
+
+                </h:form>
+            </pm:content>
+            <pm:footer fixed="true">
+                <ui:include src="menu.xhtml"/>
+            </pm:footer>
+        </pm:page>
+
+    </h:body>
+
+
+</html>
+
