@@ -8,5 +8,7 @@
         <navigation-handler>
             org.primefaces.mobile.application.MobileNavigationHandler
         </navigation-handler>
+        
+        <default-render-kit-id>PRIMEFACES_MOBILE</default-render-kit-id>
     </application>
 </faces-config>
