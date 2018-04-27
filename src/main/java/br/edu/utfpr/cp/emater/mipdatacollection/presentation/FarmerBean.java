@@ -1,6 +1,7 @@
 package br.edu.utfpr.cp.emater.mipdatacollection.presentation;
 
 import br.edu.utfpr.cp.emater.mipdatacollection.model.Farmer;
+import br.edu.utfpr.cp.emater.mipdatacollection.model.Technician;
 import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;

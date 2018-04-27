@@ -9,14 +9,22 @@ public class Crop implements Serializable {
     private String name;
     private Farmer farmer;
     private Harvest harvest;
+    private Technician technician;
 
     public Crop() {
     }
-
+    
     public Crop(String name, Farmer farmer, Harvest harvest) {
         this.name = name;
         this.farmer = farmer;
         this.harvest = harvest;
+    }
+
+    public Crop(String name, Farmer farmer, Harvest harvest, Technician technician) {
+        this.name = name;
+        this.farmer = farmer;
+        this.harvest = harvest;
+        this.technician = technician;
     }
 
     public String getName() {
@@ -42,5 +50,12 @@ public class Crop implements Serializable {
     public void setHarvest(Harvest harvest) {
         this.harvest = harvest;
     }
-    
+
+    public Technician getTechnician() {
+        return technician;
+    }
+
+    public void setTechnician(Technician technician) {
+        this.technician = technician;
+    }
 }
