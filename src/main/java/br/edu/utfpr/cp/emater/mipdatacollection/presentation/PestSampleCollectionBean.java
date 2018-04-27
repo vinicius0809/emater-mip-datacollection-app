@@ -100,7 +100,7 @@ public class PestSampleCollectionBean implements Serializable {
     public String onSampleCollectionDate() {
         System.out.println(this.sampleCollectionDate);
 
-        return "pm:sampleCollectionCropPage?transition=slide";
+        return "/sample-collection-crop-page";
     }
 
     public String onSelectCrop() {
@@ -118,7 +118,7 @@ public class PestSampleCollectionBean implements Serializable {
 
         System.out.println(this.cropSelected);
 
-        return "pm:pestSelectionInternalPage?transition=slide";
+        return "/pest-selection-internal-page";
     }
 
     public String onSelectPest() {
@@ -137,7 +137,7 @@ public class PestSampleCollectionBean implements Serializable {
 
         System.out.println(this.pestSelected);
 
-        return "pm:pestCollectionInternalPage?transition=slide";
+        return "/pest-collection-internal-page";
     }
 
     public String onSampleCollectionCrop() {
@@ -152,7 +152,8 @@ public class PestSampleCollectionBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO,
                         "Coleta realizada com sucesso!", "Sucesso"));
-        return "/new-sample";
+        
+        return "/sample-collection-date-page";
     }
 
     public List<Pest> getPestList() {

@@ -21,7 +21,7 @@ public class MobileNavigationController implements Serializable {
                 return "/sample-list";
             case "NEW":
                 setActivetabindex(2);
-                return "/new-sample";
+                return "/sample-collection-date-page";
             default:
                 setActivetabindex(0);
                 return "/index";

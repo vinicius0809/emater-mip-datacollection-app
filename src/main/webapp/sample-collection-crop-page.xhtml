@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pm="http://primefaces.org/mobile"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <pm:page id="sampleCollectionCropPage">
+            <pm:header title="Cultivar" swatch="b">
+                <p:button outcome="pm:sampleCollectionDatePage" value="Voltar" icon="ui-icon-arrow-l" styleClass="ui-btn-left ui-btn-inline"/>
+            </pm:header>
+            <pm:content>
+                <h:form id="sampleCollectionCropForm">
+
+                    <p:dataList id="sampleCollectionCropDataList" value="#{pestSampleCollectionBean.cropList}"
+                                var="crop" pt:data-filter="true">
+
+                        <p:commandLink action="#{pestSampleCollectionBean.onSelectCrop()}">
+
+                            <f:param name="cropName" value="#{crop.name}"/>
+                            <!--<p:graphicImage value="#{crop.farmer.pictureURL}" />-->
+                            <h2>#{crop.name}</h2>                                
+                            <p>#{crop.farmer.name}</p>
+                            <p>#{crop.harvest.name}</p>
+                        </p:commandLink>
+                    </p:dataList>
+
+                </h:form>
+            </pm:content>
+            <pm:footer fixed="true">
+                <ui:include src="menu.xhtml"/>
+            </pm:footer>
+        </pm:page>
+
+    </h:body>
+</html>
+
