@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pm="http://primefaces.org/mobile"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Farmer Page</title>
+    </h:head>
+    <h:body>
+        <pm:page id="farmerListPage">
+            <pm:header title="Produtores" swatch="b"></pm:header>
+            <pm:content>
+                <h:form id="farmerListForm">
+
+                    <p:dataList id="farmerListDataList" value="#{farmerBean.farmerList()}"
+                                var="farmer" pt:data-filter="true">
+                        <p:commandLink action="#{farmerBean.onFarmerSelect()}">
+
+                            <p:graphicImage value="#{farmer.pictureURL}" />
+                            <h2>#{farmer.name}</h2>
+
+                        </p:commandLink>
+                    </p:dataList>
+
+                </h:form>
+            </pm:content>
+            <pm:footer fixed="true">
+                <ui:include src="/farmer/farmer-menu.xhtml"/>
+            </pm:footer>
+        </pm:page>
+
+
+    </h:body>
+</html>
+
