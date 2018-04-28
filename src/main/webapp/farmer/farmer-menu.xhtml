@@ -8,21 +8,13 @@
                 xmlns:pm="http://primefaces.org/mobile"
                 xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
-<!--    <h:form id="menuForm">
-        <p:tabMenu activeIndex="#{mobileNavigationController.activetabindex}">
-            <p:menuitem value="Painel" icon="ui-icon-home" iconPos="top" ajax="false"
-                        action="#{mobileNavigationController.menuNavigation('DASHBOARD')}" />
-
-            <p:menuitem value="Amostras" icon="ui-icon-print" ajax="false"
-                        action="#{mobileNavigationController.menuNavigation('SAMPLES')}"
-                        iconPos="top"/>
-            <p:menuitem value="Nova" icon="ui-icon-plus" ajax="false"
-                        action="#{mobileNavigationController.menuNavigation('NEW')}"
+    <h:form id="menuForm">
+        <p:tabMenu>
+            <p:menuitem value="Criar novo" icon="ui-icon-plus" ajax="false"
+                        action="#{farmerNavigationController.menuNavigation('NEW')}"
                         iconPos="top"/>
         </p:tabMenu>
-    </h:form>-->
-
-    Menu
+    </h:form>
 
 </ui:composition>
 

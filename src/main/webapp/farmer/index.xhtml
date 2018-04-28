@@ -16,6 +16,8 @@
             <pm:header title="Produtores" swatch="b"></pm:header>
             <pm:content>
                 <h:form id="farmerListForm">
+                    
+                    <p:growl id="messages" showDetail="true" sticky="true" autoUpdate="true"/>
 
                     <p:dataList id="farmerListDataList" value="#{farmerBean.farmerList()}"
                                 var="farmer" pt:data-filter="true">

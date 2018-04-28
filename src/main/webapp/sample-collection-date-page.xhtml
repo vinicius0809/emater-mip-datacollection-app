@@ -15,7 +15,9 @@
             <pm:header title="Data da amostra" swatch="b"></pm:header>
             <pm:content>
                 <h:form id="sampleCollectionDateForm">
-                    
+
+                    <p:growl id="messages"/>
+
                     <p:calendar value="#{pestSampleCollectionBean.sampleCollectionDate}" pattern="dd/MM/yyyy" mode="inline" />
 
                     <p:commandButton value="Selecionar Data" icon="ui-icon-check" iconPos="top" 
