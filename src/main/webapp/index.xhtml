@@ -13,8 +13,12 @@
     </h:head>
     <h:body>
         <pm:page id="dashboardPage">
-            <pm:header title="Painel Central" swatch="b"></pm:header>
+            <pm:header title="Painel Central" swatch="b">
+                <p:commandButton id="btn-basic" icon="fa fa-navicon" value="" type="button"/>
+            </pm:header>
             <pm:content>
+                <ui:include src="/overlay-panel.xhtml"/>
+                
                 <p:chart type="pie" model="#{pestSampleCollectionBean.getChartModel()}" style="width:400px;height:300px" responsive="true" />
             </pm:content>
             <pm:footer fixed="true">

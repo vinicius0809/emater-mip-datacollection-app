@@ -13,10 +13,14 @@
     </h:head>
     <h:body>
         <pm:page id="farmerListPage">
-            <pm:header title="Produtores" swatch="b"></pm:header>
+            <pm:header title="Produtores" swatch="b">
+                <p:commandButton id="btn-basic" icon="fa fa-navicon" value="" type="button"/>
+            </pm:header>
             <pm:content>
+                <ui:include src="/overlay-panel.xhtml"/>
+                
                 <h:form id="farmerListForm">
-                    
+
                     <p:growl id="messages" showDetail="true" sticky="true" autoUpdate="true"/>
 
                     <p:dataList id="farmerListDataList" value="#{farmerBean.farmerList()}"
