@@ -15,16 +15,16 @@ public class MobileNavigationController implements Serializable {
         switch (view) {
             case "DASHBOARD":
                 setActivetabindex(0);
-                return "/index";
+                return "/sample-collection/index";
             case "SAMPLES":
                 setActivetabindex(1);
-                return "/sample-list";
+                return "/sample-collection/sample-list";
             case "NEW":
                 setActivetabindex(2);
-                return "/sample-collection-date-page";
+                return "/sample-collection/sample-collection-date-page";
             default:
                 setActivetabindex(0);
-                return "/index";
+                return "/sample-collection/index";
         }
 
     }
