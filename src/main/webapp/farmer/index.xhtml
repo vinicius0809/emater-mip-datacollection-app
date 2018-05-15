@@ -25,7 +25,7 @@
 
                     <p:dataList id="farmerListDataList" value="#{farmerBean.farmerList()}"
                                 var="farmer" pt:data-filter="true">
-                        <p:commandLink action="#{farmerBean.onFarmerSelect()}">
+                        <p:commandLink action="#{farmerBean.onFarmerSelect(farmer.name)}">
 
                             <p:graphicImage value="#{farmer.pictureURL}" />
                             <h2>#{farmer.name}</h2>
