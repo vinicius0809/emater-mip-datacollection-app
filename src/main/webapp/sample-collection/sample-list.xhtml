@@ -16,8 +16,12 @@
     <h:body>
 
         <pm:page id="sampleListPage">
-            <pm:header title="Amostras Coletadas" swatch="b"></pm:header>
+            <pm:header title="Amostras Coletadas" swatch="b">
+                <p:commandButton id="btn-basic" icon="fa fa-navicon" value="" type="button"/>
+            </pm:header>
             <pm:content>
+                <ui:include src="/overlay-panel.xhtml"/>
+
                 <h:form id="sampleListForm">
 
                     <p:dataList id="sampleListDataList" value="#{pestSampleCollectionBean.getSampleData()}"

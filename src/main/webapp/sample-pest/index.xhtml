@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pm="http://primefaces.org/mobile"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Farmer Page</title>
+    </h:head>
+    <h:body>
+
+
+        <pm:page>
+
+            <pm:header title="Flutuação das Pragas" swatch="b">
+                <p:commandButton id="btn-basic" icon="fa fa-navicon" value="" type="button"/>
+            </pm:header>
+
+            <pm:content>
+                <ui:include src="/overlay-panel.xhtml"/>
+
+                <h:form>
+                    <p:dataTable var="pest" value="#{pestEvolutionBean.listAllPests()}" reflow="true">
+
+                        <p:column>
+                            <p:graphicImage width="150px" value="#{pest.figureURL}" />
+                        </p:column>
+
+                        <p:column headerText="Nome: ">
+                            <h:outputText value="#{pest.commonName}" />
+                        </p:column>
+
+                        <p:column headerText="Nome Científico:">
+                            <h:outputText value="#{pest.scientificName}" />
+                        </p:column>
+
+                        <p:column headerText="Amostra">
+                            <p:inputNumber id="sampleValue" placeholder="Ex: 3.5"/>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+
+            </pm:content>
+
+            <pm:footer fixed="true">
+                <h:form>
+                    <p:tabMenu>
+                        <p:menuitem value="Concluir Coleta" 
+                                    ajax="false"
+                                    action="#{pestEvolutionBean.save()}" />
+                    </p:tabMenu>
+                </h:form>
+            </pm:footer>
+
+        </pm:page>
+
+
+    </h:body>
+</html>
+

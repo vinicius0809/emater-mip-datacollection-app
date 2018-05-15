@@ -118,7 +118,7 @@ public class PestSampleCollectionBean implements Serializable {
 
         System.out.println(this.cropSelected);
 
-        return "/sample-collection/pest-selection-internal-page";
+        return "/sample-collection/sample-collection";
     }
 
     public String onSelectPest() {
