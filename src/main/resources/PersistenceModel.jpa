@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" v="4.7" rws="_15276156431922" Pws="_15276156431922" cws="_15276156431922" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_15276156431911" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity compositePrimaryKeyClass="SupervisorPK" abs="false" class="Supervisor" superclassId="_1527615669690" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527615663248">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes/>
+        <jpa:nq e="false" name="Supervisor.findAll">
+            <jpa:query>Select e from Supervisor e</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="PersonPK" abs="true" class="Person" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527615669690">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_15276156892407">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="pictureURL" id="_152761683621038">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_15276156696935">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Person.findAll">
+            <jpa:query>Select e from Person e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Person.findByName">
+            <jpa:query>Select p from Person p where p.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Person.findByPictureURL">
+            <jpa:query>Select p from Person p where p.pictureURL=:pictureURL</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="FarmerPK" abs="false" class="Farmer" superclassId="_1527615669690" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527615764490">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes/>
+        <jpa:nq e="false" name="Farmer.findAll">
+            <jpa:query>Select e from Farmer e</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="FieldPK" abs="false" class="Field" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527615826246">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" id="_152761600613418"/>
+            <jpa:basic attribute-type="String" v="true" name="location" id="_152761602267219"/>
+            <jpa:basic attribute-type="boolean" v="true" xvt="" name="sporeCollector" id="_152761611297220">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1527615764490" v="true" name="farmer" id="_152761590365814"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1527615663248" v="true" name="supervisor" id="_152761591289615"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1527615982026" v="true" name="city" id="_152761626030821"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_152761582625110">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Field.findAll">
+            <jpa:query>Select e from Field e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Field.findByName">
+            <jpa:query>Select f from Field f where f.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Field.findByLocation">
+            <jpa:query>Select f from Field f where f.location=:location</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Field.findBySporeCollector">
+            <jpa:query>Select f from Field f where f.sporeCollector=:sporeCollector</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CityPK" abs="false" class="City" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527615982026">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" id="_152761628339924"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1527616280303" v="true" name="region" id="_152761645572332"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_152761598203116">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="City.findAll">
+            <jpa:query>Select e from City e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="City.findByName">
+            <jpa:query>Select c from City c where c.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="RegionPK" abs="false" class="Region" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527616280303">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" id="_152761631729425"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1527616418957" v="true" name="macroRegion" id="_152761643491931"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_152761628030722">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Region.findAll">
+            <jpa:query>Select e from Region e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Region.findByName">
+            <jpa:query>Select r from Region r where r.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="MacroRegionPK" abs="false" class="MacroRegion" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527616418957">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" id="_152761642725130"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_152761641896328">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="MacroRegion.findAll">
+            <jpa:query>Select e from MacroRegion e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="MacroRegion.findByName">
+            <jpa:query>Select m from MacroRegion m where m.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="HarvestPK" abs="false" class="Harvest" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527616561909">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" id="_152761656943935"/>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="yearBegin" id="_152761659049136">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="yearEnd" id="_152761677569137">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_152761656191233">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Harvest.findAll">
+            <jpa:query>Select e from Harvest e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Harvest.findByName">
+            <jpa:query>Select h from Harvest h where h.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Harvest.findByYearBegin">
+            <jpa:query>Select h from Harvest h where h.yearBegin=:yearBegin</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Harvest.findByYearEnd">
+            <jpa:query>Select h from Harvest h where h.yearEnd=:yearEnd</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="PestPK" abs="false" class="Pest" superclassId="_1527618912356" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527617335517">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:embedded connected-class-id="_1527618881340" v="true" name="pestSize" id="_152761889355673"/>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Pest.findAll">
+            <jpa:query>Select e from Pest e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Pest.findByPestSize">
+            <jpa:query>Select p from Pest p where p.pestSize=:pestSize</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="PestDiseasePK" abs="false" class="PestDisease" superclassId="_1527618912356" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527617422536">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes/>
+        <jpa:nq e="false" name="PestDisease.findAll">
+            <jpa:query>Select e from PestDisease e</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="PredatorPK" abs="false" class="Predator" superclassId="_1527618912356" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527617443849">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes/>
+        <jpa:nq e="false" name="Predator.findAll">
+            <jpa:query>Select e from Predator e</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="SamplePK" abs="false" class="Sample" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527617949693">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="sampleDate" id="_152761797635560">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="int" v="true" xvt="" name="daysAfterEmergence" id="_152761817683262">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="int" v="true" xvt="" name="defoliation" id="_152761852181666">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1527619294900" v="true" name="survey" id="_1527620936529121"/>
+            <jpa:element-collection collection-type="java.util.List" cit="java.util.ArrayList" connected-class-id="_1527619063589" v="true" name="sampleEntries" id="_152761910739981"/>
+            <jpa:embedded connected-class-id="_1527618840489" v="true" name="growthPhase" id="_152761913849182"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_152761794970058">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Sample.findAll">
+            <jpa:query>Select e from Sample e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Sample.findBySampleDate">
+            <jpa:query>Select s from Sample s where s.sampleDate=:sampleDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Sample.findByGrowthPhase">
+            <jpa:query>Select s from Sample s where s.growthPhase=:growthPhase</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Sample.findByDaysAfterEmergence">
+            <jpa:query>Select s from Sample s where s.daysAfterEmergence=:daysAfterEmergence</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Sample.findByDefoliation">
+            <jpa:query>Select s from Sample s where s.defoliation=:defoliation</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="SampleItemPK" abs="false" class="SampleItem" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527618912356">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="usualName" id="_152761897893077">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="scientificName" id="_152761901940478">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="pictureURL" id="_152761902635379"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_152761891236574">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="SampleItem.findAll">
+            <jpa:query>Select e from SampleItem e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="SampleItem.findByUsualName">
+            <jpa:query>Select s from SampleItem s where s.usualName=:usualName</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="SampleItem.findByScientificName">
+            <jpa:query>Select s from SampleItem s where s.scientificName=:scientificName</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="SampleItem.findByPictureURL">
+            <jpa:query>Select s from SampleItem s where s.pictureURL=:pictureURL</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="SurveyPK" abs="false" class="Survey" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527619294900">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_1527616561909" v="true" name="harvest" id="_152761934942188"/>
+            <jpa:element-collection collection-type="java.util.List" cit="java.util.ArrayList" connected-class-id="_1527619485895" v="true" name="surveyFields" id="_1527620829895120"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_152761929491186">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Survey.findAll">
+            <jpa:query>Select e from Survey e</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:embeddable abs="false" class="GrowthPhase" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527618840489">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes/>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="PestSize" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527618881340">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes/>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="SampleEntry" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527619063589">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="double" v="true" xvt="" name="value" id="_152761915478083">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_1527618912356" v="true" name="sampleItem" id="_152761922619985"/>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="SurveyField" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527619485895">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_152761954813390">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1527615826246" v="true" name="field" id="_1527620791344119"/>
+            <jpa:embedded connected-class-id="_1527620542970" v="true" name="questionData" id="_1527620653572114"/>
+            <jpa:embedded connected-class-id="_1527620464460" v="true" name="dateData" id="_1527620660528115"/>
+            <jpa:embedded connected-class-id="_1527620353516" v="true" name="sizeData" id="_1527620665169116"/>
+            <jpa:embedded connected-class-id="_1527619885866" v="true" name="locationData" id="_1527620691493117"/>
+            <jpa:embedded connected-class-id="_1527620026230" v="true" name="productivityData" id="_1527620697773118"/>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="LocationData" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527619885866">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="double" v="true" xvt="" name="latitude" id="_152761991401397">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" xvt="" name="longitude" id="_152761991856398">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="ProductivityData" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527620026230">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="double" v="true" xvt="" name="productivityField" id="_1527620048676100">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" xvt="" name="productivityFarmer" id="_1527620111965101">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" xvt="" name="separatedWeight" id="_1527620125413102">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="SizeData" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527620353516">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="double" v="true" xvt="" name="totalArea" id="_1527620364975104">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" xvt="" name="totalPlantedArea" id="_1527620369796105">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" xvt="" name="plantsPerMeter" id="_1527620396283106">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="DateData" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527620464460">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="sowedDate" id="_1527620502651108">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="emergenceDate" id="_1527620509636109">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="harvestDate" id="_1527620513387110">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="QuestionData" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527620542970">
+        <jpa:ath>gabriel</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="boolean" v="true" xvt="" name="rustResistent" id="_1527620549548112">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" xvt="" name="bt" id="_1527620574574113">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the Jeddict
+ */</jpa:snp>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_15276156431922">
+            <i ref="_1527615669690" x="838" y="84"/>
+            <i ref="_1527615982026" x="364" y="63"/>
+            <i ref="_1527616418957" x="17" y="12"/>
+            <i ref="_1527618881340" x="1135" y="546"/>
+            <i ref="_1527617443849" x="1150" y="807"/>
+            <i ref="_1527619485895" x="484" y="324"/>
+            <i ref="_1527619294900" x="174" y="356"/>
+            <i ref="_1527616280303" x="209" y="14"/>
+            <i ref="_1527617422536" x="1114" y="718"/>
+            <i ref="_1527620464460" x="927" y="280"/>
+            <i ref="_1527619885866" x="1091" y="280"/>
+            <i ref="_1527616561909" x="17" y="248"/>
+            <i ref="_1527618840489" x="574" y="645"/>
+            <i ref="_1527618912356" x="823" y="645"/>
+            <i ref="_1527620353516" x="386" y="559"/>
+            <i ref="_1527619063589" x="614" y="718"/>
+            <i ref="_1527615764490" x="672" y="15"/>
+            <i ref="_1527617335517" x="926" y="546"/>
+            <i ref="_1527615826246" x="519" y="38"/>
+            <i ref="_1527620542970" x="734" y="286"/>
+            <i ref="_1527620026230" x="682" y="509"/>
+            <i ref="_1527615663248" x="718" y="239"/>
+            <i ref="_1527617949693" x="94" y="589"/>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>
