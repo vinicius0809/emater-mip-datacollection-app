@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="DEFAULT_PU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.Supervisor</class>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.Person</class>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.Farmer</class>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.Field</class>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.City</class>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.Region</class>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.MacroRegion</class>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.Harvest</class>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.Pest</class>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.PestDisease</class>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.Predator</class>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.Sample</class>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.SampleItem</class>
+    <class>br.edu.utfpr.cp.emater.mipdatacollection.domain.Survey</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
+      <property name="javax.persistence.jdbc.password" value="app"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="javax.persistence.jdbc.user" value="app"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
+</persistence>

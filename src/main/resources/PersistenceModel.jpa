@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" v="4.7" rws="_15276156431922" Pws="_15276156431922" cws="_15276156431922" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_15276156431911" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" ptype="MONOLITH" ppkg="br.edu.utfpr.cp.emater.mipdatacollection" epkg="domain" v="4.7" rws="_15276156431922" Pws="_15276156431922" cws="_15276156431922" thm="PDarkColorScheme" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_15276156431911" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
     <jpa:entity compositePrimaryKeyClass="SupervisorPK" abs="false" class="Supervisor" superclassId="_1527615669690" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527615663248">
         <jpa:ath>gabriel</jpa:ath>
         <jpa:attributes/>
@@ -118,13 +118,16 @@
     <jpa:entity compositePrimaryKeyClass="HarvestPK" abs="false" class="Harvest" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527616561909">
         <jpa:ath>gabriel</jpa:ath>
         <jpa:attributes>
-            <jpa:basic attribute-type="String" v="true" name="name" id="_152761656943935"/>
-            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="yearBegin" id="_152761659049136">
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_152761656943935">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="beginDate" id="_152761659049136">
                 <jpa:xwm/>
                 <jpa:xm/>
                 <jpa:temporal>DATE</jpa:temporal>
             </jpa:basic>
-            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="yearEnd" id="_152761677569137">
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="endDate" id="_152761677569137">
                 <jpa:xwm/>
                 <jpa:xm/>
                 <jpa:temporal>DATE</jpa:temporal>
@@ -139,11 +142,11 @@
         <jpa:nq e="false" name="Harvest.findByName">
             <jpa:query>Select h from Harvest h where h.name=:name</jpa:query>
         </jpa:nq>
-        <jpa:nq e="false" name="Harvest.findByYearBegin">
-            <jpa:query>Select h from Harvest h where h.yearBegin=:yearBegin</jpa:query>
+        <jpa:nq e="false" name="Harvest.findByBeginDate">
+            <jpa:query>Select h from Harvest h where h.beginDate=:beginDate</jpa:query>
         </jpa:nq>
-        <jpa:nq e="false" name="Harvest.findByYearEnd">
-            <jpa:query>Select h from Harvest h where h.yearEnd=:yearEnd</jpa:query>
+        <jpa:nq e="false" name="Harvest.findByEndDate">
+            <jpa:query>Select h from Harvest h where h.endDate=:endDate</jpa:query>
         </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="PestPK" abs="false" class="Pest" superclassId="_1527618912356" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527617335517">
@@ -188,9 +191,9 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1527619294900" v="true" name="survey" id="_1527620936529121"/>
             <jpa:element-collection collection-type="java.util.List" cit="java.util.ArrayList" connected-class-id="_1527619063589" v="true" name="sampleEntries" id="_152761910739981"/>
             <jpa:embedded connected-class-id="_1527618840489" v="true" name="growthPhase" id="_152761913849182"/>
+            <jpa:embedded connected-class-id="_1527619485895" v="true" name="surveyField" id="_152770801612747"/>
             <jpa:id attribute-type="Long" v="true" name="id" id="_152761794970058">
                 <jpa:generated-value strategy="AUTO"/>
             </jpa:id>
@@ -268,7 +271,7 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
-            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_1527618912356" v="true" name="sampleItem" id="_152761922619985"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1527618912356" v="true" name="sampleItem" id="_152770815099948"/>
         </jpa:attributes>
     </jpa:embeddable>
     <jpa:embeddable abs="false" class="SurveyField" v="true" xre="false" m="false" rootElement="_15276156431911" id="_1527619485895">
@@ -372,28 +375,28 @@
     <jpa:wsl>
         <jpa:ws n="Main" id="_15276156431922">
             <i ref="_1527615669690" x="838" y="84"/>
+            <i ref="_1527620353516" x="386" y="559"/>
+            <i ref="_1527619063589" x="614" y="701"/>
             <i ref="_1527615982026" x="364" y="63"/>
             <i ref="_1527616418957" x="17" y="12"/>
             <i ref="_1527618881340" x="1135" y="546"/>
             <i ref="_1527617443849" x="1150" y="807"/>
-            <i ref="_1527619485895" x="484" y="324"/>
+            <i ref="_1527619485895" x="484" y="296"/>
             <i ref="_1527619294900" x="174" y="356"/>
             <i ref="_1527616280303" x="209" y="14"/>
+            <i ref="_1527615764490" x="672" y="15"/>
             <i ref="_1527617422536" x="1114" y="718"/>
+            <i ref="_1527617335517" x="926" y="546"/>
             <i ref="_1527620464460" x="927" y="280"/>
+            <i ref="_1527615826246" x="519" y="38"/>
+            <i ref="_1527620542970" x="734" y="286"/>
             <i ref="_1527619885866" x="1091" y="280"/>
+            <i ref="_1527620026230" x="682" y="509"/>
             <i ref="_1527616561909" x="17" y="248"/>
             <i ref="_1527618840489" x="574" y="645"/>
             <i ref="_1527618912356" x="823" y="645"/>
-            <i ref="_1527620353516" x="386" y="559"/>
-            <i ref="_1527619063589" x="614" y="718"/>
-            <i ref="_1527615764490" x="672" y="15"/>
-            <i ref="_1527617335517" x="926" y="546"/>
-            <i ref="_1527615826246" x="519" y="38"/>
-            <i ref="_1527620542970" x="734" y="286"/>
-            <i ref="_1527620026230" x="682" y="509"/>
             <i ref="_1527615663248" x="718" y="239"/>
-            <i ref="_1527617949693" x="94" y="589"/>
+            <i ref="_1527617949693" x="152" y="585"/>
         </jpa:ws>
     </jpa:wsl>
 </jpa:entity-mappings>

@@ -1,0 +1,138 @@
+
+entity MacroRegion {
+	name String
+}
+
+entity Region {
+	name String
+}
+
+entity City {
+	name String
+}
+
+entity Field {
+	name String,
+    location String,
+    sporeCollector Boolean
+}
+
+entity Farmer{
+	name String,
+    pictureURL String
+}
+
+entity Supervisor{
+	name String,
+    pictureURL String
+}
+
+entity Harvest {
+	name String,
+    yearBegin Instant,
+    yearEnd Instant
+}
+
+entity Survey 
+
+entity QuestionData {
+	rustResistant Boolean,
+    bt Boolean
+}
+
+entity DateData {
+	sowedDate Instant,
+    emergenceDate Instant,
+    harvestDate Instant
+}
+
+entity LocationData {
+	latitude Double,
+    longitude Double
+}
+
+entity ProductivityData {
+	productivityField Double,
+    productivityFarmer Double, 
+    separatedWeight Boolean
+}
+
+entity SizeData {
+	totalArea Double,
+    totalPlantedArea Double,
+    plantsPerMeter Double
+}
+
+entity SurveyField {
+	name String
+}
+
+enum GrowthPhase {
+	V0, V1, V2, V3
+}
+
+entity Sample {
+	sampleDate Instant,
+    daysAfterEmergence Integer,
+    defoliation Integer,
+    growthPhase GrowthPhase
+}
+
+entity SampleEntry {
+	value Double
+}
+
+enum PestSize {
+	GREATER_15, SMALLER_15
+}
+
+entity SampleItemPest {
+	usualName String,
+    scientificName String,
+    pictureURL String,
+    pestSize PestSize
+}
+
+entity SampleItemPestDisease {
+	usualName String,
+    scientificName String,
+    pictureURL String
+}
+
+entity SampleItemPredator {
+	usualName String,
+    scientificName String,
+    pictureURL String
+} 
+
+entity SampleItem
+
+relationship OneToOne {
+	Survey{harvest} to Harvest
+    SurveyField{questionData} to QuestionData,
+    SurveyField{dateData} to DateData,
+    SurveyField{locationData} to LocationData,
+    SurveyField{productivityData} to ProductivityData,
+    SurveyField{sizeData} to SizeData,
+    SampleItem{pest} to SampleItemPest,
+    SampleItem{disease} to SampleItemPestDisease,
+    SampleItem{predator} to SampleItemPredator
+}
+
+relationship ManyToOne {
+	Region{macroRegion} to MacroRegion,
+    City{region} to Region,
+    Field{city} to City,
+    Field{farmer} to Farmer,
+    Field{Supervisor} to Supervisor,
+    SurveyField{field} to Field,
+    SampleEntry{sampleItem} to SampleItem,
+    Sample{surveyField} to SurveyField
+}
+
+relationship OneToMany {
+	Survey{surveyFields} to SurveyField,
+    Sample{sampleEntries} to SampleEntry 
+}
+
+dto * with mapstruct
