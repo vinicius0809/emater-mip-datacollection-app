@@ -1,18 +1,27 @@
 # Desenvolvimento de Aplicativo para Coleta de Dados da Tecnologia de Manejo Integrado de Pragas da Cultura da Soja
 
 ## Problema
+Desde 2013, o Instituto Paranaense de Assistência Técnica e Extensão Rural (EMATER), a Empesa Brasileira de Pesquisa (EMBRAPA) Unidade Soja e produtores rurais de várias regiões do Paraná vêm desenvolvendo o projeto grãos, que é um projeto voltado a adoção de boas práticas agrícolas e que tem por objetivo garantir geração de renda, produção sustentável e alimentos seguros, preservando os recursos naturais e a qualidade produtiva dos solos. Entre as principais estratégias de trabalho está o manejo integrado de pragas (MIP).
 
-Desde 2016, o Instituto Paranaense de Assistência Técnica e Extensão Rural (EMATER), a Empesa Brasileira de Pesquisa (EMBRAPA) Unidade Soja e produtores rurais de várias regiões do Paraná vêm desenvolvendo o projeto grãos, que   um projeto de Manejo Integrado de Pragas (MIP) na cultura da soja, denominado projeto grãos, que tem por objetivo garantir geração de renda, produção sustentável e alimentos seguros, preservando os recursos naturais e a qualidade produtiva dos solos. Entre as principais estratégias de trabalho estão o monitoramento e manejo integrado de pragas (MIP).
+O MIP consiste na coleta amostral, por meio do uso da metodologia do pano-de-batida e por meio do acompanhamento semanal dos níveis populacionais das principais pragas da soja nas Unidades de Referência (UR). Uma UR corresponde a uma lavoura comercial de soja que é acompanhada pelos técnicos e extensionistas do EMATER durante todo o seu ciclo de produção. O MIP objetiva reduzir o custo no controle de pragas da soja e amenizar os impactos ambientais do processo produtivo. De fato, resultados recentes mostram redução de 45% no número de aplicações de inseticidas e aumento de 74% no tempo médio de aplicação de inseticida na lavoura. Quando comparado com lavouras que não adotaram o MIP, o MIP levou a economia média de 1,3 sacas por hectare [[1]](https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1075681/resultados-do-manejo-integrado-de-pragas-da-soja-na-safra-201617-no-parana).
 
-O MIP consiste na coleta amostral, por meio do uso da metodologia do pano-de-batida, por meio do acompanhamento semanal dos níveis populacionais das principais pragas da soja nas Unidades de Referência (UR). Uma UR corresponde a uma lavoura comercial de soja que é acompanhada pelos técnicos e extensionistas do EMATER durante todo o seu ciclo de produção. O MIP objetiva reduzir o custo no controle de pragas da soja e amenizar os impactos ambientais do processo produtivo. De fato, resultados recentes mostram redução de 45% no número de aplicações de inseticidas e aumento de 74% no tempo médio de aplicação de inseticida na lavoura. Quando comparado com lavouras que não adotaram o MIP, o MIP levou a economia média de 1,3 sacas por hectare [[1]](https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1075681/resultados-do-manejo-integrado-de-pragas-da-soja-na-safra-201617-no-parana).
+Contudo, a coleta e análise dos dados são realizadas de forma pouco eficiente. Os técnicos coletam os dados em papel durante inspeções semanais nas URs. Os dados coletados em papel são então tabulados em uma planilha eletrônica. Em seguida, os técnicos enviam as planilhas para os escritórios regionais da EMATER, onde as planilhas são consolidadas e então geradas as análises dos dados. Apenas após o término desse custoso processo é possível ter uma visão consolidada da ocorrência de pragas em uma região. Isso é um problema porque a demora na visualização consolidada dos dados atrasa a tomada de ações emergenciais em casos de surtos de pragas em uma região. Além disso, esse processo exige muito trabalho manual, uma vez que os dados são primeiramente coletados em papel e depois tabulados na planilha eletrônica. Por fim, o técnico não tem fácil acesso aos dados locais, regionais ou estaduais que possam auxiliá-lo na tomada de decisão. 
 
-Contudo, a coleta e análise dos dados são realizadas de forma pouco eficiente. Os técnicos coletam os dados em papel durante inspeções semanais nas URs. Os dados coletados em papel são então tabulados em uma planilha eletrônica. Em seguida, os técnicos enviam as planilhas para os escritórios da EMATER, onde as planilhas são consolidadas e então geradas as análises dos dados. Apenas após o término desse custoso processo é possível ter uma visão consolidada da ocorrência de pragas em uma região. Isso é um problema porque a demora na visualização consolidada dos dados atrasa a tomada de ações emergenciais em casos de epidemia de pragas em uma região. Além disso, esse processo exige muito trabalho manual, uma vez que os dados são primeiro coletados em papel e depois tabulados na planilha eletrônica. Por fim, o técnico não tem fácil acesso aos dados históricos ou regionais que possam auxiliá-lo na tomada de decisão logo após a coleta dos dados.
 
 ## Objetivo
 O objetivo geral deste projeto é aumentar a eficiência no processo de coleta e análise de dados da tecnologia de MIP por meio do desenvolvimento de aplicativos integrados em nuvem. 
 
 ## Tecnologias
 Atualmente, as seguintes tecnologias são usadas:
-- _Wildfly-swarm_ para criar um uber-jar;
+- _[Open Liberty]_(https://openliberty.io) para criar um uber-jar;
 - _JSF_ para criar a interface com usuário;
 - _BootsFaces_ e _Primefaces_ (Web & Mobile) para criar componentes gráficos;
+
+## Responsáveis pelo projeto
+- Dr. Gabriel Costa Silva (UTFPR - CP)
+- Dr. Almir Gnoatto (UTFPR - DV)
+- Dr. Alfredo de Gouvea (UTFPR - DV)
+
+## Alunos participantes do projeto
+- João Victor Ferreira (Analise e Desenvolvimento de Sistemas, UTFPR - CP)
+- Gabriel Grazionale (Engenharia de Software, UTFPR - CP)
