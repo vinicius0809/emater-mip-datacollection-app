@@ -42,35 +42,36 @@
 
         <h:form>
             <p:panel header="Propriedade Cadastradas" style="margin-bottom:20px">
-                <p:dataTable var="field" value="#{fieldView.fields}" selection="#{fieldView.selectedField}" rowKey="#{field.name}">
-                    <p:column selectionMode="single" style="width:16px;text-align:center"/>
 
-                    <p:column headerText="Identificação" filterMatchMode="contains" filterBy="#{field.name}" sortBy="#{field.name}">
+                <p:dataTable var="field" value="#{fieldView.readAllFields()}" selectionMode="single" selection="#{fieldView.selectedField}" rowKey="#{field.id}">
+
+                    <p:column headerText="Identificação" >
                         <h:outputText value="#{field.name}" />
                     </p:column>
 
-                    <p:column headerText="Localização" filterMatchMode="contains" filterBy="#{field.location}" sortBy="#{field.location}">
+                    <p:column headerText="Localização" >
                         <h:outputText value="#{field.location}" />
                     </p:column>
 
-                    <p:column headerText="Cidade" filterMatchMode="contains" filterBy="#{field.city}" sortBy="#{field.city}">
-                        <h:outputText value="#{field.city}" />
+                    <p:column headerText="Cidade" >
+                        <h:outputText value="#{field.city.name}" />
                     </p:column>
 
-                    <p:column headerText="Proprietário" filterMatchMode="contains" filterBy="#{field.farmer}" sortBy="#{field.farmer}">
-                        <h:outputText value="#{field.farmer}" />
+                    <p:column headerText="Proprietário" >
+                        <h:outputText value="#{field.farmer.name}" />
                     </p:column>
 
-                    <p:column headerText="Responsável Técnico" filterMatchMode="contains" filterBy="#{field.supervisors}" sortBy="#{field.supervisors}">
+                    <p:column headerText="Responsável Técnico" >
                         <h:outputText value="#{field.supervisors}" />
                     </p:column>
 
-                    <p:column style="width:32px">
-                        <p:rowEditor />
+                    <p:column style="width:32px;text-align: center">
+                        <p:commandButton icon="ui-icon-search" title="Excluir" ajax="false" action="#{fieldView.delete()}">
+                            
+                        </p:commandButton>
                     </p:column>
-                </p:dataTable>
 
-                <p:commandButton value="Excluir"  ajax="false" action="#{fieldView.delete()}"></p:commandButton>
+                </p:dataTable>
 
             </p:panel>
         </h:form>

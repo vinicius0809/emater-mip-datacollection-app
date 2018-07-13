@@ -1,35 +1,41 @@
 package br.edu.utfpr.cp.emater.mip.field.view;
 
-import br.edu.utfpr.cp.emater.mip.field.dto.FieldDTO;
+import br.edu.utfpr.cp.emater.mip.field.entity.Field;
+import br.edu.utfpr.cp.emater.mip.field.service.FieldService;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
-import org.primefaces.event.RowEditEvent;
 
-@Named
-@SessionScoped
+@ManagedBean
+@RequestScoped
 @Getter
 @Setter
 public class FieldView implements Serializable {
 
-    private List<FieldDTO> fields;
-
-    private FieldDTO selectedField;
-
+    private Field selectedField;
+    
     private String name;
     private String location;
     private String city;
     private String farmer;
     private List<String> supervisors;
+    
+    @EJB
+    private FieldService fieldService;
+    
+    public List<Field> readAllFields() {
+        System.out.println(fieldService.readAll());
+        return new ArrayList<Field>(fieldService.readAll());
+    }
 
     public List<String> readAllSupervisors() {
         return Stream.of("John Lucky", "Anne Lucky", "Andrew Lucky").collect(Collectors.toList());
@@ -45,11 +51,7 @@ public class FieldView implements Serializable {
 
     public String create() {
 
-        if (fields == null) {
-            fields = new ArrayList<>();
-        }
-
-        fields.add(new FieldDTO(name, location, city, farmer, supervisors));
+        
 
         FacesContext context = FacesContext.getCurrentInstance();
 
@@ -59,8 +61,7 @@ public class FieldView implements Serializable {
     }
 
     public String delete() {
-        fields.remove(selectedField);
-
+        
         FacesContext context = FacesContext.getCurrentInstance();
 
         context.addMessage(null, new FacesMessage("Sucesso!", String.format("Propriedade %s excluída!", selectedField.getName())));
