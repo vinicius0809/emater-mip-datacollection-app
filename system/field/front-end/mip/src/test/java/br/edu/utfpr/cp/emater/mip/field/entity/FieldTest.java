@@ -34,7 +34,9 @@ public class FieldTest {
                 )
         );
         
-        assertEquals(f.getCity().getRegion().getMacroRegion().getName(), "Norte");
+        assertEquals(f.getId(), new Long(1L));
+        assertEquals(f.getName(), "A nice place to live");
+        assertEquals(f.getLocation(), "Rural area");
     }
     
 }
