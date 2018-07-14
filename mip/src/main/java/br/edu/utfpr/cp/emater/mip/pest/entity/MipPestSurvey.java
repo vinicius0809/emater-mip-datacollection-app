@@ -1,8 +1,11 @@
-package br.edu.utfpr.cp.emater.mip.survey.entity;
+package br.edu.utfpr.cp.emater.mip.pest.entity;
 
+import br.edu.utfpr.cp.emater.mip.survey.entity.SurveyField;
 import java.io.Serializable;
-import javax.persistence.Embedded;
+import java.util.Set;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,14 +18,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Survey implements Serializable {
+public class MipPestSurvey implements Serializable {
     
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @OneToOne
-    private Harvest harvest;
-    
-    @Embedded
+    @OneToOne (fetch = FetchType.EAGER)
     private SurveyField surveyField;
+        
+    @ElementCollection (fetch = FetchType.EAGER)
+    private Set<SamplePest> samplePest;
 }
