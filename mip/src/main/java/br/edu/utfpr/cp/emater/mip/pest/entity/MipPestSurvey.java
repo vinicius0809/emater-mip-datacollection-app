@@ -2,6 +2,8 @@ package br.edu.utfpr.cp.emater.mip.pest.entity;
 
 import br.edu.utfpr.cp.emater.mip.survey.entity.SurveyField;
 import java.io.Serializable;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -27,5 +29,12 @@ public class MipPestSurvey implements Serializable {
     private SurveyField surveyField;
         
     @ElementCollection (fetch = FetchType.EAGER)
-    private Set<SamplePest> samplePest;
+    private Set<SamplePest> samplePestSet;
+    
+    public boolean addSamplePest (Date sampleDate, int daysAfterEmergence, int defoliation, GrowthPhase growthPhase, Pest pest, double value) {
+        if (this.getSamplePestSet()== null)
+            this.setSamplePestSet(new HashSet<>());
+        
+        return this.getSamplePestSet().add(new SamplePest(sampleDate, daysAfterEmergence, defoliation, growthPhase, value, pest));
+    }
 }

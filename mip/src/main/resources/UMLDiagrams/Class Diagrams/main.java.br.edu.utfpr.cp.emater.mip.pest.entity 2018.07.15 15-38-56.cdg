@@ -2,7 +2,7 @@
 
 <ClassDiagram name="main.java.br.edu.utfpr.cp.emater.mip.pest.entity">
   <ClassDiagramComponents>
-    <Class name="SamplePest" package="br.edu.utfpr.cp.emater.mip.pest.entity" visibility="public" xPosition="134.0" yPosition="276.0">
+    <Class name="SamplePest" package="br.edu.utfpr.cp.emater.mip.pest.entity" visibility="public" xPosition="98.0" yPosition="224.0">
       <Fields>
         <Field name="sampleDate" type="Date" visibility="private"/>
         <Field name="daysAfterEmergence" type="int" visibility="private"/>
@@ -14,7 +14,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Pest" package="br.edu.utfpr.cp.emater.mip.pest.entity" visibility="public" xPosition="448.0" yPosition="49.0">
+    <Class name="Pest" package="br.edu.utfpr.cp.emater.mip.pest.entity" visibility="public" xPosition="493.0" yPosition="241.0">
       <Fields>
         <Field name="id" type="Long" visibility="private"/>
         <Field name="usualName" type="String" visibility="private"/>
@@ -24,23 +24,32 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="MipPestSurvey" package="br.edu.utfpr.cp.emater.mip.pest.entity" visibility="public" xPosition="698.0" yPosition="327.0">
+    <Class name="MipPestSurvey" package="br.edu.utfpr.cp.emater.mip.pest.entity" visibility="public" xPosition="29.0" yPosition="497.0">
       <Fields>
         <Field name="id" type="Long" visibility="private"/>
         <Field name="surveyField" type="SurveyField" visibility="private"/>
-        <Field name="samplePest" type="Set&lt;SamplePest&gt;" visibility="private"/>
+        <Field name="samplePestSet" type="Set&lt;SamplePest&gt;" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="addSamplePest" returnType="boolean" visibility="public">
+          <Argument type="Date" name="sampleDate"/>
+          <Argument type="int" name="daysAfterEmergence"/>
+          <Argument type="int" name="defoliation"/>
+          <Argument type="GrowthPhase" name="growthPhase"/>
+          <Argument type="Pest" name="pest"/>
+          <Argument type="double" name="value"/>
+        </Method>
+      </Methods>
     </Class>
-    <Enum name="GrowthPhase" package="br.edu.utfpr.cp.emater.mip.pest.entity" visibility="public" xPosition="148.0" yPosition="3.0">
+    <Enum name="GrowthPhase" package="br.edu.utfpr.cp.emater.mip.pest.entity" visibility="public" xPosition="112.0" yPosition="11.0">
       <Literals>
         <Literal name="V1"/>
         <Literal name="V5"/>
         <Literal name="R2"/>
       </Literals>
     </Enum>
-    <Enum name="PestSize" package="br.edu.utfpr.cp.emater.mip.pest.entity" visibility="public" xPosition="747.0" yPosition="72.0">
+    <Enum name="PestSize" package="br.edu.utfpr.cp.emater.mip.pest.entity" visibility="public" xPosition="493.0" yPosition="11.0">
       <Literals>
         <Literal name="GREATER_15CM"/>
         <Literal name="SMALLER_15CM"/>
@@ -48,9 +57,10 @@
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="samplePest" source="br.edu.utfpr.cp.emater.mip.pest.entity.MipPestSurvey" target="br.edu.utfpr.cp.emater.mip.pest.entity.SamplePest" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Set&lt;SamplePest&gt;"/>
-    <HasRelation name="pestSize" source="br.edu.utfpr.cp.emater.mip.pest.entity.Pest" target="br.edu.utfpr.cp.emater.mip.pest.entity.PestSize" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="growthPhase" source="br.edu.utfpr.cp.emater.mip.pest.entity.SamplePest" target="br.edu.utfpr.cp.emater.mip.pest.entity.GrowthPhase" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pestSize" source="br.edu.utfpr.cp.emater.mip.pest.entity.Pest" target="br.edu.utfpr.cp.emater.mip.pest.entity.PestSize" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="pest" source="br.edu.utfpr.cp.emater.mip.pest.entity.SamplePest" target="br.edu.utfpr.cp.emater.mip.pest.entity.Pest" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="samplePestSet" source="br.edu.utfpr.cp.emater.mip.pest.entity.MipPestSurvey" target="br.edu.utfpr.cp.emater.mip.pest.entity.SamplePest" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Set&lt;SamplePest&gt;"/>
+    <UseRelation source="br.edu.utfpr.cp.emater.mip.pest.entity.MipPestSurvey" target="br.edu.utfpr.cp.emater.mip.pest.entity.Pest" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
