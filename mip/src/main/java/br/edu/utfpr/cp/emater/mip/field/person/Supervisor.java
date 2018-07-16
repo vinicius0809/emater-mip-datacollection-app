@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mip.field.entity;
+package br.edu.utfpr.cp.emater.mip.field.person;
 
 import java.io.Serializable;
 import javax.persistence.Entity;

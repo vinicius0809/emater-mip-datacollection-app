@@ -1,11 +1,11 @@
 package br.edu.utfpr.cp.emater.mip.pest.entity;
 
-import br.edu.utfpr.cp.emater.mip.field.entity.City;
-import br.edu.utfpr.cp.emater.mip.field.entity.Farmer;
-import br.edu.utfpr.cp.emater.mip.field.entity.Field;
-import br.edu.utfpr.cp.emater.mip.field.entity.MacroRegion;
-import br.edu.utfpr.cp.emater.mip.field.entity.Region;
-import br.edu.utfpr.cp.emater.mip.field.entity.Supervisor;
+import br.edu.utfpr.cp.emater.mip.field.area.City;
+import br.edu.utfpr.cp.emater.mip.field.person.Farmer;
+import br.edu.utfpr.cp.emater.mip.field.field.Field;
+import br.edu.utfpr.cp.emater.mip.field.area.MacroRegion;
+import br.edu.utfpr.cp.emater.mip.field.area.Region;
+import br.edu.utfpr.cp.emater.mip.field.person.Supervisor;
 import br.edu.utfpr.cp.emater.mip.survey.entity.DateData;
 import br.edu.utfpr.cp.emater.mip.survey.entity.Harvest;
 import br.edu.utfpr.cp.emater.mip.survey.entity.LocationData;

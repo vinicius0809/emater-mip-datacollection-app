@@ -1,6 +1,6 @@
 package br.edu.utfpr.cp.emater.mip.survey.entity;
 
-import br.edu.utfpr.cp.emater.mip.field.entity.Field;
+import br.edu.utfpr.cp.emater.mip.field.field.Field;
 import java.util.Date;
 import org.junit.Test;
 

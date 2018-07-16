@@ -1,22 +1,27 @@
-package br.edu.utfpr.cp.emater.mip.field.entity;
+package br.edu.utfpr.cp.emater.mip.field.area;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-
+import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@MappedSuperclass
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class Person implements Serializable {
+public class City implements Serializable {
     
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
-    protected Long id;
-    protected String name;
+    private Long id;
+
+    private String name;
+    
+    @ManyToOne (fetch = FetchType.EAGER)
+    private Region region;
 }
