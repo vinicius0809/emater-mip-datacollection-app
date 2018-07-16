@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,18 +22,15 @@ public class Field implements Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotNull
     private String name;
-    
-    @NotNull
     private String location;
     
-    @NotNull @ManyToOne (fetch = FetchType.EAGER)
+    @ManyToOne (fetch = FetchType.EAGER)
     private City city;
     
-    @NotNull @ManyToOne
+    @ManyToOne
     private Farmer farmer;
     
-    @NotNull @ManyToMany
+    @ManyToMany
     private Set<Supervisor> supervisors;
 }

@@ -2,7 +2,6 @@ package br.edu.utfpr.cp.emater.mip.survey.entity;
 
 import br.edu.utfpr.cp.emater.mip.field.entity.Field;
 import java.io.Serializable;
-import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

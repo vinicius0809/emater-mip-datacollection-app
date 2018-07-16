@@ -5,18 +5,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.NotNull;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @MappedSuperclass
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public abstract class Person implements Serializable {
     
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     protected Long id;
-    
-    @NotNull
     protected String name;
 }
