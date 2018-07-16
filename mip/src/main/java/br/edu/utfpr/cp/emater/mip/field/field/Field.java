@@ -28,6 +28,7 @@ public class Field implements Serializable {
     private String name;
     private String location;
     
+    @ManyToOne (fetch = FetchType.EAGER)
     private City city;
     
     @ManyToOne (fetch = FetchType.EAGER)
