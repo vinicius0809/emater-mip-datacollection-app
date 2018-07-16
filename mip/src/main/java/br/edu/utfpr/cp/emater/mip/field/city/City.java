@@ -1,5 +1,6 @@
-package br.edu.utfpr.cp.emater.mip.field.area;
+package br.edu.utfpr.cp.emater.mip.field.city;
 
+import br.edu.utfpr.cp.emater.mip.field.region.Region;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,9 +20,8 @@ public class City implements Serializable {
     
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     
     @ManyToOne (fetch = FetchType.EAGER)
-    private Region region;
+    private Region region;    
 }

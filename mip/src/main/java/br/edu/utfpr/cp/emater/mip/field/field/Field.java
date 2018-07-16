@@ -1,8 +1,8 @@
 package br.edu.utfpr.cp.emater.mip.field.field;
 
+import br.edu.utfpr.cp.emater.mip.field.city.City;
 import br.edu.utfpr.cp.emater.mip.field.person.Farmer;
 import br.edu.utfpr.cp.emater.mip.field.person.Supervisor;
-import br.edu.utfpr.cp.emater.mip.field.area.City;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Entity;
@@ -28,12 +28,11 @@ public class Field implements Serializable {
     private String name;
     private String location;
     
-    @ManyToOne (fetch = FetchType.EAGER)
     private City city;
     
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Farmer farmer;
     
-    @ManyToMany
+    @ManyToMany (fetch = FetchType.EAGER)
     private Set<Supervisor> supervisors;
 }
