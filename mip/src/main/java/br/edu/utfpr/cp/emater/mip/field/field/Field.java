@@ -4,7 +4,8 @@ import br.edu.utfpr.cp.emater.mip.field.city.City;
 import br.edu.utfpr.cp.emater.mip.field.person.Farmer;
 import br.edu.utfpr.cp.emater.mip.field.person.Supervisor;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -35,5 +36,12 @@ public class Field implements Serializable {
     private Farmer farmer;
     
     @ManyToMany (fetch = FetchType.EAGER)
-    private Set<Supervisor> supervisors;
+    private List<Supervisor> supervisors;
+    
+    public boolean addSupervisor (Supervisor supervisor) {
+        if (this.getSupervisors() == null)
+            this.setSupervisors(new ArrayList<>());
+        
+        return this.getSupervisors().add(supervisor);
+    }
 }

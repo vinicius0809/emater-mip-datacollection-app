@@ -65,10 +65,10 @@ public class FieldRepositoryTest {
         Supervisor s3 = supervisorRepository.save(new Supervisor(null, "Michael Allan"));
         Supervisor s4 = supervisorRepository.save(new Supervisor(null, "Andrew Allan"));
 
-        Field fi1 = fieldRepository.save(new Field(null, "A nice place to live", "Road to hope", c1, f1, Stream.of(s1, s2).collect(Collectors.toSet())));
-        Field fi2 = fieldRepository.save(new Field(null, "A nice place to work", "Road to energy", c2, f2, Stream.of(s3, s4).collect(Collectors.toSet())));
-        Field fi3 = fieldRepository.save(new Field(null, "A good place to enjoy", "Road to hapiness", c1, f3, Collections.singleton(s1)));
-        Field fi4 = fieldRepository.save(new Field(null, "A good place to travel", "Road to more hapiness", c3, f4, Collections.singleton(s4)));
+        Field fi1 = fieldRepository.save(new Field(null, "A nice place to live", "Road to hope", c1, f1, Stream.of(s1, s2).collect(Collectors.toList())));
+        Field fi2 = fieldRepository.save(new Field(null, "A nice place to work", "Road to energy", c2, f2, Stream.of(s3, s4).collect(Collectors.toList())));
+        Field fi3 = fieldRepository.save(new Field(null, "A good place to enjoy", "Road to hapiness", c1, f3, Collections.singletonList(s1)));
+        Field fi4 = fieldRepository.save(new Field(null, "A good place to travel", "Road to more hapiness", c3, f4, Collections.singletonList(s4)));
 
         Assertions.assertThat(fieldRepository.count()).isEqualTo(4);
     }
@@ -96,14 +96,38 @@ public class FieldRepositoryTest {
         Supervisor s3 = supervisorRepository.save(new Supervisor(null, "Michael Allan"));
         Supervisor s4 = supervisorRepository.save(new Supervisor(null, "Andrew Allan"));
 
-        Field fi1 = fieldRepository.save(new Field(null, "A nice place to live", "Road to hope", c1, f1, Stream.of(s1, s2).collect(Collectors.toSet())));
-        Field fi2 = fieldRepository.save(new Field(null, "A nice place to work", "Road to energy", c2, f2, Stream.of(s3, s4).collect(Collectors.toSet())));
-        Field fi3 = fieldRepository.save(new Field(null, "A good place to enjoy", "Road to hapiness", c1, f3, Collections.singleton(s1)));
-        Field fi4 = fieldRepository.save(new Field(null, "A good place to travel", "Road to more hapiness", c3, f4, Collections.singleton(s4)));
+        Field fi1 = fieldRepository.save(new Field(null, "A nice place to live", "Road to hope", c1, f1, Stream.of(s1, s2).collect(Collectors.toList())));
+        Field fi2 = fieldRepository.save(new Field(null, "A nice place to work", "Road to energy", c2, f2, Stream.of(s3, s4).collect(Collectors.toList())));
+        Field fi3 = fieldRepository.save(new Field(null, "A good place to enjoy", "Road to hapiness", c1, f3, Collections.singletonList(s1)));
+        Field fi4 = fieldRepository.save(new Field(null, "A good place to travel", "Road to more hapiness", c3, f4, Collections.singletonList(s4)));
 
         Assertions.assertThat(fieldRepository.findById(fi1.getId()).get().getName()).isEqualTo(fi1.getName());
         Assertions.assertThat(fieldRepository.findById(fi2.getId()).get().getName()).isEqualTo(fi2.getName());
         Assertions.assertThat(fieldRepository.findById(fi3.getId()).get().getName()).isEqualTo(fi3.getName());
         Assertions.assertThat(fieldRepository.findById(fi4.getId()).get().getName()).isEqualTo(fi4.getName());
+    }
+    
+    @Test
+    public void testMultipleSupervisors() {
+        MacroRegion mr1 = macroRegionRepository.save(new MacroRegion(null, "Macro Norte"));
+
+        Region r1 = regionRepository.save(new Region(null, "Cornélio Procópio", mr1));
+
+        City c1 = cityRepository.save(new City(null, "Londrina", r1));
+
+        Farmer f1 = farmerRepository.save(new Farmer(null, "John Doe"));
+
+        Supervisor s1 = supervisorRepository.save(new Supervisor(null, "John Allan"));
+        Supervisor s2 = supervisorRepository.save(new Supervisor(null, "Anna Allan"));
+        Supervisor s3 = supervisorRepository.save(new Supervisor(null, "Michael Allan"));
+        Supervisor s4 = supervisorRepository.save(new Supervisor(null, "Andrew Allan"));
+
+        Field field = new Field(null, "A nice place to live", "Road to hope", c1, f1, null);
+        field.addSupervisor(s1);
+        field.addSupervisor(s2);
+        
+        Field fi1 = fieldRepository.save(field);
+        
+        Assertions.assertThat(fieldRepository.findById(fi1.getId()).get().getSupervisors().size()).isEqualTo(2);        
     }
 }
