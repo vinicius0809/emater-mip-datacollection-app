@@ -1,6 +1,6 @@
 package br.edu.utfpr.cp.emater.mip.pest.entity;
 
-import br.edu.utfpr.cp.emater.mip.survey.entity.SurveyField;
+import br.edu.utfpr.cp.emater.mip.survey.surveyfield.SurveyField;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;

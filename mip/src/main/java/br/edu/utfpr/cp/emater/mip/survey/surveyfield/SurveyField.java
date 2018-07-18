@@ -1,5 +1,6 @@
-package br.edu.utfpr.cp.emater.mip.survey.entity;
+package br.edu.utfpr.cp.emater.mip.survey.surveyfield;
 
+import br.edu.utfpr.cp.emater.mip.survey.harvest.Harvest;
 import br.edu.utfpr.cp.emater.mip.field.field.Field;
 import java.io.Serializable;
 import javax.persistence.Embedded;

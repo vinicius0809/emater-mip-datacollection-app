@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mip.survey.entity;
+package br.edu.utfpr.cp.emater.mip.survey.surveyfield;
 
 import java.io.Serializable;
 import javax.persistence.Embeddable;
@@ -10,9 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SizeData implements Serializable {
+public class QuestionData implements Serializable {
     
-    private double totalArea;
-    private double totalPlantedArea;
-    private double plantPerMeter;
+    private boolean rustResistant;
+    private boolean bt;
 }

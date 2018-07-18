@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mip.survey.entity;
+package br.edu.utfpr.cp.emater.mip.survey.surveyfield;
 
 import java.io.Serializable;
 import javax.persistence.Embeddable;
@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuestionData implements Serializable {
+public class LocationData implements Serializable {
     
-    private boolean rustResistant;
-    private boolean bt;
+    private double longitude;
+    private double latitute;
 }
