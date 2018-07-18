@@ -12,7 +12,17 @@ import br.edu.utfpr.cp.emater.mip.field.person.Supervisor;
 import br.edu.utfpr.cp.emater.mip.field.person.SupervisorRepository;
 import br.edu.utfpr.cp.emater.mip.field.region.Region;
 import br.edu.utfpr.cp.emater.mip.field.region.RegionRepository;
+import br.edu.utfpr.cp.emater.mip.survey.harvest.Harvest;
+import br.edu.utfpr.cp.emater.mip.survey.harvest.HarvestRepository;
+import br.edu.utfpr.cp.emater.mip.survey.surveyfield.DateData;
+import br.edu.utfpr.cp.emater.mip.survey.surveyfield.LocationData;
+import br.edu.utfpr.cp.emater.mip.survey.surveyfield.ProductivityData;
+import br.edu.utfpr.cp.emater.mip.survey.surveyfield.QuestionData;
+import br.edu.utfpr.cp.emater.mip.survey.surveyfield.SizeData;
+import br.edu.utfpr.cp.emater.mip.survey.surveyfield.SurveyField;
+import br.edu.utfpr.cp.emater.mip.survey.surveyfield.SurveyFieldRepository;
 import java.util.Collections;
+import java.util.Date;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +34,14 @@ import org.springframework.stereotype.Component;
 @SpringBootApplication
 public class MipApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MipApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MipApplication.class, args);
+    }
 }
 
 @Component
 class CLR implements CommandLineRunner {
-    
+
     @Autowired
     private FieldRepository fieldRepository;
 
@@ -49,6 +59,12 @@ class CLR implements CommandLineRunner {
 
     @Autowired
     private MacroRegionRepository macroRegionRepository;
+
+    @Autowired
+    private SurveyFieldRepository surveyFieldRepository;
+
+    @Autowired
+    private HarvestRepository harvestRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -77,13 +93,16 @@ class CLR implements CommandLineRunner {
         fi1.addSupervisor(s1);
         fi1.addSupervisor(s2);
         fieldRepository.save(fi1);
-                
-        
+
         Field fi2 = fieldRepository.save(new Field(null, "A nice place to work", "Road to energy", c2, f2, Stream.of(s3, s4).collect(Collectors.toList())));
         Field fi3 = fieldRepository.save(new Field(null, "A good place to enjoy", "Road to hapiness", c1, f3, Collections.singletonList(s1)));
-        Field fi4 = fieldRepository.save(new Field(null, "A good place to travel", "Road to more hapiness", c3, f4, Collections.singletonList(s4)));
 
-        
+        Harvest h1 = harvestRepository.save(new Harvest(null, "Safra 2018/2019", new Date(), new Date(2019, 1, 1)));
+
+        SurveyField sf1 = surveyFieldRepository.save(new SurveyField(null, "BMX Potencia 1", new QuestionData(true, true), new DateData(new Date(), new Date(), new Date()), new SizeData(1.5, 1.5, 1.5), new LocationData(1.5, 1.5), new ProductivityData(1.5, 1.5, true), fi1, h1));
+        SurveyField sf2 = surveyFieldRepository.save(new SurveyField(null, "BMX Potencia 2", new QuestionData(false, false), new DateData(new Date(), new Date(), new Date()), new SizeData(2.5, 2.5, 2.5), new LocationData(2.5, 2.5), new ProductivityData(2.5, 2.5, true), fi2, h1));
+        SurveyField sf3 = surveyFieldRepository.save(new SurveyField(null, "BMX Potencia 3", new QuestionData(true, false), new DateData(new Date(), new Date(), new Date()), new SizeData(3.5, 3.5, 3.5), new LocationData(3.5, 3.5), new ProductivityData(3.5, 3.5, true), fi3, h1));
+
     }
-    
+
 }
