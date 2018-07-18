@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,6 +30,6 @@ public class SamplePest implements Serializable {
     
     private double value;
     
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Pest pest;
 }
