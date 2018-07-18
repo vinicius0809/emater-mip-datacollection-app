@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mip.pest.entity;
+package br.edu.utfpr.cp.emater.mip.pest;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
