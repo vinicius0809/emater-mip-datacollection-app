@@ -12,6 +12,12 @@ import br.edu.utfpr.cp.emater.mip.field.person.Supervisor;
 import br.edu.utfpr.cp.emater.mip.field.person.SupervisorRepository;
 import br.edu.utfpr.cp.emater.mip.field.region.Region;
 import br.edu.utfpr.cp.emater.mip.field.region.RegionRepository;
+import br.edu.utfpr.cp.emater.mip.pest.GrowthPhase;
+import br.edu.utfpr.cp.emater.mip.pest.MipPestSurvey;
+import br.edu.utfpr.cp.emater.mip.pest.MipPestSurveyRepository;
+import br.edu.utfpr.cp.emater.mip.pest.Pest;
+import br.edu.utfpr.cp.emater.mip.pest.PestRepository;
+import br.edu.utfpr.cp.emater.mip.pest.PestSize;
 import br.edu.utfpr.cp.emater.mip.survey.harvest.Harvest;
 import br.edu.utfpr.cp.emater.mip.survey.harvest.HarvestRepository;
 import br.edu.utfpr.cp.emater.mip.survey.surveyfield.DateData;
@@ -66,6 +72,12 @@ class CLR implements CommandLineRunner {
     @Autowired
     private HarvestRepository harvestRepository;
 
+    @Autowired
+    private MipPestSurveyRepository mipPestSurveyRepository;
+
+    @Autowired
+    private PestRepository pestRepository;
+
     @Override
     public void run(String... args) throws Exception {
         MacroRegion mr1 = macroRegionRepository.save(new MacroRegion(null, "Macro Norte"));
@@ -103,6 +115,28 @@ class CLR implements CommandLineRunner {
         SurveyField sf2 = surveyFieldRepository.save(new SurveyField(null, "BMX Potencia 2", new QuestionData(false, false), new DateData(new Date(), new Date(), new Date()), new SizeData(2.5, 2.5, 2.5), new LocationData(2.5, 2.5), new ProductivityData(2.5, 2.5, true), fi2, h1));
         SurveyField sf3 = surveyFieldRepository.save(new SurveyField(null, "BMX Potencia 3", new QuestionData(true, false), new DateData(new Date(), new Date(), new Date()), new SizeData(3.5, 3.5, 3.5), new LocationData(3.5, 3.5), new ProductivityData(3.5, 3.5, true), fi3, h1));
 
+        Pest p1 = pestRepository.save(new Pest(null, "Lagarta-da-soja", "Anticarsia gemmatalis", PestSize.GREATER_15CM));
+        Pest p2 = pestRepository.save(new Pest(null, "Lagarta-da-soja", "Anticarsia gemmatalis", PestSize.SMALLER_15CM));
+        Pest p3 = pestRepository.save(new Pest(null, "Falsa-medideira", "Chrysodeixis spp.", PestSize.GREATER_15CM));
+        Pest p4 = pestRepository.save(new Pest(null, "Falsa-medideira", "Chrysodeixis spp.", PestSize.SMALLER_15CM));
+
+        MipPestSurvey mip1 = new MipPestSurvey(null, sf1, null);
+        mip1.addSamplePest(new Date(), 10, 13, GrowthPhase.R2, p1, 1.5);
+        mip1.addSamplePest(new Date(), 11, 14, GrowthPhase.R2, p2, 2.5);
+        mip1.addSamplePest(new Date(), 12, 15, GrowthPhase.R2, p3, 3.5);
+        mipPestSurveyRepository.save(mip1);
+
+        MipPestSurvey mip2 = new MipPestSurvey(null, sf2, null);
+        mip2.addSamplePest(new Date(), 10, 13, GrowthPhase.R2, p2, 1.5);
+        mip2.addSamplePest(new Date(), 11, 14, GrowthPhase.V1, p3, 2.5);
+        mip2.addSamplePest(new Date(), 12, 15, GrowthPhase.V5, p4, 3.5);
+        mipPestSurveyRepository.save(mip2);
+
+        MipPestSurvey mip3 = new MipPestSurvey(null, sf3, null);
+        mip3.addSamplePest(new Date(), 11, 14, GrowthPhase.R2, p1, 1.5);
+        mip3.addSamplePest(new Date(), 12, 15, GrowthPhase.V1, p3, 2.5);
+        mip3.addSamplePest(new Date(), 13, 16, GrowthPhase.V5, p4, 3.5);
+        mipPestSurveyRepository.save(mip3);
     }
 
 }
