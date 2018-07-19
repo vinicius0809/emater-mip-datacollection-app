@@ -28,7 +28,7 @@ public class MipPestSurvey implements Serializable {
     @OneToOne (fetch = FetchType.EAGER)
     private SurveyField surveyField;
         
-    @ElementCollection (fetch = FetchType.EAGER)
+    @ElementCollection
     private List<SamplePest> samplePestSet;
     
     public boolean addSamplePest (Date sampleDate, int daysAfterEmergence, int defoliation, GrowthPhase growthPhase, Pest pest, double value) {
