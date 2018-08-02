@@ -13,9 +13,9 @@ O objetivo geral deste projeto é aumentar a eficiência no processo de coleta e
 
 ## Tecnologias
 Atualmente, as seguintes tecnologias são usadas:
-- _[Open Liberty]_(https://openliberty.io) para criar um uber-jar;
-- _JSF_ para criar a interface com usuário;
-- _BootsFaces_ e _Primefaces_ (Web & Mobile) para criar componentes gráficos;
+- Spring boot;
+- Freemarker;
+- HTML + Bootstrap;
 
 ## Responsáveis pelo projeto na UTFPR
 - Dr. Gabriel Costa Silva (Cornélio Procópio)
