@@ -17,11 +17,14 @@ Atualmente, as seguintes tecnologias são usadas:
 - _JSF_ para criar a interface com usuário;
 - _BootsFaces_ e _Primefaces_ (Web & Mobile) para criar componentes gráficos;
 
-## Responsáveis pelo projeto
-- Dr. Gabriel Costa Silva (UTFPR - CP)
-- Dr. Almir Gnoatto (UTFPR - DV)
-- Dr. Alfredo de Gouvea (UTFPR - DV)
+## Responsáveis pelo projeto na UTFPR
+- Dr. Gabriel Costa Silva (Cornélio Procópio)
+- Dr. Almir Gnoatto (Dois Vizinhos)
+- Dr. Alfredo de Gouvea (Dois Vizinhos)
+
+## Responsáveis pelo projeto na EMATER
+- Dr. Nelson Harger (Coordenador Estadual do Projeto Grãos)
 
 ## Alunos participantes do projeto
-- João Victor Ferreira (Analise e Desenvolvimento de Sistemas, UTFPR - CP)
+- Lucas Barbosa da Costa (Engenharia de Computação, UTFPR - CP)
 - Gabriel Grazionale (Engenharia de Software, UTFPR - CP)
