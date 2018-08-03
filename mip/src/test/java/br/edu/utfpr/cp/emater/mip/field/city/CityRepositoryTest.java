@@ -1,9 +1,11 @@
 package br.edu.utfpr.cp.emater.mip.field.city;
 
-import br.edu.utfpr.cp.emater.mip.field.macroregion.MacroRegion;
-import br.edu.utfpr.cp.emater.mip.field.macroregion.MacroRegionRepository;
-import br.edu.utfpr.cp.emater.mip.field.region.Region;
-import br.edu.utfpr.cp.emater.mip.field.region.RegionRepository;
+import br.edu.utfpr.cp.emater.mip.domain.field.city.CityRepository;
+import br.edu.utfpr.cp.emater.mip.domain.field.city.City;
+import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegion;
+import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegionRepository;
+import br.edu.utfpr.cp.emater.mip.domain.field.region.Region;
+import br.edu.utfpr.cp.emater.mip.domain.field.region.RegionRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;

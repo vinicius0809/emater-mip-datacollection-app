@@ -1,5 +1,7 @@
 package br.edu.utfpr.cp.emater.mip.field.macroregion;
 
+import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegionRepository;
+import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegion;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,7 +1,9 @@
 package br.edu.utfpr.cp.emater.mip.field.region;
 
-import br.edu.utfpr.cp.emater.mip.field.macroregion.MacroRegion;
-import br.edu.utfpr.cp.emater.mip.field.macroregion.MacroRegionRepository;
+import br.edu.utfpr.cp.emater.mip.domain.field.region.RegionRepository;
+import br.edu.utfpr.cp.emater.mip.domain.field.region.Region;
+import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegion;
+import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegionRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.BeforeClass;

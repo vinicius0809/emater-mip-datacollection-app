@@ -1,5 +1,7 @@
 package br.edu.utfpr.cp.emater.mip.field.person;
 
+import br.edu.utfpr.cp.emater.mip.domain.field.person.SupervisorRepository;
+import br.edu.utfpr.cp.emater.mip.domain.field.person.Supervisor;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,5 +1,8 @@
 package br.edu.utfpr.cp.emater.mip.pest;
 
+import br.edu.utfpr.cp.emater.mip.domain.pest.PestSize;
+import br.edu.utfpr.cp.emater.mip.domain.pest.PestRepository;
+import br.edu.utfpr.cp.emater.mip.domain.pest.Pest;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;

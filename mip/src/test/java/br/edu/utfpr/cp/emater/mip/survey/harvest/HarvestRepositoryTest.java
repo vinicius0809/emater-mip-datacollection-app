@@ -1,5 +1,7 @@
 package br.edu.utfpr.cp.emater.mip.survey.harvest;
 
+import br.edu.utfpr.cp.emater.mip.domain.survey.harvest.HarvestRepository;
+import br.edu.utfpr.cp.emater.mip.domain.survey.harvest.Harvest;
 import java.util.Date;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;

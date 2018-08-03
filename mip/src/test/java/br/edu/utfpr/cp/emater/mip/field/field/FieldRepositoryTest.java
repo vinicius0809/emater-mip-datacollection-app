@@ -1,15 +1,17 @@
 package br.edu.utfpr.cp.emater.mip.field.field;
 
-import br.edu.utfpr.cp.emater.mip.field.city.City;
-import br.edu.utfpr.cp.emater.mip.field.city.CityRepository;
-import br.edu.utfpr.cp.emater.mip.field.macroregion.MacroRegion;
-import br.edu.utfpr.cp.emater.mip.field.macroregion.MacroRegionRepository;
-import br.edu.utfpr.cp.emater.mip.field.person.Farmer;
-import br.edu.utfpr.cp.emater.mip.field.person.FarmerRepository;
-import br.edu.utfpr.cp.emater.mip.field.person.Supervisor;
-import br.edu.utfpr.cp.emater.mip.field.person.SupervisorRepository;
-import br.edu.utfpr.cp.emater.mip.field.region.Region;
-import br.edu.utfpr.cp.emater.mip.field.region.RegionRepository;
+import br.edu.utfpr.cp.emater.mip.domain.field.field.Field;
+import br.edu.utfpr.cp.emater.mip.domain.field.field.FieldRepository;
+import br.edu.utfpr.cp.emater.mip.domain.field.city.City;
+import br.edu.utfpr.cp.emater.mip.domain.field.city.CityRepository;
+import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegion;
+import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegionRepository;
+import br.edu.utfpr.cp.emater.mip.domain.field.person.Farmer;
+import br.edu.utfpr.cp.emater.mip.domain.field.person.FarmerRepository;
+import br.edu.utfpr.cp.emater.mip.domain.field.person.Supervisor;
+import br.edu.utfpr.cp.emater.mip.domain.field.person.SupervisorRepository;
+import br.edu.utfpr.cp.emater.mip.domain.field.region.Region;
+import br.edu.utfpr.cp.emater.mip.domain.field.region.RegionRepository;
 import java.util.Collections;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
