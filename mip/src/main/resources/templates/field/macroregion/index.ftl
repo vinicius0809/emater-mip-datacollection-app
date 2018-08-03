@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Gerenciamento de Macro Regiões</title>
+	<title>${title}</title>
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -22,9 +22,7 @@
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2>Gerenciamento da
-							<b>Macrorregião</b>
-						</h2>
+						<h2>${title}</h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="#addModal" class="btn btn-success" data-toggle="modal">

@@ -26,6 +26,7 @@ public class MacroRegionController {
     @RequestMapping (value = "", method = RequestMethod.GET)
     public String listAll(Model data) {
         data.addAttribute("macroregions", repository.findAll());
+        data.addAttribute("title", "Gerenciamento de Macrorregiões");
         return "/field/macroregion/index";
     }
     
