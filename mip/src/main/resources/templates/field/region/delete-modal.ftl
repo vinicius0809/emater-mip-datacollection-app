@@ -1,14 +1,14 @@
 	<div id="deleteModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="/region/delete">
+				<form action="${urlDelete}">
 					<div class="modal-header">						
-						<h4 class="modal-title">Apagar Região</h4>
+						<h4 class="modal-title">Apagar ${entity}</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
-						<p>Você tem certeza que deseja apagar a região "<span id="edit-name"></span>" ?</p>
-						<p class="text-warning"><small>Essa ação NÃO pode ser desfeita.</small></p>
+						<p>Você tem certeza que deseja apagar ${article} ${entity} "<span id="edit-name" class="bg-danger text-white"></span>" ?</p>
+						<p class="text-danger">Essa ação NÃO pode ser desfeita.</p>
 					</div>
 					<div class="modal-footer">
 						<input type="hidden" class="form-control" id="edit-id" name="id">

@@ -9,12 +9,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+enum MacroRegionLabels {
+    PAGE_TITLE ("Gerenciamento de Macrorregiões"),
+    ENTITY ("Macrorregião"),
+    ARTICLE ("a"),
+    URL_CREATE ("/macroregion/create"),
+    URL_UPDATE ("/macroregion/update"),
+    URL_DELETE ("/macroregion/delete");
+    
+    private String value;
+    
+    MacroRegionLabels (String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+}
+
 
 @Controller
 @RequestMapping (value = "/macroregion")
 public class MacroRegionController {
     
-    private MacroRegionRepository repository;
+    private final MacroRegionRepository repository;
 
     @Autowired
     public MacroRegionController(MacroRegionRepository repository) {
@@ -24,7 +47,14 @@ public class MacroRegionController {
     @RequestMapping (value = "", method = RequestMethod.GET)
     public String listAll(Model data) {
         data.addAttribute("macroregions", repository.findAll());
-        data.addAttribute("title", "Gerenciamento de Macrorregiões");
+        
+        data.addAttribute("pageTitle", MacroRegionLabels.PAGE_TITLE.getValue());
+        data.addAttribute("article", MacroRegionLabels.ARTICLE.getValue());
+        data.addAttribute("entity", MacroRegionLabels.ENTITY.getValue());
+        data.addAttribute("urlCreate", MacroRegionLabels.URL_CREATE.getValue());
+        data.addAttribute("urlUpdate", MacroRegionLabels.URL_UPDATE.getValue());
+        data.addAttribute("urlDelete", MacroRegionLabels.URL_DELETE.getValue());
+        
         return "/field/macroregion/index";
     }
     

@@ -1,9 +1,9 @@
 	<div id="addModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="/region/create">
+				<form action="${urlCreate}">
 					<div class="modal-header">						
-						<h4 class="modal-title">Criar Nova Região</h4>
+						<h4 class="modal-title">Criar Nov${article} ${entity}</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					

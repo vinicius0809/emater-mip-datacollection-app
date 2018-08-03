@@ -1,9 +1,9 @@
 <div id="editModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="/macroregion/update">
+				<form action="${urlUpdate}">
 					<div class="modal-header">						
-						<h4 class="modal-title">Alterar Macrorregião</h4>
+						<h4 class="modal-title">Alterar ${entity}</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
