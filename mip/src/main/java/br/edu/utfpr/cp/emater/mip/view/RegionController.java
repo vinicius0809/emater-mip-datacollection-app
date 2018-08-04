@@ -34,6 +34,28 @@ enum RegionLabels {
     }
 }
 
+enum RegionPath {
+    SUCCESS_CREATE ("/region"),
+    SUCCESS_UPDATE ("/region"),
+    SUCCESS_DELETE ("/region"),
+    SUCCESS_READ ("/region"),
+    TEMPLATE_PATH ("/field/region/index");
+    
+    private String value;
+    
+    RegionPath (String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+}
+
 @Controller
 @RequestMapping(value = "/region")
 public class RegionController {
@@ -60,7 +82,7 @@ public class RegionController {
         data.addAttribute("urlUpdate", RegionLabels.URL_UPDATE.getValue());
         data.addAttribute("urlDelete", RegionLabels.URL_DELETE.getValue());
 
-        return "/field/region/index";
+        return RegionPath.TEMPLATE_PATH.getValue();
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -69,7 +91,7 @@ public class RegionController {
         MacroRegion mr = macroRegionRepository.findById(new Long(macroRegionId)).get();
         regionRepository.save(new Region(null, name, mr));
 
-        return "/region";
+        return RegionPath.SUCCESS_CREATE.getValue();
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
@@ -83,13 +105,13 @@ public class RegionController {
 
         regionRepository.saveAndFlush(r);
 
-        return "/region";
+        return RegionPath.SUCCESS_UPDATE.getValue();
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(@RequestParam int id) {
         regionRepository.deleteById(new Long(id));
 
-        return "/region";
+        return RegionPath.SUCCESS_DELETE.getValue();
     }
 }

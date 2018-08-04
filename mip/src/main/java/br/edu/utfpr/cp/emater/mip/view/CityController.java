@@ -36,6 +36,28 @@ enum CityLabels {
     }
 }
 
+enum CityPath {
+    SUCCESS_CREATE ("/city"),
+    SUCCESS_UPDATE ("/city"),
+    SUCCESS_DELETE ("/city"),
+    SUCCESS_READ ("/city"),
+    TEMPLATE_PATH ("/field/city/index");
+    
+    private String value;
+    
+    CityPath (String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+}
+
 @Controller
 @RequestMapping(value = "/city")
 public class CityController {
@@ -65,7 +87,7 @@ public class CityController {
         data.addAttribute("urlUpdate", CityLabels.URL_UPDATE.getValue());
         data.addAttribute("urlDelete", CityLabels.URL_DELETE.getValue());
 
-        return "/field/city/index";
+        return CityPath.TEMPLATE_PATH.getValue();
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -74,7 +96,7 @@ public class CityController {
         Region region = regionRepository.findById(new Long (regionId)).get();
         cityRepository.save(new City(null, name, region));
 
-        return "/city";
+        return CityPath.SUCCESS_CREATE.getValue();
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
@@ -88,14 +110,14 @@ public class CityController {
 
         cityRepository.saveAndFlush(c);
 
-        return "/city";
+        return CityPath.SUCCESS_UPDATE.getValue();
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(@RequestParam int id) {
         cityRepository.deleteById(new Long(id));
 
-        return "/city";
+        return CityPath.SUCCESS_DELETE.getValue();
     }
 
 }
