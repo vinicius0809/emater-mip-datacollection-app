@@ -14,7 +14,7 @@
 						</div>
 						<div class="form-group">
 							<label>Região</label>
-							<select name="regionId" class="form-control">
+							<select name="regionId" class="form-control" id="edit-region">
 								<#list regions as region>
   									<option value="${region.id}">${region.name}</option>
 								</#list>

@@ -14,7 +14,7 @@
 						</div>
 						<div class="form-group">
 							<label>Macrorregião</label>
-							<select name="macroRegionId" class="form-control">
+							<select name="macroRegionId" class="form-control" id="edit-macroregion">
 								<#list macroRegions as macroRegion>
   									<option value="${macroRegion.id}">${macroRegion.name}</option>
 								</#list>

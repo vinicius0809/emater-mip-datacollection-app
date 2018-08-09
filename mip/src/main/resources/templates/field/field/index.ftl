@@ -68,7 +68,7 @@
 								</#list>
 							</td>
 							<td>
-								<a href="#editModal" class="edit" data-toggle="modal" data-id="${field.id}" data-name="${field.name}" data-location="${field.location}">
+								<a href="#editModal" class="edit" data-toggle="modal" data-id="${field.id}" data-name="${field.name}" data-location="${field.location}" data-city="${field.city.id}" data-farmer="${field.farmer.id}">
 									<i class="material-icons" data-toggle="tooltip" title="Alterar">&#xE254;</i>
 								</a>
 								<a href="#deleteModal" class="delete" data-toggle="modal" data-id="${field.id}" data-name="${field.name}">

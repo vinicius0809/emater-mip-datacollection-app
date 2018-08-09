@@ -20,7 +20,7 @@
 
 						<div class="form-group">
 							<label>Cidade</label>
-							<select name="cityId" class="form-control">
+							<select name="cityId" class="form-control" id="edit-city">
 								<#list cities as city>
   									<option value="${city.id}">${city.name}</option>
 								</#list>
@@ -29,7 +29,7 @@
 
 						<div class="form-group">
 							<label>Produtor</label>
-							<select name="farmerId" class="form-control">
+							<select name="farmerId" class="form-control" id="edit-farmer">
 								<#list farmers as farmer>
   									<option value="${farmer.id}">${farmer.name}</option>
 								</#list>

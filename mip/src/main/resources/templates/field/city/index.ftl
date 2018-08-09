@@ -60,7 +60,7 @@
 							<td>${city.region.name}</td>
 							<td>${city.region.macroRegion.name}</td>
 							<td>
-								<a href="#editModal" class="edit" data-toggle="modal" data-id="${city.id}" data-name="${city.name}">
+								<a href="#editModal" class="edit" data-toggle="modal" data-id="${city.id}" data-name="${city.name}" data-region=${city.region.id}>
 									<i class="material-icons" data-toggle="tooltip" title="Alterar">&#xE254;</i>
 								</a>
 								<a href="#deleteModal" class="delete" data-toggle="modal" data-id="${city.id}" data-name="${city.name}">
