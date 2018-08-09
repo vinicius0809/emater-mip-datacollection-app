@@ -33,10 +33,10 @@ enum FarmerLabels {
 }
 
 enum FarmerPath {
-    SUCCESS_CREATE ("/farmer"),
-    SUCCESS_UPDATE ("/farmer"),
-    SUCCESS_DELETE ("/farmer"),
-    SUCCESS_READ ("/farmer"),
+    SUCCESS_CREATE ("redirect:/farmer"),
+    SUCCESS_UPDATE ("redirect:/farmer"),
+    SUCCESS_DELETE ("redirect:/farmer"),
+    SUCCESS_READ ("redirect:/farmer"),
     TEMPLATE_PATH ("/field/farmer/index");
     
     private String value;
@@ -80,14 +80,14 @@ public class FarmerController {
         return FarmerPath.TEMPLATE_PATH.getValue();
     }
     
-    @RequestMapping (value = "/create", method = RequestMethod.GET)
+    @RequestMapping (value = "/create", method = RequestMethod.POST)
     public String create (@RequestParam String name) {
         
         repository.save(new Farmer(null, name));
         return FarmerPath.SUCCESS_CREATE.getValue();
     }
     
-    @RequestMapping (value = "/update", method = RequestMethod.GET)
+    @RequestMapping (value = "/update", method = RequestMethod.POST)
     public String update (@RequestParam String name, @RequestParam int id) {
         
         Farmer mr = repository.findById(new Long (id)).get();
@@ -98,7 +98,7 @@ public class FarmerController {
         return FarmerPath.SUCCESS_UPDATE.getValue();
     }
 
-    @RequestMapping (value = "/delete", method = RequestMethod.GET)
+    @RequestMapping (value = "/delete", method = RequestMethod.POST)
     public String delete (@RequestParam int id) {
         repository.deleteById(new Long(id));
         

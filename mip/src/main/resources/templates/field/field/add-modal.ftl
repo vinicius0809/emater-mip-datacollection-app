@@ -1,7 +1,7 @@
 	<div id="addModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="${urlCreate}">
+				<form action="${urlCreate}" method="post">
 					<div class="modal-header">						
 						<h4 class="modal-title">Criar Nov${article} ${entity}</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

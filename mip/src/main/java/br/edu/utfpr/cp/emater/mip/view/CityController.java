@@ -2,7 +2,6 @@ package br.edu.utfpr.cp.emater.mip.view;
 
 import br.edu.utfpr.cp.emater.mip.domain.field.city.City;
 import br.edu.utfpr.cp.emater.mip.domain.field.city.CityRepository;
-import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegion;
 import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegionRepository;
 import br.edu.utfpr.cp.emater.mip.domain.field.region.Region;
 import br.edu.utfpr.cp.emater.mip.domain.field.region.RegionRepository;
@@ -37,10 +36,10 @@ enum CityLabels {
 }
 
 enum CityPath {
-    SUCCESS_CREATE ("/city"),
-    SUCCESS_UPDATE ("/city"),
-    SUCCESS_DELETE ("/city"),
-    SUCCESS_READ ("/city"),
+    SUCCESS_CREATE ("redirect:/city"),
+    SUCCESS_UPDATE ("redirect:/city"),
+    SUCCESS_DELETE ("redirect:/city"),
+    SUCCESS_READ ("redirect:/city"),
     TEMPLATE_PATH ("/field/city/index");
     
     private String value;
@@ -90,7 +89,7 @@ public class CityController {
         return CityPath.TEMPLATE_PATH.getValue();
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestParam String name, @RequestParam int regionId) {
 
         Region region = regionRepository.findById(new Long (regionId)).get();
@@ -99,7 +98,7 @@ public class CityController {
         return CityPath.SUCCESS_CREATE.getValue();
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@RequestParam String name, @RequestParam int id, @RequestParam int regionId) {
 
         Region r = regionRepository.findById(new Long(regionId)).get();
@@ -113,7 +112,7 @@ public class CityController {
         return CityPath.SUCCESS_UPDATE.getValue();
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String delete(@RequestParam int id) {
         cityRepository.deleteById(new Long(id));
 

@@ -35,10 +35,10 @@ enum RegionLabels {
 }
 
 enum RegionPath {
-    SUCCESS_CREATE ("/region"),
-    SUCCESS_UPDATE ("/region"),
-    SUCCESS_DELETE ("/region"),
-    SUCCESS_READ ("/region"),
+    SUCCESS_CREATE ("redirect:/region"),
+    SUCCESS_UPDATE ("redirect:/region"),
+    SUCCESS_DELETE ("redirect:/region"),
+    SUCCESS_READ ("redirect:/region"),
     TEMPLATE_PATH ("/field/region/index");
     
     private String value;
@@ -85,7 +85,7 @@ public class RegionController {
         return RegionPath.TEMPLATE_PATH.getValue();
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestParam String name, @RequestParam int macroRegionId) {
 
         MacroRegion mr = macroRegionRepository.findById(new Long(macroRegionId)).get();
@@ -94,7 +94,7 @@ public class RegionController {
         return RegionPath.SUCCESS_CREATE.getValue();
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@RequestParam String name, @RequestParam int id, @RequestParam int macroRegionId) {
 
         MacroRegion mr = macroRegionRepository.findById(new Long(macroRegionId)).get();
@@ -108,7 +108,7 @@ public class RegionController {
         return RegionPath.SUCCESS_UPDATE.getValue();
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String delete(@RequestParam int id) {
         regionRepository.deleteById(new Long(id));
 

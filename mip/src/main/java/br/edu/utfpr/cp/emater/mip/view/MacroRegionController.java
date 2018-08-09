@@ -33,10 +33,10 @@ enum MacroRegionLabels {
 }
 
 enum MacroRegionPath {
-    SUCCESS_CREATE ("/macroregion"),
-    SUCCESS_UPDATE ("/macroregion"),
-    SUCCESS_DELETE ("/macroregion"),
-    SUCCESS_READ ("/macroregion"),
+    SUCCESS_CREATE ("redirect:/macroregion"),
+    SUCCESS_UPDATE ("redirect:/macroregion"),
+    SUCCESS_DELETE ("redirect:/macroregion"),
+    SUCCESS_READ ("redirect:/macroregion"),
     TEMPLATE_PATH ("/field/macroregion/index");
     
     private String value;
@@ -80,14 +80,14 @@ public class MacroRegionController {
         return MacroRegionPath.TEMPLATE_PATH.getValue();
     }
     
-    @RequestMapping (value = "/create", method = RequestMethod.GET)
+    @RequestMapping (value = "/create", method = RequestMethod.POST)
     public String create (@RequestParam String name) {
         
         repository.save(new MacroRegion(null, name));
         return MacroRegionPath.SUCCESS_CREATE.getValue();
     }
     
-    @RequestMapping (value = "/update", method = RequestMethod.GET)
+    @RequestMapping (value = "/update", method = RequestMethod.POST)
     public String update (@RequestParam String name, @RequestParam int id) {
         
         MacroRegion mr = repository.findById(new Long (id)).get();
@@ -98,7 +98,7 @@ public class MacroRegionController {
         return MacroRegionPath.SUCCESS_UPDATE.getValue();
     }
 
-    @RequestMapping (value = "/delete", method = RequestMethod.GET)
+    @RequestMapping (value = "/delete", method = RequestMethod.POST)
     public String delete (@RequestParam int id) {
         repository.deleteById(new Long(id));
         
