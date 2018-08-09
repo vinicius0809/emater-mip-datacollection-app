@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mip.view;
+package br.edu.utfpr.cp.emater.mip.view.field;
 
 import br.edu.utfpr.cp.emater.mip.domain.field.person.Supervisor;
 import br.edu.utfpr.cp.emater.mip.domain.field.person.SupervisorRepository;
