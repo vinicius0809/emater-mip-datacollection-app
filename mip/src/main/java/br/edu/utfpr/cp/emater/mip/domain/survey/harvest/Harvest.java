@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Future;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +27,5 @@ public class Harvest implements Serializable {
     private Date begin;
     
     @Temporal (TemporalType.DATE)
-    @Future
     private Date end;
 }
