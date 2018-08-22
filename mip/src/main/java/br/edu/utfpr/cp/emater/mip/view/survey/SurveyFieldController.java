@@ -1,5 +1,6 @@
 package br.edu.utfpr.cp.emater.mip.view.survey;
 
+import br.edu.utfpr.cp.emater.mip.domain.field.field.FieldRepository;
 import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.SurveyFieldRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 enum SurveyFieldLabels {
-    PAGE_TITLE("Gerenciamento de Dados das Unidades de Referência Participantes da Pesquisa"),
+    PAGE_TITLE("Unidades de Referência Participantes da Pesquisa"),
+    SELECT_FIELD_PAGE_TITLE("Selecionar Unidades de Referência para Pesquisa"),
     ENTITY("Unidade de Referência"),
     ARTICLE("a"),
     URL_CREATE("/survey-field/create"),
@@ -35,7 +37,8 @@ enum SurveyFieldPath {
     SUCCESS_UPDATE("redirect:/survey-field"),
     SUCCESS_DELETE("redirect:/survey-field"),
     SUCCESS_READ("redirect:/survey-field"),
-    TEMPLATE_PATH("/survey/survey-field/index");
+    TEMPLATE_PATH("/survey/survey-field/index"),
+    TEMPLATE_SELECT_FIELD_PATH("/survey/survey-field/select-field");
 
     private String value;
 
@@ -57,10 +60,12 @@ enum SurveyFieldPath {
 public class SurveyFieldController {
     
     private final SurveyFieldRepository surveyFieldRepository;
+    private final FieldRepository fieldRepository;
 
     @Autowired
-    public SurveyFieldController(SurveyFieldRepository surveyFieldRepository) {
+    public SurveyFieldController(SurveyFieldRepository surveyFieldRepository, FieldRepository fieldRepository) {
         this.surveyFieldRepository = surveyFieldRepository;
+        this.fieldRepository = fieldRepository;
     }
     
     @RequestMapping (value = "", method = RequestMethod.GET)
@@ -75,6 +80,14 @@ public class SurveyFieldController {
         data.addAttribute("urlDelete", SurveyFieldLabels.URL_DELETE.getValue());
 
         return SurveyFieldPath.TEMPLATE_PATH.getValue();
+    }
+    
+    @RequestMapping (value = "/select-field", method = RequestMethod.GET)
+    public String selectFieldForSurvey (Model data) {
+        data.addAttribute("fields", fieldRepository.findAll());
+        data.addAttribute("pageTitle", SurveyFieldLabels.SELECT_FIELD_PAGE_TITLE.getValue());
+                
+        return SurveyFieldPath.TEMPLATE_SELECT_FIELD_PATH.getValue();
     }
     
 }

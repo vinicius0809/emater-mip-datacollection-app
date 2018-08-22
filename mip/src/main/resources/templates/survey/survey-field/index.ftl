@@ -27,9 +27,9 @@
 						<h2>${pageTitle}</h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addModal" class="btn btn-success" data-toggle="modal">
+						<a href="/survey-field/select-field" class="btn btn-success" >
 							<i class="material-icons">&#xE147;</i>
-							<span>Criar Nov${article} ${entity}</span>
+							<span>Adicionar Unidade de Referência à Pesquisa</span>
 						</a>
 					</div>
 				</div>
@@ -71,14 +71,14 @@
 								</span>
 							</td>
 							<td>${surveyField.name}</td>
-							<td>${surveyField.questionData.rustResistant?string('yes', 'no')}</td>
-							<td>${surveyField.questionData.bt?string('yes', 'no')}</td>
+							<td>${surveyField.questionData.rustResistant?string('Sim', 'Não')}</td>
+							<td>${surveyField.questionData.bt?string('Sim', 'Não')}</td>
 							<td>${surveyField.dateData.sowedDate}</td>
 							<td>${surveyField.dateData.emergenceDate}</td>
 							<td>${surveyField.dateData.harvestDate}</td>
 							<td>${surveyField.productivityData.productivityField}</td>
 							<td>${surveyField.productivityData.productivityFarmer}</td>
-							<td>${surveyField.productivityData.separatedWeight?string('yes', 'no')}</td>
+							<td>${surveyField.productivityData.separatedWeight?string('Sim', 'Não')}</td>
 							<td>${surveyField.sizeData.totalArea}</td>
 							<td>${surveyField.sizeData.totalPlantedArea}</td>
 							<td>${surveyField.sizeData.plantPerMeter}</td>
@@ -100,9 +100,6 @@
 			</table>
 		</div>
 	</div>
-
-	<!-- Add Modal HTML -->
-	<#include "add-modal.ftl">
 
 	<!-- Edit Modal HTML -->
 	<#include "edit-modal.ftl">
