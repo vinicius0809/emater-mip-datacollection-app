@@ -1,16 +1,20 @@
 package br.edu.utfpr.cp.emater.mip.view.survey;
 
+import br.edu.utfpr.cp.emater.mip.domain.field.field.Field;
 import br.edu.utfpr.cp.emater.mip.domain.field.field.FieldRepository;
+import br.edu.utfpr.cp.emater.mip.domain.survey.harvest.HarvestRepository;
 import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.SurveyFieldRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 enum SurveyFieldLabels {
     PAGE_TITLE("Unidades de Referência Participantes da Pesquisa"),
     SELECT_FIELD_PAGE_TITLE("Selecionar Unidades de Referência para Pesquisa"),
+//    FIELD_FORM_PAGE_TITLE("Dados da Unidade de Referência para Pesquisa"),
     ENTITY("Unidade de Referência"),
     ARTICLE("a"),
     URL_CREATE("/survey-field/create"),
@@ -38,7 +42,8 @@ enum SurveyFieldPath {
     SUCCESS_DELETE("redirect:/survey-field"),
     SUCCESS_READ("redirect:/survey-field"),
     TEMPLATE_PATH("/survey/survey-field/index"),
-    TEMPLATE_SELECT_FIELD_PATH("/survey/survey-field/select-field");
+    TEMPLATE_SELECT_FIELD_PATH("/survey/survey-field/select-field"),
+    TEMPLATE_SURVEY_FIELD_FORM_PATH("/survey/survey-field/field-form");
 
     private String value;
 
@@ -61,11 +66,13 @@ public class SurveyFieldController {
     
     private final SurveyFieldRepository surveyFieldRepository;
     private final FieldRepository fieldRepository;
+    private final HarvestRepository harvestRepository;
 
     @Autowired
-    public SurveyFieldController(SurveyFieldRepository surveyFieldRepository, FieldRepository fieldRepository) {
+    public SurveyFieldController(SurveyFieldRepository surveyFieldRepository, FieldRepository fieldRepository, HarvestRepository harvestRepository) {
         this.surveyFieldRepository = surveyFieldRepository;
         this.fieldRepository = fieldRepository;
+        this.harvestRepository = harvestRepository;
     }
     
     @RequestMapping (value = "", method = RequestMethod.GET)
@@ -88,6 +95,19 @@ public class SurveyFieldController {
         data.addAttribute("pageTitle", SurveyFieldLabels.SELECT_FIELD_PAGE_TITLE.getValue());
                 
         return SurveyFieldPath.TEMPLATE_SELECT_FIELD_PATH.getValue();
+    }
+    
+    @RequestMapping (value = "/field-form", method = RequestMethod.GET)
+    public String surveyFieldForm (@RequestParam int fieldId, Model data) {
+        data.addAttribute("harvests", harvestRepository.findAll());
+        
+        Field selectedField = fieldRepository.findById(new Long(fieldId)).get();
+        
+        data.addAttribute("selectedField", selectedField);
+                
+        data.addAttribute("pageTitle", String.format("Dados da UR '%s' (%s, %s)", selectedField.getName(), selectedField.getFarmer().getName(), selectedField.getCity().getName()));
+        
+        return SurveyFieldPath.TEMPLATE_SURVEY_FIELD_FORM_PATH.getValue();
     }
     
 }

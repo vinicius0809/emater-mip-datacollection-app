@@ -30,10 +30,7 @@
 				<thead>
 					<tr>
 						<th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
+							Selecione
 						</th>  
 						<th>Identificação</th>
 						<th>Localização</th>
@@ -46,10 +43,9 @@
 					<#list fields as field>
 						<tr>
 							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox1" name="options[]" value="1">
-									<label for="checkbox1"></label>
-								</span>
+								<a href="/survey-field/field-form?fieldId=${field.id}" >
+									<i class="material-icons" data-toggle="tooltip" title="Selecionar">arrow_forward</i>
+								</a>
 							</td>
 							<td>${field.name}</td>
 							<td>${field.location}</td>
