@@ -86,11 +86,8 @@
 							<td>${surveyField.locationData.longitude}</td>
 							<td>${surveyField.field.name}</td>
 							<td>
-								<a href="#editModal" class="edit" data-toggle="modal" data-id="${surveyField.id}" data-name="${surveyField.name}" >
-									<i class="material-icons" data-toggle="tooltip" title="Alterar">&#xE254;</i>
-								</a>
 								<a href="#deleteModal" class="delete" data-toggle="modal" data-id="${surveyField.id}" data-name="${surveyField.name}">
-									<i class="material-icons" data-toggle="tooltip" title="Apagar">&#xE872;</i>
+									<i class="material-icons" data-toggle="tooltip" title="Retirar da pesquisa">clear</i>
 								</a>
 							</td>
 						</tr>
@@ -100,9 +97,6 @@
 			</table>
 		</div>
 	</div>
-
-	<!-- Edit Modal HTML -->
-	<#include "edit-modal.ftl">
 
 	<!-- Delete Modal HTML -->
 	<#include "delete-modal.ftl">

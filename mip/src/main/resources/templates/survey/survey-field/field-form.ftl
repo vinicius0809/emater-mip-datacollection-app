@@ -26,20 +26,17 @@
 					<div class="col-sm-6">
 						<h2>${pageTitle}</h2>
 					</div>
-					<div class="col-sm-6">
-						<a href="/survey-field/select-field" class="btn btn-success" >
-							<i class="material-icons">save</i>
-							<span>Salvar Dados da Unidade de Referência na Pesquisa</span>
-						</a>
-					</div>
 				</div>
 			</div>
 
 			<div class="row">
-				<form>
+				<form action="/survey-field/create" method="post" >
+
+					<input type="hidden" name="fieldId" value="${selectedField.id}" >
+
 					<div class="form-group">
 						<label for="harvest">Safra</label>
-						<select class="form-control" id="harvest">
+						<select class="form-control" id="harvest" name="harvestId">
 							<#list harvests as harvest>
 								<option value="${harvest.id}">${harvest.name}</option>
 							</#list>
@@ -47,36 +44,79 @@
 					</div>
 					<div class="form-group">
 						<label for="name">Cultivar</label>
-						<input type="text" class="form-control" id="name" >
+						<input type="text" class="form-control" id="name" name="name" >
 					</div>
 
 					<div class="form-group">
 						<label for="sowedDate">Data da Semeadura</label>
-						<input type="date" class="form-control" id="sowedDate" >
+						<input type="date" class="form-control" id="sowedDate" name="sowedDate" >
 					</div>
 					<div class="form-group">
 						<label for="emergenceDate">Data da Emergência</label>
-						<input type="date" class="form-control" id="emergenceDate" >
+						<input type="date" class="form-control" id="emergenceDate" name="emergenceDate" >
 					</div>
 					<div class="form-group">
 						<label for="harvestDate">Data da Colheita</label>
-						<input type="date" class="form-control" id="harvestDate" >
+						<input type="date" class="form-control" id="harvestDate" name="harvestDate" > 
 					</div>
 
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="" id="rustResistant">
+						<input class="form-check-input" type="checkbox" id="rustResistant" name="rustResistant">
 						<label class="form-check-label" for="rustResistant">
 							A cultivar é resistente à ferrugem?
 						</label>
 					</div>
 
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="" id="bt">
+						<input class="form-check-input" type="checkbox" id="bt" name="bt">
 						<label class="form-check-label" for="bt">
 							A cultivar é Bt?
 						</label>
 					</div>
 
+					<div class="form-group">
+						<label for="totalArea">Área da unidade (UO/UR) </label>
+						<input type="number" step="0.01" class="form-control" id="totalArea" name="totalArea" >
+					</div>
+
+					<div class="form-group">
+						<label for="totalPlantedArea">Área total cultivada </label>
+						<input type="number" step="0.01" class="form-control" id="totalPlantedArea" name="totalPlantedArea" >
+					</div>
+
+					<div class="form-group">
+						<label for="plantPerMeter">No. plantas por metro </label>
+						<input type="number" step="0.01" class="form-control" id="plantPerMeter" name="plantPerMeter" >
+					</div>
+
+					<div class="form-group">
+						<label for="productivityField">Produtividade da unidade (UO/UR) </label>
+						<input type="number" step="0.01" class="form-control" id="productivityField" name="productivityField" >
+					</div>
+
+					<div class="form-group">
+						<label for="productivityFarmer">Produtividade área total do produtor </label>
+						<input type="number" step="0.01" class="form-control" id="productivityFarmer" name="productivityFarmer" >
+					</div>
+
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="separatedWeight" name="separatedWeight">
+						<label class="form-check-label" for="separatedWeight">
+							Pesou em separado?
+						</label>
+					</div>
+
+					<div class="form-group">
+						<label for="latitute">Latitude </label>
+						<input type="number" step="0.01" class="form-control" id="latitute" name="latitute" >
+					</div>
+
+					<div class="form-group">
+						<label for="longitude">Longitude </label>
+						<input type="number" step="0.01" class="form-control" id="longitude" name="longitude" >
+					</div>
+
+					<input type="submit" class="btn btn-success" value="Salvar Dados da Unidade de Referência na Pesquisa" />	
 				</form>
 			</div>
 		</div>
