@@ -25,13 +25,22 @@
 
                 <input type="hidden" name="fieldId" value="${selectedField.id}">
 
-
-				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="#harvest-tab">Safra</a></li>
-					<li><a data-toggle="tab" href="#cultivar-tab">Cultivar 1</a></li>
-					<li><a data-toggle="tab" href="#area-tab">Area</a></li>
-					<li><a data-toggle="tab" href="#productivity-tab">Produtividade</a></li>
-					<li><a data-toggle="tab" href="#date-tab">Datas</a></li>
+				<ul class="nav nav-pills">
+					<li class="nav-item active">
+                        <a class="nav-link active" data-toggle="tab" href="#harvest-tab">Safra</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#cultivar-tab">Cultivar</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#area-tab">Area</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#productivity-tab">Produtividade</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#date-tab">Datas</a>
+                    </li>
 				</ul>
 
                 <div class="tab-content">
