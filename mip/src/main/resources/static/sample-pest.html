@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>${pageTitle}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <form action="#" method="post" class="card" style="margin: 15px">
+            <div class="card-header text-white" style="background-color: #004900">
+                <h2>${pageTitle}</h2>
+            </div>
+
+            <div class="card-body">
+
+                <ul class="nav nav-pills">
+                    <li class="nav-item active">
+                        <a class="nav-link active" data-toggle="tab" href="#other-tab">Dados da Amostragem</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#pest-table-tab">Flutuação Populacional</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="other-tab" class="card tab-pane fade in active" style="margin-top: 15px">
+                        <div class="card-header text-white" style="background-color: #004900">
+                            Dados da Amostragem
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group ">
+                                <label for="name">Nome</label>
+                                <input type="text" class="form-control" id="name" name="name">
+                            </div>
+
+                            <div class="form-row col-md-6">
+                                <div class="form-check col">
+                                    <input class="form-check-input" type="checkbox" id="rustResistant" name="rustResistant">
+                                    <label class="form-check-label" for="rustResistant">
+                                        Resistente à ferrugem?
+                                    </label>
+                                </div>
+
+                                <div class="form-check col">
+                                    <input class="form-check-input" type="checkbox" id="bt" name="bt">
+                                    <label class="form-check-label" for="bt">
+                                        Bt?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="pest-table-tab" class="card tab-pane fade in active" style="margin-top: 15px">
+                        <div class="card-header text-white" style="background-color: #004900">
+                            Flutuação Populacional dos Insetos Pragas
+                        </div>
+                        <div class="card-body table-responsive-md">
+                            <table id="mainTable" class="table table-striped table-hover">
+                                <thead style="background-color: #004900; color: white">
+                                    <tr>
+                                        <th>Insetos Praga</th>
+                                        <th>Média Encontrada</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="mainTable-body">
+                                    <tr>
+                                        <td>Lagarta da Soja - Anticarsia gemmatalis (
+                                            < 1,5 cm)</td>
+                                                <td><input class="form-control" id="search" type="text" placeholder="0.0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Falsa Medideira - Chrysodeixis spp. (> 1,5 cm)</td>
+                                        <td><input class="form-control" id="search" type="text" placeholder="0.0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Grupo Heliothinae (
+                                            < 1,5 cm)</td>
+                                                <td><input class="form-control" id="search" type="text" placeholder="0.0"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- External JS libs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
