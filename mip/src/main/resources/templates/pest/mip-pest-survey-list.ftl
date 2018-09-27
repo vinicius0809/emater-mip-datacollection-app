@@ -29,6 +29,7 @@
                 <table id="mainTable" class="table table-striped table-hover">
                     <thead style="background-color: #004900; color: white">
                         <tr>
+                            <th>Safra</th>
                             <th>Identificação</th>
                             <th>Localização</th>
                             <th>Cidade</th>
@@ -39,45 +40,26 @@
                         </tr>
                     </thead>
                     <tbody id="mainTable-body">
-                        <tr>
-                            <td>Identificação</td>
-                            <td>Localização</td>
-                            <td>Cidade</td>
-                            <td>Cultivar</td>
-                            <td>1</td>
-                            <td>Técnico responsável</td>
-                            <td>
-                                <a href="#">
-                                    <i class="material-icons" style="color: #004900" title="Coletar amostra">add_circle</i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Identificação</td>
-                            <td>Localização</td>
-                            <td>Cidade</td>
-                            <td>Cultivar</td>
-                            <td>2</td>
-                            <td>Técnico responsável</td>
-                            <td>
-                                <a href="#">
-                                    <i class="material-icons" style="color: #004900" title="Coletar amostra">add_circle</i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Identificação</td>
-                            <td>Localização</td>
-                            <td>Cidade</td>
-                            <td>Cultivar</td>
-                            <td>3</td>
-                            <td>Técnico responsável</td>
-                            <td>
-                                <a href="#">
-                                    <i class="material-icons" style="color: #004900" title="Coletar amostra">add_circle</i>
-                                </a>
-                            </td>
-                        </tr>
+                        <#list mipPestSurveys as mipPestSurvey>
+                            <tr>
+                                <td>${mipPestSurvey.surveyField.harvest.name}</td>
+                                <td>${mipPestSurvey.surveyField.field.name}</td>
+                                <td>${mipPestSurvey.surveyField.field.location}</td>
+                                <td>${mipPestSurvey.surveyField.field.city.name}</td>
+                                <td>${mipPestSurvey.surveyField.name}</td>
+                                <td>${mipPestSurvey.surveyField.field.farmer.name}</td>
+                                <td>
+                                    <#list mipPestSurvey.surveyField.field.supervisors as supervisor>
+                                        <span>${supervisor.name}</span> <br>
+                                    </#list>
+							    </td>
+                                <td>
+                                    <a href="/pest-survey/add-sample?mipPestSurveyId=${mipPestSurvey.id}">
+                                        <i class="material-icons" style="color: #004900" title="Coletar amostra">add_circle</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </#list>
                     </tbody>
                 </table>
             </div>
