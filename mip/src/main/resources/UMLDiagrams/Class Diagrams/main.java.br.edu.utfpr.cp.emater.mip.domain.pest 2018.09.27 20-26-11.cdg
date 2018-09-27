@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.br.edu.utfpr.cp.emater.mip.domain.pest">
+  <ClassDiagramComponents>
+    <Class name="MipPestSurvey" package="br.edu.utfpr.cp.emater.mip.domain.pest" visibility="public" xPosition="338.0" yPosition="25.0">
+      <Fields>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="surveyField" type="SurveyField" visibility="private"/>
+        <Field name="samplePestSet" type="List&lt;SamplePestSurvey&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Pest" package="br.edu.utfpr.cp.emater.mip.domain.pest" visibility="public" xPosition="806.0" yPosition="41.0">
+      <Fields>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="usualName" type="String" visibility="private"/>
+        <Field name="scientificName" type="String" visibility="private"/>
+        <Field name="pestSize" type="PestSize" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="SamplePest" package="br.edu.utfpr.cp.emater.mip.domain.pest" visibility="public" xPosition="806.0" yPosition="324.0">
+      <Fields>
+        <Field name="value" type="double" visibility="private"/>
+        <Field name="pest" type="Pest" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="SamplePestSurvey" package="br.edu.utfpr.cp.emater.mip.domain.pest" visibility="public" xPosition="362.0" yPosition="298.0">
+      <Fields>
+        <Field name="sampleDate" type="Date" visibility="private"/>
+        <Field name="daysAfterEmergence" type="int" visibility="private"/>
+        <Field name="defoliation" type="int" visibility="private"/>
+        <Field name="growthPhase" type="GrowthPhase" visibility="private"/>
+        <Field name="samplesPest" type="List&lt;SamplePest&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Enum name="GrowthPhase" package="br.edu.utfpr.cp.emater.mip.domain.pest" visibility="public" xPosition="28.0" yPosition="321.0">
+      <Literals>
+        <Literal name="V1"/>
+        <Literal name="V5"/>
+        <Literal name="R2"/>
+      </Literals>
+    </Enum>
+    <Enum name="PestSize" package="br.edu.utfpr.cp.emater.mip.domain.pest" visibility="public" xPosition="1084.0" yPosition="64.0">
+      <Literals>
+        <Literal name="GREATER_15CM"/>
+        <Literal name="SMALLER_15CM"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="growthPhase" source="br.edu.utfpr.cp.emater.mip.domain.pest.SamplePestSurvey" target="br.edu.utfpr.cp.emater.mip.domain.pest.GrowthPhase" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="samplePestSet" source="br.edu.utfpr.cp.emater.mip.domain.pest.MipPestSurvey" target="br.edu.utfpr.cp.emater.mip.domain.pest.SamplePestSurvey" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;SamplePestSurvey&gt;"/>
+    <HasRelation name="pestSize" source="br.edu.utfpr.cp.emater.mip.domain.pest.Pest" target="br.edu.utfpr.cp.emater.mip.domain.pest.PestSize" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="samplesPest" source="br.edu.utfpr.cp.emater.mip.domain.pest.SamplePestSurvey" target="br.edu.utfpr.cp.emater.mip.domain.pest.SamplePest" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;SamplePest&gt;"/>
+    <HasRelation name="pest" source="br.edu.utfpr.cp.emater.mip.domain.pest.SamplePest" target="br.edu.utfpr.cp.emater.mip.domain.pest.Pest" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
