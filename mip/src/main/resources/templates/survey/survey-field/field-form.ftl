@@ -9,6 +9,9 @@
     <title>${pageTitle}</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="/css/smart_wizard.css" type="text/css" />
+    <link rel="stylesheet" href="/css/smart_wizard_theme_arrows.css" type="text/css" />
 
 </head>
 
@@ -21,30 +24,30 @@
             </div>
 
 
-            <div class="card-body">
+            <div id="smartwizard" class="card-body">
 
                 <input type="hidden" name="fieldId" value="${selectedField.id}">
 
-				<ul class="nav nav-pills">
-					<li class="nav-item active">
-                        <a class="nav-link active" data-toggle="tab" href="#harvest-tab">Safra</a>
+				<ul>
+					<li>
+                        <a href="#harvest-tab">Safra</a>
                     </li>
-					<li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#cultivar-tab">Cultivar</a>
+					<li>
+                        <a href="#cultivar-tab">Cultivar</a>
                     </li>
-					<li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#area-tab">Area</a>
+					<li>
+                        <a href="#area-tab">Area</a>
                     </li>
-					<li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#productivity-tab">Produtividade</a>
+					<li>
+                        <a href="#productivity-tab">Produtividade</a>
                     </li>
-					<li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#date-tab">Datas</a>
+					<li>
+                        <a href="#date-tab">Datas</a>
                     </li>
 				</ul>
 
                 <div class="tab-content">
-                    <div id="harvest-tab" class="card tab-pane fade in active" style="margin-top: 15px">
+                    <div id="harvest-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
                             Safra
                         </div>
@@ -59,7 +62,7 @@
                         </div>
                     </div>
 
-                    <div id="cultivar-tab" class="card tab-pane fade in active" style="margin-top: 15px">
+                    <div id="cultivar-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
                             Cultivar
                         </div>
@@ -87,7 +90,7 @@
                         </div>
                     </div>
 
-                    <div id="area-tab" class="card tab-pane fade in active" style="margin-top: 15px">
+                    <div id="area-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
                             Área
                         </div>
@@ -123,7 +126,7 @@
                         </div>
                     </div>
 
-                    <div id="productivity-tab" class="card tab-pane fade in active" style="margin-top: 15px">
+                    <div id="productivity-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
                             Produtividade
                         </div>
@@ -153,7 +156,7 @@
                         </div>
                     </div>
 
-                    <div id="date-tab" class="card tab-pane fade in active" style="margin-top: 15px">
+                    <div id="date-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
                             Datas
                         </div>
@@ -189,6 +192,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
+    <script src="/js/jquery.smartWizard.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // Smart Wizard
+            $('#smartwizard').smartWizard({
+                lang: {  // Language variables
+                    next: 'Próximo',
+                    previous: 'Anterior'
+                },
+                theme: 'arrows',
+                transitionEffect: 'fade', // Effect on navigation, none/slide/fade
+                transitionSpeed: '400'
+            });
+
+        }); 
+    </script>
 </body>
 
 </html>
