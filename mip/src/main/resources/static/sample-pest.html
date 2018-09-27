@@ -27,7 +27,7 @@
 
                 <ul>
                     <li>
-                        <a href="#other-tab">Dados da Amostragem</a>
+                        <a href="#sample-data-tab">Dados da Amostragem</a>
                     </li>
                     <li>
                         <a href="#pest-table-tab">Flutuação Populacional</a>
@@ -35,31 +35,43 @@
                 </ul>
 
                 <div class="tab-content">
-                    <div id="other-tab" class="card" style="margin-top: 15px">
+                    <div id="sample-data-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
                             Dados da Amostragem
                         </div>
                         <div class="card-body">
-                            <div class="form-group ">
-                                <label for="name">Nome</label>
-                                <input type="text" class="form-control" id="name" name="name">
-                            </div>
-
-                            <div class="form-row col-md-6">
-                                <div class="form-check col">
-                                    <input class="form-check-input" type="checkbox" id="rustResistant" name="rustResistant">
-                                    <label class="form-check-label" for="rustResistant">
-                                        Resistente à ferrugem?
-                                    </label>
-                                </div>
-
-                                <div class="form-check col">
-                                    <input class="form-check-input" type="checkbox" id="bt" name="bt">
-                                    <label class="form-check-label" for="bt">
-                                        Bt?
-                                    </label>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="sampleDate">Data da Coleta</label>
+                                    <input type="date" class="form-control" id="sampleDate" name="sampleDate">
                                 </div>
                             </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="growthPhase">Estádio da Cultura</label>
+                                    <select class="form-control" id="growthPhase" name="growthPhase">
+                                        <option value="harvest.id">harvest.name</option>
+                                        <option value="harvest.id">harvest.name</option>
+                                        <option value="harvest.id">harvest.name</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                   <label for="daysAfterEmergence">Dias Após Emergência</label>
+                                    <input type="number" class="form-control" id="daysAfterEmergence" name="daysAfterEmergence">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="defoliation">% de Desfolha (em números inteiros)</label>
+                                    <input type="number" class="form-control" id="defoliation" name="defoliation">
+                                </div>
+                            </div>
+                                
                         </div>
                     </div>
 
