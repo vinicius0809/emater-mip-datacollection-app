@@ -21,7 +21,7 @@
             <div class="card-header text-white d-flex" style="background-color: #004900">
                 <h2 class="col-sm-10">${pageTitle}</h2>
 
-                <a href="#addModal" class="btn btn-success col-sm-2" data-toggle="modal">
+                <a href="#addModal" class="btn btn-success col-sm-2 d-flex justify-content-center" data-toggle="modal">
                     <i class="material-icons">&#xE147;</i>
                     <span>Criar Nov${article} ${entity}</span>
                 </a>
