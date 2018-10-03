@@ -28,27 +28,39 @@
 
             <div class="card-body table-responsive-md">
                 <div>
-                    <input class="form-control" id="search" type="text" placeholder="Buscar...">
+                    <input class="form-control" id="search" type="text" placeholder="Buscar..." style="margin-bottom: 15px">
                 </div>
 
                 <table id="mainTable" class="table table-striped table-hover">
                     <thead style="background-color: #004900; color: white">
                         <tr>
-                            <th class="col-sm-11">Nome</th>
-                            <th class="col-sm-1">Ações</th>
+                            <th class="col-sm-2">Identificação</th>
+                            <th class="col-sm-2">Localização</th>
+                            <th class="col-sm-2">Cidade</th>
+                            <th class="col-sm-2">Produtor</th>
+                            <th class="col-sm-2">Responsável Técnico</th>
+                            <th class="col-sm-1">Ações</th>    
                         </tr>
                     </thead>
                     <tbody id="mainTable-body">
 
-                        <#list supervisors as supervisor>
+                        <#list fields as field>
 
                             <tr>
-                                <td>${supervisor.name}</td>
+                                <td>${field.name}</td>
+                                <td>${field.location}</td>
+                                <td>${field.city.name}</td>
+                                <td>${field.farmer.name}</td>
                                 <td>
-                                    <a href="#editModal" class="edit" data-toggle="modal" data-id="${supervisor.id}" data-name="${supervisor.name}">
+                                    <#list field.supervisors as supervisor>
+                                        <span>${supervisor.name}</span> <br>
+                                    </#list>
+                                </td>
+                                <td>
+                                    <a href="#editModal" class="text-warning" data-toggle="modal" data-id="${field.id}" data-name="${field.name}" data-location="${field.location}" data-city="${field.city.id}" data-farmer="${field.farmer.id}">
                                         <i class="material-icons" data-toggle="tooltip" title="Alterar">&#xE254;</i>
                                     </a>
-                                    <a href="#deleteModal" class="delete" data-toggle="modal" data-id="${supervisor.id}" data-name="${supervisor.name}">
+                                    <a href="#deleteModal" class="text-danger" data-toggle="modal" data-id="${field.id}" data-name="${field.name}">
                                         <i class="material-icons" data-toggle="tooltip" title="Apagar">&#xE872;</i>
                                     </a>
                                 </td>
