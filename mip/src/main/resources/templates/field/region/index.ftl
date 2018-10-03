@@ -90,7 +90,10 @@
                     });
                 });
             });
-        </script>
+    </script>
+    
+    <script src="/js/field/field-management.js"></script>
+
 </body>
 
 </html>
