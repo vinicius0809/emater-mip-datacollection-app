@@ -28,7 +28,7 @@
 
             <div class="card-body table-responsive-md">
                 <div>
-                    <input class="form-control" id="search" type="text" placeholder="Buscar...">
+                    <input class="form-control" id="search" type="text" placeholder="Buscar..." style="margin-bottom: 15px">
                 </div>
 
                 <table id="mainTable" class="table table-striped table-hover">
