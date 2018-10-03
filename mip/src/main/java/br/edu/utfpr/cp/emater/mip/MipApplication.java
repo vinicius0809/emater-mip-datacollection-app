@@ -120,23 +120,23 @@ class CLR implements CommandLineRunner {
         Pest p3 = pestRepository.save(new Pest(null, "Falsa-medideira", "Chrysodeixis spp.", PestSize.GREATER_15CM));
         Pest p4 = pestRepository.save(new Pest(null, "Falsa-medideira", "Chrysodeixis spp.", PestSize.SMALLER_15CM));
 
-        MipPestSurvey mip1 = new MipPestSurvey(null, sf1, null);
+//        MipPestSurvey mip1 = new MipPestSurvey(null, sf1, null);
 //        mip1.addSamplePest(new Date(), 10, 13, GrowthPhase.R2, p1, 1.5);
 //        mip1.addSamplePest(new Date(), 11, 14, GrowthPhase.R2, p2, 2.5);
 //        mip1.addSamplePest(new Date(), 12, 15, GrowthPhase.R2, p3, 3.5);
-        mipPestSurveyRepository.save(mip1);
+//        mipPestSurveyRepository.save(mip1);
 
-        MipPestSurvey mip2 = new MipPestSurvey(null, sf2, null);
+//        MipPestSurvey mip2 = new MipPestSurvey(null, sf2, null);
 //        mip2.addSamplePest(new Date(), 10, 13, GrowthPhase.R2, p2, 1.5);
 //        mip2.addSamplePest(new Date(), 11, 14, GrowthPhase.V1, p3, 2.5);
 //        mip2.addSamplePest(new Date(), 12, 15, GrowthPhase.V5, p4, 3.5);
-        mipPestSurveyRepository.save(mip2);
+//        mipPestSurveyRepository.save(mip2);
 
-        MipPestSurvey mip3 = new MipPestSurvey(null, sf3, null);
+//        MipPestSurvey mip3 = new MipPestSurvey(null, sf3, null);
 //        mip3.addSamplePest(new Date(), 11, 14, GrowthPhase.R2, p1, 1.5);
 //        mip3.addSamplePest(new Date(), 12, 15, GrowthPhase.V1, p3, 2.5);
 //        mip3.addSamplePest(new Date(), 13, 16, GrowthPhase.V5, p4, 3.5);
-        mipPestSurveyRepository.save(mip3);
+//        mipPestSurveyRepository.save(mip3);
     }
 
 }

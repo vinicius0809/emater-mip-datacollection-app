@@ -3,12 +3,12 @@ package br.edu.utfpr.cp.emater.mip.domain.pest;
 import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.SurveyField;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +26,6 @@ public class MipPestSurvey implements Serializable {
     @OneToOne (fetch = FetchType.EAGER)
     private SurveyField surveyField;
         
-    @ElementCollection
-    private List<SamplePestSurvey> samplePestSet;
+    // @OneToMany (fetch = FetchType.EAGER)
+    // private List<SamplePestSurvey> samplePestSet;
 }
