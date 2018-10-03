@@ -10,11 +10,10 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel='stylesheet'href='https://fonts.googleapis.com/css?family=Arimo'>
 
 </head>
 
-<body style="font-family: 'Arimo'">
+<body>
     <div class="container-fluid">
 
         <form action="#" method="post" class="card" style="margin: 15px">

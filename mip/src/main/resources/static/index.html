@@ -10,11 +10,12 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel='stylesheet'href='https://fonts.googleapis.com/css?family=Arimo'>
 
 </head>
 
-<body>
-    <div class="container-fluid">
+<body style="font-family: 'Arimo'">
+        <div class="container-fluid">
 
         <form action="#" method="post" class="card" style="margin: 15px">
             <div class="card-header text-white d-flex" style="background-color: #004900">
@@ -34,33 +35,25 @@
                 <table id="mainTable" class="table table-striped table-hover">
                     <thead style="background-color: #004900; color: white">
                         <tr>
-                            <th class="col-sm-2">Identificação</th>
-                            <th class="col-sm-2">Localização</th>
-                            <th class="col-sm-2">Cidade</th>
-                            <th class="col-sm-2">Produtor</th>
-                            <th class="col-sm-2">Responsável Técnico</th>
+                            <th class="col-sm-5">Descrição</th>
+                            <th class="col-sm-3">Data Início</th>
+                            <th class="col-sm-3">Data Término</th>
                             <th class="col-sm-1">Ações</th>    
                         </tr>
                     </thead>
                     <tbody id="mainTable-body">
 
-                        <#list fields as field>
+                        <#list harvests as harvest>
 
                             <tr>
-                                <td>${field.name}</td>
-                                <td>${field.location}</td>
-                                <td>${field.city.name}</td>
-                                <td>${field.farmer.name}</td>
+                                <td>${harvest.name}</td>
+                                <td>${harvest.begin}</td>
+                                <td>${harvest.end}</td>
                                 <td>
-                                    <#list field.supervisors as supervisor>
-                                        <span>${supervisor.name}</span> <br>
-                                    </#list>
-                                </td>
-                                <td>
-                                    <a href="#editModal" class="text-warning" data-toggle="modal" data-id="${field.id}" data-name="${field.name}" data-location="${field.location}" data-city="${field.city.id}" data-farmer="${field.farmer.id}">
+                                    <a href="#editModal" class="text-warning" data-toggle="modal" data-id="${harvest.id}" data-name="${harvest.name}" data-harvestBegin="${harvest.begin}" data-harvestEnd="${harvest.end}">
                                         <i class="material-icons" data-toggle="tooltip" title="Alterar">&#xE254;</i>
                                     </a>
-                                    <a href="#deleteModal" class="text-danger" data-toggle="modal" data-id="${field.id}" data-name="${field.name}">
+                                    <a href="#deleteModal" class="text-danger" data-toggle="modal" data-id="${harvest.id}" data-name="${harvest.name}">
                                         <i class="material-icons" data-toggle="tooltip" title="Apagar">&#xE872;</i>
                                     </a>
                                 </td>
@@ -102,7 +95,7 @@
             });
     </script>
         
-    <script src="/js/field/field-management.js"></script>
+    <script src="/js/survey/survey-management.js"></script>
 </body>
 
 </html>
