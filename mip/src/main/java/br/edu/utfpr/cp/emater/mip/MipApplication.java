@@ -16,8 +16,11 @@ import br.edu.utfpr.cp.emater.mip.domain.pest.GrowthPhase;
 import br.edu.utfpr.cp.emater.mip.domain.pest.MipPestSurvey;
 import br.edu.utfpr.cp.emater.mip.domain.pest.MipPestSurveyRepository;
 import br.edu.utfpr.cp.emater.mip.domain.pest.Pest;
+import br.edu.utfpr.cp.emater.mip.domain.pest.PestOccurrence;
 import br.edu.utfpr.cp.emater.mip.domain.pest.PestRepository;
 import br.edu.utfpr.cp.emater.mip.domain.pest.PestSize;
+import br.edu.utfpr.cp.emater.mip.domain.pest.SamplePest;
+import br.edu.utfpr.cp.emater.mip.domain.pest.SamplePestRepository;
 import br.edu.utfpr.cp.emater.mip.domain.survey.harvest.Harvest;
 import br.edu.utfpr.cp.emater.mip.domain.survey.harvest.HarvestRepository;
 import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.DateData;
@@ -36,6 +39,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
+
+import antlr.collections.List;
 
 @SpringBootApplication
 public class MipApplication {
@@ -78,6 +83,9 @@ class CLR implements CommandLineRunner {
     @Autowired
     private PestRepository pestRepository;
 
+    @Autowired
+    private SamplePestRepository samplePestRepository;
+
     @Override
     public void run(String... args) throws Exception {
         MacroRegion mr1 = macroRegionRepository.save(new MacroRegion(null, "Macro Norte"));
@@ -119,24 +127,19 @@ class CLR implements CommandLineRunner {
         Pest p2 = pestRepository.save(new Pest(null, "Lagarta-da-soja", "Anticarsia gemmatalis", PestSize.SMALLER_15CM));
         Pest p3 = pestRepository.save(new Pest(null, "Falsa-medideira", "Chrysodeixis spp.", PestSize.GREATER_15CM));
         Pest p4 = pestRepository.save(new Pest(null, "Falsa-medideira", "Chrysodeixis spp.", PestSize.SMALLER_15CM));
+        
+        MipPestSurvey mps1 = mipPestSurveyRepository.save(new MipPestSurvey(null, sf1));
+        MipPestSurvey mps2 = mipPestSurveyRepository.save(new MipPestSurvey(null, sf2));
+        MipPestSurvey mps3 = mipPestSurveyRepository.save(new MipPestSurvey(null, sf3));
 
-//        MipPestSurvey mip1 = new MipPestSurvey(null, sf1, null);
-//        mip1.addSamplePest(new Date(), 10, 13, GrowthPhase.R2, p1, 1.5);
-//        mip1.addSamplePest(new Date(), 11, 14, GrowthPhase.R2, p2, 2.5);
-//        mip1.addSamplePest(new Date(), 12, 15, GrowthPhase.R2, p3, 3.5);
-//        mipPestSurveyRepository.save(mip1);
+        PestOccurrence po1 = new PestOccurrence(1.3, p1);
+        PestOccurrence po2 = new PestOccurrence(2.3, p2);
+        PestOccurrence po3 = new PestOccurrence(3.3, p3);
+        PestOccurrence po4 = new PestOccurrence(4.3, p4);
 
-//        MipPestSurvey mip2 = new MipPestSurvey(null, sf2, null);
-//        mip2.addSamplePest(new Date(), 10, 13, GrowthPhase.R2, p2, 1.5);
-//        mip2.addSamplePest(new Date(), 11, 14, GrowthPhase.V1, p3, 2.5);
-//        mip2.addSamplePest(new Date(), 12, 15, GrowthPhase.V5, p4, 3.5);
-//        mipPestSurveyRepository.save(mip2);
+        java.util.List<PestOccurrence> pestOccurrences = Stream.of(po1, po2, po3, po4).collect(Collectors.toList());
 
-//        MipPestSurvey mip3 = new MipPestSurvey(null, sf3, null);
-//        mip3.addSamplePest(new Date(), 11, 14, GrowthPhase.R2, p1, 1.5);
-//        mip3.addSamplePest(new Date(), 12, 15, GrowthPhase.V1, p3, 2.5);
-//        mip3.addSamplePest(new Date(), 13, 16, GrowthPhase.V5, p4, 3.5);
-//        mipPestSurveyRepository.save(mip3);
+        SamplePest sp1 = samplePestRepository.save(new SamplePest(null, new Date(), 3, 4, GrowthPhase.R2, pestOccurrences, mps1));
     }
 
 }
