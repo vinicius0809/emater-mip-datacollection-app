@@ -83,7 +83,11 @@ public class MacroRegionController {
     @RequestMapping (value = "/create", method = RequestMethod.POST)
     public String create (@RequestParam String name) {
         
-        repository.save(new MacroRegion(null, name));
+        MacroRegion mr = new MacroRegion();
+        mr.setName(name);
+
+        repository.save(mr);
+        
         return MacroRegionPath.SUCCESS_CREATE.getValue();
     }
     

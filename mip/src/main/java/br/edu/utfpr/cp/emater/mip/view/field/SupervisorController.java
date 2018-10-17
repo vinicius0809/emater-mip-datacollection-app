@@ -83,7 +83,11 @@ public class SupervisorController {
     @RequestMapping (value = "/create", method = RequestMethod.POST)
     public String create (@RequestParam String name) {
         
-        repository.save(new Supervisor(null, name));
+        Supervisor s = new Supervisor();
+        s.setName(name);
+
+        repository.save(s);
+        
         return SupervisorPath.SUCCESS_CREATE.getValue();
     }
     

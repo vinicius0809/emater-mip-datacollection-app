@@ -89,7 +89,12 @@ public class RegionController {
     public String create(@RequestParam String name, @RequestParam int macroRegionId) {
 
         MacroRegion mr = macroRegionRepository.findById(new Long(macroRegionId)).get();
-        regionRepository.save(new Region(null, name, mr));
+        
+        Region r = new Region();
+        r.setMacroRegion(mr);
+        r.setName(name);
+
+        regionRepository.save(r);
 
         return RegionPath.SUCCESS_CREATE.getValue();
     }

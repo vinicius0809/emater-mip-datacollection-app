@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import org.apache.commons.text.WordUtils;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,4 +27,8 @@ public class Region implements Serializable {
     
     @ManyToOne (fetch = FetchType.EAGER)
     private MacroRegion macroRegion;
+
+    public void setName (String name) {
+        this.name = WordUtils.capitalize(name.toLowerCase());
+    }
 }

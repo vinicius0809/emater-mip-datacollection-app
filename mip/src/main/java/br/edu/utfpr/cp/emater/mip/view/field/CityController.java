@@ -93,7 +93,12 @@ public class CityController {
     public String create(@RequestParam String name, @RequestParam int regionId) {
 
         Region region = regionRepository.findById(new Long (regionId)).get();
-        cityRepository.save(new City(null, name, region));
+
+        City c = new City();
+        c.setName(name);
+        c.setRegion(region);
+
+        cityRepository.save(c);
 
         return CityPath.SUCCESS_CREATE.getValue();
     }

@@ -94,20 +94,21 @@ class CLR implements CommandLineRunner {
         Region r1 = regionRepository.save(new Region(null, "Cornélio Procópio", mr1));
         Region r2 = regionRepository.save(new Region(null, "Dois Vizinhos", mr2));
 
-        City c1 = cityRepository.save(new City(null, "Londrina", r1));
-        City c2 = cityRepository.save(new City(null, "Cornélio Procópio", r1));
-        City c3 = cityRepository.save(new City(null, "Salto do Lontra", r2));
-        City c4 = cityRepository.save(new City(null, "Nova Prata do Iguaçú", r2));
+        City c1 = cityRepository.save(new City(null, "Itapejara D'Oeste", r1));
+        City c2 = cityRepository.save(new City(null, "Mariópolis", r1));
+        City c3 = cityRepository.save(new City(null, "Pato Branco", r2));
 
-        Farmer f1 = farmerRepository.save(new Farmer(null, "John Doe"));
-        Farmer f2 = farmerRepository.save(new Farmer(null, "Anna Doe"));
-        Farmer f3 = farmerRepository.save(new Farmer(null, "Michael Doe"));
-        Farmer f4 = farmerRepository.save(new Farmer(null, "Andrew Doe"));
+        Farmer f1 = farmerRepository.save(new Farmer(null, "Gilson Dariva"));
+        Farmer f2 = farmerRepository.save(new Farmer(null, "LUIZ ARCANGELO GIORDANI"));
+        Farmer f3 = farmerRepository.save(new Farmer(null, "Maurílio Bertoldo"));
+        Farmer f4 = farmerRepository.save(new Farmer(null, "Rafael Oldoni"));
+        Farmer f5 = farmerRepository.save(new Farmer(null, "Clemente Carnieletto"));
 
-        Supervisor s1 = supervisorRepository.save(new Supervisor(null, "John Allan"));
-        Supervisor s2 = supervisorRepository.save(new Supervisor(null, "Anna Allan"));
-        Supervisor s3 = supervisorRepository.save(new Supervisor(null, "Michael Allan"));
-        Supervisor s4 = supervisorRepository.save(new Supervisor(null, "Andrew Allan"));
+        Supervisor s1 = supervisorRepository.save(new Supervisor(null, "Lari Maroli"));
+        Supervisor s2 = supervisorRepository.save(new Supervisor(null, "IVANDERSON BORELLI"));
+        Supervisor s3 = supervisorRepository.save(new Supervisor(null, "José Francisco Vilas Boas"));
+        Supervisor s4 = supervisorRepository.save(new Supervisor(null, "Vilmar Grando"));
+
 
         Field fi1 = new Field(null, "A nice place to live", "Road to hope", c1, f1, null);
         fi1.addSupervisor(s1);

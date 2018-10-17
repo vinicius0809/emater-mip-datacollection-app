@@ -83,7 +83,11 @@ public class FarmerController {
     @RequestMapping (value = "/create", method = RequestMethod.POST)
     public String create (@RequestParam String name) {
         
-        repository.save(new Farmer(null, name));
+        Farmer f = new Farmer();
+        f.setName(name);
+
+        repository.save(f);
+        
         return FarmerPath.SUCCESS_CREATE.getValue();
     }
     

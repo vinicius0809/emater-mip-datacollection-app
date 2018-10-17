@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.apache.commons.text.WordUtils;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,4 +31,8 @@ public class Harvest implements Serializable {
     
     @Temporal (TemporalType.DATE)
     private Date end;
+
+    public void setName (String name) {
+        this.name = WordUtils.capitalize(name.toLowerCase());
+    }
 }

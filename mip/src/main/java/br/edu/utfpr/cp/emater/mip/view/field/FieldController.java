@@ -113,7 +113,14 @@ public class FieldController {
             supervisors.add(supervisorRepository.findById(new Long(supervisorId)).get());
         }
 
-        fieldRepository.save(new Field(null, name, location, city, farmer, supervisors));
+        Field f = new Field();
+        f.setCity(city);
+        f.setFarmer(farmer);
+        f.setLocation(location);
+        f.setName(name);
+        f.setSupervisors(supervisors);
+
+        fieldRepository.save(f);
 
         return FieldPath.SUCCESS_CREATE.getValue();
     }

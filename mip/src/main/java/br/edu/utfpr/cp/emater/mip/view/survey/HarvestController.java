@@ -91,7 +91,13 @@ public class HarvestController {
         Date formattedBegin = this.dateFormatter(begin);
         Date formattedEnd = this.dateFormatter(end);
 
-        repository.save(new Harvest(null, name, formattedBegin, formattedEnd));
+        Harvest h = new Harvest();
+        h.setBegin(formattedBegin);
+        h.setEnd(formattedEnd);
+        h.setName(name);
+
+        repository.save(h);
+        
         return HarvestPath.SUCCESS_CREATE.getValue();
     }
 
