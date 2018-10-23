@@ -32,6 +32,7 @@ import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.SurveyField;
 import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.SurveyFieldRepository;
 import java.util.Collections;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,25 +111,102 @@ class CLR implements CommandLineRunner {
         Supervisor s4 = supervisorRepository.save(new Supervisor(null, "Vilmar Grando"));
 
 
-        Field fi1 = new Field(null, "A nice place to live", "Road to hope", c1, f1, null);
+        Field fi1 = new Field(null, "Trevo", "", c1, f1, null);
         fi1.addSupervisor(s1);
-        fi1.addSupervisor(s2);
         fieldRepository.save(fi1);
 
-        Field fi2 = fieldRepository.save(new Field(null, "A nice place to work", "Road to energy", c2, f2, Stream.of(s3, s4).collect(Collectors.toList())));
-        Field fi3 = fieldRepository.save(new Field(null, "A good place to enjoy", "Road to hapiness", c1, f3, Collections.singletonList(s1)));
+        Field fi2 = new Field(null, "Carnieletto", "", c3, f5, null);
+        fi2.addSupervisor(s4);
+        fieldRepository.save(fi2);
 
-        Harvest h1 = harvestRepository.save(new Harvest(null, "Safra 2018/2019", new Date(), new Date(2019, 1, 1)));
+        Field fi3 = new Field(null, "Oldoni", "", c3, f4, null);
+        fi3.addSupervisor(s4);
+        fieldRepository.save(fi3);
 
-        SurveyField sf1 = surveyFieldRepository.save(new SurveyField(null, "BMX Potencia 1", new QuestionData(true, true), new DateData(new Date(), new Date(), new Date()), new SizeData(1.5, 1.5, 1.5), new LocationData(1.5, 1.5), new ProductivityData(1.5, 1.5, true), fi1, h1));
-        SurveyField sf2 = surveyFieldRepository.save(new SurveyField(null, "BMX Potencia 2", new QuestionData(false, false), new DateData(new Date(), new Date(), new Date()), new SizeData(2.5, 2.5, 2.5), new LocationData(2.5, 2.5), new ProductivityData(2.5, 2.5, true), fi2, h1));
-        SurveyField sf3 = surveyFieldRepository.save(new SurveyField(null, "BMX Potencia 3", new QuestionData(true, false), new DateData(new Date(), new Date(), new Date()), new SizeData(3.5, 3.5, 3.5), new LocationData(3.5, 3.5), new ProductivityData(3.5, 3.5, true), fi3, h1));
+        Field fi4 = new Field(null, "MIP e MID", "", c2, f2, null);
+        fi4.addSupervisor(s2);
+        fieldRepository.save(fi4);
 
-        Pest p1 = pestRepository.save(new Pest(null, "Lagarta-da-soja", "Anticarsia gemmatalis", PestSize.GREATER_15CM));
-        Pest p2 = pestRepository.save(new Pest(null, "Lagarta-da-soja", "Anticarsia gemmatalis", PestSize.SMALLER_15CM));
-        Pest p3 = pestRepository.save(new Pest(null, "Falsa-medideira", "Chrysodeixis spp.", PestSize.GREATER_15CM));
-        Pest p4 = pestRepository.save(new Pest(null, "Falsa-medideira", "Chrysodeixis spp.", PestSize.SMALLER_15CM));
+        Field fi5 = new Field(null, "Bertoldo", "1", c3, f3, null);
+        fi5.addSupervisor(s3);
+        fieldRepository.save(fi5);
+
+        Harvest h1 = harvestRepository.save(new Harvest(null, "Safra 2017/2018", new Date (2017, 10, 01), new Date (2018, 3, 1)));
+
+        SurveyField sf1 = new SurveyField();
+        sf1.setHarvest(h1);
+        sf1.setField(fi3);
+        sf1.setName("TMG 7262 RR1");
+        sf1.setDateData(new DateData(new Date(2017, 10, 1), new Date(2017, 10, 8), new Date(2018, 2, 26)));
+        sf1.setQuestionData(new QuestionData(true, false));
+        sf1.setSizeData(new SizeData(4.4, 10, 9));
+        sf1.setProductivityData(new ProductivityData(161.7, 159.5, true));
+        sf1.setLocationData(new LocationData(2.5, 3.5));
+        surveyFieldRepository.save(sf1);
         
+        SurveyField sf2 = new SurveyField();
+        sf2.setHarvest(h1);
+        sf2.setField(fi2);
+        sf2.setName("BMX RAIO Ipro");
+        sf2.setDateData(new DateData(new Date(2017, 10, 4), new Date(2017, 10, 11), new Date(2018, 2, 12)));
+        sf2.setQuestionData(new QuestionData(false, true));
+        sf2.setSizeData(new SizeData(18, 62, 13));
+        sf2.setProductivityData(new ProductivityData(197, 182, true));
+        sf2.setLocationData(new LocationData(3.5, 4.5));
+        surveyFieldRepository.save(sf2);
+
+        SurveyField sf3 = new SurveyField();
+        sf3.setHarvest(h1);
+        sf3.setField(fi3);
+        sf3.setName("TMG 7262 RR");
+        sf3.setDateData(new DateData(new Date(2017, 10, 4), new Date(2017, 10, 9), new Date(2018, 2, 20)));
+        sf3.setQuestionData(new QuestionData(true, false));
+        sf3.setSizeData(new SizeData(5.74, 35.09, 11));
+        sf3.setProductivityData(new ProductivityData(137.5, 120, true));
+        sf3.setLocationData(new LocationData(4.5, 5.5));
+        surveyFieldRepository.save(sf3);
+
+        SurveyField sf4 = new SurveyField();
+        sf4.setHarvest(h1);
+        sf4.setField(fi4);
+        sf4.setName("TMG -  7262");
+        sf4.setDateData(new DateData(new Date(2017, 10, 24), new Date(2017, 10, 29), new Date(2018, 2, 18)));
+        sf4.setQuestionData(new QuestionData(true, false));
+        sf4.setSizeData(new SizeData(3.63, 3.63, 9));
+        sf4.setProductivityData(new ProductivityData(158.5, 158.5, true));
+        sf4.setLocationData(new LocationData(6.5, 6.5));
+        surveyFieldRepository.save(sf4);
+
+        SurveyField sf5 = new SurveyField();
+        sf5.setHarvest(h1);
+        sf5.setField(fi1);
+        sf5.setName("P95R51");
+        sf5.setDateData(new DateData(new Date(2017, 9, 26), new Date(2017, 10, 10), new Date(2018, 2, 15)));
+        sf5.setQuestionData(new QuestionData(false, false));
+        sf5.setSizeData(new SizeData(7.26, 242, 15));
+        sf5.setProductivityData(new ProductivityData(187, 170, true));
+        sf5.setLocationData(new LocationData(7.5, 8.5));
+        surveyFieldRepository.save(sf5);
+
+        Pest p1  = pestRepository.save(new Pest(null, "Lagarta da soja", "Anticarsia gemmatalis", PestSize.GREATER_15CM));
+        Pest p2  = pestRepository.save(new Pest(null, "Lagarta da soja", "Anticarsia gemmatalis", PestSize.SMALLER_15CM));
+        Pest p3  = pestRepository.save(new Pest(null, "Falsa medideira", "Chrysodeixis spp.", PestSize.GREATER_15CM));
+        Pest p4  = pestRepository.save(new Pest(null, "Falsa medideira", "Chrysodeixis spp.", PestSize.SMALLER_15CM));
+        Pest p5  = pestRepository.save(new Pest(null, "Lagarta das vagens", "Spodoptera spp.", PestSize.GREATER_15CM));
+        Pest p6  = pestRepository.save(new Pest(null, "Lagarta das vagens", "Spodoptera spp.", PestSize.SMALLER_15CM));
+        Pest p7  = pestRepository.save(new Pest(null, "Grupo Heliothinae", "", PestSize.GREATER_15CM));
+        Pest p8  = pestRepository.save(new Pest(null, "Grupo Heliothinae", "Chrysodeixis spp.", PestSize.SMALLER_15CM));
+        Pest p9  = pestRepository.save(new Pest(null, "Percevejo verde", "Nezara sp.", PestSize.THIRD_TO_FIFTH_INSTAR));
+        Pest p10 = pestRepository.save(new Pest(null, "Percevejo verde", "Nezara sp.", PestSize.ADULT));
+        Pest p11 = pestRepository.save(new Pest(null, "Percevejo verde pequeno", "Piezodorus sp.", PestSize.THIRD_TO_FIFTH_INSTAR));
+        Pest p12 = pestRepository.save(new Pest(null, "Percevejo verde pequeno", "Piezodorus sp.", PestSize.ADULT));
+        Pest p13 = pestRepository.save(new Pest(null, "Percevejo Marrom", "Eushistus sp.", PestSize.THIRD_TO_FIFTH_INSTAR));
+        Pest p14 = pestRepository.save(new Pest(null, "Percevejo Marrom", "Eushistus sp.", PestSize.ADULT));
+        Pest p15 = pestRepository.save(new Pest(null, "Percevejo Barriga verde", "Dichelops ssp.", PestSize.THIRD_TO_FIFTH_INSTAR));
+        Pest p16 = pestRepository.save(new Pest(null, "Percevejo Barriga verde", "Dichelops ssp.", PestSize.ADULT));
+        Pest p17 = pestRepository.save(new Pest(null, "Outros percevejos", "", PestSize.THIRD_TO_FIFTH_INSTAR));
+        Pest p18 = pestRepository.save(new Pest(null, "Outros percevejos", "", PestSize.ADULT));
+
         MipPestSurvey mps1 = mipPestSurveyRepository.save(new MipPestSurvey(null, sf1));
         MipPestSurvey mps2 = mipPestSurveyRepository.save(new MipPestSurvey(null, sf2));
         MipPestSurvey mps3 = mipPestSurveyRepository.save(new MipPestSurvey(null, sf3));

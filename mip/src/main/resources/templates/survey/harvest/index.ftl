@@ -47,8 +47,8 @@
 
                             <tr>
                                 <td>${harvest.name}</td>
-                                <td>${harvest.begin}</td>
-                                <td>${harvest.end}</td>
+                                <td>${harvest.begin?string.medium}</td>
+                                <td>${harvest.end?string.medium}</td>
                                 <td>
                                     <a href="#editModal" class="text-warning" data-toggle="modal" data-id="${harvest.id}" data-name="${harvest.name}" data-harvestBegin="${harvest.begin}" data-harvestEnd="${harvest.end}">
                                         <i class="material-icons" data-toggle="tooltip" title="Alterar">&#xE254;</i>

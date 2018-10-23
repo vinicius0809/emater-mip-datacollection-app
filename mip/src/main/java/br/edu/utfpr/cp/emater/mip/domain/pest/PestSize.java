@@ -3,7 +3,9 @@ package br.edu.utfpr.cp.emater.mip.domain.pest;
 public enum PestSize {
     
     GREATER_15CM ("> 15 cm"),
-    SMALLER_15CM ("< 15 cm");
+    SMALLER_15CM ("< 15 cm"),
+    THIRD_TO_FIFTH_INSTAR ("3. ao 5. Instar"),
+    ADULT ("Adultos");
     
     private String name;
     

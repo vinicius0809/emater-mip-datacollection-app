@@ -62,9 +62,9 @@
                                 <td>${surveyField.name}</td>
                                 <td>${surveyField.questionData.rustResistant?string('Sim', 'Não')}</td>
                                 <td>${surveyField.questionData.bt?string('Sim', 'Não')}</td>
-                                <td>${surveyField.dateData.sowedDate}</td>
-                                <td>${surveyField.dateData.emergenceDate}</td>
-                                <td>${surveyField.dateData.harvestDate}</td>
+                                <td>${surveyField.dateData.sowedDate?string.medium}</td>
+                                <td>${surveyField.dateData.emergenceDate?string.medium}</td>
+                                <td>${surveyField.dateData.harvestDate?string.medium}</td>
                                 <td>${surveyField.productivityData.productivityField}</td>
                                 <td>${surveyField.productivityData.productivityFarmer}</td>
                                 <td>${surveyField.productivityData.separatedWeight?string('Sim', 'Não')}</td>
