@@ -19,15 +19,15 @@
 
         <form action="#" method="post" class="card" style="margin: 15px">
             <div class="card-header text-white d-flex" style="background-color: #004900">
-                <h2 class="col-sm-10">${pageTitle}</h2>
+                <h2 class="col-md-9">${pageTitle}</h2>
 
-                <a href="#addModal" class="btn btn-success col-sm-2 d-flex justify-content-center" data-toggle="modal">
+                <a href="#addModal" class="btn btn-success col-md-3 d-flex justify-content-center" data-toggle="modal">
                     <i class="material-icons">&#xE147;</i>
                     <span>Criar Nov${article} ${entity}</span>
                 </a>
             </div>
 
-            <div class="card-body table-responsive-md">
+            <div class="card-body table-responsive-md col-md-12">
                 <div>
                     <input class="form-control" id="search" type="text" placeholder="Buscar..." style="margin-bottom: 15px">
                 </div>
@@ -36,9 +36,9 @@
                     <thead style="background-color: #004900; color: white">
                         <tr>
                             <th class="col-sm-4">Nome</th>
-                            <th class="col-sm-5">Nome Científico</th>
+                            <th class="col-sm-4">Nome Científico</th>
                             <th class="col-sm-2">Tamanho</th>
-                            <th class="col-sm-1">Ações</th>
+                            <th class="col-sm-2">Ações</th>
                         </tr>
                     </thead>
                     <tbody id="mainTable-body">

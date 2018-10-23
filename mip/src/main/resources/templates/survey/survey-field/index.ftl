@@ -17,11 +17,11 @@
 <body style="font-family: 'Arimo'">
         <div class="container-fluid">
 
-        <form action="#" method="post" class="card" style="margin: 15px">
+        <form action="#" method="post" class="card" style="margin: 15px; width: 180%">
             <div class="card-header text-white d-flex" style="background-color: #004900">
-                <h2 class="col-sm-9">${pageTitle}</h2>
+                <h2 class="col-md-9">${pageTitle}</h2>
 
-                <a href="/survey-field/select-field" class="btn btn-success col-sm-3 d-flex justify-content-center" >
+                <a href="/survey-field/select-field" class="btn btn-success col-md-3 d-flex justify-content-center" >
                     <i class="material-icons">&#xE147;</i>
                     <!-- <span>Criar Nov${article} ${entity}</span> -->
                     <span>Adicionar Unidade de Referência à Pesquisa</span>
