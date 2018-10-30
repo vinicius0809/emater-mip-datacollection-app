@@ -14,11 +14,11 @@
 
 </head>
 
-<body style="font-family: 'Arimo'; display: flex">
+<body style="font-family: 'Arimo'">
     <div class="container-fluid">
 
     <!-- Add Menu -->
-    <#include "/survey/menubar.ftl">
+    <#include "/menubar.ftl">
 
         <form action="#" method="post" class="card" style="margin: 15px; width: 180%">
             <div class="card-header text-white d-flex" style="background-color: #004900">

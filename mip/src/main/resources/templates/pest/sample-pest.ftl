@@ -12,15 +12,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/css/smart_wizard.css" type="text/css" />
     <link rel="stylesheet" href="/css/smart_wizard_theme_arrows.css" type="text/css" />
+    <link rel='stylesheet'href='https://fonts.googleapis.com/css?family=Arimo'>
 
 </head>
 
-<body style="font-family: 'Arimo'; display: flex">
+<body style="font-family: 'Arimo'">
     <div class="container-fluid">
 
     <!-- Add Menu -->
-    <#include "/pest/menubar.ftl">
-
+    <#include "/menubar.ftl">
 
         <form action="#" method="post" class="card" style="margin: 15px">
             <div class="card-header text-white" style="background-color: #004900">

@@ -14,15 +14,12 @@
 
 </head>
 
-<body style="font-family: 'Arimo'; display: flex">
-
-    <#--  Sidebar  -->
-    <#include "/sidebar.ftl">
+<body style="font-family: 'Arimo'">
 
     <div class="container-fluid">
 
         <!-- Add Menu -->
-        <#include "/pest/menubar.ftl">
+        <#include "/menubar.ftl">
 
         <form action="#" method="post" class="card" style="margin: 15px">
             <div class="card-header text-white d-flex" style="background-color: #004900">
