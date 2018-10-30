@@ -52,8 +52,8 @@
 
                                 <td>
                                     <a href="#editModal" class="text-warning" data-toggle="modal" data-id="${pest.id}"
-                                        data-usualName="${pest.usualName}" data-scientificName="${pest.usualName}"
-                                        data-pestSize=${pest.pestSize}>
+                                        data-usual="${pest.usualName}" data-scientific="${pest.scientificName}"
+                                        data-size=${pest.pestSize}>
                                         <i class="material-icons" data-toggle="tooltip" title="Alterar">&#xE254;</i>
                                     </a>
                                     <a href="#deleteModal" class="text-danger" data-toggle="modal" data-id="${pest.id}"

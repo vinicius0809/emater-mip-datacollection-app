@@ -9,16 +9,16 @@
 					<div class="modal-body">					
 						<div class="form-group">
 							<label>Nome</label>
-							<input type="text" class="form-control" id="edit-usualName" name="usualName" required>
+							<input type="text" class="form-control" id="edit-usual" name="usualName" required>
 							<input type="hidden" class="form-control" id="edit-id" name="id">
 						</div>
 						<div class="form-group">
 							<label>Nome Científico</label>
-							<input type="text" class="form-control" id="edit-scientificName" name="scientificName" required>
+							<input type="text" class="form-control" id="edit-scientific" name="scientificName" required>
 						</div>
 						<div class="form-group">
 							<label>Tamanho</label>
-							<select name="pestSize" class="form-control" id="edit-pestSize">
+							<select name="pestSize" class="form-control" id="edit-size">
 								<#list pestSizes as pestSize>
   									<option value="${pestSize}">${pestSize.getName()}</option>
 								</#list>

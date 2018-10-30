@@ -95,12 +95,13 @@ public class PestController {
     
     @RequestMapping (value = "/update", method = RequestMethod.POST)
     public String update (Pest pest) {
-        System.out.println(pest);
+
+        Pest originalPest = repository.findById(pest.getId()).get();
+        originalPest.setUsualName(pest.getUsualName());
+        originalPest.setScientificName(pest.getScientificName());
+        originalPest.setPestSize(pest.getPestSize());
         
-        // MacroRegion mr = repository.findById(new Long (id)).get();
-        // mr.setName(name);
-        
-        // repository.saveAndFlush(mr);
+        repository.saveAndFlush(originalPest);
         
         return PestPath.SUCCESS_UPDATE.getValue();
     }
