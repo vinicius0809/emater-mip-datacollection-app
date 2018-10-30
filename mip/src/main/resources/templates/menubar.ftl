@@ -1,10 +1,13 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
+
     <span class="navbar-brand mb-0 h1">Sistema MIP/MID</span>
-    <ul class="navbar-nav">
+
+    <ul class="navbar-nav ml-auto">
 
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                Gerenciamento
+                <i class="material-icons align-middle">info</i>
+                <span class="align-middle">Gerenciamento de Informações</span>
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/macroregion">Macrorregião</a>
@@ -18,7 +21,8 @@
 
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                Pesquisa
+                <i class="material-icons align-middle">assignment</i>
+                <span class="align-middle">Configuração de Pesquisa</span>
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/harvest">Safra</a>
@@ -28,7 +32,8 @@
 
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                MIP
+                <i class="material-icons align-middle">bug_report</i>
+                <span class="align-middle">Manejo Integrado de Pragas</span>
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/pest">Insetos Pragas</a>
