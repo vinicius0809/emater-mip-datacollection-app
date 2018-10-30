@@ -36,6 +36,7 @@
                 <table id="mainTable" class="table table-striped table-hover">
                     <thead style="background-color: #004900; color: white">
                         <tr>
+                            <th class="col-sm-1">Safra</th>
                             <th class="col-sm-1">Cultivar</th>
                             <th class="col-sm-1">Resistente a Ferrugem</th>
                             <th class="col-sm-1">BT</th>
@@ -59,12 +60,13 @@
                         <#list surveyFields as surveyField>
 
                             <tr>
+                                <td>${surveyField.harvest.name}</td>
                                 <td>${surveyField.name}</td>
                                 <td>${surveyField.questionData.rustResistant?string('Sim', 'Não')}</td>
                                 <td>${surveyField.questionData.bt?string('Sim', 'Não')}</td>
-                                <td>${surveyField.dateData.sowedDate?string.medium}</td>
-                                <td>${surveyField.dateData.emergenceDate?string.medium}</td>
-                                <td>${surveyField.dateData.harvestDate?string.medium}</td>
+                                <td>${surveyField.dateData.sowedDate?string.short}</td>
+                                <td>${surveyField.dateData.emergenceDate?string.short}</td>
+                                <td>${surveyField.dateData.harvestDate?string.short}</td>
                                 <td>${surveyField.productivityData.productivityField}</td>
                                 <td>${surveyField.productivityData.productivityFarmer}</td>
                                 <td>${surveyField.productivityData.separatedWeight?string('Sim', 'Não')}</td>
