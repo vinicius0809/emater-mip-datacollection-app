@@ -179,7 +179,7 @@ class CLR implements CommandLineRunner {
 
         SurveyField sf3 = new SurveyField();
         sf3.setHarvest(h1);
-        sf3.setField(fi3);
+        sf3.setField(fi5);
         sf3.setName("TMG 7262 RR");
         sf3.setDateData(new DateData(new Date(2017, 10, 4), new Date(2017, 10, 9), new Date(2018, 2, 20)));
         sf3.setQuestionData(new QuestionData(true, false));
@@ -232,6 +232,8 @@ class CLR implements CommandLineRunner {
         MipPestSurvey mps1 = mipPestSurveyRepository.save(new MipPestSurvey(null, sf1));
         MipPestSurvey mps2 = mipPestSurveyRepository.save(new MipPestSurvey(null, sf2));
         MipPestSurvey mps3 = mipPestSurveyRepository.save(new MipPestSurvey(null, sf3));
+        MipPestSurvey mps4 = mipPestSurveyRepository.save(new MipPestSurvey(null, sf4));
+        MipPestSurvey mps5 = mipPestSurveyRepository.save(new MipPestSurvey(null, sf5));
 
         PestOccurrence po1 = new PestOccurrence(1.3, p1);
         PestOccurrence po2 = new PestOccurrence(2.3, p2);
