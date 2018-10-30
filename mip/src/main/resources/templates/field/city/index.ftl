@@ -10,10 +10,12 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel='stylesheet'href='https://fonts.googleapis.com/css?family=Arimo'>
 
 </head>
 
-<body>
+<body style="font-family: 'Arimo'; display: flex">
+    
     <div class="container-fluid">
 
     <!-- Add Menu -->

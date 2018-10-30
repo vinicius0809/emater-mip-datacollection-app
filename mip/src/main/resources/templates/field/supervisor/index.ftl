@@ -14,7 +14,7 @@
 
 </head>
 
-<body style="font-family: 'Arimo'">
+<body style="font-family: 'Arimo'; display: flex">
     <div class="container-fluid">
 
     <!-- Add Menu -->
