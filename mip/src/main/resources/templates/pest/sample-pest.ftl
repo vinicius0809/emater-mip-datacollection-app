@@ -18,6 +18,10 @@
 <body>
     <div class="container-fluid">
 
+    <!-- Add Menu -->
+    <#include "/pest/menubar.ftl">
+
+
         <form action="#" method="post" class="card" style="margin: 15px">
             <div class="card-header text-white" style="background-color: #004900">
                 <h2>${pageTitle}</h2>

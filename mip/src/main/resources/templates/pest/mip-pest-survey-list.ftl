@@ -16,6 +16,9 @@
 <body>
     <div class="container-fluid">
 
+    <!-- Add Menu -->
+    <#include "/pest/menubar.ftl">
+
         <form action="#" method="post" class="card" style="margin: 15px">
             <div class="card-header text-white" style="background-color: #004900">
                 <h2>${pageTitle}</h2>
@@ -29,19 +32,24 @@
                 <table id="mainTable" class="table table-striped table-hover">
                     <thead style="background-color: #004900; color: white">
                         <tr>
+                            <th></th>
                             <th>Safra</th>
                             <th>Identificação</th>
                             <th>Localização</th>
-                            <th>Cidade</th>
+                            <th>Município</th>
                             <th>Cultivar</th>
                             <th>Produtor</th>
                             <th>Técnico responsável</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="mainTable-body">
                         <#list mipPestSurveys as mipPestSurvey>
                             <tr>
+                                <td>
+                                    <a href="/pest-survey/add-sample?mipPestSurveyId=${mipPestSurvey.id}">
+                                        <i class="material-icons" style="color: #004900" title="Coletar amostra">add_circle</i>
+                                    </a>
+                                </td>
                                 <td>${mipPestSurvey.surveyField.harvest.name}</td>
                                 <td>${mipPestSurvey.surveyField.field.name}</td>
                                 <td>${mipPestSurvey.surveyField.field.location}</td>
@@ -53,11 +61,6 @@
                                         <span>${supervisor.name}</span> <br>
                                     </#list>
 							    </td>
-                                <td>
-                                    <a href="/pest-survey/add-sample?mipPestSurveyId=${mipPestSurvey.id}">
-                                        <i class="material-icons" style="color: #004900" title="Coletar amostra">add_circle</i>
-                                    </a>
-                                </td>
                             </tr>
                         </#list>
                     </tbody>
