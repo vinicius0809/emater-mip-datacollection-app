@@ -89,15 +89,37 @@ class CLR implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        MacroRegion mr1 = macroRegionRepository.save(new MacroRegion(null, "Macro Norte"));
-        MacroRegion mr2 = macroRegionRepository.save(new MacroRegion(null, "Macro Sul"));
+        MacroRegion mr1 = macroRegionRepository.save(new MacroRegion(null, "Macro Noroeste"));
+        MacroRegion mr2 = macroRegionRepository.save(new MacroRegion(null, "Macro Norte"));
+        MacroRegion mr3 = macroRegionRepository.save(new MacroRegion(null, "Macro Oeste"));
+        MacroRegion mr4 = macroRegionRepository.save(new MacroRegion(null, "Macro Sul"));
 
-        Region r1 = regionRepository.save(new Region(null, "Cornélio Procópio", mr1));
-        Region r2 = regionRepository.save(new Region(null, "Dois Vizinhos", mr2));
-
-        City c1 = cityRepository.save(new City(null, "Itapejara D'Oeste", r1));
-        City c2 = cityRepository.save(new City(null, "Mariópolis", r1));
-        City c3 = cityRepository.save(new City(null, "Pato Branco", r2));
+        Region r1 = regionRepository.save(new Region(null, "Apucarana", mr1));
+        Region r2 = regionRepository.save(new Region(null, "Campo Mourão", mr2));
+        Region r3 = regionRepository.save(new Region(null, "Cascavel", mr3));
+        Region r4 = regionRepository.save(new Region(null, "Cianorte", mr2));
+        Region r5 = regionRepository.save(new Region(null, "Cornélio Procópio", mr2));
+        Region r6 = regionRepository.save(new Region(null, "Curitiba", mr2));
+        Region r7 = regionRepository.save(new Region(null, "Dois Vizinhos", mr4));
+        Region r8 = regionRepository.save(new Region(null, "Francisco Beltrão", mr4));
+        Region r9 = regionRepository.save(new Region(null, "Guarapuava", mr2));
+        Region r10 = regionRepository.save(new Region(null, "Irati", mr2));
+        Region r11 = regionRepository.save(new Region(null, "Ivaiporã", mr2));
+        Region r12= regionRepository.save(new Region(null, "Laranjeiras do Sul", mr2));
+        Region r13= regionRepository.save(new Region(null, "Londrina", mr2));
+        Region r14= regionRepository.save(new Region(null, "Maringá", mr1));
+        Region r15= regionRepository.save(new Region(null, "Paranaguá", mr2));
+        Region r16= regionRepository.save(new Region(null, "Paranavaí", mr1));
+        Region r17= regionRepository.save(new Region(null, "Pato Branco", mr4));
+        Region r18= regionRepository.save(new Region(null, "Ponta Grossa", mr2));
+        Region r19= regionRepository.save(new Region(null, "Sto. Antonio da Platina", mr2));
+        Region r20= regionRepository.save(new Region(null, "Toledo", mr2));
+        Region r21= regionRepository.save(new Region(null, "Umuarama", mr1));
+        Region r22= regionRepository.save(new Region(null, "União da Vitória", mr4));
+        
+        City c1 = cityRepository.save(new City(null, "Itapejara D'Oeste", r7));
+        City c2 = cityRepository.save(new City(null, "Mariópolis", r17));
+        City c3 = cityRepository.save(new City(null, "Pato Branco", r17));
 
         Farmer f1 = farmerRepository.save(new Farmer(null, "Gilson Dariva"));
         Farmer f2 = farmerRepository.save(new Farmer(null, "LUIZ ARCANGELO GIORDANI"));
