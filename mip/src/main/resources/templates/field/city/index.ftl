@@ -16,6 +16,9 @@
 <body>
     <div class="container-fluid">
 
+    <!-- Add Menu -->
+    <#include "/field/menubar.ftl">
+
         <form action="#" method="post" class="card" style="margin: 15px">
             <div class="card-header text-white d-flex" style="background-color: #004900">
                 <h2 class="col-md-9">${pageTitle}</h2>

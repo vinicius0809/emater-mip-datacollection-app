@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 enum CityLabels {
-    PAGE_TITLE("Gerenciamento de Cidades"),
-    ENTITY("Cidade"),
-    ARTICLE("a"),
+    PAGE_TITLE("Gerenciamento de Municípios"),
+    ENTITY("Município"),
+    ARTICLE("o"),
     URL_CREATE("/city/create"),
     URL_UPDATE("/city/update"),
     URL_DELETE("/city/delete");

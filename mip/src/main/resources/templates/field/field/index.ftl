@@ -17,6 +17,9 @@
 <body style="font-family: 'Arimo'">
     <div class="container-fluid">
 
+    <!-- Add Menu -->
+    <#include "/field/menubar.ftl">
+
         <form action="#" method="post" class="card" style="margin: 15px">
             <div class="card-header text-white d-flex" style="background-color: #004900">
                 <h2 class="col-md-8">${pageTitle}</h2>
@@ -37,7 +40,7 @@
                         <tr>
                             <th class="col-sm-2">Identificação</th>
                             <th class="col-sm-2">Localização</th>
-                            <th class="col-sm-2">Cidade</th>
+                            <th class="col-sm-2">Município</th>
                             <th class="col-sm-2">Produtor</th>
                             <th class="col-sm-2">Responsável Técnico</th>
                             <th class="col-sm-1">Ações</th>    
