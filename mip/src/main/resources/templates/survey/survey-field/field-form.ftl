@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/smart_wizard.css" type="text/css" />
     <link rel="stylesheet" href="/css/smart_wizard_theme_arrows.css" type="text/css" />
     <link rel='stylesheet'href='https://fonts.googleapis.com/css?family=Arimo'>
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body style="font-family: 'Arimo'">
@@ -186,7 +186,7 @@
             </div>
 
             <div class="card-footer text-muted">
-                <input type="submit" class="btn btn-success" value="Salvar Dados da Unidade de Referência na Pesquisa" />
+                <input type="submit" class="btn btn-success float-right" value="Salvar Dados da Unidade de Referência na Pesquisa" />
             </div>
         </form>
     </div>

@@ -24,7 +24,7 @@
 
         <form action="/pest-survey/save-sample" method="post" class="card" style="margin: 15px">
             <div class="card-header text-white" style="background-color: #004900">
-                <h2>${pageTitle}</h2>
+                <h2 class="card-title" style="display: inline">${pageTitle}</h2>
             </div>
 
             <div id="smartwizard" class="card-body">

@@ -21,13 +21,13 @@
     <#include "/menubar.ftl">
 
         <form action="#" method="post" class="card" style="margin: 15px; width: 180%">
-            <div class="card-header text-white d-flex" style="background-color: #004900">
-                <h2 class="col-md-9">${pageTitle}</h2>
+            <div class="card-header text-white" style="background-color: #004900">
+                <h2 class="card-title" style="display: inline">${pageTitle}</h2>
 
-                <a href="/survey-field/select-field" class="btn btn-success col-md-3 d-flex justify-content-center" >
-                    <i class="material-icons">&#xE147;</i>
+                <a href="/survey-field/select-field" class="btn btn-success float-right" >
+                    <i class="material-icons align-middle">&#xE147;</i>
                     <!-- <span>Criar Nov${article} ${entity}</span> -->
-                    <span>Adicionar Unidade de Referência à Pesquisa</span>
+                    <span class="align-middle">Adicionar Unidade de Referência à Pesquisa</span>
                 </a>
             </div>
 

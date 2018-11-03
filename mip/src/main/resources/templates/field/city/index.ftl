@@ -22,12 +22,12 @@
     <#include "/menubar.ftl">
 
         <form action="#" method="post" class="card" style="margin: 15px">
-            <div class="card-header text-white d-flex" style="background-color: #004900">
-                <h2 class="col-md-9">${pageTitle}</h2>
+            <div class="card-header text-white" style="background-color: #004900">
+                <h2 class="card-title" style="display: inline">${pageTitle}</h2>
 
-                <a href="#addModal" class="btn btn-success col-md-3 d-flex justify-content-center" data-toggle="modal">
-                    <i class="material-icons">&#xE147;</i>
-                    <span>Criar Nov${article} ${entity}</span>
+                <a href="#addModal" class="btn btn-success float-right" data-toggle="modal">
+                    <i class="material-icons align-middle">&#xE147;</i>
+                    <span class="align-middle">Criar Nov${article} ${entity}</span>
                 </a>
             </div>
 
