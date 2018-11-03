@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
 
-    <span class="navbar-brand mb-0 h1">Sistema MIP/MID</span>
+    <span class="navbar-brand mb-0 h1">
+        <a href="/" class="text-white-50">Sistema MIP/MID</a>
+    </span>
 
     <ul class="navbar-nav ml-auto">
 
