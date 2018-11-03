@@ -3,9 +3,13 @@ package br.edu.utfpr.cp.emater.mip.view.pest;
 import br.edu.utfpr.cp.emater.mip.domain.pest.GrowthPhase;
 import br.edu.utfpr.cp.emater.mip.domain.pest.MipPestSurveyRepository;
 import br.edu.utfpr.cp.emater.mip.domain.pest.PestRepository;
+
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,6 +45,16 @@ public class SamplePestController {
         data.addAttribute("pestList", pestRepository.findAll());
         
         return "/pest/sample-pest";
+    }
+
+    @PostMapping ("/save-sample")
+    public String saveSample(@RequestParam Map<String, String> values) {
+
+        // The page must receive the reference from MipPestSurvey
+
+        values.entrySet().stream().filter(e -> !values.get(e.getKey()).isEmpty()).forEach(e -> System.out.println(e.getKey() + " - " + values.get(e.getKey())));
+        
+        return "redirect:/pest-survey";
     }
     
 }

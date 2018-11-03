@@ -22,7 +22,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                 <i class="material-icons align-middle">assignment</i>
-                <span class="align-middle">Configuração de Pesquisa</span>
+                <span class="align-middle">Configuração da Pesquisa</span>
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/harvest">Safra</a>

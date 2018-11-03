@@ -22,7 +22,7 @@
     <!-- Add Menu -->
     <#include "/menubar.ftl">
 
-        <form action="#" method="post" class="card" style="margin: 15px">
+        <form action="/pest-survey/save-sample" method="post" class="card" style="margin: 15px">
             <div class="card-header text-white" style="background-color: #004900">
                 <h2>${pageTitle}</h2>
             </div>
@@ -95,7 +95,7 @@
                                     <#list pestList as pest>
                                         <tr>
                                             <td>${pest.usualName} - ${pest.scientificName} (${pest.pestSize.getName()})</td>
-                                            <td><input class="form-control" id="pest" name="pest" type="text" placeholder="0.0"></td>
+                                            <td><input class="form-control" id="${pest.id}" name="${pest}" type="text" placeholder="0.0"></td>
                                         </tr>                                    
                                     </#list>
                                 </tbody>
@@ -103,6 +103,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="card-footer">
+                <input type="submit" class="btn btn-success float-right" value="Gravar Amostra"/>
             </div>
         </form>
 
