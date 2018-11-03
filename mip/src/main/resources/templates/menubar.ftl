@@ -1,7 +1,10 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
 
     <span class="navbar-brand mb-0 h1">
-        <a href="/" class="text-white-50">Sistema MIP/MID</a>
+        <a href="/" class="text-white-50">
+             <i class="material-icons align-middle">home</i>
+            <span class="align-middle">Sistema MIP/MID</span>
+        </a>
     </span>
 
     <ul class="navbar-nav ml-auto">

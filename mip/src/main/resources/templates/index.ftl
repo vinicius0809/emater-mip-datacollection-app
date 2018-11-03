@@ -16,12 +16,15 @@
 
 <body>
 
-    <!-- Add Menu -->
-    <#include "/menubar.ftl">
+    <main class="container-fluid">
 
-    <main class="container">
+        <!-- Add Menu -->
+        <#include "/menubar.ftl">
 
-        <section id="top-panel-section" class="row" style="margin-top: 1rem">
+        <h1>Painel de Acompanhamento</h1>
+        <hr />
+
+        <section id="top-panel-section" class="row" style="margin-left: 0.2rem; margin-top: 1rem">
 
             <div class="card col border-primary" style="padding: 0rem; margin-right: 1rem">
                 <div class="card-body bg-primary text-white flex-row text-center">
@@ -44,16 +47,16 @@
                 <div class="card-body bg-success text-white flex-row text-center">
                     <span>
                         <i class="material-icons" style="font-size: 48px">
-                            home
+                            assignment
                         </i>
                     </span>
                     <span class="float-right">
                         <h2 class="card-title">5</h5>
-                            <p class="card-text">URs Cadastradas</p>
+                            <p class="card-text">URs na Pesquisa Atual</p>
                     </span>
                 </div>
                 <div class="card-footer text-success">
-                    <a href="#" class="text-success">Criar nova UR</a>
+                    <a href="#" class="text-success">Adicionar UR à Pesquisa</a>
                 </div>
             </div>
 
@@ -61,16 +64,16 @@
                 <div class="card-body bg-warning text-white flex-row text-center">
                     <span>
                         <i class="material-icons" style="font-size: 48px">
-                            home
+                            list
                         </i>
                     </span>
                     <span class="float-right">
-                        <h2 class="card-title">5</h5>
-                            <p class="card-text">URs Cadastradas</p>
+                        <h2 class="card-title">25</h5>
+                            <p class="card-text">Amostras coletadas</p>
                     </span>
                 </div>
                 <div class="card-footer text-warning">
-                    <a href="#" class="text-warning">Criar nova UR</a>
+                    <a href="#" class="text-warning">Coletar amostra</a>
                 </div>
             </div>
 
@@ -79,16 +82,16 @@
                 <div class="card-body bg-danger text-white flex-row text-center">
                     <span>
                         <i class="material-icons" style="font-size: 48px">
-                            home
+                            bug_report
                         </i>
                     </span>
                     <span class="float-right">
-                        <h2 class="card-title">5</h5>
-                            <p class="card-text">URs Cadastradas</p>
+                        <h2 class="card-title">7</h5>
+                        <p class="card-text">Pragas registradas</p>
                     </span>
                 </div>
                 <div class="card-footer text-danger">
-                    <a href="#" class="text-danger">Criar nova UR</a>
+                    <a href="#" class="text-danger">Observar evolução das pragas</a>
                 </div>
             </div>
 
@@ -103,7 +106,14 @@
                         Flutuação das Pragas
                     </div>
                     <div id="pie-chart"></div>
-                </div>                    
+                </div>       
+
+                <div class="card" style="margin-top: 1rem">
+                    <div class="card-header">
+                        Evolução das Pragas
+                    </div>
+                    <div id="line-chart"></div>
+                </div>                
 
             </article>
 
@@ -122,6 +132,15 @@
 
                     </div>
                 </div>
+
+                <div class="card" style="margin-top: 1rem">
+                    <div class="card-header">
+                        Incidência de Pragas/Município
+                    </div>
+
+                    <div id="bar-chart"></div>
+                </div>
+
             </article>
 
         </section>
@@ -148,6 +167,56 @@
         }];
 
         Plotly.newPlot('pie-chart', data);
+    </script>
+
+    <script>
+        var trace1 = {
+        x: [1, 2, 3, 4],
+        y: [10, 15, 13, 17],
+        mode: 'markers',
+        name: 'Lagarta da soja'
+        };
+
+        var trace2 = {
+        x: [2, 3, 4, 5],
+        y: [16, 5, 11, 10],
+        mode: 'lines',
+        name: 'Falsa medideira'
+        };
+
+        var trace3 = {
+        x: [1, 2, 3, 4],
+        y: [12, 9, 15, 12],
+        mode: 'lines+markers',
+        name: 'Lagarta das vagens'
+        };
+
+        var data = [ trace1, trace2, trace3 ];
+
+        var layout = {};
+
+        Plotly.newPlot('line-chart', data, layout);    
+    </script>
+
+    <script>
+        var trace1 = {
+        x: ['Pato Branco', 'Apucarana', 'Londrina'], 
+        y: [20, 14, 23], 
+        name: 'Lagarta da soja', 
+        type: 'bar'
+        };
+
+        var trace2 = {
+        x: ['Pato Branco', 'Apucarana', 'Londrina'], 
+        y: [12, 18, 29], 
+        name: 'Falsa medideira', 
+        type: 'bar'
+        };
+
+        var data = [trace1, trace2];
+        var layout = {barmode: 'group'};
+
+        Plotly.newPlot('bar-chart', data, layout);    
     </script>
 </body>
 
