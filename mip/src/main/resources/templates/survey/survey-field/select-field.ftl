@@ -44,7 +44,7 @@
 
                         <#list fields as field>
                         
-                            <tr title="Selecionar" onclick="location.assign('/survey-field/field-form?fieldId=${field.id}')">   
+                            <tr title="Selecionar" style="cursor: pointer;" onclick="location.assign('/survey-field/field-form?fieldId=${field.id}')">   
                                     <td>${field.name}</td>
                                     <td>${field.location}</td>
                                     <td>${field.city.name}</td>
