@@ -106,7 +106,7 @@
             </div>
 
             <div class="card-footer">
-                <input type="submit" class="btn btn-success float-right" value="Gravar Amostra"/>
+                <input style="display: none" id="saveButton" type="submit" class="btn btn-success float-right" value="Gravar Amostra"/>
             </div>
         </form>
 
@@ -131,6 +131,16 @@
                 transitionEffect: 'fade', // Effect on navigation, none/slide/fade
                 transitionSpeed: '400'
             });
+
+            // Show conclusion button only in the last step
+            $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
+			if($('button.sw-btn-next').hasClass('disabled')){
+				$('#saveButton').show(); // show the button extra only in the last page
+
+			}else{
+				$('#saveButton').hide();				
+			}
+	      });
 
         }); 
     </script>

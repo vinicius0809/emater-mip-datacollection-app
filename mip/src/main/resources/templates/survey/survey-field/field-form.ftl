@@ -186,7 +186,7 @@
             </div>
 
             <div class="card-footer text-muted">
-                <input type="submit" class="btn btn-success float-right" value="Salvar Dados da Unidade de Referência na Pesquisa" />
+                <input style="display: none" id="saveButton" type="submit" class="btn btn-success float-right" value="Salvar Dados da Unidade de Referência na Pesquisa" />
             </div>
         </form>
     </div>
@@ -210,6 +210,16 @@
                 transitionEffect: 'fade', // Effect on navigation, none/slide/fade
                 transitionSpeed: '400'
             });
+
+            // Show conclusion button only in the last step
+            $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
+			if($('button.sw-btn-next').hasClass('disabled')){
+				$('#saveButton').show(); // show the button extra only in the last page
+
+			}else{
+				$('#saveButton').hide();				
+			}
+	      });
 
         }); 
     </script>
