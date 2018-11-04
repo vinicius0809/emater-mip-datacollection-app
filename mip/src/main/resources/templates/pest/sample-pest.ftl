@@ -23,6 +23,9 @@
     <#include "/menubar.ftl">
 
         <form action="/pest-survey/save-sample" method="post" class="card" style="margin: 15px">
+
+            <input type="hidden" name="mipPestSurveyId" value="${mipPestSurveyId}">
+
             <div class="card-header text-white" style="background-color: #004900">
                 <h2 class="card-title" style="display: inline">${pageTitle}</h2>
             </div>
@@ -95,7 +98,7 @@
                                     <#list pestList as pest>
                                         <tr>
                                             <td>${pest.usualName} - ${pest.scientificName} (${pest.pestSize.getName()})</td>
-                                            <td><input class="form-control" id="${pest.id}" name="${pest}" type="text" placeholder="0.0"></td>
+                                            <td><input class="form-control" id="${pest.id}" name="${'pest_'+pest.id}" type="text" placeholder="0.0"></td>
                                         </tr>                                    
                                     </#list>
                                 </tbody>
