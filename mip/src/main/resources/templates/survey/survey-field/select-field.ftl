@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel='stylesheet'href='https://fonts.googleapis.com/css?family=Arimo'>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 
 </head>
 
@@ -26,9 +27,6 @@
             </div>
 
             <div class="card-body table-responsive-md">
-                <div>
-                    <input class="form-control" id="search" type="text" placeholder="Buscar..." style="margin-bottom: 15px">
-                </div>
 
                 <table id="mainTable" class="table table-striped table-hover">
                     <thead style="background-color: #004900; color: white">
@@ -71,16 +69,35 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>    
 
     <script>
         $(document).ready(function () {
-            $("#search").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#mainTable-body tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                });
+            $('#mainTable').DataTable({
+                language: {
+                    processing:     "Processando...",
+                    search:         "Buscar",
+                    lengthMenu:    "_MENU_ resultados por página",
+                    info:           "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    infoEmpty:      "Mostrando de 0 até 0 de 0 registros",
+                    infoFiltered:   "(Filtrados de _MAX_ registros)",
+                    infoPostFix:    "",
+                    loadingRecords: "Carregando...",
+                    zeroRecords:    "Nenhum registro encontrado",
+                    emptyTable:     "Nenhum registro encontrado",
+                    paginate: {
+                        first:      "Primeiro",
+                        previous:   "Anterior",
+                        next:       "Próximo",
+                        last:       "Último"
+                    },
+                    aria: {
+                        sortAscending:  ": Ordenar colunas de forma crescente",
+                        sortDescending: ": Ordenar colunas de forma decrescente"
+                    }
+                }
             });
+        }); 
     </script>
         
 </body>
