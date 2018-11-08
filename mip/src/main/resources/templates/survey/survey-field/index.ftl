@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel='stylesheet'href='https://fonts.googleapis.com/css?family=Arimo'>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
 
 </head>
 
@@ -21,7 +22,7 @@
     <!-- Add Menu -->
     <#include "/menubar.ftl">
 
-        <form action="#" method="post" class="card" style="margin: 15px; width: 180%">
+        <form action="#" method="post" class="card" style="margin: 15px;">
             <div class="card-header text-white" style="background-color: #004900">
                 <h2 class="card-title" style="display: inline">${pageTitle}</h2>
 
@@ -34,7 +35,7 @@
 
             <div class="card-body table-responsive-md">
 
-                <table id="mainTable" class="table table-striped table-hover">
+                <table id="mainTable" class="table table-striped table-hover display responsive nowrap">
                     <thead style="background-color: #004900; color: white">
                         <tr>
                             <th class="col-sm-1">Safra</th>
@@ -103,10 +104,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>    
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>    
 
     <script>
         $(document).ready(function () {
             $('#mainTable').DataTable({
+                responsive: true,
                 language: {
                     processing:     "Processando...",
                     search:         "Buscar",
