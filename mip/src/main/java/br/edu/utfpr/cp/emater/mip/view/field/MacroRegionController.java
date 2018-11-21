@@ -30,9 +30,11 @@ public class MacroRegionController {
     public String listAll(Model data) {
         data.addAttribute("macroregions", repository.findAll());
         
-        data.addAttribute("pageTitle", environment.getProperty("app.view.title.page.field.macroregion"));
+        // data.addAttribute("pageTitle", environment.getProperty("app.view.title.page.field.macroregion");
+        data.addAttribute("pageTitle", "Gerenciamento de Macrorregiões");
         data.addAttribute("article", environment.getProperty("app.view.title.article.female"));
-        data.addAttribute("entity", environment.getProperty("app.view.title.entity.field.macroregion"));
+        // data.addAttribute("entity", environment.getProperty("app.view.title.entity.field.macroregion"));
+        data.addAttribute("entity", "Macrorregião");
         data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.macroregion"));
         data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.macroregion"));
         data.addAttribute("urlDelete", environment.getProperty("app.view.route.delete.field.macroregion"));
