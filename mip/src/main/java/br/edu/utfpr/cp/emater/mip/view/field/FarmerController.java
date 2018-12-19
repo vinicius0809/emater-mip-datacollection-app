@@ -3,6 +3,7 @@ package br.edu.utfpr.cp.emater.mip.view.field;
 import br.edu.utfpr.cp.emater.mip.domain.field.person.Farmer;
 import br.edu.utfpr.cp.emater.mip.domain.field.person.FarmerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 enum FarmerLabels {
     PAGE_TITLE ("Gerenciamento de Produtores"),
     ENTITY ("Produtor"),
-    ARTICLE ("o"),
-    URL_CREATE ("/farmer/create"),
-    URL_UPDATE ("/farmer/update"),
-    URL_DELETE ("/farmer/delete");
+    ARTICLE ("o");
     
     private String value;
     
@@ -32,38 +30,18 @@ enum FarmerLabels {
     }
 }
 
-enum FarmerPath {
-    SUCCESS_CREATE ("redirect:/farmer"),
-    SUCCESS_UPDATE ("redirect:/farmer"),
-    SUCCESS_DELETE ("redirect:/farmer"),
-    SUCCESS_READ ("redirect:/farmer"),
-    TEMPLATE_PATH ("/field/farmer/index");
-    
-    private String value;
-    
-    FarmerPath (String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
-
 @Controller
 @RequestMapping (value = "/farmer")
 public class FarmerController {
     
     private final FarmerRepository repository;
 
+    private final Environment environment;
+
     @Autowired
-    public FarmerController(FarmerRepository repository) {
+    public FarmerController(FarmerRepository repository, Environment environment) {
         this.repository = repository;
+        this.environment = environment;
     }
     
     @RequestMapping (value = "", method = RequestMethod.GET)
@@ -73,11 +51,11 @@ public class FarmerController {
         data.addAttribute("pageTitle", FarmerLabels.PAGE_TITLE.getValue());
         data.addAttribute("article", FarmerLabels.ARTICLE.getValue());
         data.addAttribute("entity", FarmerLabels.ENTITY.getValue());
-        data.addAttribute("urlCreate", FarmerLabels.URL_CREATE.getValue());
-        data.addAttribute("urlUpdate", FarmerLabels.URL_UPDATE.getValue());
-        data.addAttribute("urlDelete", FarmerLabels.URL_DELETE.getValue());
+        data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.farmer"));
+        data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.farmer"));
+        data.addAttribute("urlDelete", environment.getProperty("app.view.route.delete.field.farmer"));
         
-        return FarmerPath.TEMPLATE_PATH.getValue();
+        return environment.getProperty("app.view.route.template.main.field.farmer");
     }
     
     @RequestMapping (value = "/create", method = RequestMethod.POST)
@@ -88,7 +66,7 @@ public class FarmerController {
 
         repository.save(f);
         
-        return FarmerPath.SUCCESS_CREATE.getValue();
+        return environment.getProperty("app.view.route.create.success.field.farmer");
     }
     
     @RequestMapping (value = "/update", method = RequestMethod.POST)
@@ -99,13 +77,13 @@ public class FarmerController {
         
         repository.saveAndFlush(mr);
         
-        return FarmerPath.SUCCESS_UPDATE.getValue();
+        return environment.getProperty("app.view.route.update.success.field.farmer");
     }
 
     @RequestMapping (value = "/delete", method = RequestMethod.POST)
     public String delete (@RequestParam int id) {
         repository.deleteById(new Long(id));
         
-        return FarmerPath.SUCCESS_DELETE.getValue();
+        return environment.getProperty("app.view.route.delete.success.field.farmer");
     }
 }
