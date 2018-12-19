@@ -32,9 +32,7 @@ import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.SurveyField;
 import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.SurveyFieldRepository;
 
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -45,7 +43,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 
-import antlr.collections.List;
 
 @SpringBootApplication
 public class MipApplication {
