@@ -3,6 +3,7 @@ package br.edu.utfpr.cp.emater.mip.view.field;
 import br.edu.utfpr.cp.emater.mip.domain.field.person.Supervisor;
 import br.edu.utfpr.cp.emater.mip.domain.field.person.SupervisorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 enum SupervisorLabels {
     PAGE_TITLE ("Gerenciamento de Responsáveis Técnicos"),
     ENTITY ("Responsável Técnico"),
-    ARTICLE ("o"),
-    URL_CREATE ("/supervisor/create"),
-    URL_UPDATE ("/supervisor/update"),
-    URL_DELETE ("/supervisor/delete");
-    
+    ARTICLE ("o");
+
     private String value;
     
     SupervisorLabels (String value) {
@@ -32,38 +30,18 @@ enum SupervisorLabels {
     }
 }
 
-enum SupervisorPath {
-    SUCCESS_CREATE ("redirect:/supervisor"),
-    SUCCESS_UPDATE ("redirect:/supervisor"),
-    SUCCESS_DELETE ("redirect:/supervisor"),
-    SUCCESS_READ ("redirect:/supervisor"),
-    TEMPLATE_PATH ("/field/supervisor/index");
-    
-    private String value;
-    
-    SupervisorPath (String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
-
 @Controller
 @RequestMapping (value = "/supervisor")
 public class SupervisorController {
     
     private final SupervisorRepository repository;
 
+    private final Environment environment;
+
     @Autowired
-    public SupervisorController(SupervisorRepository repository) {
+    public SupervisorController(SupervisorRepository repository, Environment environment) {
         this.repository = repository;
+        this.environment = environment;
     }
     
     @RequestMapping (value = "", method = RequestMethod.GET)
@@ -73,11 +51,11 @@ public class SupervisorController {
         data.addAttribute("pageTitle", SupervisorLabels.PAGE_TITLE.getValue());
         data.addAttribute("article", SupervisorLabels.ARTICLE.getValue());
         data.addAttribute("entity", SupervisorLabels.ENTITY.getValue());
-        data.addAttribute("urlCreate", SupervisorLabels.URL_CREATE.getValue());
-        data.addAttribute("urlUpdate", SupervisorLabels.URL_UPDATE.getValue());
-        data.addAttribute("urlDelete", SupervisorLabels.URL_DELETE.getValue());
+        data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.supervisor"));
+        data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.supervisor"));
+        data.addAttribute("urlDelete", environment.getProperty("app.view.route.delete.field.supervisor"));
         
-        return SupervisorPath.TEMPLATE_PATH.getValue();
+        return environment.getProperty("app.view.route.template.main.field.supervisor");
     }
     
     @RequestMapping (value = "/create", method = RequestMethod.POST)
@@ -88,7 +66,7 @@ public class SupervisorController {
 
         repository.save(s);
         
-        return SupervisorPath.SUCCESS_CREATE.getValue();
+        return environment.getProperty("app.view.route.create.success.field.supervisor");
     }
     
     @RequestMapping (value = "/update", method = RequestMethod.POST)
@@ -99,13 +77,13 @@ public class SupervisorController {
         
         repository.saveAndFlush(mr);
         
-        return SupervisorPath.SUCCESS_UPDATE.getValue();
+        return environment.getProperty("app.view.route.update.success.field.supervisor");
     }
 
     @RequestMapping (value = "/delete", method = RequestMethod.POST)
     public String delete (@RequestParam int id) {
         repository.deleteById(new Long(id));
         
-        return SupervisorPath.SUCCESS_DELETE.getValue();
+        return environment.getProperty("app.view.route.delete.success.field.supervisor");
     }
 }
