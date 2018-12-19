@@ -9,6 +9,7 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,36 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 enum HarvestLabels {
     PAGE_TITLE("Gerenciamento de Safras"),
     ENTITY("Safra"),
-    ARTICLE("a"),
-    URL_CREATE("/harvest/create"),
-    URL_UPDATE("/harvest/update"),
-    URL_DELETE("/harvest/delete");
+    ARTICLE("a");
 
     private String value;
 
     HarvestLabels(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
-enum HarvestPath {
-    SUCCESS_CREATE("redirect:/harvest"),
-    SUCCESS_UPDATE("redirect:/harvest"),
-    SUCCESS_DELETE("redirect:/harvest"),
-    SUCCESS_READ("redirect:/harvest"),
-    TEMPLATE_PATH("/survey/harvest/index");
-
-    private String value;
-
-    HarvestPath(String value) {
         this.value = value;
     }
 
@@ -66,9 +42,12 @@ public class HarvestController {
 
     private final HarvestRepository repository;
 
+    private final Environment environment;
+
     @Autowired
-    public HarvestController(HarvestRepository repository) {
+    public HarvestController(HarvestRepository repository, Environment environment) {
         this.repository = repository;
+        this.environment = environment;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -78,11 +57,11 @@ public class HarvestController {
         data.addAttribute("pageTitle", HarvestLabels.PAGE_TITLE.getValue());
         data.addAttribute("article", HarvestLabels.ARTICLE.getValue());
         data.addAttribute("entity", HarvestLabels.ENTITY.getValue());
-        data.addAttribute("urlCreate", HarvestLabels.URL_CREATE.getValue());
-        data.addAttribute("urlUpdate", HarvestLabels.URL_UPDATE.getValue());
-        data.addAttribute("urlDelete", HarvestLabels.URL_DELETE.getValue());
+        data.addAttribute("urlCreate", this.environment.getProperty("app.view.route.create.survey.harvest"));
+        data.addAttribute("urlUpdate", this.environment.getProperty("app.view.route.update.survey.harvest"));
+        data.addAttribute("urlDelete", this.environment.getProperty("app.view.route.delete.survey.harvest"));
 
-        return HarvestPath.TEMPLATE_PATH.getValue();
+        return this.environment.getProperty("app.view.route.template.main.survey.harvest");
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -98,7 +77,7 @@ public class HarvestController {
 
         repository.save(h);
         
-        return HarvestPath.SUCCESS_CREATE.getValue();
+        return this.environment.getProperty("app.view.route.create.success.survey.harvest");
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -111,14 +90,14 @@ public class HarvestController {
 
         repository.saveAndFlush(hst);
 
-        return HarvestPath.SUCCESS_UPDATE.getValue();
+        return this.environment.getProperty("app.view.route.update.success.survey.harvest");
     }
     
     @RequestMapping (value = "/delete", method = RequestMethod.POST)
     public String delete (@RequestParam int id) {
         repository.deleteById(new Long(id));
         
-        return HarvestPath.SUCCESS_DELETE.getValue();
+        return this.environment.getProperty("app.view.route.delete.success.survey.harvest");
     }
 
     private Date dateFormatter(String date) {
