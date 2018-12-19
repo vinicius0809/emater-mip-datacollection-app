@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,11 +33,14 @@ public class SamplePestController {
     private final PestRepository pestRepository;
     private final SamplePestRepository samplePestRepository;
 
+    private final Environment environment;
+
     @Autowired
-    public SamplePestController(MipPestSurveyRepository mipPestSurveyRepository, PestRepository pestRepository, SamplePestRepository samplePestRepository) {
+    public SamplePestController(MipPestSurveyRepository mipPestSurveyRepository, PestRepository pestRepository, SamplePestRepository samplePestRepository, Environment environment) {
         this.mipPestSurveyRepository = mipPestSurveyRepository;
         this.pestRepository = pestRepository;
         this.samplePestRepository = samplePestRepository;
+        this.environment = environment;
     }
     
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -46,7 +49,7 @@ public class SamplePestController {
         
         data.addAttribute("pageTitle", "Anotação de Campo sobre a Flutuação das Pragas");
         
-        return "/pest/mip-pest-survey-list";
+        return this.environment.getProperty("app.view.route.template.main.mip.pest-survey");
     }
     
     @RequestMapping(value = "/add-sample", method = RequestMethod.GET)
@@ -57,7 +60,7 @@ public class SamplePestController {
         data.addAttribute("pestList", pestRepository.findAll());
         data.addAttribute("mipPestSurveyId", mipPestSurveyId);
         
-        return "/pest/sample-pest";
+        return this.environment.getProperty("app.view.route.create.sample.mip.pest-survey");
     }
 
     @PostMapping ("/save-sample")
@@ -65,7 +68,7 @@ public class SamplePestController {
 
         samplePestRepository.save(validateEntries(values));
         
-        return "redirect:/pest-survey";
+        return this.environment.getProperty("app.view.route.create.success.mip.pest-survey");
     }
 
     private SamplePest validateEntries (Map<String, String> values) {
