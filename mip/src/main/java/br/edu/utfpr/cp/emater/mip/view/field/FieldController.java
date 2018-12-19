@@ -11,6 +11,7 @@ import br.edu.utfpr.cp.emater.mip.domain.field.person.SupervisorRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,36 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 enum FieldLabels {
     PAGE_TITLE("Gerenciamento de Unidades de Referência"),
     ENTITY("Unidade de Referência"),
-    ARTICLE("a"),
-    URL_CREATE("/field/create"),
-    URL_UPDATE("/field/update"),
-    URL_DELETE("/field/delete");
+    ARTICLE("a");
 
     private String value;
 
     FieldLabels(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
-enum FieldPath {
-    SUCCESS_CREATE("redirect:/field"),
-    SUCCESS_UPDATE("redirect:/field"),
-    SUCCESS_DELETE("redirect:/field"),
-    SUCCESS_READ("redirect:/field"),
-    TEMPLATE_PATH("/field/field/index");
-
-    private String value;
-
-    FieldPath(String value) {
         this.value = value;
     }
 
@@ -71,12 +47,15 @@ public class FieldController {
     private final FarmerRepository farmerRepository;
     private final SupervisorRepository supervisorRepository;
 
+    private final Environment environment;
+
     @Autowired
-    public FieldController(FieldRepository fieldRepository, CityRepository cityRepository, FarmerRepository farmerRepository, SupervisorRepository supervisorRepository) {
+    public FieldController(FieldRepository fieldRepository, CityRepository cityRepository, FarmerRepository farmerRepository, SupervisorRepository supervisorRepository, Environment environment) {
         this.fieldRepository = fieldRepository;
         this.cityRepository = cityRepository;
         this.farmerRepository = farmerRepository;
         this.supervisorRepository = supervisorRepository;
+        this.environment = environment;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -90,11 +69,11 @@ public class FieldController {
         data.addAttribute("pageTitle", FieldLabels.PAGE_TITLE.getValue());
         data.addAttribute("article", FieldLabels.ARTICLE.getValue());
         data.addAttribute("entity", FieldLabels.ENTITY.getValue());
-        data.addAttribute("urlCreate", FieldLabels.URL_CREATE.getValue());
-        data.addAttribute("urlUpdate", FieldLabels.URL_UPDATE.getValue());
-        data.addAttribute("urlDelete", FieldLabels.URL_DELETE.getValue());
+        data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.field"));
+        data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.field"));
+        data.addAttribute("urlDelete", environment.getProperty("app.view.route.delete.field.field"));
 
-        return FieldPath.TEMPLATE_PATH.getValue();
+        return environment.getProperty("app.view.route.template.main.field.field");
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -122,7 +101,7 @@ public class FieldController {
 
         fieldRepository.save(f);
 
-        return FieldPath.SUCCESS_CREATE.getValue();
+        return environment.getProperty("app.view.route.create.success.field.field");
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -151,13 +130,13 @@ public class FieldController {
 
         fieldRepository.saveAndFlush(field);
 
-        return FieldPath.SUCCESS_UPDATE.getValue();
+        return environment.getProperty("app.view.route.update.success.field.field");
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String delete(@RequestParam int id) {
         fieldRepository.deleteById(new Long(id));
 
-        return FieldPath.SUCCESS_DELETE.getValue();
+        return environment.getProperty("app.view.route.delete.success.field.field");
     }
 }
