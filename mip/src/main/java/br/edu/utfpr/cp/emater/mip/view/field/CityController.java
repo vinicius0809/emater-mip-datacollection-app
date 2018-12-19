@@ -6,6 +6,7 @@ import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegionRepository
 import br.edu.utfpr.cp.emater.mip.domain.field.region.Region;
 import br.edu.utfpr.cp.emater.mip.domain.field.region.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,36 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 enum CityLabels {
     PAGE_TITLE("Gerenciamento de Municípios"),
     ENTITY("Município"),
-    ARTICLE("o"),
-    URL_CREATE("/city/create"),
-    URL_UPDATE("/city/update"),
-    URL_DELETE("/city/delete");
+    ARTICLE("o");
 
     private String value;
 
     CityLabels(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
-enum CityPath {
-    SUCCESS_CREATE ("redirect:/city"),
-    SUCCESS_UPDATE ("redirect:/city"),
-    SUCCESS_DELETE ("redirect:/city"),
-    SUCCESS_READ ("redirect:/city"),
-    TEMPLATE_PATH ("/field/city/index");
-    
-    private String value;
-    
-    CityPath (String value) {
         this.value = value;
     }
 
@@ -65,11 +41,14 @@ public class CityController {
     private final MacroRegionRepository macroRegionRepository;
     private final CityRepository cityRepository;
 
+    private final Environment environment;
+
     @Autowired
-    public CityController(CityRepository cityRepository, RegionRepository regionRepository, MacroRegionRepository macroRegionRepository) {
+    public CityController(CityRepository cityRepository, RegionRepository regionRepository, MacroRegionRepository macroRegionRepository, Environment environment) {
         this.cityRepository = cityRepository;
         this.regionRepository = regionRepository;
         this.macroRegionRepository = macroRegionRepository;
+        this.environment = environment;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -82,11 +61,11 @@ public class CityController {
         data.addAttribute("pageTitle", CityLabels.PAGE_TITLE.getValue());
         data.addAttribute("article", CityLabels.ARTICLE.getValue());
         data.addAttribute("entity", CityLabels.ENTITY.getValue());
-        data.addAttribute("urlCreate", CityLabels.URL_CREATE.getValue());
-        data.addAttribute("urlUpdate", CityLabels.URL_UPDATE.getValue());
-        data.addAttribute("urlDelete", CityLabels.URL_DELETE.getValue());
+        data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.city"));
+        data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.city"));
+        data.addAttribute("urlDelete", environment.getProperty("app.view.route.delete.field.city"));
 
-        return CityPath.TEMPLATE_PATH.getValue();
+        return environment.getProperty("app.view.route.template.main.field.city");
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -100,7 +79,7 @@ public class CityController {
 
         cityRepository.save(c);
 
-        return CityPath.SUCCESS_CREATE.getValue();
+        return environment.getProperty("app.view.route.create.success.field.city");
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -114,14 +93,14 @@ public class CityController {
 
         cityRepository.saveAndFlush(c);
 
-        return CityPath.SUCCESS_UPDATE.getValue();
+        return environment.getProperty("app.view.route.update.success.field.city");
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String delete(@RequestParam int id) {
         cityRepository.deleteById(new Long(id));
 
-        return CityPath.SUCCESS_DELETE.getValue();
+        return environment.getProperty("app.view.route.delete.success.field.city");
     }
 
 }
