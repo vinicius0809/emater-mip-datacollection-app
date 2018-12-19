@@ -5,6 +5,7 @@ import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegionRepository
 import br.edu.utfpr.cp.emater.mip.domain.field.region.Region;
 import br.edu.utfpr.cp.emater.mip.domain.field.region.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,36 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 enum RegionLabels {
     PAGE_TITLE("Gerenciamento de Regiões"),
     ENTITY("Região"),
-    ARTICLE("a"),
-    URL_CREATE("/region/create"),
-    URL_UPDATE("/region/update"),
-    URL_DELETE("/region/delete");
+    ARTICLE("a");
 
     private String value;
 
     RegionLabels(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
-enum RegionPath {
-    SUCCESS_CREATE ("redirect:/region"),
-    SUCCESS_UPDATE ("redirect:/region"),
-    SUCCESS_DELETE ("redirect:/region"),
-    SUCCESS_READ ("redirect:/region"),
-    TEMPLATE_PATH ("/field/region/index");
-    
-    private String value;
-    
-    RegionPath (String value) {
         this.value = value;
     }
 
@@ -63,10 +39,13 @@ public class RegionController {
     private final RegionRepository regionRepository;
     private final MacroRegionRepository macroRegionRepository;
 
+    private final Environment environment;
+
     @Autowired
-    public RegionController(RegionRepository regionRepository, MacroRegionRepository macroRegionRepository) {
+    public RegionController(RegionRepository regionRepository, MacroRegionRepository macroRegionRepository, Environment environment) {
         this.regionRepository = regionRepository;
         this.macroRegionRepository = macroRegionRepository;
+        this.environment = environment;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -78,11 +57,11 @@ public class RegionController {
         data.addAttribute("pageTitle", RegionLabels.PAGE_TITLE.getValue());
         data.addAttribute("article", RegionLabels.ARTICLE.getValue());
         data.addAttribute("entity", RegionLabels.ENTITY.getValue());
-        data.addAttribute("urlCreate", RegionLabels.URL_CREATE.getValue());
-        data.addAttribute("urlUpdate", RegionLabels.URL_UPDATE.getValue());
-        data.addAttribute("urlDelete", RegionLabels.URL_DELETE.getValue());
+        data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.region"));
+        data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.region"));
+        data.addAttribute("urlDelete", environment.getProperty("app.view.route.delete.field.region"));
 
-        return RegionPath.TEMPLATE_PATH.getValue();
+        return environment.getProperty("app.view.route.template.main.field.region");
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -96,7 +75,7 @@ public class RegionController {
 
         regionRepository.save(r);
 
-        return RegionPath.SUCCESS_CREATE.getValue();
+        return environment.getProperty("app.view.route.create.success.field.region");
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -110,13 +89,13 @@ public class RegionController {
 
         regionRepository.saveAndFlush(r);
 
-        return RegionPath.SUCCESS_UPDATE.getValue();
+        return environment.getProperty("app.view.route.update.success.field.region");
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String delete(@RequestParam int id) {
         regionRepository.deleteById(new Long(id));
 
-        return RegionPath.SUCCESS_DELETE.getValue();
+        return environment.getProperty("app.view.route.delete.success.field.region");
     }
 }
