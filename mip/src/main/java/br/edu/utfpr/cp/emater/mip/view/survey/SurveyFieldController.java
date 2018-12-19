@@ -17,6 +17,7 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,38 +29,11 @@ enum SurveyFieldLabels {
     SELECT_FIELD_PAGE_TITLE("Selecionar Unidades de Referência para Pesquisa"),
 //    FIELD_FORM_PAGE_TITLE("Dados da Unidade de Referência para Pesquisa"),
     ENTITY("Unidade de Referência"),
-    ARTICLE("a"),
-    URL_CREATE("/survey-field/create"),
-    URL_UPDATE("/survey-field/update"),
-    URL_DELETE("/survey-field/delete");
+    ARTICLE("a");
 
     private String value;
 
     SurveyFieldLabels(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
-enum SurveyFieldPath {
-    SUCCESS_CREATE("redirect:/survey-field"),
-    SUCCESS_UPDATE("redirect:/survey-field"),
-    SUCCESS_DELETE("redirect:/survey-field"),
-    SUCCESS_READ("redirect:/survey-field"),
-    TEMPLATE_PATH("/survey/survey-field/index"),
-    TEMPLATE_SELECT_FIELD_PATH("/survey/survey-field/select-field"),
-    TEMPLATE_SURVEY_FIELD_FORM_PATH("/survey/survey-field/field-form");
-
-    private String value;
-
-    SurveyFieldPath(String value) {
         this.value = value;
     }
 
@@ -80,11 +54,14 @@ public class SurveyFieldController {
     private final FieldRepository fieldRepository;
     private final HarvestRepository harvestRepository;
 
+    private final Environment environment;
+
     @Autowired
-    public SurveyFieldController(SurveyFieldRepository surveyFieldRepository, FieldRepository fieldRepository, HarvestRepository harvestRepository) {
+    public SurveyFieldController(SurveyFieldRepository surveyFieldRepository, FieldRepository fieldRepository, HarvestRepository harvestRepository, Environment environment) {
         this.surveyFieldRepository = surveyFieldRepository;
         this.fieldRepository = fieldRepository;
         this.harvestRepository = harvestRepository;
+        this.environment = environment;
     }
     
     @RequestMapping (value = "", method = RequestMethod.GET)
@@ -94,11 +71,11 @@ public class SurveyFieldController {
         data.addAttribute("pageTitle", SurveyFieldLabels.PAGE_TITLE.getValue());
         data.addAttribute("article", SurveyFieldLabels.ARTICLE.getValue());
         data.addAttribute("entity", SurveyFieldLabels.ENTITY.getValue());
-        data.addAttribute("urlCreate", SurveyFieldLabels.URL_CREATE.getValue());
-        data.addAttribute("urlUpdate", SurveyFieldLabels.URL_UPDATE.getValue());
-        data.addAttribute("urlDelete", SurveyFieldLabels.URL_DELETE.getValue());
+        data.addAttribute("urlCreate", this.environment.getProperty("app.view.route.create.survey.survey-field"));
+        data.addAttribute("urlUpdate", this.environment.getProperty("app.view.route.update.survey.survey-field"));
+        data.addAttribute("urlDelete", this.environment.getProperty("app.view.route.delete.survey.survey-field"));
 
-        return SurveyFieldPath.TEMPLATE_PATH.getValue();
+        return this.environment.getProperty("app.view.route.template.main.survey.survey-field");
     }
     
     @RequestMapping (value = "/select-field", method = RequestMethod.GET)
@@ -106,7 +83,7 @@ public class SurveyFieldController {
         data.addAttribute("fields", fieldRepository.findAll());
         data.addAttribute("pageTitle", SurveyFieldLabels.SELECT_FIELD_PAGE_TITLE.getValue());
                 
-        return SurveyFieldPath.TEMPLATE_SELECT_FIELD_PATH.getValue();
+        return this.environment.getProperty("app.view.route.template.select-field.survey.survey-field");
     }
     
     @RequestMapping (value = "/field-form", method = RequestMethod.GET)
@@ -119,7 +96,7 @@ public class SurveyFieldController {
                 
         data.addAttribute("pageTitle", String.format("Dados da UR '%s' (%s, %s)", selectedField.getName(), selectedField.getFarmer().getName(), selectedField.getCity().getName()));
         
-        return SurveyFieldPath.TEMPLATE_SURVEY_FIELD_FORM_PATH.getValue();
+        return this.environment.getProperty("app.view.route.template.form.survey.survey-field");
     }
     
     @RequestMapping (value = "/create", method = RequestMethod.POST)
@@ -153,7 +130,7 @@ public class SurveyFieldController {
         
         surveyFieldRepository.save(sf);
         
-        return SurveyFieldPath.SUCCESS_CREATE.getValue();
+        return this.environment.getProperty("app.view.route.create.success.survey.survey-field");
     }
     
     @RequestMapping (value = "/delete", method = RequestMethod.POST)
@@ -161,7 +138,7 @@ public class SurveyFieldController {
         
         surveyFieldRepository.deleteById(new Long(surveyFieldId));
         
-        return SurveyFieldPath.SUCCESS_DELETE.getValue();
+        return this.environment.getProperty("app.view.route.delete.success.survey.survey-field");
     }
     
     private Date dateFormatter(String date) {
