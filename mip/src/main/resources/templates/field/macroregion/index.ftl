@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<#import "/spring.ftl" as spring/>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>${pageTitle}</title>
+    <title><@spring.message "page.title.macroregion"/></title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -23,11 +24,11 @@
 
         <form action="#" method="post" class="card" style="margin: 15px">
             <div class="card-header text-white" style="background-color: #004900">
-                <h2 class="card-title" style="display: inline">${pageTitle}</h2>
+                <h2 class="card-title" style="display: inline"><@spring.message "card.title.macroregion"/></h2>
                 
                 <a href="#addModal" class="btn btn-success float-right" data-toggle="modal">
                     <i class="material-icons align-middle">&#xE147;</i>
-                    <span class="align-middle">Criar Nov${article} ${entity}</span>
+                    <span class="align-middle"><@spring.message "card.button.new.macroregion"/></span>
                 </a>
             </div>
 

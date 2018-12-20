@@ -41,14 +41,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @SpringBootApplication
 public class MipApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MipApplication.class, args);
+    }
+
+    @Bean
+    public LocaleResolver localeResolver() {
+        SessionLocaleResolver slr = new SessionLocaleResolver();
+        slr.setDefaultLocale(Locale.US);
+        return slr;
     }
 }
 
@@ -106,18 +115,18 @@ class CLR implements CommandLineRunner {
         Region r9 = regionRepository.save(new Region(null, "Guarapuava", mr2));
         Region r10 = regionRepository.save(new Region(null, "Irati", mr2));
         Region r11 = regionRepository.save(new Region(null, "Ivaiporã", mr2));
-        Region r12= regionRepository.save(new Region(null, "Laranjeiras do Sul", mr2));
-        Region r13= regionRepository.save(new Region(null, "Londrina", mr2));
-        Region r14= regionRepository.save(new Region(null, "Maringá", mr1));
-        Region r15= regionRepository.save(new Region(null, "Paranaguá", mr2));
-        Region r16= regionRepository.save(new Region(null, "Paranavaí", mr1));
-        Region r17= regionRepository.save(new Region(null, "Pato Branco", mr4));
-        Region r18= regionRepository.save(new Region(null, "Ponta Grossa", mr2));
-        Region r19= regionRepository.save(new Region(null, "Sto. Antonio da Platina", mr2));
-        Region r20= regionRepository.save(new Region(null, "Toledo", mr2));
-        Region r21= regionRepository.save(new Region(null, "Umuarama", mr1));
-        Region r22= regionRepository.save(new Region(null, "União da Vitória", mr4));
-        
+        Region r12 = regionRepository.save(new Region(null, "Laranjeiras do Sul", mr2));
+        Region r13 = regionRepository.save(new Region(null, "Londrina", mr2));
+        Region r14 = regionRepository.save(new Region(null, "Maringá", mr1));
+        Region r15 = regionRepository.save(new Region(null, "Paranaguá", mr2));
+        Region r16 = regionRepository.save(new Region(null, "Paranavaí", mr1));
+        Region r17 = regionRepository.save(new Region(null, "Pato Branco", mr4));
+        Region r18 = regionRepository.save(new Region(null, "Ponta Grossa", mr2));
+        Region r19 = regionRepository.save(new Region(null, "Sto. Antonio da Platina", mr2));
+        Region r20 = regionRepository.save(new Region(null, "Toledo", mr2));
+        Region r21 = regionRepository.save(new Region(null, "Umuarama", mr1));
+        Region r22 = regionRepository.save(new Region(null, "União da Vitória", mr4));
+
         City c1 = cityRepository.save(new City(null, "Itapejara D'Oeste", r7));
         City c2 = cityRepository.save(new City(null, "Mariópolis", r17));
         City c3 = cityRepository.save(new City(null, "Pato Branco", r17));
@@ -132,7 +141,6 @@ class CLR implements CommandLineRunner {
         Supervisor s2 = supervisorRepository.save(new Supervisor(null, "IVANDERSON BORELLI"));
         Supervisor s3 = supervisorRepository.save(new Supervisor(null, "José Francisco Vilas Boas"));
         Supervisor s4 = supervisorRepository.save(new Supervisor(null, "Vilmar Grando"));
-
 
         Field fi1 = new Field(null, "Trevo", "", c1, f1, null);
         fi1.addSupervisor(s1);
@@ -154,24 +162,30 @@ class CLR implements CommandLineRunner {
         fi5.addSupervisor(s3);
         fieldRepository.save(fi5);
 
-        Harvest h1 = harvestRepository.save(new Harvest(null, "Safra 2017/2018", new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-01"), new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-3-1")));
+        Harvest h1 = harvestRepository.save(new Harvest(null, "Safra 2017/2018",
+                new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-01"),
+                new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-3-1")));
 
         SurveyField sf1 = new SurveyField();
         sf1.setHarvest(h1);
         sf1.setField(fi3);
         sf1.setName("TMG 7262 RR1");
-        sf1.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-1"), new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-8"), new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-02-26")));
+        sf1.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-1"),
+                new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-8"),
+                new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-02-26")));
         sf1.setQuestionData(new QuestionData(true, false));
         sf1.setSizeData(new SizeData(4.4, 10, 9));
         sf1.setProductivityData(new ProductivityData(161.7, 159.5, true));
         sf1.setLocationData(new LocationData(2.5, 3.5));
         surveyFieldRepository.save(sf1);
-        
+
         SurveyField sf2 = new SurveyField();
         sf2.setHarvest(h1);
         sf2.setField(fi2);
         sf2.setName("BMX RAIO Ipro");
-        sf2.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-4"), new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-11"), new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-2-12")));
+        sf2.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-4"),
+                new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-11"),
+                new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-2-12")));
         sf2.setQuestionData(new QuestionData(false, true));
         sf2.setSizeData(new SizeData(18, 62, 13));
         sf2.setProductivityData(new ProductivityData(197, 182, true));
@@ -182,7 +196,9 @@ class CLR implements CommandLineRunner {
         sf3.setHarvest(h1);
         sf3.setField(fi5);
         sf3.setName("TMG 7262 RR");
-        sf3.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-4"), new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-9"), new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-2-20")));
+        sf3.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-4"),
+                new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-9"),
+                new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-2-20")));
         sf3.setQuestionData(new QuestionData(true, false));
         sf3.setSizeData(new SizeData(5.74, 35.09, 11));
         sf3.setProductivityData(new ProductivityData(137.5, 120, true));
@@ -193,7 +209,9 @@ class CLR implements CommandLineRunner {
         sf4.setHarvest(h1);
         sf4.setField(fi4);
         sf4.setName("TMG -  7262");
-        sf4.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-24"), new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-10"), new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-2-18")));
+        sf4.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-24"),
+                new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-10"),
+                new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-2-18")));
         sf4.setQuestionData(new QuestionData(true, false));
         sf4.setSizeData(new SizeData(3.63, 3.63, 9));
         sf4.setProductivityData(new ProductivityData(158.5, 158.5, true));
@@ -204,28 +222,35 @@ class CLR implements CommandLineRunner {
         sf5.setHarvest(h1);
         sf5.setField(fi1);
         sf5.setName("P95R51");
-        sf5.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-9-26"), new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-10"), new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-2-15")));
+        sf5.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-9-26"),
+                new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-10"),
+                new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-2-15")));
         sf5.setQuestionData(new QuestionData(false, false));
         sf5.setSizeData(new SizeData(7.26, 242, 15));
         sf5.setProductivityData(new ProductivityData(187, 170, true));
         sf5.setLocationData(new LocationData(7.5, 8.5));
         surveyFieldRepository.save(sf5);
 
-        Pest p1  = pestRepository.save(new Pest(null, "Lagarta da soja", "Anticarsia gemmatalis", PestSize.GREATER_15CM));
-        Pest p2  = pestRepository.save(new Pest(null, "Lagarta da soja", "Anticarsia gemmatalis", PestSize.SMALLER_15CM));
-        Pest p3  = pestRepository.save(new Pest(null, "Falsa medideira", "Chrysodeixis spp.", PestSize.GREATER_15CM));
-        Pest p4  = pestRepository.save(new Pest(null, "Falsa medideira", "Chrysodeixis spp.", PestSize.SMALLER_15CM));
-        Pest p5  = pestRepository.save(new Pest(null, "Lagarta das vagens", "Spodoptera spp.", PestSize.GREATER_15CM));
-        Pest p6  = pestRepository.save(new Pest(null, "Lagarta das vagens", "Spodoptera spp.", PestSize.SMALLER_15CM));
-        Pest p7  = pestRepository.save(new Pest(null, "Grupo Heliothinae", "", PestSize.GREATER_15CM));
-        Pest p8  = pestRepository.save(new Pest(null, "Grupo Heliothinae", "Chrysodeixis spp.", PestSize.SMALLER_15CM));
-        Pest p9  = pestRepository.save(new Pest(null, "Percevejo verde", "Nezara sp.", PestSize.THIRD_TO_FIFTH_INSTAR));
+        Pest p1 = pestRepository
+                .save(new Pest(null, "Lagarta da soja", "Anticarsia gemmatalis", PestSize.GREATER_15CM));
+        Pest p2 = pestRepository
+                .save(new Pest(null, "Lagarta da soja", "Anticarsia gemmatalis", PestSize.SMALLER_15CM));
+        Pest p3 = pestRepository.save(new Pest(null, "Falsa medideira", "Chrysodeixis spp.", PestSize.GREATER_15CM));
+        Pest p4 = pestRepository.save(new Pest(null, "Falsa medideira", "Chrysodeixis spp.", PestSize.SMALLER_15CM));
+        Pest p5 = pestRepository.save(new Pest(null, "Lagarta das vagens", "Spodoptera spp.", PestSize.GREATER_15CM));
+        Pest p6 = pestRepository.save(new Pest(null, "Lagarta das vagens", "Spodoptera spp.", PestSize.SMALLER_15CM));
+        Pest p7 = pestRepository.save(new Pest(null, "Grupo Heliothinae", "", PestSize.GREATER_15CM));
+        Pest p8 = pestRepository.save(new Pest(null, "Grupo Heliothinae", "Chrysodeixis spp.", PestSize.SMALLER_15CM));
+        Pest p9 = pestRepository.save(new Pest(null, "Percevejo verde", "Nezara sp.", PestSize.THIRD_TO_FIFTH_INSTAR));
         Pest p10 = pestRepository.save(new Pest(null, "Percevejo verde", "Nezara sp.", PestSize.ADULT));
-        Pest p11 = pestRepository.save(new Pest(null, "Percevejo verde pequeno", "Piezodorus sp.", PestSize.THIRD_TO_FIFTH_INSTAR));
+        Pest p11 = pestRepository
+                .save(new Pest(null, "Percevejo verde pequeno", "Piezodorus sp.", PestSize.THIRD_TO_FIFTH_INSTAR));
         Pest p12 = pestRepository.save(new Pest(null, "Percevejo verde pequeno", "Piezodorus sp.", PestSize.ADULT));
-        Pest p13 = pestRepository.save(new Pest(null, "Percevejo Marrom", "Eushistus sp.", PestSize.THIRD_TO_FIFTH_INSTAR));
+        Pest p13 = pestRepository
+                .save(new Pest(null, "Percevejo Marrom", "Eushistus sp.", PestSize.THIRD_TO_FIFTH_INSTAR));
         Pest p14 = pestRepository.save(new Pest(null, "Percevejo Marrom", "Eushistus sp.", PestSize.ADULT));
-        Pest p15 = pestRepository.save(new Pest(null, "Percevejo Barriga verde", "Dichelops ssp.", PestSize.THIRD_TO_FIFTH_INSTAR));
+        Pest p15 = pestRepository
+                .save(new Pest(null, "Percevejo Barriga verde", "Dichelops ssp.", PestSize.THIRD_TO_FIFTH_INSTAR));
         Pest p16 = pestRepository.save(new Pest(null, "Percevejo Barriga verde", "Dichelops ssp.", PestSize.ADULT));
         Pest p17 = pestRepository.save(new Pest(null, "Outros percevejos", "", PestSize.THIRD_TO_FIFTH_INSTAR));
         Pest p18 = pestRepository.save(new Pest(null, "Outros percevejos", "", PestSize.ADULT));
@@ -243,7 +268,8 @@ class CLR implements CommandLineRunner {
 
         java.util.List<PestOccurrence> pestOccurrences = Stream.of(po1, po2, po3, po4).collect(Collectors.toList());
 
-        SamplePest sp1 = samplePestRepository.save(new SamplePest(null, new Date(), 3, 4, GrowthPhase.R2, pestOccurrences, mps1));
+        SamplePest sp1 = samplePestRepository
+                .save(new SamplePest(null, new Date(), 3, 4, GrowthPhase.R2, pestOccurrences, mps1));
     }
 
 }
