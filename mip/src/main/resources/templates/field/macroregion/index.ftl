@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<#import "/spring.ftl" as spring/>
 
 <head>
     <meta charset="utf-8">
@@ -37,8 +36,8 @@
                 <table id="mainTable" class="table table-striped table-hover">
                     <thead style="background-color: #004900; color: white">
                         <tr>
-                            <th class="col-sm-11">Nome</th>
-                            <th class="col-sm-1">Ações</th>
+                            <th class="col-sm-11"><@spring.message "table.list.name" /></th>
+                            <th class="col-sm-1"><@spring.message "table.list.action" /></th>
                         </tr>
                     </thead>
                     <tbody id="mainTable-body">
@@ -49,13 +48,16 @@
                                 <td>${macroregion.name}</td>
 
                                 <td>
+                                    <#assign updateLabel><@spring.message "table.list.actions.update" /></#assign>
+                                    <#assign deleteLabel><@spring.message "table.list.actions.delete" /></#assign>
+
                                     <a href="#editModal" class="text-warning" data-toggle="modal" data-id="${macroregion.id}"
                                         data-name="${macroregion.name}">
-                                        <i class="material-icons" data-toggle="tooltip" title="Alterar">&#xE254;</i>
+                                        <i class="material-icons" data-toggle="tooltip" title="${updateLabel}">&#xE254;</i>
                                     </a>
                                     <a href="#deleteModal" class="text-danger" data-toggle="modal" data-id="${macroregion.id}"
                                         data-name="${macroregion.name}">
-                                        <i class="material-icons" data-toggle="tooltip" title="Apagar">&#xE872;</i>
+                                        <i class="material-icons" data-toggle="tooltip" title="${deleteLabel}">&#xE872;</i>
                                     </a>
                                 </td>
                             </tr>

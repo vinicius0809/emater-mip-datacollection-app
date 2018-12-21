@@ -30,6 +30,7 @@ import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.QuestionData;
 import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.SizeData;
 import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.SurveyField;
 import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.SurveyFieldRepository;
+import freemarker.template.Configuration;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -45,9 +46,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 @SpringBootApplication
 public class MipApplication {
+
+        private FreeMarkerConfigurer freeMarkerConfigurer;
+        @Autowired
+        public MipApplication (FreeMarkerConfigurer freeMarkerConfigurer) {
+                this.freeMarkerConfigurer = freeMarkerConfigurer;
+
+                this.freeMarkerConfigurer.getConfiguration().addAutoImport("spring", "spring.ftl");
+        }
 
     public static void main(String[] args) {
         SpringApplication.run(MipApplication.class, args);

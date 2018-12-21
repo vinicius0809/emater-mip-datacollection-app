@@ -8,14 +8,17 @@
 					</div>
 					<div class="modal-body">					
 						<div class="form-group">
-							<label>Nome</label>
+							<label><@spring.message "modal.label.name" /></label>
 							<input type="text" class="form-control" id="edit-name" name="name" required>
 							<input type="hidden" class="form-control" id="edit-id" name="id">
 						</div>
 					</div>
 					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-info" value="Salvar Alterações">
+						<#assign buttonSave><@spring.message "modal.button.save" /></#assign>
+						<#assign buttonCancel><@spring.message "modal.button.cancel" /></#assign>
+
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="${buttonCancel}">
+						<input type="submit" class="btn btn-info" value="${buttonSave}">
 					</div>
 				</form>
 			</div>

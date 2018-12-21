@@ -8,12 +8,15 @@
 					</div>
 					<div class="modal-body">					
 						<p><@spring.message "modal.message.delete.macroregion"/> "<span id="edit-name" class="bg-danger text-white"></span>" ?</p>
-						<p class="text-danger">Essa ação NÃO pode ser desfeita.</p>
+						<p class="text-danger"><@spring.message "modal.message.delete.warning.macroregion" /></p>
 					</div>
 					<div class="modal-footer">
+						<#assign buttonDelete><@spring.message "modal.button.delete" /></#assign>
+						<#assign buttonCancel><@spring.message "modal.button.cancel" /></#assign>
+
 						<input type="hidden" class="form-control" id="edit-id" name="id">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-danger" value="Apagar">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="${buttonCancel}">
+						<input type="submit" class="btn btn-danger" value="${buttonDelete}">
 					</div>
 				</form>
 			</div>
