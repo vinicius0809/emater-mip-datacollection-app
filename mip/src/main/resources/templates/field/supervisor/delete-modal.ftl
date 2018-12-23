@@ -3,17 +3,20 @@
 			<div class="modal-content">
 				<form action="${urlDelete}" method="post">
 					<div class="modal-header">						
-						<h4 class="modal-title">Apagar ${entity}</h4>
+						<h4 class="modal-title"><@spring.message "modal.title.delete.supervisor" /></h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
-						<p>Você tem certeza que deseja apagar ${article} ${entity} "<span id="edit-name" class="bg-danger text-white"></span>" ?</p>
-						<p class="text-danger">Essa ação NÃO pode ser desfeita.</p>
+						<p><@spring.message "modal.message.delete.supervisor" /> "<span id="edit-name" class="bg-danger text-white"></span>" ?</p>
+						<p class="text-danger"><@spring.message "modal.message.delete.warning.norollback" /></p>
 					</div>
 					<div class="modal-footer">
+						<#assign buttonCancel><@spring.message "modal.button.cancel" /></#assign>
+						<#assign buttonDelete><@spring.message "modal.button.delete" /></#assign>
+
 						<input type="hidden" class="form-control" id="edit-id" name="id">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-danger" value="Apagar">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="${buttonCancel}">
+						<input type="submit" class="btn btn-danger" value="${buttonDelete}">
 					</div>
 				</form>
 			</div>
