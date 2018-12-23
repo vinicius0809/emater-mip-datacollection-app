@@ -10,25 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-enum FarmerLabels {
-    PAGE_TITLE ("Gerenciamento de Produtores"),
-    ENTITY ("Produtor"),
-    ARTICLE ("o");
-    
-    private String value;
-    
-    FarmerLabels (String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
 
 @Controller
 @RequestMapping (value = "/farmer")
@@ -48,9 +29,6 @@ public class FarmerController {
     public String listAll(Model data) {
         data.addAttribute("farmers", repository.findAll());
         
-        data.addAttribute("pageTitle", FarmerLabels.PAGE_TITLE.getValue());
-        data.addAttribute("article", FarmerLabels.ARTICLE.getValue());
-        data.addAttribute("entity", FarmerLabels.ENTITY.getValue());
         data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.farmer"));
         data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.farmer"));
         data.addAttribute("urlDelete", environment.getProperty("app.view.route.delete.field.farmer"));

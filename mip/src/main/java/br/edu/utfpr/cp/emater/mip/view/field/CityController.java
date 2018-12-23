@@ -13,26 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-enum CityLabels {
-    PAGE_TITLE("Gerenciamento de Municípios"),
-    ENTITY("Município"),
-    ARTICLE("o");
-
-    private String value;
-
-    CityLabels(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
 @Controller
 @RequestMapping(value = "/city")
 public class CityController {
@@ -58,9 +38,6 @@ public class CityController {
         data.addAttribute("macroRegions", macroRegionRepository.findAll());
         data.addAttribute("cities", cityRepository.findAll());
 
-        data.addAttribute("pageTitle", CityLabels.PAGE_TITLE.getValue());
-        data.addAttribute("article", CityLabels.ARTICLE.getValue());
-        data.addAttribute("entity", CityLabels.ENTITY.getValue());
         data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.city"));
         data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.city"));
         data.addAttribute("urlDelete", environment.getProperty("app.view.route.delete.field.city"));

@@ -10,26 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-enum SupervisorLabels {
-    PAGE_TITLE ("Gerenciamento de Responsáveis Técnicos"),
-    ENTITY ("Responsável Técnico"),
-    ARTICLE ("o");
-
-    private String value;
-    
-    SupervisorLabels (String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
 @Controller
 @RequestMapping (value = "/supervisor")
 public class SupervisorController {
@@ -48,9 +28,6 @@ public class SupervisorController {
     public String listAll(Model data) {
         data.addAttribute("supervisors", repository.findAll());
         
-        data.addAttribute("pageTitle", SupervisorLabels.PAGE_TITLE.getValue());
-        data.addAttribute("article", SupervisorLabels.ARTICLE.getValue());
-        data.addAttribute("entity", SupervisorLabels.ENTITY.getValue());
         data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.supervisor"));
         data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.supervisor"));
         data.addAttribute("urlDelete", environment.getProperty("app.view.route.delete.field.supervisor"));

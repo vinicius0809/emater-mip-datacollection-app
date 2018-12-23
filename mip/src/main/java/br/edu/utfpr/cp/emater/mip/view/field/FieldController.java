@@ -18,26 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-enum FieldLabels {
-    PAGE_TITLE("Gerenciamento de Unidades de Referência"),
-    ENTITY("Unidade de Referência"),
-    ARTICLE("a");
-
-    private String value;
-
-    FieldLabels(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
 @Controller
 @RequestMapping(value = "/field")
 public class FieldController {
@@ -66,9 +46,6 @@ public class FieldController {
         data.addAttribute("farmers", farmerRepository.findAll());
         data.addAttribute("supervisors", supervisorRepository.findAll());
 
-        data.addAttribute("pageTitle", FieldLabels.PAGE_TITLE.getValue());
-        data.addAttribute("article", FieldLabels.ARTICLE.getValue());
-        data.addAttribute("entity", FieldLabels.ENTITY.getValue());
         data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.field"));
         data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.field"));
         data.addAttribute("urlDelete", environment.getProperty("app.view.route.delete.field.field"));
