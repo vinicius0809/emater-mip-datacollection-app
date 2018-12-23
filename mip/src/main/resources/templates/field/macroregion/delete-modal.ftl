@@ -8,7 +8,7 @@
 					</div>
 					<div class="modal-body">					
 						<p><@spring.message "modal.message.delete.macroregion"/> "<span id="edit-name" class="bg-danger text-white"></span>" ?</p>
-						<p class="text-danger"><@spring.message "modal.message.delete.warning.macroregion" /></p>
+						<p class="text-danger"><@spring.message "modal.message.delete.warning.norollback" /></p>
 					</div>
 					<div class="modal-footer">
 						<#assign buttonDelete><@spring.message "modal.button.delete" /></#assign>

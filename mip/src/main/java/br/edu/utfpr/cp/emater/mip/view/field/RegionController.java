@@ -12,26 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-enum RegionLabels {
-    PAGE_TITLE("Gerenciamento de Regiões"),
-    ENTITY("Região"),
-    ARTICLE("a");
-
-    private String value;
-
-    RegionLabels(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
 @Controller
 @RequestMapping(value = "/region")
 public class RegionController {
@@ -54,9 +34,6 @@ public class RegionController {
         data.addAttribute("regions", regionRepository.findAll());
         data.addAttribute("macroRegions", macroRegionRepository.findAll());
 
-        data.addAttribute("pageTitle", RegionLabels.PAGE_TITLE.getValue());
-        data.addAttribute("article", RegionLabels.ARTICLE.getValue());
-        data.addAttribute("entity", RegionLabels.ENTITY.getValue());
         data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.region"));
         data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.region"));
         data.addAttribute("urlDelete", environment.getProperty("app.view.route.delete.field.region"));
