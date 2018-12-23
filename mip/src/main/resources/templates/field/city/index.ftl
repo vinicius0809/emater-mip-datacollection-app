@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>${pageTitle}</title>
+    <title><@spring.message "page.title.city" /></title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -24,11 +24,11 @@
 
         <form action="#" method="post" class="card" style="margin: 15px">
             <div class="card-header text-white" style="background-color: #004900">
-                <h2 class="card-title" style="display: inline">${pageTitle}</h2>
+                <h2 class="card-title" style="display: inline"><@spring.message "card.title.city" /></h2>
 
                 <a href="#addModal" class="btn btn-success float-right" data-toggle="modal">
                     <i class="material-icons align-middle">&#xE147;</i>
-                    <span class="align-middle">Criar Nov${article} ${entity}</span>
+                    <span class="align-middle"><@spring.message "card.button.new.city" /></span>
                 </a>
             </div>
 
@@ -37,10 +37,10 @@
                 <table id="mainTable" class="table table-striped table-hover">
                     <thead style="background-color: #004900; color: white">
                         <tr>
-                            <th class="col-sm-5">Nome</th>
-                            <th class="col-sm-3">Região</th>
-                            <th class="col-sm-3">Macrorregião</th>
-                            <th class="col-sm-1">Ações</th>
+                            <th class="col-sm-5"><@spring.message "table.list.name" /></th>
+                            <th class="col-sm-3"><@spring.message "table.list.region" /></th>
+                            <th class="col-sm-3"><@spring.message "table.list.macroregion" /></th>
+                            <th class="col-sm-1"><@spring.message "table.list.action" /></th>
                         </tr>
                     </thead>
                     <tbody id="mainTable-body">
@@ -52,11 +52,14 @@
                                 <td>${city.region.name}</td>
                                 <td>${city.region.macroRegion.name}</td>
                                 <td>
+                                    <#assign updateLabel><@spring.message "table.list.actions.update" /></#assign>
+                                    <#assign deleteLabel><@spring.message "table.list.actions.delete" /></#assign>
+
                                     <a href="#editModal" class="text-warning" data-toggle="modal" data-id="${city.id}" data-name="${city.name}" data-region=${city.region.id}>
-                                        <i class="material-icons" data-toggle="tooltip" title="Alterar">&#xE254;</i>
+                                        <i class="material-icons" data-toggle="tooltip" title="${updateLabel}">&#xE254;</i>
                                     </a>
                                     <a href="#deleteModal" class="text-danger" data-toggle="modal" data-id="${city.id}" data-name="${city.name}">
-                                        <i class="material-icons" data-toggle="tooltip" title="Apagar">&#xE872;</i>
+                                        <i class="material-icons" data-toggle="tooltip" title="${deleteLabel}">&#xE872;</i>
                                     </a>
                                 </td>
                             </tr>
