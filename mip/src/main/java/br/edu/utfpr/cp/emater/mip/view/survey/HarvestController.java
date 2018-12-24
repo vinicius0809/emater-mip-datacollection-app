@@ -16,26 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-enum HarvestLabels {
-    PAGE_TITLE("Gerenciamento de Safras"),
-    ENTITY("Safra"),
-    ARTICLE("a");
-
-    private String value;
-
-    HarvestLabels(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
 @Controller
 @RequestMapping("/harvest")
 public class HarvestController {
@@ -54,9 +34,6 @@ public class HarvestController {
     public String listAll(Model data) {
         data.addAttribute("harvests", repository.findAll());
 
-        data.addAttribute("pageTitle", HarvestLabels.PAGE_TITLE.getValue());
-        data.addAttribute("article", HarvestLabels.ARTICLE.getValue());
-        data.addAttribute("entity", HarvestLabels.ENTITY.getValue());
         data.addAttribute("urlCreate", this.environment.getProperty("app.view.route.create.survey.harvest"));
         data.addAttribute("urlUpdate", this.environment.getProperty("app.view.route.update.survey.harvest"));
         data.addAttribute("urlDelete", this.environment.getProperty("app.view.route.delete.survey.harvest"));
