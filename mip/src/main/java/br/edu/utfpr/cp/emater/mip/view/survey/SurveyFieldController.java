@@ -24,28 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-enum SurveyFieldLabels {
-    PAGE_TITLE("Unidades de Referência Participantes da Pesquisa"),
-    SELECT_FIELD_PAGE_TITLE("Selecionar Unidades de Referência para Pesquisa"),
-//    FIELD_FORM_PAGE_TITLE("Dados da Unidade de Referência para Pesquisa"),
-    ENTITY("Unidade de Referência"),
-    ARTICLE("a");
-
-    private String value;
-
-    SurveyFieldLabels(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
 @Controller
 @RequestMapping ("/survey-field")
 public class SurveyFieldController {
@@ -68,9 +46,6 @@ public class SurveyFieldController {
     public String findAll (Model data) {
         data.addAttribute("surveyFields", surveyFieldRepository.findAll());
 
-        data.addAttribute("pageTitle", SurveyFieldLabels.PAGE_TITLE.getValue());
-        data.addAttribute("article", SurveyFieldLabels.ARTICLE.getValue());
-        data.addAttribute("entity", SurveyFieldLabels.ENTITY.getValue());
         data.addAttribute("urlCreate", this.environment.getProperty("app.view.route.create.survey.survey-field"));
         data.addAttribute("urlUpdate", this.environment.getProperty("app.view.route.update.survey.survey-field"));
         data.addAttribute("urlDelete", this.environment.getProperty("app.view.route.delete.survey.survey-field"));
@@ -81,7 +56,6 @@ public class SurveyFieldController {
     @RequestMapping (value = "/select-field", method = RequestMethod.GET)
     public String selectFieldForSurvey (Model data) {
         data.addAttribute("fields", fieldRepository.findAll());
-        data.addAttribute("pageTitle", SurveyFieldLabels.SELECT_FIELD_PAGE_TITLE.getValue());
                 
         return this.environment.getProperty("app.view.route.template.select-field.survey.survey-field");
     }

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>${pageTitle}</title>
+    <title><@spring.message "page.survey.add-ur" /></title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     
@@ -24,7 +24,7 @@
 
         <form action="/survey-field/create" method="post" class="card" style="margin: 15px">
             <div class="card-header text-white" style="background-color: #004900">
-                <h2>${pageTitle}</h2>
+                <h2><@spring.message "card.title.add-ur" /></h2>
             </div>
 
 
@@ -34,26 +34,26 @@
 
 				<ul>
 					<li>
-                        <a href="#harvest-tab">Safra</a>
+                        <a href="#harvest-tab"><@spring.message "table.list.harvest" /></a>
                     </li>
 					<li>
-                        <a href="#cultivar-tab">Cultivar</a>
+                        <a href="#cultivar-tab"><@spring.message "table.list.seed-name" /></a>
                     </li>
 					<li>
-                        <a href="#area-tab">Area</a>
+                        <a href="#area-tab"><@spring.message "table.list.area" /></a>
                     </li>
 					<li>
-                        <a href="#productivity-tab">Produtividade</a>
+                        <a href="#productivity-tab"><@spring.message "table.list.productivity" /></a>
                     </li>
 					<li>
-                        <a href="#date-tab">Datas</a>
+                        <a href="#date-tab"><@spring.message "table.list.dates" /></a>
                     </li>
 				</ul>
 
                 <div class="tab-content">
                     <div id="harvest-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
-                            Safra
+                            <@spring.message "table.list.harvest" />
                         </div>
                         <div class="card-body">
                             <div class="form-group">
@@ -68,11 +68,11 @@
 
                     <div id="cultivar-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
-                            Cultivar
+                            <@spring.message "table.list.seed-name" />
                         </div>
                         <div class="card-body">
                             <div class="form-group ">
-                                <label for="name">Nome</label>
+                                <label for="name"><@spring.message "table.list.name" /></label>
                                 <input type="text" class="form-control" id="name" name="name">
                             </div>
 
@@ -80,14 +80,14 @@
                                 <div class="form-check col">
                                     <input class="form-check-input" type="checkbox" id="rustResistant" name="rustResistant">
                                     <label class="form-check-label" for="rustResistant">
-                                        Resistente à ferrugem?
+                                        <@spring.message "table.list.rust-resitant" />
                                     </label>
                                 </div>
 
                                 <div class="form-check col">
                                     <input class="form-check-input" type="checkbox" id="bt" name="bt">
                                     <label class="form-check-label" for="bt">
-                                        Bt?
+                                        <@spring.message "table.list.bt" />
                                     </label>
                                 </div>
                             </div>
@@ -96,34 +96,34 @@
 
                     <div id="area-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
-                            Área
+                            <@spring.message "table.list.area" />
                         </div>
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="totalArea">Área da unidade (UO/UR) </label>
+                                    <label for="totalArea"><@spring.message "table.list.total-area" /> (UO/UR) </label>
                                     <input type="number" step="0.01" class="form-control" id="totalArea" name="totalArea">
                                 </div>
 
                                 <div class="form-group col">
-                                    <label for="totalPlantedArea">Área total cultivada </label>
+                                    <label for="totalPlantedArea"><@spring.message "table.list.total-planted-area" /> </label>
                                     <input type="number" step="0.01" class="form-control" id="totalPlantedArea" name="totalPlantedArea">
                                 </div>
 
                                 <div class="form-group col">
-                                    <label for="plantPerMeter">No. plantas por metro </label>
+                                    <label for="plantPerMeter"><@spring.message "table.list.plant-per-meter" /> </label>
                                     <input type="number" step="0.01" class="form-control" id="plantPerMeter" name="plantPerMeter">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="latitute">Latitude </label>
+                                    <label for="latitute"><@spring.message "table.list.latitude" /> </label>
                                     <input type="number" step="0.01" class="form-control" id="latitute" name="latitute">
                                 </div>
 
                                 <div class="form-group col">
-                                    <label for="longitude">Longitude </label>
+                                    <label for="longitude"><@spring.message "table.list.longitude" /> </label>
                                     <input type="number" step="0.01" class="form-control" id="longitude" name="longitude">
                                 </div>
                             </div>
@@ -132,18 +132,18 @@
 
                     <div id="productivity-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
-                            Produtividade
+                            <@spring.message "table.list.productivity" />
                         </div>
                         <div class="card-body">
 
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="productivityField">Produtividade da unidade (UO/UR) </label>
+                                    <label for="productivityField"><@spring.message "table.list.productivity-field" /> (UO/UR) </label>
                                     <input type="number" step="0.01" class="form-control" id="productivityField" name="productivityField">
                                 </div>
 
                                 <div class="form-group col">
-                                    <label for="productivityFarmer">Produtividade área total do produtor </label>
+                                    <label for="productivityFarmer"><@spring.message "table.list.productivity-farmer" /> </label>
                                     <input type="number" step="0.01" class="form-control" id="productivityFarmer" name="productivityFarmer">
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="separatedWeight" name="separatedWeight">
                                     <label class="form-check-label" for="separatedWeight">
-                                        Pesou em separado?
+                                        <@spring.message "table.list.separated-weight" />
                                     </label>
                                 </div>
                             </div>
@@ -162,21 +162,21 @@
 
                     <div id="date-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
-                            Datas
+                            <@spring.message "table.list.dates" />
                         </div>
                         <div class="card-body">
 
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="sowedDate">Data da Semeadura</label>
+                                    <label for="sowedDate"><@spring.message "table.list.sowed-date" /></label>
                                     <input type="date" class="form-control" id="sowedDate" name="sowedDate">
                                 </div>
                                 <div class="form-group col">
-                                    <label for="emergenceDate">Data da Emergência</label>
+                                    <label for="emergenceDate"><@spring.message "table.list.emergence-date" /></label>
                                     <input type="date" class="form-control" id="emergenceDate" name="emergenceDate">
                                 </div>
                                 <div class="form-group col">
-                                    <label for="harvestDate">Data da Colheita</label>
+                                    <label for="harvestDate"><@spring.message "table.list.harvest-date" /></label>
                                     <input type="date" class="form-control" id="harvestDate" name="harvestDate">
                                 </div>
                             </div>
@@ -186,7 +186,8 @@
             </div>
 
             <div class="card-footer text-muted">
-                <input style="display: none" id="saveButton" type="submit" class="btn btn-success float-right" value="Salvar Dados da Unidade de Referência na Pesquisa" />
+                <#assign saveButton><@spring.message "modal.button.save-ru" /></#assign>
+                <input style="display: none" id="saveButton" type="submit" class="btn btn-success float-right" value="${saveButton}" />
             </div>
         </form>
     </div>
