@@ -11,27 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-enum PestLabels {
-    PAGE_TITLE ("Gerenciamento de Insetos Praga"),
-    ENTITY ("Praga"),
-    ARTICLE ("a");
-    
-    private String value;
-    
-    PestLabels (String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}
-
 @Controller
 @RequestMapping (value = "/pest")
 public class PestController {
@@ -51,9 +30,6 @@ public class PestController {
         data.addAttribute("pests", repository.findAll());
         data.addAttribute("pestSizes", PestSize.values());
         
-        data.addAttribute("pageTitle", PestLabels.PAGE_TITLE.getValue());
-        data.addAttribute("article", PestLabels.ARTICLE.getValue());
-        data.addAttribute("entity", PestLabels.ENTITY.getValue());
         data.addAttribute("urlCreate", this.environment.getProperty("app.view.route.create.mip.pest"));
         data.addAttribute("urlUpdate", this.environment.getProperty("app.view.route.update.mip.pest"));
         data.addAttribute("urlDelete", this.environment.getProperty("app.view.route.delete.mip.pest"));
