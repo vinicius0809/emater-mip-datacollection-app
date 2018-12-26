@@ -46,9 +46,7 @@ public class SamplePestController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String listAll(Model data) {
         data.addAttribute("mipPestSurveys", mipPestSurveyRepository.findAll());
-        
-        data.addAttribute("pageTitle", "Anotação de Campo sobre a Flutuação das Pragas");
-        
+                
         return this.environment.getProperty("app.view.route.template.main.mip.pest-survey");
     }
     

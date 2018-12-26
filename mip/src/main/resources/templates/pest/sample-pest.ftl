@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>${pageTitle}</title>
+    <title><@spring.message "page.pest.sample" /></title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -27,36 +27,36 @@
             <input type="hidden" name="mipPestSurveyId" value="${mipPestSurveyId}">
 
             <div class="card-header text-white" style="background-color: #004900">
-                <h2 class="card-title" style="display: inline">${pageTitle}</h2>
+                <h2 class="card-title" style="display: inline"><@spring.message "card.title.sample" /></h2>
             </div>
 
             <div id="smartwizard" class="card-body">
 
                 <ul>
                     <li>
-                        <a href="#sample-data-tab">Dados da Amostragem</a>
+                        <a href="#sample-data-tab"><@spring.message "table.list.sample-data" /></a>
                     </li>
                     <li>
-                        <a href="#pest-table-tab">Flutuação Populacional</a>
+                        <a href="#pest-table-tab"><@spring.message "table.list.sample-population" /></a>
                     </li>
                 </ul>
 
                 <div class="tab-content">
                     <div id="sample-data-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
-                            Dados da Amostragem
+                            <@spring.message "table.list.sample-data" />
                         </div>
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="sampleDate">Data da Coleta</label>
+                                    <label for="sampleDate"><@spring.message "table.list.colletion-date" /></label>
                                     <input type="date" class="form-control" id="sampleDate" name="sampleDate">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="growthPhase">Estádio da Cultura</label>
+                                    <label for="growthPhase"><@spring.message "table.list.growth-phase" /></label>
                                     <select class="form-control" id="growthPhase" name="growthPhase">
                                         <#list growthPhases as growthPhase>
                                             <option value="${growthPhase}">${growthPhase}</option>
@@ -67,14 +67,14 @@
 
                             <div class="form-row">
                                 <div class="form-group col">
-                                   <label for="daysAfterEmergence">Dias Após Emergência</label>
+                                   <label for="daysAfterEmergence"><@spring.message "table.list.days-after-emergence" /></label>
                                     <input type="number" class="form-control" id="daysAfterEmergence" name="daysAfterEmergence">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="defoliation">% de Desfolha (em números inteiros)</label>
+                                    <label for="defoliation"><@spring.message "table.list.defoliation-rate" /></label>
                                     <input type="number" class="form-control" id="defoliation" name="defoliation">
                                 </div>
                             </div>
@@ -84,14 +84,14 @@
 
                     <div id="pest-table-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
-                            Flutuação Populacional dos Insetos Pragas
+                            <@spring.message "table.list.sample-pest-population" />
                         </div>
                         <div class="card-body table-responsive-md">
                             <table id="mainTable" class="table table-striped table-hover">
                                 <thead style="background-color: #004900; color: white">
                                     <tr>
-                                        <th>Insetos Praga</th>
-                                        <th>Média Encontrada</th>
+                                        <th><@spring.message "table.list.pest-name" /></th>
+                                        <th><@spring.message "table.list.average-found" /></th>
                                     </tr>
                                 </thead>
                                 <tbody id="mainTable-body">
@@ -109,7 +109,8 @@
             </div>
 
             <div class="card-footer">
-                <input style="display: none" id="saveButton" type="submit" class="btn btn-success float-right" value="Gravar Amostra"/>
+                <#assign saveButton><@spring.message "modal.button.register-sample" /></#assign>
+                <input style="display: none" id="saveButton" type="submit" class="btn btn-success float-right" value="${saveButton}"/>
             </div>
         </form>
 
