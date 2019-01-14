@@ -1,12 +1,12 @@
 package br.edu.utfpr.cp.emater.mip.view.pest;
 
-import br.edu.utfpr.cp.emater.mip.domain.pest.GrowthPhase;
-import br.edu.utfpr.cp.emater.mip.domain.pest.MipPestSurveyRepository;
-import br.edu.utfpr.cp.emater.mip.domain.pest.Pest;
-import br.edu.utfpr.cp.emater.mip.domain.pest.PestOccurrence;
-import br.edu.utfpr.cp.emater.mip.domain.pest.PestRepository;
-import br.edu.utfpr.cp.emater.mip.domain.pest.SamplePest;
-import br.edu.utfpr.cp.emater.mip.domain.pest.SamplePestRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.GrowthPhase;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.MipPestSurveyRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.Pest;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.PestOccurrence;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.PestRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.SamplePest;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.SamplePestRepository;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,8 +1,8 @@
 package br.edu.utfpr.cp.emater.mip.view.pest;
 
-import br.edu.utfpr.cp.emater.mip.domain.pest.Pest;
-import br.edu.utfpr.cp.emater.mip.domain.pest.PestRepository;
-import br.edu.utfpr.cp.emater.mip.domain.pest.PestSize;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.Pest;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.PestRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.PestSize;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;

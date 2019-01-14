@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mip.domain.pest;
+package br.edu.utfpr.cp.emater.midmipsystem.domain.mip;
 
 public enum PestSize {
     
