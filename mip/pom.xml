@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.edu.utfpr.cp.emater</groupId>
-	<artifactId>mip</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>midmipsystem</artifactId>
+	<version>0.1.0</version>
 	<packaging>jar</packaging>
 
-	<name>mip</name>
-	<description>The MIP/MID System</description>
+	<name>midmipsystem</name>
+	<description>The MID/MIP System</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
