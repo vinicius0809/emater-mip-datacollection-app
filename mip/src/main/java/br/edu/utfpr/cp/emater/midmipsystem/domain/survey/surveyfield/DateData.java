@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield;
+package br.edu.utfpr.cp.emater.midmipsystem.domain.survey.surveyfield;
 
 import java.io.Serializable;
 import java.util.Date;

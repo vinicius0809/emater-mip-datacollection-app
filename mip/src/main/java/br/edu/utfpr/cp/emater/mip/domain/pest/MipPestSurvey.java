@@ -1,6 +1,6 @@
 package br.edu.utfpr.cp.emater.mip.domain.pest;
 
-import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.SurveyField;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.surveyfield.SurveyField;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mip.domain.survey.harvest;
+package br.edu.utfpr.cp.emater.midmipsystem.domain.survey.harvest;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
