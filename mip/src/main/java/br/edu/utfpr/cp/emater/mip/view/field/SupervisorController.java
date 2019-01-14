@@ -1,7 +1,7 @@
 package br.edu.utfpr.cp.emater.mip.view.field;
 
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.person.Supervisor;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.person.SupervisorRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Supervisor;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.SupervisorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;

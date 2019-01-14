@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.midmipsystem.domain.base.person;
+package br.edu.utfpr.cp.emater.midmipsystem.domain.base;
 
 import java.io.Serializable;
 import javax.persistence.Entity;

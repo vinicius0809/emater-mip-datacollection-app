@@ -1,15 +1,15 @@
 package br.edu.utfpr.cp.emater.mip.view.survey;
 
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.field.Field;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.field.FieldRepository;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.harvest.HarvestRepository;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.surveyfield.DateData;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.surveyfield.LocationData;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.surveyfield.ProductivityData;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.surveyfield.QuestionData;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.surveyfield.SizeData;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.surveyfield.SurveyField;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.surveyfield.SurveyFieldRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Field;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.FieldRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.HarvestRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.DateData;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.LocationData;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.ProductivityData;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.QuestionData;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.SizeData;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.SurveyField;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.SurveyFieldRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

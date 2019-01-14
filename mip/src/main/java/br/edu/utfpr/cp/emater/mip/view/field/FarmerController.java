@@ -1,7 +1,7 @@
 package br.edu.utfpr.cp.emater.mip.view.field;
 
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.person.Farmer;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.person.FarmerRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Farmer;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.FarmerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;

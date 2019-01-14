@@ -1,7 +1,7 @@
 package br.edu.utfpr.cp.emater.mip.view.survey;
 
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.harvest.Harvest;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.harvest.HarvestRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.Harvest;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.HarvestRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

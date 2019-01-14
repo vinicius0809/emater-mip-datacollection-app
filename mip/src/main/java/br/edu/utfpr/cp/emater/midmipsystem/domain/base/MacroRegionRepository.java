@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.midmipsystem.domain.base.macroregion;
+package br.edu.utfpr.cp.emater.midmipsystem.domain.base;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

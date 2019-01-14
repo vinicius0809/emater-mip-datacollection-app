@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.midmipsystem.domain.survey.harvest;
+package br.edu.utfpr.cp.emater.midmipsystem.domain.survey;
 
 import java.io.Serializable;
 import java.util.Date;

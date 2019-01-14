@@ -1,13 +1,13 @@
-package br.edu.utfpr.cp.emater.midmipsystem.domain.mip;
+package br.edu.utfpr.cp.emater.midmipsystem.domain.base;
 
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.SurveyField;
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
+import org.apache.commons.text.WordUtils;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,11 +16,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MipPestSurvey implements Serializable {
+public class MacroRegion implements Serializable {
     
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @OneToOne (fetch = FetchType.EAGER)
-    private SurveyField surveyField;        
+    private String name;
+
+    public void setName (String name) {
+        this.name = WordUtils.capitalize(name.toLowerCase());
+    }
 }

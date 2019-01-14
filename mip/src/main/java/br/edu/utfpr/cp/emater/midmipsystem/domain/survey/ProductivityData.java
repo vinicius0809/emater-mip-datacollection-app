@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.midmipsystem.domain.survey.surveyfield;
+package br.edu.utfpr.cp.emater.midmipsystem.domain.survey;
 
 import java.io.Serializable;
 import javax.persistence.Embeddable;
