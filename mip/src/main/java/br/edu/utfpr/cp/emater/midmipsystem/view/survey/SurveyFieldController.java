@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mip.view.survey;
+package br.edu.utfpr.cp.emater.midmipsystem.view.survey;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Field;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.FieldRepository;

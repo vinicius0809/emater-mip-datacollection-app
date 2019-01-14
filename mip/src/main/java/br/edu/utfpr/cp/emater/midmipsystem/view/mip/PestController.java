@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mip.view.pest;
+package br.edu.utfpr.cp.emater.midmipsystem.view.mip;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.Pest;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.PestRepository;

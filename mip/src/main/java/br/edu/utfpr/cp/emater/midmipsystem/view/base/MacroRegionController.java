@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mip.view.field;
+package br.edu.utfpr.cp.emater.midmipsystem.view.base;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;

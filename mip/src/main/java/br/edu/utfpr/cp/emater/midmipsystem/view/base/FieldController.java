@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mip.view.field;
+package br.edu.utfpr.cp.emater.midmipsystem.view.base;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.City;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.CityRepository;
