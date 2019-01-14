@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.mip.domain.field.field;
+package br.edu.utfpr.cp.emater.midmipsystem.domain.base.field;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

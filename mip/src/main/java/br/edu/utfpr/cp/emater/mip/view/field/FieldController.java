@@ -1,13 +1,13 @@
 package br.edu.utfpr.cp.emater.mip.view.field;
 
-import br.edu.utfpr.cp.emater.mip.domain.field.city.City;
-import br.edu.utfpr.cp.emater.mip.domain.field.city.CityRepository;
-import br.edu.utfpr.cp.emater.mip.domain.field.field.Field;
-import br.edu.utfpr.cp.emater.mip.domain.field.field.FieldRepository;
-import br.edu.utfpr.cp.emater.mip.domain.field.person.Farmer;
-import br.edu.utfpr.cp.emater.mip.domain.field.person.FarmerRepository;
-import br.edu.utfpr.cp.emater.mip.domain.field.person.Supervisor;
-import br.edu.utfpr.cp.emater.mip.domain.field.person.SupervisorRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.city.City;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.city.CityRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.field.Field;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.field.FieldRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.person.Farmer;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.person.FarmerRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.person.Supervisor;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.person.SupervisorRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

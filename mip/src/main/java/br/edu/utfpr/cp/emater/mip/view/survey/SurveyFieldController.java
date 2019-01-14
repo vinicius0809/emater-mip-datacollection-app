@@ -1,7 +1,7 @@
 package br.edu.utfpr.cp.emater.mip.view.survey;
 
-import br.edu.utfpr.cp.emater.mip.domain.field.field.Field;
-import br.edu.utfpr.cp.emater.mip.domain.field.field.FieldRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.field.Field;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.field.FieldRepository;
 import br.edu.utfpr.cp.emater.mip.domain.survey.harvest.HarvestRepository;
 import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.DateData;
 import br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield.LocationData;

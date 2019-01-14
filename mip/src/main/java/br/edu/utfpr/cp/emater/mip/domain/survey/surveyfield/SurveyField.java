@@ -1,7 +1,7 @@
 package br.edu.utfpr.cp.emater.mip.domain.survey.surveyfield;
 
 import br.edu.utfpr.cp.emater.mip.domain.survey.harvest.Harvest;
-import br.edu.utfpr.cp.emater.mip.domain.field.field.Field;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.field.Field;
 import java.io.Serializable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegion;
-import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegionRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.macroregion.MacroRegion;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.macroregion.MacroRegionRepository;
 
 
 @Controller

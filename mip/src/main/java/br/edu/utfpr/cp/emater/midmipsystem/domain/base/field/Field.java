@@ -1,8 +1,8 @@
-package br.edu.utfpr.cp.emater.mip.domain.field.field;
+package br.edu.utfpr.cp.emater.midmipsystem.domain.base.field;
 
-import br.edu.utfpr.cp.emater.mip.domain.field.city.City;
-import br.edu.utfpr.cp.emater.mip.domain.field.person.Farmer;
-import br.edu.utfpr.cp.emater.mip.domain.field.person.Supervisor;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.city.City;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.person.Farmer;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.person.Supervisor;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

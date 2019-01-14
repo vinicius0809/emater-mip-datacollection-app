@@ -1,9 +1,9 @@
 package br.edu.utfpr.cp.emater.mip.view.field;
 
-import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegion;
-import br.edu.utfpr.cp.emater.mip.domain.field.macroregion.MacroRegionRepository;
-import br.edu.utfpr.cp.emater.mip.domain.field.region.Region;
-import br.edu.utfpr.cp.emater.mip.domain.field.region.RegionRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.macroregion.MacroRegion;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.macroregion.MacroRegionRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.region.Region;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.region.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
