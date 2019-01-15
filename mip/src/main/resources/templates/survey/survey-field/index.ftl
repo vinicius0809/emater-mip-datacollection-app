@@ -28,7 +28,6 @@
 
                 <a href="/survey-field/select-field" class="btn btn-success float-right" >
                     <i class="material-icons align-middle">&#xE147;</i>
-                    <!-- <span>Criar Nov${article} ${entity}</span> -->
                     <span class="align-middle"><@spring.message "card.button.new.survey-field"/></span>
                 </a>
             </div>
