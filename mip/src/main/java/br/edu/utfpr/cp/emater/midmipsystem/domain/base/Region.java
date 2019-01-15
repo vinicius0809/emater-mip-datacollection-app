@@ -1,6 +1,8 @@
 package br.edu.utfpr.cp.emater.midmipsystem.domain.base;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.MacroRegion;
+import br.edu.utfpr.cp.emater.midmipsystem.library.AuditingPersistenceEntity;
+
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Region implements Serializable {
+public class Region extends AuditingPersistenceEntity implements Serializable {
     
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;

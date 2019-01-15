@@ -3,6 +3,8 @@ package br.edu.utfpr.cp.emater.midmipsystem.domain.base;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.City;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Farmer;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Supervisor;
+import br.edu.utfpr.cp.emater.midmipsystem.library.AuditingPersistenceEntity;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Field implements Serializable {
+public class Field extends AuditingPersistenceEntity implements Serializable {
     
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;

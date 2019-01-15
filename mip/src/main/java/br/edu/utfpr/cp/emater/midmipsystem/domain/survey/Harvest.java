@@ -11,6 +11,7 @@ import javax.persistence.TemporalType;
 
 import org.apache.commons.text.WordUtils;
 
+import br.edu.utfpr.cp.emater.midmipsystem.library.AuditingPersistenceEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Harvest implements Serializable {
+public class Harvest extends AuditingPersistenceEntity implements Serializable {
     
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;

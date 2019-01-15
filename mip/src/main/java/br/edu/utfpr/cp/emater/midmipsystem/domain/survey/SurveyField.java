@@ -1,6 +1,7 @@
 package br.edu.utfpr.cp.emater.midmipsystem.domain.survey;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.Harvest;
+import br.edu.utfpr.cp.emater.midmipsystem.library.AuditingPersistenceEntity;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Field;
 import java.io.Serializable;
 import javax.persistence.Embedded;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SurveyField implements Serializable {
+public class SurveyField extends AuditingPersistenceEntity implements Serializable {
 
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
