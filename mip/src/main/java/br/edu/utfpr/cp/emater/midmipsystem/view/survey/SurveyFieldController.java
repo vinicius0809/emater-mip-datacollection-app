@@ -77,7 +77,7 @@ public class SurveyFieldController {
     public String create (
                             @RequestParam int fieldId, 
                             @RequestParam int harvestId,
-                            @RequestParam String name,
+                            @RequestParam String seedName,
                             @RequestParam String sowedDate,
                             @RequestParam String emergenceDate,
                             @RequestParam String harvestDate,
@@ -95,7 +95,7 @@ public class SurveyFieldController {
         SurveyField sf = new SurveyField();
         sf.setHarvest(harvestRepository.findById(new Long(harvestId)).get());
         sf.setField(fieldRepository.findById(new Long(fieldId)).get());
-        sf.setName(name);
+        sf.setSeedName(seedName);
         sf.setDateData(new DateData(this.dateFormatter(sowedDate), this.dateFormatter(emergenceDate), this.dateFormatter(harvestDate)));
         sf.setProductivityData(new ProductivityData(productivityField, productivityFarmer, separatedWeight));
         sf.setLocationData(new LocationData(longitude, latitute));

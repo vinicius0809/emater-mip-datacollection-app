@@ -62,7 +62,7 @@
 
                             <tr>
                                 <td>${surveyField.harvest.name}</td>
-                                <td>${surveyField.name}</td>
+                                <td>${surveyField.seedName}</td>
                                 <td>${surveyField.questionData.rustResistant?string('Sim', 'Não')}</td>
                                 <td>${surveyField.questionData.bt?string('Sim', 'Não')}</td>
                                 <td>${surveyField.dateData.sowedDate?string.medium}</td>
@@ -80,7 +80,7 @@
                                 <td>
                                     <#assign deleteLabel><@spring.message "table.list.remove-from-survey" /></#assign>
 
-                                    <a href="#deleteModal" class="text-danger" data-toggle="modal" data-id="${surveyField.id}" data-name="${surveyField.name}">
+                                    <a href="#deleteModal" class="text-danger" data-toggle="modal" data-id="${surveyField.id}" data-name="${surveyField.seedName}">
                                         <i class="material-icons" data-toggle="tooltip" title="${deleteLabel}">clear</i>
                                     </a>
                                 </td>

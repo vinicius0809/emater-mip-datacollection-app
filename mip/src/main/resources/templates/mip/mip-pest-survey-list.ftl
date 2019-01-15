@@ -48,7 +48,7 @@
                                 <td>${mipPestSurvey.surveyField.field.name}</td>
                                 <td>${mipPestSurvey.surveyField.field.location}</td>
                                 <td>${mipPestSurvey.surveyField.field.city.name}</td>
-                                <td>${mipPestSurvey.surveyField.name}</td>
+                                <td>${mipPestSurvey.surveyField.seedName}</td>
                                 <td>${mipPestSurvey.surveyField.field.farmer.name}</td>
                                 <td>
                                     <#list mipPestSurvey.surveyField.field.supervisors as supervisor>

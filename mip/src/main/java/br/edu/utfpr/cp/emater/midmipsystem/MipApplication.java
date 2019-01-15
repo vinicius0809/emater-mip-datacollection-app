@@ -179,7 +179,7 @@ class CLR implements CommandLineRunner {
         SurveyField sf1 = new SurveyField();
         sf1.setHarvest(h1);
         sf1.setField(fi3);
-        sf1.setName("TMG 7262 RR1");
+        sf1.setSeedName("TMG 7262 RR1");
         sf1.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-1"),
                 new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-8"),
                 new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-02-26")));
@@ -192,7 +192,7 @@ class CLR implements CommandLineRunner {
         SurveyField sf2 = new SurveyField();
         sf2.setHarvest(h1);
         sf2.setField(fi2);
-        sf2.setName("BMX RAIO Ipro");
+        sf2.setSeedName("BMX RAIO Ipro");
         sf2.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-4"),
                 new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-11"),
                 new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-2-12")));
@@ -205,7 +205,7 @@ class CLR implements CommandLineRunner {
         SurveyField sf3 = new SurveyField();
         sf3.setHarvest(h1);
         sf3.setField(fi5);
-        sf3.setName("TMG 7262 RR");
+        sf3.setSeedName("TMG 7262 RR");
         sf3.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-4"),
                 new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-9"),
                 new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-2-20")));
@@ -218,7 +218,7 @@ class CLR implements CommandLineRunner {
         SurveyField sf4 = new SurveyField();
         sf4.setHarvest(h1);
         sf4.setField(fi4);
-        sf4.setName("TMG -  7262");
+        sf4.setSeedName("TMG -  7262");
         sf4.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-24"),
                 new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-10"),
                 new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-2-18")));
@@ -231,7 +231,7 @@ class CLR implements CommandLineRunner {
         SurveyField sf5 = new SurveyField();
         sf5.setHarvest(h1);
         sf5.setField(fi1);
-        sf5.setName("P95R51");
+        sf5.setSeedName("P95R51");
         sf5.setDateData(new DateData(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-9-26"),
                 new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2017-10-10"),
                 new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse("2018-2-15")));

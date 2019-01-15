@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import org.apache.commons.text.WordUtils;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -27,7 +26,7 @@ public class SurveyField implements Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String name;
+    private String seedName;
     
     @Embedded
     private QuestionData questionData;
@@ -50,7 +49,7 @@ public class SurveyField implements Serializable {
     @ManyToOne (fetch = FetchType.EAGER)
     private Harvest harvest;
 
-    public void setName (String name) {
-        this.name = WordUtils.capitalize(name.toLowerCase());
+    public void setSeedName (String seedName) {
+        this.seedName = WordUtils.capitalize(seedName.toLowerCase());
     }
 }
