@@ -71,35 +71,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>    
-
-    <script>
-        $(document).ready(function () {
-            $('#mainTable').DataTable({
-                language: {
-                    processing:     "Processando...",
-                    search:         "Buscar",
-                    lengthMenu:    "_MENU_ resultados por página",
-                    info:           "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                    infoEmpty:      "Mostrando de 0 até 0 de 0 registros",
-                    infoFiltered:   "(Filtrados de _MAX_ registros)",
-                    infoPostFix:    "",
-                    loadingRecords: "Carregando...",
-                    zeroRecords:    "Nenhum registro encontrado",
-                    emptyTable:     "Nenhum registro encontrado",
-                    paginate: {
-                        first:      "Primeiro",
-                        previous:   "Anterior",
-                        next:       "Próximo",
-                        last:       "Último"
-                    },
-                    aria: {
-                        sortAscending:  ": Ordenar colunas de forma crescente",
-                        sortDescending: ": Ordenar colunas de forma decrescente"
-                    }
-                }
-            });
-        }); 
-    </script>
+    <script src="/js/table-config.js"></script>
         
 </body>
 
