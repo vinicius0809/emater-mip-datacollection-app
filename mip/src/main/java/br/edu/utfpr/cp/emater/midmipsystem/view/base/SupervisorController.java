@@ -36,10 +36,11 @@ public class SupervisorController {
     }
     
     @RequestMapping (value = "/create", method = RequestMethod.POST)
-    public String create (@RequestParam String name) {
+    public String create (@RequestParam String name, @RequestParam String email) {
         
         Supervisor s = new Supervisor();
         s.setName(name);
+        s.setEmail(email);
 
         repository.save(s);
         
@@ -47,10 +48,11 @@ public class SupervisorController {
     }
     
     @RequestMapping (value = "/update", method = RequestMethod.POST)
-    public String update (@RequestParam String name, @RequestParam int id) {
+    public String update (@RequestParam String email, @RequestParam String name, @RequestParam int id) {
         
         Supervisor mr = repository.findById(new Long (id)).get();
         mr.setName(name);
+        mr.setEmail(email);
         
         repository.saveAndFlush(mr);
         

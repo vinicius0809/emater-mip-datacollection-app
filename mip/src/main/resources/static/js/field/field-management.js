@@ -3,6 +3,7 @@ $(document).ready(function(){
 	$('#editModal').on('show.bs.modal', function (event) {
 	var button = $(event.relatedTarget); // Button that triggered the modal
 
+	var email = button.data('email');
 	var location = button.data('location');
 	var farmer = button.data('farmer');
 	var city = button.data('city');
@@ -15,6 +16,7 @@ $(document).ready(function(){
 	// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 	var modal = $(this);
 	
+	modal.find('#edit-email').val(email);
 	modal.find('#edit-location').val(location);
 	modal.find('#edit-farmer').val(farmer);
 	modal.find('#edit-city').val(city);

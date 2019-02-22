@@ -36,7 +36,8 @@
                 <table id="mainTable" class="table table-striped table-hover">
                     <thead style="background-color: #004900; color: white">
                         <tr>
-                            <th class="col-sm-10"><@spring.message "table.list.name" /></th>
+                            <th class="col-sm-7"><@spring.message "table.list.name" /></th>
+                            <th class="col-sm-3"><@spring.message "table.list.email" /></th>
                             <th class="col-sm-2"><@spring.message "table.list.action" /></th>
                         </tr>
                     </thead>
@@ -46,11 +47,12 @@
 
                             <tr>
                                 <td>${supervisor.name}</td>
+                                <td>${supervisor.email}</td>
                                 <td>
                                     <#assign updateLabel><@spring.message "table.list.actions.update" /></#assign>
                                     <#assign deleteLabel><@spring.message "table.list.actions.delete" /></#assign>
 
-                                    <a href="#editModal" class="text-warning" data-toggle="modal" data-id="${supervisor.id}" data-name="${supervisor.name}">
+                                    <a href="#editModal" class="text-warning" data-toggle="modal" data-id="${supervisor.id}" data-name="${supervisor.name}" data-email="${supervisor.email}">
                                         <i class="material-icons" data-toggle="tooltip" title="${updateLabel}">&#xE254;</i>
                                     </a>
                                     <a href="#deleteModal" class="text-danger" data-toggle="modal" data-id="${supervisor.id}" data-name="${supervisor.name}">

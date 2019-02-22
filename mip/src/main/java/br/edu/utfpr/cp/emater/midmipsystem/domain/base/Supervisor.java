@@ -7,16 +7,19 @@ import lombok.Data;
 @Entity
 @Data
 public class Supervisor extends Person implements Serializable {
+
+    private String email;
     
     public Supervisor () {
         super();
     }
 
-    public Supervisor (Long id, String name) {
+    public Supervisor (Long id, String name, String email) {
         this();
 
         this.setId (id);
         this.setName (name);
+        this.setEmail (email);
     }
     
 }

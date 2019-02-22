@@ -12,6 +12,10 @@
 							<input type="text" class="form-control" id="edit-name" name="name" required>
 							<input type="hidden" class="form-control" id="edit-id" name="id">
 						</div>
+						<div class="form-group">
+							<label for="email"><@spring.message "modal.label.email" /></label>
+							<input type="text" class="form-control" id="edit-email" name="email" required>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<#assign buttonSave><@spring.message "modal.button.save" /></#assign>
