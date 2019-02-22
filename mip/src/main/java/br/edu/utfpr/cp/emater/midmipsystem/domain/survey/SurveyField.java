@@ -28,6 +28,7 @@ public class SurveyField extends AuditingPersistenceEntity implements Serializab
     private Long id;
     
     private String seedName;
+    private boolean sporeCollectorPresent;
     
     @Embedded
     private QuestionData questionData;

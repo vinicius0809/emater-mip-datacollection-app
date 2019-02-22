@@ -83,6 +83,7 @@ public class SurveyFieldController {
                             @RequestParam String harvestDate,
                             @RequestParam (required = false) boolean rustResistant,
                             @RequestParam (required = false) boolean bt,
+                            @RequestParam (required = false) boolean sporeCollector,
                             @RequestParam double totalArea,
                             @RequestParam double totalPlantedArea,
                             @RequestParam double plantPerMeter,
@@ -96,6 +97,7 @@ public class SurveyFieldController {
         sf.setHarvest(harvestRepository.findById(new Long(harvestId)).get());
         sf.setField(fieldRepository.findById(new Long(fieldId)).get());
         sf.setSeedName(seedName);
+        sf.setSporeCollectorPresent(sporeCollector);
         sf.setDateData(new DateData(this.dateFormatter(sowedDate), this.dateFormatter(emergenceDate), this.dateFormatter(harvestDate)));
         sf.setProductivityData(new ProductivityData(productivityField, productivityFarmer, separatedWeight));
         sf.setLocationData(new LocationData(longitude, latitute));

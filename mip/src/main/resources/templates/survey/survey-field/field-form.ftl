@@ -72,8 +72,8 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group ">
-                                <label for="name"><@spring.message "table.list.name" /></label>
-                                <input type="text" class="form-control" id="name" name="name">
+                                <label for="seedName"><@spring.message "table.list.name" /></label>
+                                <input type="text" class="form-control" id="seedName" name="seedName">
                             </div>
 
                             <div class="form-row col-md-6">
@@ -88,6 +88,13 @@
                                     <input class="form-check-input" type="checkbox" id="bt" name="bt">
                                     <label class="form-check-label" for="bt">
                                         <@spring.message "table.list.bt" />
+                                    </label>
+                                </div>
+
+                                <div class="form-check col">
+                                    <input class="form-check-input" type="checkbox" id="sporeCollector" name="sporeCollector">
+                                    <label class="form-check-label" for="sporeCollector">
+                                        <@spring.message "table.list.spore-collector" />
                                     </label>
                                 </div>
                             </div>

@@ -41,6 +41,7 @@
                             <th class="col-sm-1"><@spring.message "table.list.seed-name" /></th>
                             <th class="col-sm-1"><@spring.message "table.list.rust-resitant" /></th>
                             <th class="col-sm-1"><@spring.message "table.list.bt" /></th>
+                            <th class="col-sm-1"><@spring.message "table.list.spore-collector" /></th>
                             <th class="col-sm-1"><@spring.message "table.list.sowed-date" /></th>
                             <th class="col-sm-1"><@spring.message "table.list.emergence-date" /></th>
                             <th class="col-sm-1"><@spring.message "table.list.harvest-date" /></th>
@@ -65,6 +66,7 @@
                                 <td>${surveyField.seedName}</td>
                                 <td>${surveyField.questionData.rustResistant?string('Sim', 'Não')}</td>
                                 <td>${surveyField.questionData.bt?string('Sim', 'Não')}</td>
+                                <td>${surveyField.sporeCollectorPresent?string('Sim', 'Não')}</td>
                                 <td>${surveyField.dateData.sowedDate?string.medium}</td>
                                 <td>${surveyField.dateData.emergenceDate?string.medium}</td>
                                 <td>${surveyField.dateData.harvestDate?string.medium}</td>
