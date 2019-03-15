@@ -44,13 +44,21 @@ public class Field extends AuditingPersistenceEntity implements Serializable {
     private List<Supervisor> supervisors;
     
     public boolean addSupervisor (Supervisor supervisor) {
-        if (this.getSupervisors() == null)
-            this.setSupervisors(new ArrayList<>());
+        if (!isThereSupervisorContainer())
+            createSupervisorContainer();
         
         return this.getSupervisors().add(supervisor);
     }
 
     public void setName (String name) {
         this.name = WordUtils.capitalize(name.toLowerCase());
+    }
+
+    private boolean isThereSupervisorContainer() {
+        return this.getSupervisors() == null;
+    }
+
+    private void createSupervisorContainer() {
+        this.setSupervisors(new ArrayList<>());
     }
 }

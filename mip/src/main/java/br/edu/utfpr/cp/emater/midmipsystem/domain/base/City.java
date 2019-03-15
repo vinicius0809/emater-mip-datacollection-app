@@ -5,6 +5,7 @@ import br.edu.utfpr.cp.emater.midmipsystem.library.AuditingPersistenceEntity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +27,9 @@ public class City extends AuditingPersistenceEntity implements Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    
+    @Enumerated
+    private State state;
     
     @ManyToOne (fetch = FetchType.EAGER)
     private Region region;    
