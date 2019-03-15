@@ -44,7 +44,7 @@ public class Field extends AuditingPersistenceEntity implements Serializable {
     private List<Supervisor> supervisors;
     
     public boolean addSupervisor (Supervisor supervisor) {
-        if (!isThereSupervisorContainer())
+        if (isThereSupervisorContainer())
             createSupervisorContainer();
         
         return this.getSupervisors().add(supervisor);

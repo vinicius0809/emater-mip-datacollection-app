@@ -121,6 +121,8 @@ class CLR implements CommandLineRunner {
         City c1 = cityRepository.save(new City(null, "Itapejara D'Oeste", State.PR));
         City c2 = cityRepository.save(new City(null, "Mariópolis", State.PR));
         City c3 = cityRepository.save(new City(null, "Pato Branco", State.PR));        
+        City c4 = cityRepository.save(new City(null, "Apucarana", State.PR));        
+        City c5 = cityRepository.save(new City(null, "Campo Mourão", State.PR));        
 
         Region r1 = regionRepository.save(new Region(null, "Apucarana", mr1, null));
         Region r2 = regionRepository.save(new Region(null, "Campo Mourão", mr2, null));
@@ -138,7 +140,7 @@ class CLR implements CommandLineRunner {
         Region r14 = regionRepository.save(new Region(null, "Maringá", mr1, null));
         Region r15 = regionRepository.save(new Region(null, "Paranaguá", mr2, null));
         Region r16 = regionRepository.save(new Region(null, "Paranavaí", mr1, null));
-        Region r17 = regionRepository.save(new Region(null, "Pato Branco", mr4, List.of(c2, c3))));
+        Region r17 = regionRepository.save(new Region(null, "Pato Branco", mr4, List.of(c2, c3)));
         Region r18 = regionRepository.save(new Region(null, "Ponta Grossa", mr2, null));
         Region r19 = regionRepository.save(new Region(null, "Sto. Antonio da Platina", mr2, null));
         Region r20 = regionRepository.save(new Region(null, "Toledo", mr2, null));

@@ -44,7 +44,7 @@ public class Region extends AuditingPersistenceEntity implements Serializable {
 
     public boolean addCity (City city) {
 
-        if (!isThereACityContainer())
+        if (isThereACityContainer())
             createCityContainer();
         
         return this.getCities().add(city);
@@ -55,6 +55,6 @@ public class Region extends AuditingPersistenceEntity implements Serializable {
     }
 
     private void createCityContainer() {
-        this.setCities(new ArrayList<Cities>());
+        this.setCities(new ArrayList<City>());
     }
 }

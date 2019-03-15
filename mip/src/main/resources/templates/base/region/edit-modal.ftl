@@ -20,6 +20,14 @@
 								</#list>
   							</select>
 						</div>
+						<div class="form-group">
+							<label><@spring.message "modal.label.city" /></label>
+							<select name="citiesIDs" class="form-control" size="5" multiple>
+								<#list cities as city>
+  									<option value="${city.id}">${city.name}</option>
+								</#list>
+  							</select>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<#assign buttonSave><@spring.message "modal.button.save" /></#assign>

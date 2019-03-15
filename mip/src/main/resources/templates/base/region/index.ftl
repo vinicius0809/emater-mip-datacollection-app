@@ -35,8 +35,9 @@
                 <table id="mainTable" class="table table-striped table-hover">
                     <thead style="background-color: #004900; color: white">
                         <tr>
-                            <th class="col-sm-7"><@spring.message "table.list.name" /></th>
-                            <th class="col-sm-4"><@spring.message "table.list.macroregion" /></th>
+                            <th class="col-sm-5"><@spring.message "table.list.name" /></th>
+                            <th class="col-sm-3"><@spring.message "table.list.macroregion" /></th>
+                            <th class="col-sm-3"><@spring.message "table.list.city" /></th>
                             <th class="col-sm-1"><@spring.message "table.list.action" /></th>
                         </tr>
                     </thead>
@@ -47,6 +48,11 @@
                             <tr>
                                 <td>${region.name}</td>
 							    <td>${region.macroRegion.name}</td>
+                                <td>
+                                    <#list region.cities as city>
+                                        <span>${city.name}</span> <br>
+                                    </#list>
+                                </td>
                                 <td>
                                     <#assign updateLabel><@spring.message "table.list.actions.update" /></#assign>
                                     <#assign deleteLabel><@spring.message "table.list.actions.delete" /></#assign>

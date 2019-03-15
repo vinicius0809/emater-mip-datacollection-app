@@ -5,6 +5,7 @@ import br.edu.utfpr.cp.emater.midmipsystem.library.AuditingPersistenceEntity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,11 +29,17 @@ public class City extends AuditingPersistenceEntity implements Serializable {
     private Long id;
     private String name;
     
-    @Enumerated
+    @Enumerated (EnumType.STRING)
     private State state;
     
     @ManyToOne (fetch = FetchType.EAGER)
-    private Region region;    
+    private Region region;  
+    
+    public City (Long id, String name, State state) {
+        this.setId(id);
+        this.setName(name);
+        this.setState(state);
+    }
 
     public void setName (String name) {
         this.name = WordUtils.capitalize(name.toLowerCase());

@@ -17,7 +17,7 @@
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/macroregion">Macrorregião</a>
                 <a class="dropdown-item" href="/region">Região</a>
-                <a class="dropdown-item" href="/city">Município</a>
+                <#--  <a class="dropdown-item" href="/city">Município</a>  -->
                 <a class="dropdown-item" href="/farmer">Produtor</a>
                 <a class="dropdown-item" href="/supervisor">Responsável Técnico</a>
                 <a class="dropdown-item" href="/field">Unidade de Referência</a>
