@@ -1,5 +1,7 @@
 package br.edu.utfpr.cp.emater.midmipsystem.view.base;
 
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Region;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.RegionRepository;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Supervisor;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.SupervisorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +17,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SupervisorController {
     
     private final SupervisorRepository repository;
+    private final RegionRepository regionRepository;
 
     private final Environment environment;
 
     @Autowired
-    public SupervisorController(SupervisorRepository repository, Environment environment) {
+    public SupervisorController(SupervisorRepository repository, RegionRepository regionRepository, Environment environment) {
         this.repository = repository;
+        this.regionRepository = regionRepository;
         this.environment = environment;
     }
     
     @RequestMapping (value = "", method = RequestMethod.GET)
     public String listAll(Model data) {
         data.addAttribute("supervisors", repository.findAll());
+        data.addAttribute("regions", regionRepository.findAll());
         
         data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.supervisor"));
         data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.supervisor"));
@@ -36,11 +41,14 @@ public class SupervisorController {
     }
     
     @RequestMapping (value = "/create", method = RequestMethod.POST)
-    public String create (@RequestParam String name, @RequestParam String email) {
+    public String create (@RequestParam String name, @RequestParam String email, @RequestParam String regionId) {
         
+        Region r = regionRepository.findById(new Long(regionId)).get();
+
         Supervisor s = new Supervisor();
         s.setName(name);
         s.setEmail(email);
+        s.setRegion(r);
 
         repository.save(s);
         
@@ -48,11 +56,14 @@ public class SupervisorController {
     }
     
     @RequestMapping (value = "/update", method = RequestMethod.POST)
-    public String update (@RequestParam String email, @RequestParam String name, @RequestParam int id) {
+    public String update (@RequestParam String email, @RequestParam String name, @RequestParam int id, @RequestParam String regionId) {
         
+        Region r = regionRepository.findById(new Long(regionId)).get();
+
         Supervisor mr = repository.findById(new Long (id)).get();
         mr.setName(name);
         mr.setEmail(email);
+        mr.setRegion(r);
         
         repository.saveAndFlush(mr);
         

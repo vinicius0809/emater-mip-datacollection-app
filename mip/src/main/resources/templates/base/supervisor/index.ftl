@@ -36,9 +36,10 @@
                 <table id="mainTable" class="table table-striped table-hover">
                     <thead style="background-color: #004900; color: white">
                         <tr>
-                            <th class="col-sm-7"><@spring.message "table.list.name" /></th>
+                            <th class="col-sm-5"><@spring.message "table.list.name" /></th>
                             <th class="col-sm-3"><@spring.message "table.list.email" /></th>
-                            <th class="col-sm-2"><@spring.message "table.list.action" /></th>
+                            <th class="col-sm-3"><@spring.message "table.list.region" /></th>
+                            <th class="col-sm-1"><@spring.message "table.list.action" /></th>
                         </tr>
                     </thead>
                     <tbody id="mainTable-body">
@@ -48,6 +49,7 @@
                             <tr>
                                 <td>${supervisor.name}</td>
                                 <td>${supervisor.email}</td>
+                                <td>${supervisor.region.name}</td>
                                 <td>
                                     <#assign updateLabel><@spring.message "table.list.actions.update" /></#assign>
                                     <#assign deleteLabel><@spring.message "table.list.actions.delete" /></#assign>

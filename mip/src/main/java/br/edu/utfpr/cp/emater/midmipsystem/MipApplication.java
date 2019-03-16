@@ -153,10 +153,10 @@ class CLR implements CommandLineRunner {
         Farmer f4 = farmerRepository.save(new Farmer(null, "Rafael Oldoni"));
         Farmer f5 = farmerRepository.save(new Farmer(null, "Clemente Carnieletto"));
 
-        Supervisor s1 = supervisorRepository.save(new Supervisor(null, "Lari Maroli", "maroli@emater.pr.gov.br"));
-        Supervisor s2 = supervisorRepository.save(new Supervisor(null, "IVANDERSON BORELLI", "borelli@emater.pr.gov.br"));
-        Supervisor s3 = supervisorRepository.save(new Supervisor(null, "José Francisco Vilas Boas", "villas@emater.pr.gov.br"));
-        Supervisor s4 = supervisorRepository.save(new Supervisor(null, "Vilmar Grando", "grando@emater.pr.gov.br"));
+        Supervisor s1 = supervisorRepository.save(new Supervisor(null, "Lari Maroli", "maroli@emater.pr.gov.br", r7));
+        Supervisor s2 = supervisorRepository.save(new Supervisor(null, "IVANDERSON BORELLI", "borelli@emater.pr.gov.br", r17));
+        Supervisor s3 = supervisorRepository.save(new Supervisor(null, "José Francisco Vilas Boas", "villas@emater.pr.gov.br", r17));
+        Supervisor s4 = supervisorRepository.save(new Supervisor(null, "Vilmar Grando", "grando@emater.pr.gov.br", r17));
 
         Field fi1 = new Field(null, "Trevo", "", c1, f1, null);
         fi1.addSupervisor(s1);

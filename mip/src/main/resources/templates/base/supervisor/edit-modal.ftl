@@ -16,6 +16,14 @@
 							<label for="email"><@spring.message "modal.label.email" /></label>
 							<input type="text" class="form-control" id="edit-email" name="email" required>
 						</div>
+						<div class="form-group">
+							<label><@spring.message "modal.label.region" /></label>
+							<select name="regionId" class="form-control">
+								<#list regions as region>
+  									<option value="${region.id}">${region.name}</option>
+								</#list>
+  							</select>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<#assign buttonSave><@spring.message "modal.button.save" /></#assign>
