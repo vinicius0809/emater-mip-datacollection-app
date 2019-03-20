@@ -34,17 +34,32 @@ public class SurveyFieldController {
 
     private final Environment environment;
 
+    private boolean operationSuccessMessage;
+
+    private void resetOperationSuccessMessage() {
+        if (this.operationSuccessMessage)
+            this.operationSuccessMessage = false;
+    }
+
+    private void setOperationSuccessMessage() {
+        this.operationSuccessMessage = true;
+    }
+
     @Autowired
     public SurveyFieldController(SurveyFieldRepository surveyFieldRepository, FieldRepository fieldRepository, HarvestRepository harvestRepository, Environment environment) {
         this.surveyFieldRepository = surveyFieldRepository;
         this.fieldRepository = fieldRepository;
         this.harvestRepository = harvestRepository;
         this.environment = environment;
+        this.operationSuccessMessage = false;
     }
     
     @RequestMapping (value = "", method = RequestMethod.GET)
     public String findAll (Model data) {
         data.addAttribute("surveyFields", surveyFieldRepository.findAll());
+        data.addAttribute("success", this.operationSuccessMessage);
+
+        this.resetOperationSuccessMessage();
 
         data.addAttribute("urlCreate", this.environment.getProperty("app.view.route.create.survey.survey-field"));
         data.addAttribute("urlUpdate", this.environment.getProperty("app.view.route.update.survey.survey-field"));
@@ -105,6 +120,8 @@ public class SurveyFieldController {
         sf.setSizeData(new SizeData(totalArea, totalPlantedArea, plantPerMeter));
         
         surveyFieldRepository.save(sf);
+
+        this.setOperationSuccessMessage();
         
         return this.environment.getProperty("app.view.route.create.success.survey.survey-field");
     }
@@ -113,6 +130,8 @@ public class SurveyFieldController {
     public String delete (@RequestParam int surveyFieldId) {
         
         surveyFieldRepository.deleteById(new Long(surveyFieldId));
+
+        this.setOperationSuccessMessage();
         
         return this.environment.getProperty("app.view.route.delete.success.survey.survey-field");
     }

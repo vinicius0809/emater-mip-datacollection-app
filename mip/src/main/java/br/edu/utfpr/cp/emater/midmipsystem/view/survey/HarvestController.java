@@ -24,15 +24,30 @@ public class HarvestController {
 
     private final Environment environment;
 
+    private boolean operationSuccessMessage;
+
+    private void resetOperationSuccessMessage() {
+        if (this.operationSuccessMessage)
+            this.operationSuccessMessage = false;
+    }
+
+    private void setOperationSuccessMessage() {
+        this.operationSuccessMessage = true;
+    }    
+
     @Autowired
     public HarvestController(HarvestRepository repository, Environment environment) {
         this.repository = repository;
         this.environment = environment;
+        this.operationSuccessMessage = false;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String listAll(Model data) {
         data.addAttribute("harvests", repository.findAll());
+        data.addAttribute("success", this.operationSuccessMessage);
+
+        this.resetOperationSuccessMessage();
 
         data.addAttribute("urlCreate", this.environment.getProperty("app.view.route.create.survey.harvest"));
         data.addAttribute("urlUpdate", this.environment.getProperty("app.view.route.update.survey.harvest"));
@@ -53,6 +68,8 @@ public class HarvestController {
         h.setName(name);
 
         repository.save(h);
+
+        this.setOperationSuccessMessage();
         
         return this.environment.getProperty("app.view.route.create.success.survey.harvest");
     }
@@ -67,12 +84,16 @@ public class HarvestController {
 
         repository.saveAndFlush(hst);
 
+        this.setOperationSuccessMessage();
+
         return this.environment.getProperty("app.view.route.update.success.survey.harvest");
     }
     
     @RequestMapping (value = "/delete", method = RequestMethod.POST)
     public String delete (@RequestParam int id) {
         repository.deleteById(new Long(id));
+
+        this.setOperationSuccessMessage();
         
         return this.environment.getProperty("app.view.route.delete.success.survey.harvest");
     }
