@@ -19,16 +19,32 @@ public class PestController {
 
     private final Environment environment;
 
+    private boolean operationSuccessMessage;
+
+    private void resetOperationSuccessMessage() {
+        if (this.operationSuccessMessage)
+            this.operationSuccessMessage = false;
+    }
+
+    private void setOperationSuccessMessage() {
+        this.operationSuccessMessage = true;
+    }
+
+
     @Autowired
     public PestController(PestRepository repository, Environment environment) {
         this.repository = repository;
         this.environment = environment;
+        this.operationSuccessMessage = false;
     }
     
     @RequestMapping (value = "", method = RequestMethod.GET)
     public String listAll(Model data) {
         data.addAttribute("pests", repository.findAll());
         data.addAttribute("pestSizes", PestSize.values());
+        data.addAttribute("success", this.operationSuccessMessage);
+
+        this.resetOperationSuccessMessage();
         
         data.addAttribute("urlCreate", this.environment.getProperty("app.view.route.create.mip.pest"));
         data.addAttribute("urlUpdate", this.environment.getProperty("app.view.route.update.mip.pest"));
@@ -41,6 +57,8 @@ public class PestController {
     public String create (Pest pest) {
         
         repository.save(pest);
+
+        this.setOperationSuccessMessage();
         
         return this.environment.getProperty("app.view.route.create.success.mip.pest");
     }
@@ -54,6 +72,8 @@ public class PestController {
         originalPest.setPestSize(pest.getPestSize());
         
         repository.saveAndFlush(originalPest);
+
+        this.setOperationSuccessMessage();
         
         return this.environment.getProperty("app.view.route.update.success.mip.pest");
     }
@@ -61,6 +81,8 @@ public class PestController {
     @RequestMapping (value = "/delete", method = RequestMethod.POST)
     public String delete (@RequestParam int id) {
         repository.deleteById(new Long(id));
+
+        this.setOperationSuccessMessage();
         
         return this.environment.getProperty("app.view.route.delete.success.mip.pest");
     }

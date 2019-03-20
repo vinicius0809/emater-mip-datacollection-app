@@ -35,17 +35,32 @@ public class SamplePestController {
 
     private final Environment environment;
 
+    private boolean operationSuccessMessage;
+
+    private void resetOperationSuccessMessage() {
+        if (this.operationSuccessMessage)
+            this.operationSuccessMessage = false;
+    }
+
+    private void setOperationSuccessMessage() {
+        this.operationSuccessMessage = true;
+    }    
+
     @Autowired
     public SamplePestController(MipPestSurveyRepository mipPestSurveyRepository, PestRepository pestRepository, SamplePestRepository samplePestRepository, Environment environment) {
         this.mipPestSurveyRepository = mipPestSurveyRepository;
         this.pestRepository = pestRepository;
         this.samplePestRepository = samplePestRepository;
         this.environment = environment;
+        this.operationSuccessMessage = false;
     }
     
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String listAll(Model data) {
         data.addAttribute("mipPestSurveys", mipPestSurveyRepository.findAll());
+        data.addAttribute("success", this.operationSuccessMessage);
+
+        this.resetOperationSuccessMessage();
                 
         return this.environment.getProperty("app.view.route.template.main.mip.pest-survey");
     }
@@ -65,6 +80,8 @@ public class SamplePestController {
     public String saveSample(@RequestParam Map<String, String> values) {
 
         samplePestRepository.save(validateEntries(values));
+
+        this.setOperationSuccessMessage();
         
         return this.environment.getProperty("app.view.route.create.success.mip.pest-survey");
     }

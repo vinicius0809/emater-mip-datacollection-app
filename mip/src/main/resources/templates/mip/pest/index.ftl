@@ -33,6 +33,11 @@
             </div>
 
             <div class="card-body table-responsive-md col-md-12">
+            
+                <!-- Add Success Message -->
+                <#if success>
+                    <#include "/success-msg.ftl">                    
+                </#if>                      
 
                 <table id="mainTable" class="table table-striped table-hover">
                     <thead style="background-color: #004900; color: white">
