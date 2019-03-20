@@ -21,17 +21,33 @@ public class SupervisorController {
 
     private final Environment environment;
 
+    private boolean operationSuccessMessage;
+
+    private void resetOperationSuccessMessage() {
+        if (this.operationSuccessMessage)
+            this.operationSuccessMessage = false;
+    }
+
+    private void setOperationSuccessMessage() {
+        this.operationSuccessMessage = true;
+    }
+
     @Autowired
     public SupervisorController(SupervisorRepository repository, RegionRepository regionRepository, Environment environment) {
         this.repository = repository;
         this.regionRepository = regionRepository;
         this.environment = environment;
+        this.operationSuccessMessage = false;
+
     }
     
     @RequestMapping (value = "", method = RequestMethod.GET)
     public String listAll(Model data) {
         data.addAttribute("supervisors", repository.findAll());
         data.addAttribute("regions", regionRepository.findAll());
+        data.addAttribute("success", this.operationSuccessMessage);
+
+        this.resetOperationSuccessMessage();
         
         data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.supervisor"));
         data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.supervisor"));
@@ -51,6 +67,8 @@ public class SupervisorController {
         s.setRegion(r);
 
         repository.save(s);
+
+        this.setOperationSuccessMessage();
         
         return environment.getProperty("app.view.route.create.success.field.supervisor");
     }
@@ -66,6 +84,8 @@ public class SupervisorController {
         mr.setRegion(r);
         
         repository.saveAndFlush(mr);
+
+        this.setOperationSuccessMessage();
         
         return environment.getProperty("app.view.route.update.success.field.supervisor");
     }
@@ -73,6 +93,8 @@ public class SupervisorController {
     @RequestMapping (value = "/delete", method = RequestMethod.POST)
     public String delete (@RequestParam int id) {
         repository.deleteById(new Long(id));
+
+        this.setOperationSuccessMessage();
         
         return environment.getProperty("app.view.route.delete.success.field.supervisor");
     }

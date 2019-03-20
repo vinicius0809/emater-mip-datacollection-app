@@ -29,6 +29,17 @@ public class FieldController {
 
     private final Environment environment;
 
+    private boolean operationSuccessMessage;
+
+    private void resetOperationSuccessMessage() {
+        if (this.operationSuccessMessage)
+            this.operationSuccessMessage = false;
+    }
+
+    private void setOperationSuccessMessage() {
+        this.operationSuccessMessage = true;
+    }
+
     @Autowired
     public FieldController(FieldRepository fieldRepository, CityRepository cityRepository, FarmerRepository farmerRepository, SupervisorRepository supervisorRepository, Environment environment) {
         this.fieldRepository = fieldRepository;
@@ -36,6 +47,8 @@ public class FieldController {
         this.farmerRepository = farmerRepository;
         this.supervisorRepository = supervisorRepository;
         this.environment = environment;
+        this.operationSuccessMessage = false;
+
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -45,6 +58,10 @@ public class FieldController {
         data.addAttribute("cities", cityRepository.findAll());
         data.addAttribute("farmers", farmerRepository.findAll());
         data.addAttribute("supervisors", supervisorRepository.findAll());
+        data.addAttribute("success", this.operationSuccessMessage);
+
+        this.resetOperationSuccessMessage();
+
 
         data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.field"));
         data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.field"));
@@ -78,6 +95,8 @@ public class FieldController {
 
         fieldRepository.save(f);
 
+        this.setOperationSuccessMessage();
+
         return environment.getProperty("app.view.route.create.success.field.field");
     }
 
@@ -107,12 +126,16 @@ public class FieldController {
 
         fieldRepository.saveAndFlush(field);
 
+        this.setOperationSuccessMessage();
+
         return environment.getProperty("app.view.route.update.success.field.field");
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String delete(@RequestParam int id) {
         fieldRepository.deleteById(new Long(id));
+
+        this.setOperationSuccessMessage();
 
         return environment.getProperty("app.view.route.delete.success.field.field");
     }

@@ -19,15 +19,30 @@ public class FarmerController {
 
     private final Environment environment;
 
+    private boolean operationSuccessMessage;
+
+    private void resetOperationSuccessMessage() {
+        if (this.operationSuccessMessage)
+            this.operationSuccessMessage = false;
+    }
+
+    private void setOperationSuccessMessage() {
+        this.operationSuccessMessage = true;
+    }    
+
     @Autowired
     public FarmerController(FarmerRepository repository, Environment environment) {
         this.repository = repository;
         this.environment = environment;
+        this.operationSuccessMessage = false;
     }
     
     @RequestMapping (value = "", method = RequestMethod.GET)
     public String listAll(Model data) {
         data.addAttribute("farmers", repository.findAll());
+        data.addAttribute("success", this.operationSuccessMessage);
+
+        this.resetOperationSuccessMessage();
         
         data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.farmer"));
         data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.farmer"));
@@ -43,6 +58,8 @@ public class FarmerController {
         f.setName(name);
 
         repository.save(f);
+
+        this.setOperationSuccessMessage();        
         
         return environment.getProperty("app.view.route.create.success.field.farmer");
     }
@@ -54,6 +71,8 @@ public class FarmerController {
         mr.setName(name);
         
         repository.saveAndFlush(mr);
+
+        this.setOperationSuccessMessage();        
         
         return environment.getProperty("app.view.route.update.success.field.farmer");
     }
@@ -61,6 +80,8 @@ public class FarmerController {
     @RequestMapping (value = "/delete", method = RequestMethod.POST)
     public String delete (@RequestParam int id) {
         repository.deleteById(new Long(id));
+
+        this.setOperationSuccessMessage();        
         
         return environment.getProperty("app.view.route.delete.success.field.farmer");
     }

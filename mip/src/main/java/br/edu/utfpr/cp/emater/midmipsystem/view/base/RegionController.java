@@ -27,12 +27,25 @@ public class RegionController {
 
     private final Environment environment;
 
+    private boolean operationSuccessMessage;
+
+    private void resetOperationSuccessMessage() {
+        if (this.operationSuccessMessage)
+            this.operationSuccessMessage = false;
+    }
+
+    private void setOperationSuccessMessage() {
+        this.operationSuccessMessage = true;
+    }
+
     @Autowired
     public RegionController(RegionRepository regionRepository, MacroRegionRepository macroRegionRepository, CityRepository cityRepository, Environment environment) {
         this.regionRepository = regionRepository;
         this.macroRegionRepository = macroRegionRepository;
         this.cityRepository = cityRepository;
         this.environment = environment;
+        this.operationSuccessMessage = false;
+
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -41,6 +54,10 @@ public class RegionController {
         data.addAttribute("regions", regionRepository.findAll());
         data.addAttribute("macroRegions", macroRegionRepository.findAll());
         data.addAttribute("cities", cityRepository.findAll());
+        data.addAttribute("success", this.operationSuccessMessage);
+
+        this.resetOperationSuccessMessage();
+
 
         data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.region"));
         data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.region"));
@@ -63,6 +80,8 @@ public class RegionController {
 
         regionRepository.save(r);
 
+        this.setOperationSuccessMessage();
+
         return environment.getProperty("app.view.route.create.success.field.region");
     }
 
@@ -81,12 +100,16 @@ public class RegionController {
 
         regionRepository.saveAndFlush(r);
 
+        this.setOperationSuccessMessage();        
+
         return environment.getProperty("app.view.route.update.success.field.region");
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String delete(@RequestParam int id) {
         regionRepository.deleteById(new Long(id));
+
+        this.setOperationSuccessMessage();
 
         return environment.getProperty("app.view.route.delete.success.field.region");
     }
