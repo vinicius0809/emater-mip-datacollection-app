@@ -20,15 +20,30 @@ public class MacroRegionController {
 
     private final Environment environment;
 
+    private boolean operationSuccessMessage;
+
+    private void resetOperationSuccessMessage() {
+        if (this.operationSuccessMessage)
+            this.operationSuccessMessage = false;
+    }
+
+    private void setOperationSuccessMessage() {
+        this.operationSuccessMessage = true;
+    }
+
     @Autowired
     public MacroRegionController(MacroRegionRepository repository, Environment environment) {
         this.repository = repository;
         this.environment = environment;
+        this.operationSuccessMessage = false;
     }
     
     @RequestMapping (value = "", method = RequestMethod.GET)
     public String listAll(Model data) {
         data.addAttribute("macroregions", repository.findAll());
+        data.addAttribute("success", this.operationSuccessMessage);
+
+        this.resetOperationSuccessMessage();
         
         data.addAttribute("urlCreate", environment.getProperty("app.view.route.create.field.macroregion"));
         data.addAttribute("urlUpdate", environment.getProperty("app.view.route.update.field.macroregion"));
@@ -44,6 +59,8 @@ public class MacroRegionController {
         mr.setName(name);
 
         repository.save(mr);
+
+        this.setOperationSuccessMessage();
         
         return environment.getProperty("app.view.route.create.success.field.macroregion");
     }
@@ -55,6 +72,8 @@ public class MacroRegionController {
         mr.setName(name);
         
         repository.saveAndFlush(mr);
+
+        this.setOperationSuccessMessage();
         
         return environment.getProperty("app.view.route.update.success.field.macroregion");
     }
@@ -62,6 +81,8 @@ public class MacroRegionController {
     @RequestMapping (value = "/delete", method = RequestMethod.POST)
     public String delete (@RequestParam int id) {
         repository.deleteById(new Long(id));
+
+        this.setOperationSuccessMessage();
         
         return environment.getProperty("app.view.route.delete.success.field.macroregion");
     }
