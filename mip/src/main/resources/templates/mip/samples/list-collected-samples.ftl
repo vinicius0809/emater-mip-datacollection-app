@@ -59,6 +59,11 @@
                                     <a href="#deleteModal" class="text-danger" data-toggle="modal" data-id="${samplePest.id}" data-name="${samplePest.sampleDate}">
                                         <i class="material-icons" data-toggle="tooltip" title="${deleteLabel}">clear</i>
                                     </a>
+
+                                    <a href="#list-pest-modal" class="text-danger" data-toggle="modal">
+                                        <i class="material-icons" data-toggle="tooltip" title="Listar">clear</i>
+                                    </a>
+                                    
                                 </td>
                             </tr>
 
@@ -72,6 +77,9 @@
             </div>
         </form>
     </div>
+
+    <!-- Add Modal HTML -->
+    <#include "list-pests.ftl">
 
     <!-- Delete Modal HTML -->
     <#include "delete-modal.ftl">
