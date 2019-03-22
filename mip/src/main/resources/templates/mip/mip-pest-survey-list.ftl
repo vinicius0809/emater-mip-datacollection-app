@@ -65,6 +65,12 @@
 
                                     <a href="/pest-survey/add-sample?mipPestSurveyId=${mipPestSurvey.id}">
                                         <i class="material-icons" style="color: #004900" title="${colectionLabel}">add_circle</i>
+
+                                    <#assign seeListLabel><@spring.message "modal.button.seeList" /></#assign> 
+
+                                    <a href="/pest-survey/list-collected-samples?mipPestSurveyId=${mipPestSurvey.id}">
+                                        <i class="material-icons" style="color: #004900" title="${seeListLabel}">list</i>
+
                                     </a>
                                 </td>
                             </tr>
