@@ -9,7 +9,7 @@
 					<div class="modal-body">					
 						<div class="form-group">
 							<label><@spring.message "table.list.harvest" /></label>
-							<select name="harvestId" class="form-control">
+							<select name="harvestId" class="form-control" required>
 								<#list harvests as harvest>
   									<option value="${harvest.id}">${harvest.name}</option>
 								</#list>

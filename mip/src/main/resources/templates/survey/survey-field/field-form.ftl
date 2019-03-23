@@ -58,7 +58,7 @@
                         <div class="card-body">
                             <div class="form-group ">
                                 <label for="seedName"><@spring.message "table.list.name" /></label>
-                                <input type="text" class="form-control" id="seedName" name="seedName">
+                                <input type="text" class="form-control" id="seedName" name="seedName" required autofocus maxlength="25" >
                             </div>
 
                             <div class="form-row col-md-6">

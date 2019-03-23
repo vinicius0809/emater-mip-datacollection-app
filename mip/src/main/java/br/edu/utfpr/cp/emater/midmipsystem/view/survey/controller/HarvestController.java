@@ -1,7 +1,9 @@
-package br.edu.utfpr.cp.emater.midmipsystem.view.survey;
+package br.edu.utfpr.cp.emater.midmipsystem.view.survey.controller;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.Harvest;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.HarvestRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.view.survey.dto.HarvestDTO;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,15 +59,15 @@ public class HarvestController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@RequestParam String name, @RequestParam String begin, @RequestParam String end) {
+    public String create(HarvestDTO harvest) {
 
-        Date formattedBegin = this.dateFormatter(begin);
-        Date formattedEnd = this.dateFormatter(end);
+        Date formattedBegin = this.dateFormatter(harvest.getBegin());
+        Date formattedEnd = this.dateFormatter(harvest.getEnd());
 
         Harvest h = new Harvest();
         h.setBegin(formattedBegin);
         h.setEnd(formattedEnd);
-        h.setName(name);
+        h.setName(harvest.getName());
 
         repository.save(h);
 
@@ -75,12 +77,12 @@ public class HarvestController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(@RequestParam String name, @RequestParam int id, @RequestParam String begin, @RequestParam String end) {
+    public String update(HarvestDTO harvest) {
 
-        Harvest hst = repository.findById(new Long(id)).orElseThrow();
-        hst.setName(name);
-        hst.setBegin(this.dateFormatter(begin));
-        hst.setEnd(this.dateFormatter(end));
+        Harvest hst = repository.findById(new Long(harvest.getId())).orElseThrow();
+        hst.setName(harvest.getName());
+        hst.setBegin(this.dateFormatter(harvest.getBegin()));
+        hst.setEnd(this.dateFormatter(harvest.getEnd()));
 
         repository.saveAndFlush(hst);
 
