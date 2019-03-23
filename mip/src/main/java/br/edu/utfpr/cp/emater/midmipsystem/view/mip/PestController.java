@@ -66,7 +66,7 @@ public class PestController {
     @RequestMapping (value = "/update", method = RequestMethod.POST)
     public String update (Pest pest) {
 
-        Pest originalPest = repository.findById(pest.getId()).get();
+        Pest originalPest = repository.findById(pest.getId()).orElseThrow();
         originalPest.setUsualName(pest.getUsualName());
         originalPest.setScientificName(pest.getScientificName());
         originalPest.setPestSize(pest.getPestSize());

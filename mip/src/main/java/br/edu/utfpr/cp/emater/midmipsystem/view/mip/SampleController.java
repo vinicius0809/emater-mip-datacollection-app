@@ -51,7 +51,7 @@ public class SampleController {
     
     @RequestMapping (value = "", method = RequestMethod.GET)
     public String listAll(@RequestParam int mipPestSurveyId, Model data) {
-        MipPestSurvey mipPestSurvey = mipPestSurveyRepository.findById(new Long(mipPestSurveyId)).get();
+        MipPestSurvey mipPestSurvey = mipPestSurveyRepository.findById(new Long(mipPestSurveyId)).orElseThrow();
 
         data.addAttribute("mipPestSurvey", mipPestSurvey);
         data.addAttribute("samplePests", samplePestRepository.findAll().stream().filter(e -> e.getMipPestSurvey().getId().equals(mipPestSurvey.getId())).collect(Collectors.toList()));
