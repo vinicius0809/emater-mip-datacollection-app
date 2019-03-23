@@ -78,12 +78,12 @@ public class FieldController {
             @RequestParam int farmerId,
             @RequestParam String supervisorIds[]) {
 
-        City city = cityRepository.findById(new Long(cityId)).get();
-        Farmer farmer = farmerRepository.findById(new Long(farmerId)).get();
+        City city = cityRepository.findById(new Long(cityId)).orElseThrow();
+        Farmer farmer = farmerRepository.findById(new Long(farmerId)).orElseThrow();
 
         List<Supervisor> supervisors = new ArrayList<>();
         for (String supervisorId : supervisorIds) {
-            supervisors.add(supervisorRepository.findById(new Long(supervisorId)).get());
+            supervisors.add(supervisorRepository.findById(new Long(supervisorId)).orElseThrow());
         }
 
         Field f = new Field();
@@ -109,15 +109,15 @@ public class FieldController {
             @RequestParam int farmerId,
             @RequestParam String supervisorIds[]) {
 
-        City city = cityRepository.findById(new Long(cityId)).get();
-        Farmer farmer = farmerRepository.findById(new Long(farmerId)).get();
+        City city = cityRepository.findById(new Long(cityId)).orElseThrow();
+        Farmer farmer = farmerRepository.findById(new Long(farmerId)).orElseThrow();
 
         List<Supervisor> supervisors = new ArrayList<>();
         for (String supervisorId : supervisorIds) {
-            supervisors.add(supervisorRepository.findById(new Long(supervisorId)).get());
+            supervisors.add(supervisorRepository.findById(new Long(supervisorId)).orElseThrow());
         }
         
-        Field field = fieldRepository.findById(new Long (id)).get();
+        Field field = fieldRepository.findById(new Long (id)).orElseThrow();
         field.setName(name);
         field.setLocation(location);
         field.setCity(city);

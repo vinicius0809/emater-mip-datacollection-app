@@ -8,6 +8,9 @@ import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Region;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.RegionRepository;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -48,12 +51,24 @@ public class RegionController {
 
     }
 
+    private List<City> retrieveCitiesNotAssignToAnyRegion() {
+
+        List<City> citiesAssignedToRegions = new ArrayList<>();
+        for (Region r: regionRepository.findAll())
+            citiesAssignedToRegions.addAll(r.getCities());
+
+        List<City> allCities = cityRepository.findAll();
+        allCities.removeAll(citiesAssignedToRegions);
+        
+        return allCities;
+    }
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String listAll(Model data) {
 
         data.addAttribute("regions", regionRepository.findAll());
         data.addAttribute("macroRegions", macroRegionRepository.findAll());
-        data.addAttribute("cities", cityRepository.findAll());
+        data.addAttribute("cities", this.retrieveCitiesNotAssignToAnyRegion());
         data.addAttribute("success", this.operationSuccessMessage);
 
         this.resetOperationSuccessMessage();
@@ -72,11 +87,11 @@ public class RegionController {
         Region r = new Region();
         r.setName(name);
 
-        MacroRegion mr = macroRegionRepository.findById(new Long(macroRegionId)).get();
+        MacroRegion mr = macroRegionRepository.findById(new Long(macroRegionId)).orElseThrow();
         r.setMacroRegion(mr);
 
         for (String cityID : citiesIDs) 
-            r.addCity(cityRepository.findById(new Long(cityID)).get());
+            r.addCity(cityRepository.findById(new Long(cityID)).orElseThrow());
 
         regionRepository.save(r);
 
@@ -88,15 +103,15 @@ public class RegionController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@RequestParam String name, @RequestParam int id, @RequestParam int macroRegionId, @RequestParam String citiesIDs[]) {
 
-        Region r = regionRepository.findById(new Long(id)).get();
+        Region r = regionRepository.findById(new Long(id)).orElseThrow();
         r.setName(name);
 
-        MacroRegion mr = macroRegionRepository.findById(new Long(macroRegionId)).get();
+        MacroRegion mr = macroRegionRepository.findById(new Long(macroRegionId)).orElseThrow();
         r.setMacroRegion(mr);
 
         r.setCities(new ArrayList<City>());
         for (String cityID : citiesIDs) 
-            r.addCity(cityRepository.findById(new Long(cityID)).get());
+            r.addCity(cityRepository.findById(new Long(cityID)).orElseThrow());
 
         regionRepository.saveAndFlush(r);
 

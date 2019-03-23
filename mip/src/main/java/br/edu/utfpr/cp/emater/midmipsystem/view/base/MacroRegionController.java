@@ -68,7 +68,7 @@ public class MacroRegionController {
     @RequestMapping (value = "/update", method = RequestMethod.POST)
     public String update (@RequestParam String name, @RequestParam int id) {
         
-        MacroRegion mr = repository.findById(new Long (id)).get();
+        MacroRegion mr = repository.findById(new Long (id)).orElseThrow();
         mr.setName(name);
         
         repository.saveAndFlush(mr);

@@ -67,7 +67,7 @@ public class FarmerController {
     @RequestMapping (value = "/update", method = RequestMethod.POST)
     public String update (@RequestParam String name, @RequestParam int id) {
         
-        Farmer mr = repository.findById(new Long (id)).get();
+        Farmer mr = repository.findById(new Long (id)).orElseThrow();
         mr.setName(name);
         
         repository.saveAndFlush(mr);

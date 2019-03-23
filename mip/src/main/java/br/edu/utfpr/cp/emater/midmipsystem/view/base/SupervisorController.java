@@ -59,7 +59,7 @@ public class SupervisorController {
     @RequestMapping (value = "/create", method = RequestMethod.POST)
     public String create (@RequestParam String name, @RequestParam String email, @RequestParam String regionId) {
         
-        Region r = regionRepository.findById(new Long(regionId)).get();
+        Region r = regionRepository.findById(new Long(regionId)).orElseThrow();
 
         Supervisor s = new Supervisor();
         s.setName(name);
@@ -76,9 +76,9 @@ public class SupervisorController {
     @RequestMapping (value = "/update", method = RequestMethod.POST)
     public String update (@RequestParam String email, @RequestParam String name, @RequestParam int id, @RequestParam String regionId) {
         
-        Region r = regionRepository.findById(new Long(regionId)).get();
+        Region r = regionRepository.findById(new Long(regionId)).orElseThrow();
 
-        Supervisor mr = repository.findById(new Long (id)).get();
+        Supervisor mr = repository.findById(new Long (id)).orElseThrow();
         mr.setName(name);
         mr.setEmail(email);
         mr.setRegion(r);

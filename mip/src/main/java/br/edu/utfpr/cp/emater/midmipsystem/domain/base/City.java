@@ -32,15 +32,9 @@ public class City extends AuditingPersistenceEntity implements Serializable {
     @Enumerated (EnumType.STRING)
     private State state;
     
-    @ManyToOne (fetch = FetchType.EAGER)
-    private Region region;  
+    // @ManyToOne (fetch = FetchType.EAGER)
+    // private Region region;  
     
-    public City (Long id, String name, State state) {
-        this.setId(id);
-        this.setName(name);
-        this.setState(state);
-    }
-
     public void setName (String name) {
         this.name = WordUtils.capitalize(name.toLowerCase());
     }
