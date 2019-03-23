@@ -12,10 +12,14 @@ import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.SurveyField;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.SurveyFieldRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
@@ -57,6 +61,7 @@ public class SurveyFieldController {
     @RequestMapping (value = "", method = RequestMethod.GET)
     public String findAll (Model data) {
         data.addAttribute("surveyFields", surveyFieldRepository.findAll());
+        data.addAttribute("harvests", harvestRepository.findAll());
         data.addAttribute("success", this.operationSuccessMessage);
 
         this.resetOperationSuccessMessage();
@@ -67,23 +72,43 @@ public class SurveyFieldController {
 
         return this.environment.getProperty("app.view.route.template.main.survey.survey-field");
     }
+
+    private List<Field> retrieveFieldsAssignedToSelectedHarvest(Long harvestId) {
+        return surveyFieldRepository.findAll().stream().filter(sf -> sf.getHarvest().equals(harvestRepository.findById(harvestId).orElseThrow())).map(SurveyField::getField).collect(Collectors.toList());
+    }
+
+    private List<Field> retrieveFieldsNotAssignedToSelectedHarvestSurvey(Long harvestId) {
+        
+        List<Field> fieldsAlreadyAssigned = this.retrieveFieldsAssignedToSelectedHarvest(harvestId);
+        List<Field> allFields = fieldRepository.findAll();
+        
+        allFields.removeAll(fieldsAlreadyAssigned);
+        
+        return allFields;
+    }
     
-    @RequestMapping (value = "/select-field", method = RequestMethod.GET)
-    public String selectFieldForSurvey (Model data) {
-        data.addAttribute("fields", fieldRepository.findAll());
+    @RequestMapping (value = "/select-field", method = RequestMethod.POST)
+    public String selectFieldForSurvey (@RequestParam int harvestId, Model data) {
+        data.addAttribute("fields", this.retrieveFieldsNotAssignedToSelectedHarvestSurvey(new Long(harvestId)));
+        data.addAttribute("harvestId", harvestId);
                 
         return this.environment.getProperty("app.view.route.template.select-field.survey.survey-field");
     }
     
     @RequestMapping (value = "/field-form", method = RequestMethod.GET)
-    public String surveyFieldForm (@RequestParam int fieldId, Model data) {
-        data.addAttribute("harvests", harvestRepository.findAll());
+    public String surveyFieldForm (@RequestParam int fieldId, @RequestParam int harvestId, Model data) {
+        data.addAttribute("harvestId", harvestId);
         
-        Field selectedField = fieldRepository.findById(new Long(fieldId)).get();
+        Field selectedField = fieldRepository.findById(new Long(fieldId)).orElseThrow();
         
         data.addAttribute("selectedField", selectedField);
                 
-        data.addAttribute("pageTitle", String.format("Dados da UR '%s' (%s, %s)", selectedField.getName(), selectedField.getFarmer().getName(), selectedField.getCity().getName()));
+        data.addAttribute("pageTitle", 
+                        String.format("Dados da UR '%s' (%s, %s) para %s", 
+                                        selectedField.getName(), 
+                                        selectedField.getFarmer().getName(), 
+                                        selectedField.getCity().getName(), 
+                                        harvestRepository.findById(new Long(harvestId)).orElseThrow().getName()));
         
         return this.environment.getProperty("app.view.route.template.form.survey.survey-field");
     }
@@ -109,8 +134,8 @@ public class SurveyFieldController {
                             @RequestParam double longitude) {
         
         SurveyField sf = new SurveyField();
-        sf.setHarvest(harvestRepository.findById(new Long(harvestId)).get());
-        sf.setField(fieldRepository.findById(new Long(fieldId)).get());
+        sf.setHarvest(harvestRepository.findById(new Long(harvestId)).orElseThrow());
+        sf.setField(fieldRepository.findById(new Long(fieldId)).orElseThrow());
         sf.setSeedName(seedName);
         sf.setSporeCollectorPresent(sporeCollector);
         sf.setDateData(new DateData(this.dateFormatter(sowedDate), this.dateFormatter(emergenceDate), this.dateFormatter(harvestDate)));

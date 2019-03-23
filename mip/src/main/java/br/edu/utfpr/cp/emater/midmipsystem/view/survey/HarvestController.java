@@ -77,7 +77,7 @@ public class HarvestController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@RequestParam String name, @RequestParam int id, @RequestParam String begin, @RequestParam String end) {
 
-        Harvest hst = repository.findById(new Long(id)).get();
+        Harvest hst = repository.findById(new Long(id)).orElseThrow();
         hst.setName(name);
         hst.setBegin(this.dateFormatter(begin));
         hst.setEnd(this.dateFormatter(end));

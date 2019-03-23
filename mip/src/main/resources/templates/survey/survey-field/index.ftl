@@ -26,9 +26,9 @@
             <div class="card-header text-white" style="background-color: #004900">
                 <h2 class="card-title" style="display: inline"><@spring.message "card.title.survey-field" /></h2>
 
-                <a href="/survey-field/select-field" class="btn btn-success float-right" >
+                <a href="#selectHarvestModal" class="btn btn-success float-right" data-toggle="modal">
                     <i class="material-icons align-middle">&#xE147;</i>
-                    <span class="align-middle"><@spring.message "card.button.new.survey-field"/></span>
+                    <span class="align-middle"><@spring.message "card.button.new.survey-field" /></span>
                 </a>
             </div>
 
@@ -103,6 +103,9 @@
             </div>
         </form>
     </div>
+
+    <!-- Select harvest Modal HTML -->
+    <#include "select-harvest.ftl">
 
     <!-- Delete Modal HTML -->
     <#include "delete-modal.ftl">

@@ -43,7 +43,7 @@
                         <#list fields as field>
                         	<#assign selectTip><@spring.message "table.list.select" /></#assign>
                         
-                            <tr title="${selectTip}" style="cursor: pointer;" onclick="location.assign('/survey-field/field-form?fieldId=${field.id}')">   
+                            <tr title="${selectTip}" style="cursor: pointer;" onclick="location.assign('/survey-field/field-form?fieldId=${field.id}&harvestId=${harvestId}')">   
                                     <td>${field.name}</td>
                                     <td>${field.location}</td>
                                     <td>${field.city.name}</td>

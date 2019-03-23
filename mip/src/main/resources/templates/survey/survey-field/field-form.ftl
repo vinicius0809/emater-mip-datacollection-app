@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><@spring.message "page.survey.add-ur" /></title>
+    <title>${pageTitle}</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     
@@ -23,8 +23,10 @@
         <#include "/menubar.ftl">
 
         <form action="/survey-field/create" method="post" class="card" style="margin: 15px">
+            <input type="hidden" id="harvestId" name="harvestId" value="${harvestId}">
+
             <div class="card-header text-white" style="background-color: #004900">
-                <h2><@spring.message "card.title.add-ur" /></h2>
+                <h2>${pageTitle}</h2>
             </div>
 
 
@@ -33,9 +35,6 @@
                 <input type="hidden" name="fieldId" value="${selectedField.id}">
 
 				<ul>
-					<li>
-                        <a href="#harvest-tab"><@spring.message "table.list.harvest" /></a>
-                    </li>
 					<li>
                         <a href="#cultivar-tab"><@spring.message "table.list.seed-name" /></a>
                     </li>
@@ -51,20 +50,6 @@
 				</ul>
 
                 <div class="tab-content">
-                    <div id="harvest-tab" class="card" style="margin-top: 15px">
-                        <div class="card-header text-white" style="background-color: #004900">
-                            <@spring.message "table.list.harvest" />
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <select class="form-control" id="harvest" name="harvestId">
-                                    <#list harvests as harvest>
-                                        <option value="${harvest.id}">${harvest.name}</option>
-                                    </#list>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
 
                     <div id="cultivar-tab" class="card" style="margin-top: 15px">
                         <div class="card-header text-white" style="background-color: #004900">
