@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.midmipsystem.view.base;
+package br.edu.utfpr.cp.emater.midmipsystem.view.base.controller;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.City;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.CityRepository;
@@ -8,6 +8,8 @@ import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Farmer;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.FarmerRepository;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Supervisor;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.SupervisorRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.view.base.dto.FieldDTO;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,26 +73,21 @@ public class FieldController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(
-            @RequestParam String name,
-            @RequestParam String location,
-            @RequestParam int cityId,
-            @RequestParam int farmerId,
-            @RequestParam String supervisorIds[]) {
+    public String create(FieldDTO field) {
 
-        City city = cityRepository.findById(new Long(cityId)).orElseThrow();
-        Farmer farmer = farmerRepository.findById(new Long(farmerId)).orElseThrow();
+        City city = cityRepository.findById(new Long(field.getCityId())).orElseThrow();
+        Farmer farmer = farmerRepository.findById(new Long(field.getFarmerId())).orElseThrow();
 
         List<Supervisor> supervisors = new ArrayList<>();
-        for (String supervisorId : supervisorIds) {
+        for (String supervisorId: field.getSupervisorIds()) {
             supervisors.add(supervisorRepository.findById(new Long(supervisorId)).orElseThrow());
         }
 
         Field f = new Field();
         f.setCity(city);
         f.setFarmer(farmer);
-        f.setLocation(location);
-        f.setName(name);
+        f.setLocation(field.getLocation());
+        f.setName(field.getName());
         f.setSupervisors(supervisors);
 
         fieldRepository.save(f);
@@ -101,30 +98,24 @@ public class FieldController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(
-            @RequestParam int id,
-            @RequestParam String name,
-            @RequestParam String location,
-            @RequestParam int cityId,
-            @RequestParam int farmerId,
-            @RequestParam String supervisorIds[]) {
+    public String update(FieldDTO field) {
 
-        City city = cityRepository.findById(new Long(cityId)).orElseThrow();
-        Farmer farmer = farmerRepository.findById(new Long(farmerId)).orElseThrow();
+        City city = cityRepository.findById(new Long(field.getCityId())).orElseThrow();
+        Farmer farmer = farmerRepository.findById(new Long(field.getFarmerId())).orElseThrow();
 
         List<Supervisor> supervisors = new ArrayList<>();
-        for (String supervisorId : supervisorIds) {
+        for (String supervisorId: field.getSupervisorIds()) {
             supervisors.add(supervisorRepository.findById(new Long(supervisorId)).orElseThrow());
         }
         
-        Field field = fieldRepository.findById(new Long (id)).orElseThrow();
-        field.setName(name);
-        field.setLocation(location);
-        field.setCity(city);
-        field.setFarmer(farmer);
-        field.setSupervisors(supervisors);
+        Field f = fieldRepository.findById(new Long (field.getId())).orElseThrow();
+        f.setName(field.getName());
+        f.setLocation(field.getLocation());
+        f.setCity(city);
+        f.setFarmer(farmer);
+        f.setSupervisors(supervisors);
 
-        fieldRepository.saveAndFlush(field);
+        fieldRepository.saveAndFlush(f);
 
         this.setOperationSuccessMessage();
 

@@ -9,7 +9,7 @@
 					<div class="modal-body">					
 						<div class="form-group">
 							<label><@spring.message "modal.label.name"/> </label>
-							<input type="text" class="form-control" id="edit-name" name="name" required>
+							<input type="text" class="form-control" id="edit-name" name="name" required autofocus maxlength="50">
 							<input type="hidden" class="form-control" id="edit-id" name="id">
 						</div>
 					</div>

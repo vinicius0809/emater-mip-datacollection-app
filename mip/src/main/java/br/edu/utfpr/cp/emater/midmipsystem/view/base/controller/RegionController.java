@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.midmipsystem.view.base;
+package br.edu.utfpr.cp.emater.midmipsystem.view.base.controller;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.City;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.CityRepository;
@@ -6,8 +6,10 @@ import br.edu.utfpr.cp.emater.midmipsystem.domain.base.MacroRegion;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.MacroRegionRepository;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Region;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.RegionRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.view.base.dto.RegionDTO;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -82,15 +84,15 @@ public class RegionController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@RequestParam String name, @RequestParam int macroRegionId, @RequestParam String citiesIDs[]) {
+    public String create(RegionDTO region) {
 
         Region r = new Region();
-        r.setName(name);
+        r.setName(region.getName());
 
-        MacroRegion mr = macroRegionRepository.findById(new Long(macroRegionId)).orElseThrow();
+        MacroRegion mr = macroRegionRepository.findById(new Long(region.getMacroRegionId())).orElseThrow();
         r.setMacroRegion(mr);
 
-        for (String cityID : citiesIDs) 
+        for (String cityID : region.getCitiesIDs()) 
             r.addCity(cityRepository.findById(new Long(cityID)).orElseThrow());
 
         regionRepository.save(r);
@@ -101,16 +103,16 @@ public class RegionController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(@RequestParam String name, @RequestParam int id, @RequestParam int macroRegionId, @RequestParam String citiesIDs[]) {
+    public String update(RegionDTO region) {
 
-        Region r = regionRepository.findById(new Long(id)).orElseThrow();
-        r.setName(name);
+        Region r = regionRepository.findById(new Long(region.getId())).orElseThrow();
+        r.setName(region.getName());
 
-        MacroRegion mr = macroRegionRepository.findById(new Long(macroRegionId)).orElseThrow();
+        MacroRegion mr = macroRegionRepository.findById(new Long(region.getMacroRegionId())).orElseThrow();
         r.setMacroRegion(mr);
 
         r.setCities(new ArrayList<City>());
-        for (String cityID : citiesIDs) 
+        for (String cityID : region.getCitiesIDs()) 
             r.addCity(cityRepository.findById(new Long(cityID)).orElseThrow());
 
         regionRepository.saveAndFlush(r);

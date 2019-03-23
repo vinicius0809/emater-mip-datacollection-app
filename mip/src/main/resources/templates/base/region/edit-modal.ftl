@@ -9,12 +9,12 @@
 					<div class="modal-body">					
 						<div class="form-group">
 							<label><@spring.message "modal.label.name"/></label>
-							<input type="text" class="form-control" id="edit-name" name="name" required>
+							<input type="text" class="form-control" id="edit-name" name="name" required autofocus maxlength="25">
 							<input type="hidden" class="form-control" id="edit-id" name="id">
 						</div>
 						<div class="form-group">
 							<label><@spring.message "modal.label.macroregion" /></label>
-							<select name="macroRegionId" class="form-control" id="edit-macroregion">
+							<select name="macroRegionId" class="form-control" id="edit-macroregion" required>
 								<#list macroRegions as macroRegion>
   									<option value="${macroRegion.id}">${macroRegion.name}</option>
 								</#list>
@@ -22,7 +22,7 @@
 						</div>
 						<div class="form-group">
 							<label><@spring.message "modal.label.city" /></label>
-							<select name="citiesIDs" class="form-control" size="5" multiple>
+							<select name="citiesIDs" class="form-control" size="5" multiple required>
 								<#list cities as city>
   									<option value="${city.id}">${city.name}</option>
 								</#list>

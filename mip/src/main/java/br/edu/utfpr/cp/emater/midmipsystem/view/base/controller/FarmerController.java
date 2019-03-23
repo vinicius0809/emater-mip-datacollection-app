@@ -1,7 +1,9 @@
-package br.edu.utfpr.cp.emater.midmipsystem.view.base;
+package br.edu.utfpr.cp.emater.midmipsystem.view.base.controller;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Farmer;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.FarmerRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.view.base.dto.FarmerDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
@@ -52,10 +54,10 @@ public class FarmerController {
     }
     
     @RequestMapping (value = "/create", method = RequestMethod.POST)
-    public String create (@RequestParam String name) {
+    public String create (FarmerDTO farmer) {
         
         Farmer f = new Farmer();
-        f.setName(name);
+        f.setName(farmer.getName());
 
         repository.save(f);
 
@@ -65,10 +67,10 @@ public class FarmerController {
     }
     
     @RequestMapping (value = "/update", method = RequestMethod.POST)
-    public String update (@RequestParam String name, @RequestParam int id) {
+    public String update (FarmerDTO farmer) {
         
-        Farmer mr = repository.findById(new Long (id)).orElseThrow();
-        mr.setName(name);
+        Farmer mr = repository.findById(new Long (farmer.getId())).orElseThrow();
+        mr.setName(farmer.getName());
         
         repository.saveAndFlush(mr);
 

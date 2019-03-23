@@ -1,9 +1,11 @@
-package br.edu.utfpr.cp.emater.midmipsystem.view.base;
+package br.edu.utfpr.cp.emater.midmipsystem.view.base.controller;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Region;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.RegionRepository;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Supervisor;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.SupervisorRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.view.base.dto.SupervisorDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
@@ -57,13 +59,13 @@ public class SupervisorController {
     }
     
     @RequestMapping (value = "/create", method = RequestMethod.POST)
-    public String create (@RequestParam String name, @RequestParam String email, @RequestParam String regionId) {
+    public String create (SupervisorDTO supervisor) {
         
-        Region r = regionRepository.findById(new Long(regionId)).orElseThrow();
+        Region r = regionRepository.findById(new Long(supervisor.getRegionId())).orElseThrow();
 
         Supervisor s = new Supervisor();
-        s.setName(name);
-        s.setEmail(email);
+        s.setName(supervisor.getName());
+        s.setEmail(supervisor.getEmail());
         s.setRegion(r);
 
         repository.save(s);
@@ -74,13 +76,13 @@ public class SupervisorController {
     }
     
     @RequestMapping (value = "/update", method = RequestMethod.POST)
-    public String update (@RequestParam String email, @RequestParam String name, @RequestParam int id, @RequestParam String regionId) {
+    public String update (SupervisorDTO supervisor) {
         
-        Region r = regionRepository.findById(new Long(regionId)).orElseThrow();
+        Region r = regionRepository.findById(new Long(supervisor.getRegionId())).orElseThrow();
 
-        Supervisor mr = repository.findById(new Long (id)).orElseThrow();
-        mr.setName(name);
-        mr.setEmail(email);
+        Supervisor mr = repository.findById(new Long (supervisor.getId())).orElseThrow();
+        mr.setName(supervisor.getName());
+        mr.setEmail(supervisor.getEmail());
         mr.setRegion(r);
         
         repository.saveAndFlush(mr);

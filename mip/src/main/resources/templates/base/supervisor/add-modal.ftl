@@ -9,11 +9,11 @@
 					<div class="modal-body">					
 						<div class="form-group">
 							<label><@spring.message "modal.label.name" /></label>
-							<input type="text" class="form-control" name="name" required>
+							<input type="text" class="form-control" name="name" required autofocus maxlength="50">
 						</div>
 						<div class="form-group">
 							<label for="email"><@spring.message "modal.label.email" /></label>
-							<input type="text" class="form-control" id="email" name="email" required>
+							<input type="email" class="form-control" id="email" name="email" required>
 						</div>
 						<div class="form-group">
 							<label><@spring.message "modal.label.region" /></label>

@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.midmipsystem.view.base;
+package br.edu.utfpr.cp.emater.midmipsystem.view.base.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.MacroRegion;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.MacroRegionRepository;
+import br.edu.utfpr.cp.emater.midmipsystem.view.base.dto.MacroRegionDTO;
 
 
 @Controller
@@ -53,10 +54,11 @@ public class MacroRegionController {
     }
     
     @RequestMapping (value = "/create", method = RequestMethod.POST)
-    public String create (@RequestParam String name) {
+    // public String create (@RequestParam String name) {
+        public String create (MacroRegionDTO macroRegion) {        
         
         MacroRegion mr = new MacroRegion();
-        mr.setName(name);
+        mr.setName(macroRegion.getName());
 
         repository.save(mr);
 
@@ -66,10 +68,10 @@ public class MacroRegionController {
     }
     
     @RequestMapping (value = "/update", method = RequestMethod.POST)
-    public String update (@RequestParam String name, @RequestParam int id) {
+    public String update (MacroRegionDTO macroRegion) {
         
-        MacroRegion mr = repository.findById(new Long (id)).orElseThrow();
-        mr.setName(name);
+        MacroRegion mr = repository.findById(new Long (macroRegion.getId())).orElseThrow();
+        mr.setName(macroRegion.getName());
         
         repository.saveAndFlush(mr);
 

@@ -9,17 +9,17 @@
 					<div class="modal-body">					
 						<div class="form-group">
 							<label><@spring.message "modal.label.identification" /></label>
-							<input type="text" class="form-control" name="name" required>
+							<input type="text" class="form-control" name="name" required autofocus maxlength="25">
 						</div>
 
 						<div class="form-group">
 							<label><@spring.message "modal.label.location" /></label>
-							<input type="text" class="form-control" name="location" required>
+							<input type="text" class="form-control" name="location" required maxlength="50">
 						</div>
 
 						<div class="form-group">
 							<label><@spring.message "modal.label.city" /></label>
-							<select name="cityId" class="form-control">
+							<select name="cityId" class="form-control" required>
 								<#list cities as city>
   									<option value="${city.id}">${city.name}</option>
 								</#list>
@@ -28,7 +28,7 @@
 
 						<div class="form-group">
 							<label><@spring.message "modal.label.farmer" /></label>
-							<select name="farmerId" class="form-control">
+							<select name="farmerId" class="form-control" required>
 								<#list farmers as farmer>
   									<option value="${farmer.id}">${farmer.name}</option>
 								</#list>
@@ -37,7 +37,7 @@
 
 						<div class="form-group">
 							<label><@spring.message "modal.label.supervisor" /></label>
-							<select name="supervisorIds" class="form-control" size="5" multiple>
+							<select name="supervisorIds" class="form-control" size="5" multiple required>
 								<#list supervisors as supervisor>
   									<option value="${supervisor.id}">${supervisor.name}</option>
 								</#list>
