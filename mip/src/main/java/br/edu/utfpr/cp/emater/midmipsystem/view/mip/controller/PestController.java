@@ -1,8 +1,9 @@
-package br.edu.utfpr.cp.emater.midmipsystem.view.mip;
+package br.edu.utfpr.cp.emater.midmipsystem.view.mip.controller;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.Pest;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.PestRepository;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.PestSize;
+import br.edu.utfpr.cp.emater.midmipsystem.view.mip.dto.PestDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -54,9 +55,14 @@ public class PestController {
     }
     
     @RequestMapping (value = "/create", method = RequestMethod.POST)
-    public String create (Pest pest) {
+    public String create (PestDTO pest) {
         
-        repository.save(pest);
+        Pest p = new Pest();
+        p.setScientificName(pest.getScientificName());
+        p.setUsualName(pest.getUsualName());
+        p.setPestSize(PestSize.valueOf(pest.getPestSize()));
+
+        repository.save(p);
 
         this.setOperationSuccessMessage();
         
@@ -64,12 +70,12 @@ public class PestController {
     }
     
     @RequestMapping (value = "/update", method = RequestMethod.POST)
-    public String update (Pest pest) {
+    public String update (PestDTO pest) {
 
-        Pest originalPest = repository.findById(pest.getId()).orElseThrow();
+        Pest originalPest = repository.findById(new Long(pest.getId())).orElseThrow();
         originalPest.setUsualName(pest.getUsualName());
         originalPest.setScientificName(pest.getScientificName());
-        originalPest.setPestSize(pest.getPestSize());
+        originalPest.setPestSize(PestSize.valueOf(pest.getPestSize()));
         
         repository.saveAndFlush(originalPest);
 

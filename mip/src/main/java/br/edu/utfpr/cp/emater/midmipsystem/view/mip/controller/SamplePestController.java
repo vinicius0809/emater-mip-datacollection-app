@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.midmipsystem.view.mip;
+package br.edu.utfpr.cp.emater.midmipsystem.view.mip.controller;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.GrowthPhase;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.MipPestSurveyRepository;

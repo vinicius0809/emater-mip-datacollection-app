@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.emater.midmipsystem.view.mip;
+package br.edu.utfpr.cp.emater.midmipsystem.view.mip.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -50,14 +50,14 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="sampleDate"><@spring.message "table.list.colletion-date" /></label>
-                                    <input type="date" class="form-control" id="sampleDate" name="sampleDate">
+                                    <input type="date" class="form-control" id="sampleDate" name="sampleDate" required>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="growthPhase"><@spring.message "table.list.growth-phase" /></label>
-                                    <select class="form-control" id="growthPhase" name="growthPhase">
+                                    <select class="form-control" id="growthPhase" name="growthPhase" required>
                                         <#list growthPhases as growthPhase>
                                             <option value="${growthPhase}">${growthPhase}</option>
                                         </#list>
@@ -68,14 +68,14 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                    <label for="daysAfterEmergence"><@spring.message "table.list.days-after-emergence" /></label>
-                                    <input type="number" class="form-control" id="daysAfterEmergence" name="daysAfterEmergence">
+                                    <input type="number" class="form-control" id="daysAfterEmergence" name="daysAfterEmergence" required>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="defoliation"><@spring.message "table.list.defoliation-rate" /></label>
-                                    <input type="number" class="form-control" id="defoliation" name="defoliation">
+                                    <input type="number" class="form-control" id="defoliation" name="defoliation" required>
                                 </div>
                             </div>
                                 

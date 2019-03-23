@@ -9,15 +9,15 @@
 					<div class="modal-body">					
 						<div class="form-group">
 							<label><@spring.message "modal.label.name" /></label>
-							<input type="text" class="form-control" name="usualName" required>
+							<input type="text" class="form-control" name="usualName" required autofocus maxlength="50">
 						</div>
 						<div class="form-group">
 							<label><@spring.message "modal.label.scientific-name" /></label>
-							<input type="text" class="form-control" name="scientificName" required>
+							<input type="text" class="form-control" name="scientificName" required maxlength="50">
 						</div>
 						<div class="form-group">
 							<label><@spring.message "modal.label.size" /></label>
-							<select name="pestSize" class="form-control">
+							<select name="pestSize" class="form-control" required>
 								<#list pestSizes as pestSize>
   									<option value="${pestSize}">${pestSize.getName()}</option>
 								</#list>
