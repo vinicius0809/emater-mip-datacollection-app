@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -76,10 +77,23 @@ public class SamplePestController {
         return this.environment.getProperty("app.view.route.create.sample.mip.pest-survey");
     }
 
+    private int calculateDaysAfterEmergence (Date emergenceDate, Date sampleDate) {
+        int aDay = (24 * 60 * 60 * 1000);
+        return (int) ((sampleDate.getTime() - emergenceDate.getTime()) / aDay);
+    }
+
     @PostMapping ("/save-sample")
     public String saveSample(@RequestParam Map<String, String> values) {
 
-        samplePestRepository.save(validateEntries(values));
+        SamplePest samplePest = validateEntries(values);
+        samplePest.setDaysAfterEmergence(
+            this.calculateDaysAfterEmergence(
+                samplePest.getMipPestSurvey().getSurveyField().getDateData().getEmergenceDate(),
+                samplePest.getSampleDate()
+            )
+        );
+
+        samplePestRepository.save(samplePest);
 
         this.setOperationSuccessMessage();
         
