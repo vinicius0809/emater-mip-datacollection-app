@@ -91,7 +91,6 @@ public class SamplePestController {
         String mipPestSurveyId = values.entrySet().stream().filter(e -> e.getKey().equalsIgnoreCase("mipPestSurveyId")).findAny().orElseThrow(IllegalArgumentException::new).getValue();
         String sampleDate = values.entrySet().stream().filter(e -> e.getKey().equalsIgnoreCase("sampleDate")).findAny().orElseThrow(IllegalArgumentException::new).getValue();
         String growthPhase = values.entrySet().stream().filter(e -> e.getKey().equalsIgnoreCase("growthPhase")).findAny().orElseThrow(IllegalArgumentException::new).getValue();
-        String daysAfterEmergence = values.entrySet().stream().filter(e -> e.getKey().equalsIgnoreCase("daysAfterEmergence")).findAny().orElseThrow(IllegalArgumentException::new).getValue();
         String defoliation = values.entrySet().stream().filter(e -> e.getKey().equalsIgnoreCase("defoliation")).findAny().orElseThrow(IllegalArgumentException::new).getValue();
 
         Date parsedSampleDate;
@@ -107,7 +106,6 @@ public class SamplePestController {
         sp.setMipPestSurvey(mipPestSurveyRepository.findById(new Long(mipPestSurveyId)).orElseThrow(IllegalArgumentException::new));
         sp.setSampleDate(parsedSampleDate);
         sp.setGrowthPhase(GrowthPhase.valueOf(growthPhase));
-        sp.setDaysAfterEmergence(new Integer(daysAfterEmergence));
         sp.setDefoliation(new Integer(defoliation));
         sp.setPestOccurrenceList(validatePestEntries(values));
 
