@@ -13,7 +13,6 @@ public class PestInterceptor implements HandlerInterceptor {
     public boolean preHandle(
             HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("Entrou no Interceptor preHandle()" + request.toString() + "--" + response.toString());
-
         return true;
     }
     @Override
