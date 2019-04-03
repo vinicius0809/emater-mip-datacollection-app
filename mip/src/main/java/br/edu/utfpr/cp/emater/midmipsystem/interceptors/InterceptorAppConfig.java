@@ -6,12 +6,12 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Component
-public class PestInterceptorAppConfig extends WebMvcConfigurerAdapter {
+public class InterceptorAppConfig extends WebMvcConfigurerAdapter {
     @Autowired
-    PestInterceptor pestInterceptor;
+    Interceptor interceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(pestInterceptor);
+        registry.addInterceptor(interceptor);
     }
 }
