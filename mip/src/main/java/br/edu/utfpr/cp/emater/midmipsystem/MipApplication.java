@@ -1,18 +1,6 @@
 package br.edu.utfpr.cp.emater.midmipsystem;
 
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.City;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.CityRepository;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Field;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.FieldRepository;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.MacroRegion;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.MacroRegionRepository;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Farmer;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.FarmerRepository;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Supervisor;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.SupervisorRepository;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Region;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.RegionRepository;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.State;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.*;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.GrowthPhase;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.MipPestSurvey;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.MipPestSurveyRepository;
@@ -34,9 +22,7 @@ import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.SurveyFieldRepository;
 import freemarker.template.Configuration;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -110,6 +96,16 @@ class CLR implements CommandLineRunner {
 
     @Autowired
     private SamplePestRepository samplePestRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private AuthorityRepository authorityRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -286,6 +282,42 @@ class CLR implements CommandLineRunner {
 
         SamplePest sp1 = samplePestRepository
                 .save(new SamplePest(null, new Date(), 3, 4, GrowthPhase.R2, pestOccurrences, mps1));
-    }
 
+        Authority a1 = new Authority(null, "VIEW_CITY");
+        Authority a2 = new Authority(null, "CREATE_CITY");
+        Authority a3 = new Authority(null, "UPDATE_CITY");
+        Authority a4 = new Authority(null, "DELETE_CITY");
+        Authority a5 = new Authority(null, "VIEW_REGION");
+        Authority a6 = new Authority(null, "CREATE_REGION");
+        Authority a7 = new Authority(null, "UPDATE_REGION");
+        Authority a8 = new Authority(null, "DELETE_REGION");
+        Authority a9 = new Authority(null, "VIEW_MACROREGION");
+        Authority a10 = new Authority(null, "CREATE_MACROREGION");
+        Authority a11 = new Authority(null, "UPDATE_MACROREGION");
+        Authority a12 = new Authority(null, "DELETE_MACROREGION");
+        Authority a13 = new Authority(null, "VIEW_USER");
+        Authority a14 = new Authority(null, "CREATE_USER");
+        Authority a15 = new Authority(null, "UPDATE_USER");
+        Authority a16 = new Authority(null, "DELETE_USER");
+
+        Role ro1 = new Role(null, "Admin", "Administrador do sistema.",
+                new ArrayList<>(Arrays.asList(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16)));
+        Role ro2 = new Role(null, "Fazendeiro", "Fazendeiro.",
+                new ArrayList<>(Arrays.asList(a1,a5)));
+        Role ro3 = new Role(null, "Agrônomo", "Responsável pela edição das cidades e regiões.",
+                new ArrayList<>(Arrays.asList(a1,a2,a3,a4,a5,a6,a7,a8)));
+        Role ro4 = new Role(null, "Gerenciador de Usuários", "Responsável pelo gerenciamento de usuários.",
+                new ArrayList<>(Arrays.asList(a13,a14,a15,a16)));
+
+        User u1 = new User(null,"user1","user1",
+                new ArrayList<>(Arrays.asList(ro1)));
+        User u2 = new User(null,"user2","user2",
+                new ArrayList<>(Arrays.asList(ro2)));
+        User u3 = new User(null,"user3","user3",
+                new ArrayList<>(Arrays.asList(ro3)));
+        User u4 = new User(null,"user4","user4",
+                new ArrayList<>(Arrays.asList(ro4)));
+        User u5 = new User(null,"user5","user5",
+                new ArrayList<>(Arrays.asList(ro2,ro4)));
+    }
 }
