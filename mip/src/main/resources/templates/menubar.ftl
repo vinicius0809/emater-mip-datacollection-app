@@ -46,5 +46,12 @@
             </div>
         </li>
 
+        <li class="navbar-brand mb-0 h1">
+            <a href="/logout" class="text-white-50">
+                <i class="material-icons align-middle">lock_open</i>
+                <span class="align-middle">Logout</span>
+            </a>
+        </li>
+
     </ul>
 </nav>

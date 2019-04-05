@@ -10,4 +10,5 @@ public class MainController {
     public String view() {
         return "/index";
     }
+
 }
