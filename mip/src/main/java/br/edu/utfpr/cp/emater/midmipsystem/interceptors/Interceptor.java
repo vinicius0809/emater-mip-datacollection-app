@@ -12,11 +12,11 @@ import java.util.List;
 
 @Component
 public class Interceptor implements HandlerInterceptor {
-
     private static final String ADMIN = "ROLE_ADMIN";
     private static final String TECH = "ROLE_TECH";
     private static final String SUPERVISOR = "ROLE_SUPERVISOR";
     private static final String USER = "ROLE_USER";
+
 
     private static int httpCode = 200;
 
