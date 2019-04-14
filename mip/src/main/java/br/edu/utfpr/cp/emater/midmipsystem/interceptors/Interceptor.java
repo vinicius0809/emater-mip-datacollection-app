@@ -1,5 +1,6 @@
 package br.edu.utfpr.cp.emater.midmipsystem.interceptors;
 
+import br.edu.utfpr.cp.emater.midmipsystem.domain.base.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.security.core.Authentication;
@@ -11,13 +12,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 @Component
 public class Interceptor implements HandlerInterceptor {
 
     @Autowired
     private Environment env;
+    @Autowired
+    private RoleRepository roleRepository;
+
     private static int httpCode = 200;
 
     @Override
@@ -47,7 +53,7 @@ public class Interceptor implements HandlerInterceptor {
         var domain = domainAction[0];
 
 
-        if (domain.equals(""))
+        if (!getDomains().contains(domain))
             return true;
 
         var action = domainAction[1];
@@ -57,19 +63,19 @@ public class Interceptor implements HandlerInterceptor {
             switch (role.toString().split("_")[1]) {
                 case "ADMIN":
 
-                    grants = Roles.ADMIN.getGrants(domain);
+                    grants = roleRepository.findById((long) 1).get().getGrants(domain);
                     if (verifyAuthority(grants, action))
                         return true;
 
                 case "SUPERVISOR":
 
-                    grants = Roles.SUPERVISOR.getGrants(domain);
+                    grants = roleRepository.findById((long) 2).get().getGrants(domain);
                     if (verifyAuthority(grants, action))
                         return true;
 
                 case "FARMER":
 
-                    grants = Roles.FARMER.getGrants(domain);
+                    grants = roleRepository.findById((long) 3).get().getGrants(domain);
                     if (verifyAuthority(grants, action))
                         return true;
 
@@ -88,13 +94,13 @@ public class Interceptor implements HandlerInterceptor {
         var grantsUpdate = grants.split("-")[2];
         var grantsDelete = grants.split("-")[3];
 
-        if (action.equals(env.getProperty("app.view.route.read"))) {
+        if (action.equals("read")) {
             return !grantsRead.equals("x");
 
-        } else if (action.equals(env.getProperty("app.view.route.create"))) {
+        } else if (action.equals("create")) {
             return !grantsCreate.equals("x");
 
-        } else if (action.equals(env.getProperty("app.view.route.update"))) {
+        } else if (action.equals("update")) {
             return !grantsUpdate.equals("x");
 
         } else {
@@ -117,6 +123,10 @@ public class Interceptor implements HandlerInterceptor {
         }
 
         return domain + action;
+    }
+
+    private List<String> getDomains() {
+        return Arrays.asList("city", "region", "macroregion", "field", "harvest", "pest", "supervisor", "users", "farmer", "survey-field", "pest-survey");
     }
 
     private boolean isAuthenticated(Authentication authentication) {

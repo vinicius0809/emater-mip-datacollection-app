@@ -116,9 +116,9 @@ class CLR implements CommandLineRunner {
 
         City c1 = cityRepository.save(new City(null, "Itapejara D'Oeste", State.PR));
         City c2 = cityRepository.save(new City(null, "Mariópolis", State.PR));
-        City c3 = cityRepository.save(new City(null, "Pato Branco", State.PR));        
-        City c4 = cityRepository.save(new City(null, "Apucarana", State.PR));        
-        City c5 = cityRepository.save(new City(null, "Campo Mourão", State.PR));        
+        City c3 = cityRepository.save(new City(null, "Pato Branco", State.PR));
+        City c4 = cityRepository.save(new City(null, "Apucarana", State.PR));
+        City c5 = cityRepository.save(new City(null, "Campo Mourão", State.PR));
 
         Region r1 = regionRepository.save(new Region(null, "Apucarana", mr1, null));
         Region r2 = regionRepository.save(new Region(null, "Campo Mourão", mr2, null));
@@ -283,41 +283,13 @@ class CLR implements CommandLineRunner {
         SamplePest sp1 = samplePestRepository
                 .save(new SamplePest(null, new Date(), 3, 4, GrowthPhase.R2, pestOccurrences, mps1));
 
-        Authority a1 = new Authority(null, "VIEW_CITY");
-        Authority a2 = new Authority(null, "CREATE_CITY");
-        Authority a3 = new Authority(null, "UPDATE_CITY");
-        Authority a4 = new Authority(null, "DELETE_CITY");
-        Authority a5 = new Authority(null, "VIEW_REGION");
-        Authority a6 = new Authority(null, "CREATE_REGION");
-        Authority a7 = new Authority(null, "UPDATE_REGION");
-        Authority a8 = new Authority(null, "DELETE_REGION");
-        Authority a9 = new Authority(null, "VIEW_MACROREGION");
-        Authority a10 = new Authority(null, "CREATE_MACROREGION");
-        Authority a11 = new Authority(null, "UPDATE_MACROREGION");
-        Authority a12 = new Authority(null, "DELETE_MACROREGION");
-        Authority a13 = new Authority(null, "VIEW_USER");
-        Authority a14 = new Authority(null, "CREATE_USER");
-        Authority a15 = new Authority(null, "UPDATE_USER");
-        Authority a16 = new Authority(null, "DELETE_USER");
+        Role ro1 = roleRepository.save(new Role(null, "ROLE_ADMIN", "Administrador do sistema.","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D",null));
+        Role ro2 = roleRepository.save(new Role(null, "ROLE_SUPERVISOR", "Supervisor técnico.","x-r-x-x","x-r-x-x","x-r-x-x","c-r-u-d","c-r-u-d","C-R-U-D","x-R-u-x","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D",null));
+        Role ro3 = roleRepository.save(new Role(null, "ROLE_FARMER", "Fazendeiro.","x-r-x-x","x-r-x-x","x-r-x-x","x-r-x-x","x-r-u-d","x-r-x-x","x-x-x-x","x-r-u-x","x-R-x-x","x-R-x-x","x-R-x-x",null));
 
-        Role ro1 = new Role(null, "Admin", "Administrador do sistema.",
-                new ArrayList<>(Arrays.asList(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16)));
-        Role ro2 = new Role(null, "Fazendeiro", "Fazendeiro.",
-                new ArrayList<>(Arrays.asList(a1,a5)));
-        Role ro3 = new Role(null, "Agrônomo", "Responsável pela edição das cidades e regiões.",
-                new ArrayList<>(Arrays.asList(a1,a2,a3,a4,a5,a6,a7,a8)));
-        Role ro4 = new Role(null, "Gerenciador de Usuários", "Responsável pelo gerenciamento de usuários.",
-                new ArrayList<>(Arrays.asList(a13,a14,a15,a16)));
-
-        User u1 = new User(null,"user1","user1",
-                new ArrayList<>(Arrays.asList(ro1)));
-        User u2 = new User(null,"user2","user2",
-                new ArrayList<>(Arrays.asList(ro2)));
-        User u3 = new User(null,"user3","user3",
-                new ArrayList<>(Arrays.asList(ro3)));
-        User u4 = new User(null,"user4","user4",
-                new ArrayList<>(Arrays.asList(ro4)));
-        User u5 = new User(null,"user5","user5",
-                new ArrayList<>(Arrays.asList(ro2,ro4)));
+        User u1 = userRepository.save(new User(null,"admin","{noop}teste",true,ro1));
+        User u3 = userRepository.save(new User(null,"tech","{noop}teste",true,ro2));
+        User u2 = userRepository.save(new User(null,"farmer","{noop}teste",true,ro3));
     }
+
 }

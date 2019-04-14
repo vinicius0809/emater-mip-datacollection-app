@@ -3,10 +3,7 @@ package br.edu.utfpr.cp.emater.midmipsystem.domain.base;
 import br.edu.utfpr.cp.emater.midmipsystem.library.AuditingPersistenceEntity;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -23,9 +20,10 @@ public class User extends AuditingPersistenceEntity implements Serializable {
     @Getter @Setter
     private String password;
     @Getter @Setter
-    private ArrayList<Role> roles;
+    private boolean enabled;
+    @Getter @Setter
+    @ManyToOne
+    @JoinColumn
+    private Role role;
 
-    public void addRole(Role role){
-        this.roles.add(role);
-    }
 }
