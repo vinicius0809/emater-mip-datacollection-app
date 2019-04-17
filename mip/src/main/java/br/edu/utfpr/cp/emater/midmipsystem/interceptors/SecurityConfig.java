@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery(
                         "select login, password, enabled from user where login = ?")
                 .authoritiesByUsernameQuery(
-                       "select login, name from role r inner join user u on u.role_id = r.id where login = ?"));
+                       "select login, role_name from role r inner join user u on u.role_id = r.id where login = ?"));
 
         /*auth.inMemoryAuthentication().withUser("admin").password("{noop}teste").roles("ADMIN");
         auth.inMemoryAuthentication().withUser("tech").password("{noop}teste").roles("TECH");

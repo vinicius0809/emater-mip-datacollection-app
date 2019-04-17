@@ -287,9 +287,9 @@ class CLR implements CommandLineRunner {
         Role ro2 = roleRepository.save(new Role(null, "ROLE_SUPERVISOR", "Supervisor técnico.","x-r-x-x","x-r-x-x","x-r-x-x","c-r-u-d","c-r-u-d","C-R-U-D","x-R-u-x","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D",null));
         Role ro3 = roleRepository.save(new Role(null, "ROLE_FARMER", "Fazendeiro.","x-r-x-x","x-r-x-x","x-r-x-x","x-r-x-x","x-r-u-d","x-r-x-x","x-x-x-x","x-r-u-x","x-R-x-x","x-R-x-x","x-R-x-x",null));
 
-        User u1 = userRepository.save(new User(null,"admin","{noop}teste",true,ro1));
-        User u3 = userRepository.save(new User(null,"tech","{noop}teste",true,ro2));
-        User u2 = userRepository.save(new User(null,"farmer","{noop}teste",true,ro3));
+        User u1 = userRepository.save(new User(null,"Fulano","admin","{noop}teste",true,ro1));
+        User u2 = userRepository.save(new User(null,"Ciclano","tech","{noop}teste",true,ro2));
+        User u3 = userRepository.save(new User(null, "Beltrano","farmer","{noop}teste",true,ro3));
     }
 
 }

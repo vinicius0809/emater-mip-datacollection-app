@@ -6,6 +6,12 @@
             <span class="align-middle">Sistema MIP/MID</span>
         </a>
     </span>
+    <span class="navbar-brand mb-0 h2">
+        <a href="/user" class="text-white-50">
+             <i class="material-icons align-middle">face</i>
+            <span class="align-middle">Usuários</span>
+        </a>
+    </span>
 
     <ul class="navbar-nav ml-auto">
 
@@ -46,7 +52,7 @@
             </div>
         </li>
 
-        <li class="navbar-brand mb-0 h1">
+        <li class="navbar-brand mb-0 h2">
             <a href="/logout" class="text-white-50">
                 <i class="material-icons align-middle">lock_open</i>
                 <span class="align-middle">Logout</span>

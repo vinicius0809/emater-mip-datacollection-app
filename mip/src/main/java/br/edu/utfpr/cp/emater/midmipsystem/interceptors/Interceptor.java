@@ -94,13 +94,15 @@ public class Interceptor implements HandlerInterceptor {
         var grantsUpdate = grants.split("-")[2];
         var grantsDelete = grants.split("-")[3];
 
-        if (action.equals("read")) {
+        action = "/" + action;
+
+        if (action.equals(env.getProperty("app.view.route.read"))) {
             return !grantsRead.equals("x");
 
-        } else if (action.equals("create")) {
+        } else if (action.equals(env.getProperty("app.view.route.create"))) {
             return !grantsCreate.equals("x");
 
-        } else if (action.equals("update")) {
+        } else if (action.equals(env.getProperty("app.view.route.update"))) {
             return !grantsUpdate.equals("x");
 
         } else {
@@ -111,8 +113,8 @@ public class Interceptor implements HandlerInterceptor {
     private String getUrlDomainAction(String urlPath) {
 
         var dividedUrl = urlPath.split("/");
-        String domain = "";
-        String action = env.getProperty("app.view.route.read");
+        var domain = "";
+        var action = env.getProperty("app.view.route.read");
 
         if (dividedUrl.length > 1) {
             domain = dividedUrl[1];

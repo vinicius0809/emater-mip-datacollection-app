@@ -5,16 +5,10 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
+public class User extends Person implements Serializable {
 
-public class User extends AuditingPersistenceEntity implements Serializable {
-
-    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
     @Getter @Setter
     private String login;
     @Getter @Setter
@@ -26,4 +20,18 @@ public class User extends AuditingPersistenceEntity implements Serializable {
     @JoinColumn
     private Role role;
 
+    public User () {
+        super();
+    }
+
+    public User (Long id, String name, String login,String password, boolean enabled, Role role) {
+        this();
+
+        this.setId (id);
+        this.setName(name);
+        this.setLogin(login);
+        this.setPassword(password);
+        this.setEnabled(enabled);
+        this.setRole(role);
+    }
 }

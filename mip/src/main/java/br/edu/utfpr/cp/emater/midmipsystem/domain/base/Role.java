@@ -16,7 +16,7 @@ public class Role extends AuditingPersistenceEntity implements Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     @Getter @Setter
-    private String name;
+    private String roleName;
     @Getter @Setter
     private String description;
     @Getter @Setter
