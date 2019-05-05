@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 public class User implements Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -14,6 +13,8 @@ public class User implements Serializable {
     protected Long id;
     @Getter @Setter
     private String login;
+    @Getter @Setter
+    private String name;
     @Getter @Setter
     private String password;
     @Getter @Setter
@@ -23,10 +24,32 @@ public class User implements Serializable {
     @JoinColumn
     private Role role;
     @Getter @Setter
-    @OneToOne
+    @OneToOne (optional = true)
     private Supervisor supervisor;
     @OneToOne (optional = true)
     private Farmer farmer;
+
+    public User(Long id, String login, String password, boolean enabled, Role role, Supervisor supervisor, Farmer farmer) {
+        this.login = login;
+        this.password = password;
+        this.enabled = enabled;
+        this.role = role;
+        this.supervisor = supervisor;
+        this.farmer = farmer;
+
+        switch (this.getType()){
+            case "Supervisor":
+                this.name = supervisor.getName();
+                break;
+
+            case "Farmer":
+                this.name = farmer.getName();
+                break;
+
+            default:
+                this.name = "Administrator";
+        }
+    }
 
     public String getType(){
         if(supervisor == null && farmer == null){

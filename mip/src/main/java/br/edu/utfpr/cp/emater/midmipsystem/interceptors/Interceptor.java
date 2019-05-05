@@ -2,8 +2,6 @@ package br.edu.utfpr.cp.emater.midmipsystem.interceptors;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.*;
 import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.MipPestSurvey;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.security.core.Authentication;
@@ -34,7 +32,6 @@ public class Interceptor implements HandlerInterceptor {
     @Autowired
     private FieldRepository fieldRepository;
 
-    private static Logger log = LoggerFactory.getLogger(Interceptor.class);
     private static int httpCode = 200;
     private boolean verifyUserSession = false;
 
@@ -168,7 +165,7 @@ public class Interceptor implements HandlerInterceptor {
 
     private List<String> getDomains() {
         // return Arrays.asList("city", "region", "macroregion", "field", "harvest", "pest", "supervisor", "users", "farmer", "survey-field", "pest-survey");
-        return Arrays.asList("region", "macroregion", "field", "supervisor", "users", "farmer", "pest-survey");
+        return Arrays.asList("region", "macroregion", "field", "supervisor", "user", "farmer", "pest-survey");
     }
 
     private boolean isAuthenticated(Authentication authentication) {
@@ -184,8 +181,7 @@ public class Interceptor implements HandlerInterceptor {
             response.sendRedirect("/erro");
         }
 
-        if (modelAndView != null && !isRedirectView(modelAndView) && this.verifyUserSession) {
-            addToModelUserDetails(modelAndView);
+        else if (modelAndView != null && !isRedirectView(modelAndView) && this.verifyUserSession) {
             var user = SecurityContextHolder.getContext().getAuthentication().getName();
             modelAndView = changeModelAndView(modelAndView, user, request.getServletPath());
         }
@@ -237,7 +233,10 @@ public class Interceptor implements HandlerInterceptor {
             return validateUserDomain((MipPestSurvey) item, user);
 
         else if (item instanceof Supervisor)
-            return validateUserDomain((MipPestSurvey) item, user);
+            return validateUserDomain((Supervisor) item, user);
+
+        else if (item instanceof User)
+            return validateUserDomain((User) item, user);
 
         return false;
     }
@@ -288,6 +287,13 @@ public class Interceptor implements HandlerInterceptor {
         return false;
     }
 
+    private boolean validateUserDomain(User item, User user) {
+        if (item.getId() == user.getId()) {
+            return true;
+        }
+        return false;
+    }
+
     private User findByLogin(String login) {
         for (var user : userRepository.findAll()) {
             if (user.getLogin().equals(login))
@@ -310,15 +316,6 @@ public class Interceptor implements HandlerInterceptor {
     }
 
     // Métodos do postHandle()
-    private void addToModelUserDetails(ModelAndView model) {
-        log.info("=============== addToModelUserDetails =========================");
-        String loggedUsername = SecurityContextHolder.getContext()
-                .getAuthentication().getName();
-        model.addObject("loggedUsername", loggedUsername);
-        log.trace("session : " + model.getModel());
-        log.info("=============== addToModelUserDetails =========================");
-    }
-
     public static boolean isRedirectView(ModelAndView mv) {
         String viewName = mv.getViewName();
         if (viewName.startsWith("redirect:/")) {

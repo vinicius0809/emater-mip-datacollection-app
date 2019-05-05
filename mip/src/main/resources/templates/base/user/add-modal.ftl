@@ -8,7 +8,7 @@
 					</div>
 					<div class="modal-body">					
 						<div class="form-group">
-							<label><@spring.message "modal.label.name" /></label>
+							<label><@spring.message "modal.label.username" /></label>
 							<input type="text" class="form-control" name="name" required autofocus maxlength="50">
 						</div>
 					</div>

@@ -10,91 +10,92 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel='stylesheet'href='https://fonts.googleapis.com/css?family=Arimo'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Arimo'>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 
 </head>
 
 <body style="font-family: 'Arimo'">
-    <div class="container-fluid">
+<div class="container-fluid">
 
     <!-- Add Menu -->
     <#include "/menubar.ftl">
 
-        <form action="#" method="post" class="card" style="margin: 15px">
-            <div class="card-header text-white" style="background-color: #004900">
-                <h2 class="card-title" style="display: inline"><@spring.message "card.title.user"/></h2>
+    <form action="#" method="post" class="card" style="margin: 15px">
+        <div class="card-header text-white" style="background-color: #004900">
+            <h2 class="card-title" style="display: inline"><@spring.message "card.title.user"/></h2>
 
-                <a href="#addModal" class="btn btn-success float-right" data-toggle="modal">
-                    <i class="material-icons align-middle">&#xE147;</i>
-                    <span class="align-middle"><@spring.message "card.button.new.user"/></span>
-                </a>
-            </div>
+            <a href="#addModal" class="btn btn-success float-right" data-toggle="modal">
+                <i class="material-icons align-middle">&#xE147;</i>
+                <span class="align-middle"><@spring.message "card.button.new.user"/></span>
+            </a>
+        </div>
 
-            <div class="card-body table-responsive-md">
+        <div class="card-body table-responsive-md">
 
-                <!-- Add Success Message -->
-                <#if success>
-                    <#include "/success-msg.ftl">                    
-                </#if>            
+            <!-- Add Success Message -->
+            <#if success>
+                <#include "/success-msg.ftl">
+            </#if>
 
-                <table id="mainTable" class="table table-striped table-hover">
-                    <thead style="background-color: #004900; color: white">
-                        <tr>
-                            <th class="col-sm-4"><@spring.message "table.list.name" /></th>
-                            <th class="col-sm-3"><@spring.message "table.list.username" /></th>
-                            <th class="col-sm-3"><@spring.message "table.list.roles" /></th>
-                            <th class="col-sm-2"><@spring.message "table.list.action" /></th>
-                        </tr>
-                    </thead>
-                    <tbody id="mainTable-body">
+            <table id="mainTable" class="table table-striped table-hover">
+                <thead style="background-color: #004900; color: white">
+                <tr>
+                    <th class="col-sm-4"><@spring.message "table.list.name" /></th>
+                    <th class="col-sm-3"><@spring.message "table.list.username" /></th>
+                    <th class="col-sm-3"><@spring.message "table.list.roles" /></th>
+                    <th class="col-sm-2"><@spring.message "table.list.action" /></th>
+                </tr>
+                </thead>
+                <tbody id="mainTable-body">
 
-                        <#list users as user>
+                <#list users as user>
 
-                            <tr>
-                                <td>${user.name}</td>
-                                <td>${user.login}</td>
-                                <td>${user.role.roleName}</td>
-                                <td>
-                                    <#assign updateLabel><@spring.message "table.list.actions.update" /></#assign>
-                                    <#assign deleteLabel><@spring.message "table.list.actions.delete" /></#assign>
+                    <tr>
+                        <td>${user.name}</td>
+                        <td>${user.login}</td>
+                        <td>${user.role.roleName}</td>
+                        <td>
+                            <#assign updateLabel><@spring.message "table.list.actions.update" /></#assign>
+                            <#assign deleteLabel><@spring.message "table.list.actions.delete" /></#assign>
 
-                                    <a href="#editModal" class="text-warning" data-toggle="modal" data-id="${user.id}" data-name="${user.name}">
-                                        <i class="material-icons" data-toggle="tooltip" title="${updateLabel}">&#xE254;</i>
-                                    </a>
-                                    <a href="#deleteModal" class="text-danger" data-toggle="modal" data-id="${user.id}" data-name="${user.name}">
-                                        <i class="material-icons" data-toggle="tooltip" title="${deleteLabel}">&#xE872;</i>
-                                    </a>
-                                </td>
-                            </tr>
+                            <a href="#editModal" class="text-warning" data-toggle="modal" data-id="${user.id}" data-name="${user.login}">
 
-                        </#list>
+                                <i class="material-icons" data-toggle="tooltip" title="${updateLabel}">&#xE254;</i>
+                            </a>
+                            <a href="#deleteModal" class="text-danger" data-toggle="modal" data-id="${user.id}" data-name="${user.login}">
+                                <i class="material-icons" data-toggle="tooltip" title="${deleteLabel}">&#xE872;</i>
+                            </a>
+                        </td>
+                    </tr>
 
-                    </tbody>
-                </table>
-            </div>
+                </#list>
 
-            <div class="card-footer text-muted">
-            </div>
-        </form>
-    </div>
+                </tbody>
+            </table>
+        </div>
 
-    <!-- Add Modal HTML -->
-    <#include "add-modal.ftl">
+        <div class="card-footer text-muted">
+        </div>
+    </form>
+</div>
 
-    <!-- Edit Modal HTML -->
-    <#include "edit-modal.ftl">
+<!-- Add Modal HTML -->
+<#include "add-modal.ftl">
 
-    <!-- Delete Modal HTML -->
-    <#include "delete-modal.ftl">
+<!-- Edit Modal HTML -->
+<#include "edit-modal.ftl">
 
-    <!-- External JS libs -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>    
-    <script src="/js/table-config.js"></script>
-    <script src="/js/field/field-management.js"></script>
+<!-- Delete Modal HTML -->
+<#include "delete-modal.ftl">
+
+<!-- External JS libs -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script src="/js/table-config.js"></script>
+<script src="/js/field/field-management.js"></script>
 </body>
 
 </html>
