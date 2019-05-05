@@ -1,14 +1,17 @@
 package br.edu.utfpr.cp.emater.midmipsystem.domain.base;
 
-import br.edu.utfpr.cp.emater.midmipsystem.library.AuditingPersistenceEntity;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class User extends Person implements Serializable {
-
+@AllArgsConstructor
+@NoArgsConstructor
+public class User implements Serializable {
+    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Getter @Setter
+    protected Long id;
     @Getter @Setter
     private String login;
     @Getter @Setter
@@ -19,19 +22,23 @@ public class User extends Person implements Serializable {
     @ManyToOne
     @JoinColumn
     private Role role;
+    @Getter @Setter
+    @OneToOne
+    private Supervisor supervisor;
+    @OneToOne (optional = true)
+    private Farmer farmer;
 
-    public User () {
-        super();
-    }
+    public String getType(){
+        if(supervisor == null && farmer == null){
+            return "Admin";
+        }
 
-    public User (Long id, String name, String login,String password, boolean enabled, Role role) {
-        this();
+        else if(farmer == null){
+            return "Supervisor";
+        }
 
-        this.setId (id);
-        this.setName(name);
-        this.setLogin(login);
-        this.setPassword(password);
-        this.setEnabled(enabled);
-        this.setRole(role);
+        else{
+            return "Farmer";
+        }
     }
 }

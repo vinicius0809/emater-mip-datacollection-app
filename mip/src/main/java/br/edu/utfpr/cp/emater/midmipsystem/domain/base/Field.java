@@ -1,8 +1,5 @@
 package br.edu.utfpr.cp.emater.midmipsystem.domain.base;
 
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.City;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Farmer;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.base.Supervisor;
 import br.edu.utfpr.cp.emater.midmipsystem.library.AuditingPersistenceEntity;
 
 import java.io.Serializable;
@@ -39,7 +36,7 @@ public class Field extends AuditingPersistenceEntity implements Serializable {
     
     @ManyToOne (fetch = FetchType.EAGER)
     private Farmer farmer;
-    
+
     @ManyToMany (fetch = FetchType.EAGER)
     private List<Supervisor> supervisors;
     

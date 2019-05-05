@@ -41,8 +41,9 @@
                 <table id="mainTable" class="table table-striped table-hover">
                     <thead style="background-color: #004900; color: white">
                         <tr>
-                            <th class="col-sm-6"><@spring.message "table.list.name" /></th>
-                            <th class="col-sm-4"><@spring.message "table.list.username" /></th>
+                            <th class="col-sm-4"><@spring.message "table.list.name" /></th>
+                            <th class="col-sm-3"><@spring.message "table.list.username" /></th>
+                            <th class="col-sm-3"><@spring.message "table.list.roles" /></th>
                             <th class="col-sm-2"><@spring.message "table.list.action" /></th>
                         </tr>
                     </thead>
@@ -53,6 +54,7 @@
                             <tr>
                                 <td>${user.name}</td>
                                 <td>${user.login}</td>
+                                <td>${user.role.roleName}</td>
                                 <td>
                                     <#assign updateLabel><@spring.message "table.list.actions.update" /></#assign>
                                     <#assign deleteLabel><@spring.message "table.list.actions.delete" /></#assign>

@@ -41,13 +41,14 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 @EnableJpaAuditing
 public class MipApplication {
 
-        private FreeMarkerConfigurer freeMarkerConfigurer;
-        @Autowired
-        public MipApplication (FreeMarkerConfigurer freeMarkerConfigurer) {
-                this.freeMarkerConfigurer = freeMarkerConfigurer;
+    private FreeMarkerConfigurer freeMarkerConfigurer;
 
-                this.freeMarkerConfigurer.getConfiguration().addAutoImport("spring", "spring.ftl");
-        }
+    @Autowired
+    public MipApplication(FreeMarkerConfigurer freeMarkerConfigurer) {
+        this.freeMarkerConfigurer = freeMarkerConfigurer;
+
+        this.freeMarkerConfigurer.getConfiguration().addAutoImport("spring", "spring.ftl");
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(MipApplication.class, args);
@@ -283,13 +284,20 @@ class CLR implements CommandLineRunner {
         SamplePest sp1 = samplePestRepository
                 .save(new SamplePest(null, new Date(), 3, 4, GrowthPhase.R2, pestOccurrences, mps1));
 
-        Role ro1 = roleRepository.save(new Role(null, "ROLE_ADMIN", "Administrador do sistema.","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D",null));
-        Role ro2 = roleRepository.save(new Role(null, "ROLE_SUPERVISOR", "Supervisor técnico.","x-r-x-x","x-r-x-x","x-r-x-x","c-r-u-d","c-r-u-d","C-R-U-D","x-R-u-x","C-R-U-D","C-R-U-D","C-R-U-D","C-R-U-D",null));
-        Role ro3 = roleRepository.save(new Role(null, "ROLE_FARMER", "Fazendeiro.","x-r-x-x","x-r-x-x","x-r-x-x","x-r-x-x","x-r-u-d","x-r-x-x","x-x-x-x","x-r-u-x","x-R-x-x","x-R-x-x","x-R-x-x",null));
+        Role ro1 = roleRepository.save(new Role(null, "ROLE_ADMIN", "Administrador do sistema.", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", null));
+        Role ro2 = roleRepository.save(new Role(null, "ROLE_SUPERVISOR", "Supervisor técnico.", "x-r-x-x", "x-r-x-x", "x-r-x-x", "c-r-u-d", "c-r-u-d", "C-R-U-D", "x-R-u-x", "C-R-U-D", "C-R-U-D", "C-R-U-D", "c-r-u-d", null));
+        Role ro3 = roleRepository.save(new Role(null, "ROLE_FARMER", "Fazendeiro.", "x-r-x-x", "x-r-x-x", "x-r-x-x", "x-r-x-x", "x-r-u-d", "x-r-x-x", "x-x-x-x", "x-r-u-x", "x-R-x-x", "x-R-x-x", "x-R-x-x", null));
 
-        User u1 = userRepository.save(new User(null,"Fulano","admin","{noop}teste",true,ro1));
-        User u2 = userRepository.save(new User(null,"Ciclano","tech","{noop}teste",true,ro2));
-        User u3 = userRepository.save(new User(null, "Beltrano","farmer","{noop}teste",true,ro3));
+        User u1 = userRepository.save(new User(null,"lari","{noop}teste",true,ro2,s1,null));
+        User u2 = userRepository.save(new User(null,"ivan","{noop}teste",true,ro2,s2,null));
+        User u3 = userRepository.save(new User(null,"jose","{noop}teste",true,ro2,s3,null));
+        User u4 = userRepository.save(new User(null,"vilmar","{noop}teste",true,ro2,s4,null));
+        User u5 = userRepository.save(new User(null,"admin","{noop}teste",true,ro1,null,null));
+        User u6 = userRepository.save(new User(null,"gilson","{noop}teste",true,ro3,null,f1));
+        User u7 = userRepository.save(new User(null,"luiz","{noop}teste",true,ro3,null,f2));
+        User u8 = userRepository.save(new User(null,"maurilio","{noop}teste",true,ro3,null,f3));
+        User u9 = userRepository.save(new User(null,"rafael","{noop}teste",true,ro3,null,f4));
+        User u10 = userRepository.save(new User(null,"clemente","{noop}teste",true,ro3,null,f5));
+
     }
-
 }
