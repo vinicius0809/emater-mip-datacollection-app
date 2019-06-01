@@ -41,9 +41,6 @@ public class Interceptor implements HandlerInterceptor {
 
         var authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (!isAuthenticated(authentication))
-            return false;
-
         var roles = authentication.getAuthorities();
         var relativeUrl = request.getServletPath();
 
@@ -140,7 +137,7 @@ public class Interceptor implements HandlerInterceptor {
         }
 
         if (dividedUrl.length > 2) {
-            action = dividedUrl[2];
+            action = "/" + dividedUrl[2];
         }
 
         return domain + action;
@@ -168,17 +165,13 @@ public class Interceptor implements HandlerInterceptor {
         return Arrays.asList("region", "macroregion", "field", "supervisor", "user", "farmer", "pest-survey");
     }
 
-    private boolean isAuthenticated(Authentication authentication) {
-        return authentication.isAuthenticated() && !authentication.getName().equals("anonymousUser");
-    }
-
     @Override
     public void postHandle(
             HttpServletRequest request, HttpServletResponse response, Object handler,
             ModelAndView modelAndView) throws Exception {
         if (httpCode == 400) {
             // redireciona para pagina de erro 400
-            response.sendRedirect("/erro");
+           // response.sendRedirect("/erro");
         }
 
         else if (modelAndView != null && !isRedirectView(modelAndView) && this.verifyUserSession) {
