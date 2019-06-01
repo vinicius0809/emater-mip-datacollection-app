@@ -66,32 +66,27 @@ public class Interceptor implements HandlerInterceptor {
 
         for (var role : roles) {
             String grants;
-            switch (role.toString().split("_")[1]) {
-                case "ADMIN":
+            var roleName = role.toString().split("_")[1];
 
-                    grants = roleRepository.findById((long) 1).get().getGrants(domain);
-                    if (verifyAuthority(grants, action))
-                        return true;
-
-                case "SUPERVISOR":
-
-                    grants = roleRepository.findById((long) 2).get().getGrants(domain);
-                    if (verifyAuthority(grants, action))
-                        return true;
-
-                case "FARMER":
-
-                    grants = roleRepository.findById((long) 3).get().getGrants(domain);
-                    if (verifyAuthority(grants, action))
-                        return true;
-
-                default:
-                    return false;
+            if (roleName.equalsIgnoreCase("ADMIN")) {
+                grants = roleRepository.findById((long) 1).get().getGrants(domain);
             }
-        }
 
+            else if (roleName.equalsIgnoreCase("SUPERVISOR")) {
+                grants = roleRepository.findById((long) 2).get().getGrants(domain);
+            }
+
+            else if (roleName.equalsIgnoreCase("FARMER")) {
+                grants = roleRepository.findById((long) 3).get().getGrants(domain);
+            }
+
+            else grants = null;
+
+            if (grants != null && verifyAuthority(grants, action))
+                return true;
+        }
         return false;
-    }
+}
 
     private boolean verifyAuthority(String grants, String action) {
 
@@ -171,10 +166,8 @@ public class Interceptor implements HandlerInterceptor {
             ModelAndView modelAndView) throws Exception {
         if (httpCode == 400) {
             // redireciona para pagina de erro 400
-           // response.sendRedirect("/erro");
-        }
-
-        else if (modelAndView != null && !isRedirectView(modelAndView) && this.verifyUserSession) {
+            // response.sendRedirect("/erro");
+        } else if (modelAndView != null && !isRedirectView(modelAndView) && this.verifyUserSession) {
             var user = SecurityContextHolder.getContext().getAuthentication().getName();
             modelAndView = changeModelAndView(modelAndView, user, request.getServletPath());
         }
@@ -214,7 +207,7 @@ public class Interceptor implements HandlerInterceptor {
             return validateUserDomain((Field) item, user);
 
         else if (item instanceof Region)
-            return validateUserDomain((Region)item, user);
+            return validateUserDomain((Region) item, user);
 
         else if (item instanceof MacroRegion)
             return validateUserDomain((MacroRegion) item, user);
