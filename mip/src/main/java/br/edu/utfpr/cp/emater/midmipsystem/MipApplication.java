@@ -1,31 +1,8 @@
 package br.edu.utfpr.cp.emater.midmipsystem;
 
 import br.edu.utfpr.cp.emater.midmipsystem.domain.base.*;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.GrowthPhase;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.MipPestSurvey;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.MipPestSurveyRepository;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.Pest;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.PestOccurrence;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.PestRepository;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.PestSize;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.SamplePest;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.SamplePestRepository;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.Harvest;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.HarvestRepository;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.DateData;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.LocationData;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.ProductivityData;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.QuestionData;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.SizeData;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.SurveyField;
-import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.SurveyFieldRepository;
-import freemarker.template.Configuration;
-
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
+import br.edu.utfpr.cp.emater.midmipsystem.domain.mip.*;
+import br.edu.utfpr.cp.emater.midmipsystem.domain.survey.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -36,6 +13,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @SpringBootApplication
 @EnableJpaAuditing
@@ -286,7 +270,7 @@ class CLR implements CommandLineRunner {
 
         Role ro1 = roleRepository.save(new Role(null, "ROLE_ADMIN", "Administrador do sistema.", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", "C-R-U-D", null));
         Role ro2 = roleRepository.save(new Role(null, "ROLE_SUPERVISOR", "Supervisor técnico.", "x-r-x-x", "x-r-x-x", "x-r-x-x", "c-r-u-d", "c-r-u-d", "C-R-U-D", "x-R-u-x", "C-R-U-D", "C-R-U-D", "C-R-U-D", "c-r-u-d", null));
-        Role ro3 = roleRepository.save(new Role(null, "ROLE_FARMER", "Fazendeiro.", "x-r-x-x", "x-r-x-x", "x-r-x-x", "x-r-x-x", "x-r-u-d", "x-r-x-x", "x-x-x-x", "x-r-u-x", "x-R-x-x", "x-R-x-x", "x-R-x-x", null));
+        Role ro3 = roleRepository.save(new Role(null, "ROLE_FARMER", "Fazendeiro.", "x-r-x-x", "x-r-x-x", "x-r-x-x", "x-r-x-x", "x-r-u-d", "x-r-x-x", "x-x-x-x", "x-r-u-x", "x-r-x-x", "x-R-x-x", "x-R-x-x", null));
 
         User u1 = userRepository.save(new User(null,"lari","{noop}teste",true,ro2,s1,null));
         User u2 = userRepository.save(new User(null,"ivan","{noop}teste",true,ro2,s2,null));

@@ -31,6 +31,8 @@ public class Interceptor implements HandlerInterceptor {
     private UserRepository userRepository;
     @Autowired
     private FieldRepository fieldRepository;
+    @Autowired
+    private RegionRepository regionRepository;
 
     private static int httpCode = 200;
     private boolean verifyUserSession = false;
@@ -39,6 +41,7 @@ public class Interceptor implements HandlerInterceptor {
     public boolean preHandle(
             HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
+        verifyUserSession = false;
         var authentication = SecurityContextHolder.getContext().getAuthentication();
 
         var roles = authentication.getAuthorities();
@@ -70,26 +73,19 @@ public class Interceptor implements HandlerInterceptor {
 
             if (roleName.equalsIgnoreCase("ADMIN")) {
                 grants = roleRepository.findById((long) 1).get().getGrants(domain);
-            }
-
-            else if (roleName.equalsIgnoreCase("SUPERVISOR")) {
+            } else if (roleName.equalsIgnoreCase("SUPERVISOR")) {
                 grants = roleRepository.findById((long) 2).get().getGrants(domain);
-            }
-
-            else if (roleName.equalsIgnoreCase("FARMER")) {
+            } else if (roleName.equalsIgnoreCase("FARMER")) {
                 grants = roleRepository.findById((long) 3).get().getGrants(domain);
-            }
-
-            else grants = null;
+            } else grants = null;
 
             if (grants != null && verifyAuthority(grants, action))
                 return true;
         }
         return false;
-}
+    }
 
     private boolean verifyAuthority(String grants, String action) {
-
         var grantsCreate = grants.split("-")[0];
         var grantsRead = grants.split("-")[1];
         var grantsUpdate = grants.split("-")[2];
@@ -164,10 +160,7 @@ public class Interceptor implements HandlerInterceptor {
     public void postHandle(
             HttpServletRequest request, HttpServletResponse response, Object handler,
             ModelAndView modelAndView) throws Exception {
-        if (httpCode == 400) {
-            // redireciona para pagina de erro 400
-            // response.sendRedirect("/erro");
-        } else if (modelAndView != null && !isRedirectView(modelAndView) && this.verifyUserSession) {
+        if (modelAndView != null && !isRedirectView(modelAndView) && this.verifyUserSession) {
             var user = SecurityContextHolder.getContext().getAuthentication().getName();
             modelAndView = changeModelAndView(modelAndView, user, request.getServletPath());
         }
@@ -179,20 +172,17 @@ public class Interceptor implements HandlerInterceptor {
         if (!getDomains().contains(domain) && !domain.equals("mipPestSurvey"))
             return modelAndView;
 
-        var modelList = (List<Object>) modelAndView.getModel().get(domain + "s");
+        var modelList = (ArrayList<Object>) modelAndView.getModel().get(domain + "s");
 
         User user = findByLogin(login);
 
-        var removeFromModel = new ArrayList<>();
+        var x = modelList.iterator();
 
-        for (var item : modelList) {
+        while (x.hasNext()){
+            var item = x.next();
             if (!validateUserDomain(item, user)) {
-                removeFromModel.add(item);
+                x.remove();
             }
-        }
-
-        for (var region : removeFromModel) {
-            modelList.remove(region);
         }
 
         modelAndView.getModel().remove(domain);
@@ -228,23 +218,47 @@ public class Interceptor implements HandlerInterceptor {
     }
 
     private boolean validateUserDomain(Field item, User user) {
-        for (var supervisor : item.getSupervisors())
-            if (supervisor.getId() == user.getSupervisor().getId()) {
+        if (user.getSupervisor() == null) {
+            if (item.getFarmer().getId() == user.getFarmer().getId()) {
                 return true;
             }
+        } else {
+            for (var supervisor : item.getSupervisors()) {
+                if (supervisor.getId() == user.getSupervisor().getId()) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
     private boolean validateUserDomain(Region item, User user) {
-        if (item.getId() == user.getSupervisor().getRegion().getId()) {
+        if(user.getSupervisor() == null){
+            var field = findFieldByFarmer(user.getFarmer());
+            var city = field.getCity();
+            var region = findRegionByCity(city);
+
+            if(item.getId() == region.getId()){
+                return true;
+            }
+        }
+        else if (item.getId() == user.getSupervisor().getRegion().getId()) {
             return true;
         }
         return false;
     }
 
-
     private boolean validateUserDomain(MacroRegion item, User user) {
-        if (item.getId() == user.getSupervisor().getRegion().getMacroRegion().getId()) {
+        if (user.getSupervisor() == null) {
+            var field = findFieldByFarmer(user.getFarmer());
+            var city = field.getCity();
+            var region = findRegionByCity(city);
+
+            if (item.getId() == region.getMacroRegion().getId()) {
+                return true;
+            }
+
+        } else if (item.getId() == user.getSupervisor().getRegion().getMacroRegion().getId()) {
             return true;
         }
         return false;
@@ -289,15 +303,43 @@ public class Interceptor implements HandlerInterceptor {
     }
 
     private Farmer findFarmerByUser(Farmer farmer, User user) {
-        for (var field : fieldRepository.findAll()) {
-            for (var supervisor : field.getSupervisors()) {
-                if (supervisor.getId() == user.getSupervisor().getId()) {
-                    if (farmer.getId() == field.getFarmer().getId()) {
-                        return farmer;
+        if (user.getSupervisor() == null) {
+            if (farmer.getId() == user.getFarmer().getId()) {
+                return farmer;
+            }
+        } else {
+            for (var field : fieldRepository.findAll()) {
+                for (var supervisor : field.getSupervisors()) {
+                    if (supervisor.getId() == user.getSupervisor().getId()) {
+                        if (farmer.getId() == field.getFarmer().getId()) {
+                            return farmer;
+                        }
                     }
                 }
             }
         }
+        return null;
+    }
+
+    private Field findFieldByFarmer(Farmer farmer) {
+        for (var field : fieldRepository.findAll()) {
+            if (field.getFarmer().getId() == farmer.getId()) {
+                return field;
+            }
+        }
+
+        return null;
+    }
+
+    private Region findRegionByCity(City city) {
+        for (var region : regionRepository.findAll()) {
+            for (var regionCity : region.getCities()) {
+                if (city.getId() == regionCity.getId()) {
+                    return region;
+                }
+            }
+        }
+
         return null;
     }
 

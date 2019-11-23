@@ -26,6 +26,7 @@ public class User implements Serializable {
     @Getter @Setter
     @OneToOne (optional = true)
     private Supervisor supervisor;
+    @Getter @Setter
     @OneToOne (optional = true)
     private Farmer farmer;
 
